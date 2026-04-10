@@ -3,39 +3,622 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top Dividend ETFs Pro | High-Yield ETF Intelligence</title>
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Top Dividend ETFs Pro">
+    <title>Top Dividend ETFs Pro | Premium ETF Rankings & Insights</title>
+    <meta name="description" content="Professional dividend ETF rankings with yields, AUM, expense ratios, total return, and more for serious income investors.">
+    
+    <link rel="icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://js.stripe.com/v3/"></script>
+
     <style>
-        body {
-            font-family: system-ui, -apple-system, Arial, sans-serif;
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(135deg, #f8fafc, #e0f2fe);
-            color: #1e2937;
-            margin: 0;
+        :root { --green: #2E5D54; --dark: #1A3C34; }
+        html, body {
+            margin: 0; padding: 0; overflow-x: hidden;
+            font-family: 'Lato', Arial, sans-serif;
+            background: #f4f4f4; color: #333;
         }
-        h1 { font-size: 3rem; color: #1e40af; margin-bottom: 10px; }
-        .tagline { font-size: 1.4rem; color: #334155; margin-bottom: 40px; }
-        ul { list-style: none; padding: 0; max-width: 600px; margin: 40px auto; }
-        li { font-size: 1.2rem; margin: 15px 0; }
-        .launch { margin-top: 60px; color: #64748b; }
+        header {
+            background: var(--dark); padding: 18px 20px; color: #fff;
+            text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: clamp(26px, 7vw, 42px); font-weight: 900; letter-spacing: -1px; flex: 1; }
+
+        .header-right {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .unlock-btn {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .unlock-btn:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        .unlock-btn.unlocked {
+            background: #6b7280;
+            cursor: default;
+        }
+
+        h1 { color: var(--dark); margin: 30px 0 15px; font-size: 2.2em; text-align: center; }
+        .intro-text {
+            max-width: 920px; margin: 0 auto 25px; line-height: 1.65; 
+            text-align: center; color: #444; font-size: 1.08em;
+        }
+        .content { width: 94%; max-width: 1700px; margin: 0 auto; }
+
+        #filters {
+            max-width: 1700px; margin: 20px auto; display: flex; flex-wrap: wrap; 
+            gap: 12px; justify-content: center;
+            transition: filter 0.3s ease;
+        }
+
+        #filters.blurred {
+            filter: blur(5px);
+            pointer-events: none;
+        }
+
+        #filters input, #filters select {
+            padding: 10px 14px; border: 2px solid var(--green); border-radius: 6px; font-size: 1em;
+        }
+        #resetFilters {
+            padding: 10px 20px; background: var(--green); color: white; border: none; 
+            border-radius: 6px; cursor: pointer; font-weight: bold;
+        }
+
+        #etfTable {
+            width: 100%; border-collapse: collapse; background: #fff;
+            border: 3px solid var(--green); border-radius: 10px; overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transition: filter 0.3s ease;
+        }
+
+        #etfTable.blurred {
+            filter: blur(8px);
+            pointer-events: none;
+        }
+
+        th {
+            background: var(--green); color: #fff; padding: 12px 6px; 
+            cursor: pointer; font-size: 0.95em; white-space: nowrap;
+        }
+        td { padding: 10px 6px; text-align: center; font-size: 0.98em; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        tr:hover { background: #e6f4ef; }
+        .symbol { font-weight: 900; font-size: 1.25em; color: var(--dark); }
+        .name { text-align: left; font-weight: 600; }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .header-right {
+                width: 100%;
+            }
+
+            th { display: none; }
+            tr { display: flex; flex-direction: column; margin: 10px 0; padding: 12px; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
+            td { display: flex; justify-content: space-between; padding: 8px 0; }
+            td:before { content: attr(data-label); font-weight: bold; color: var(--dark); min-width: 160px; }
+        }
+
+        .disclaimer {
+            font-size: 0.9em; color: #555; max-width: 900px; margin: 50px auto 30px; 
+            text-align: center; line-height: 1.5;
+        }
+        footer {
+            margin: 40px auto 30px; padding-top: 15px; border-top: 1px solid #ddd;
+            text-align: center; color: #666; font-size: 0.9em; max-width: 900px;
+        }
+        footer a { color: var(--dark); text-decoration: none; }
+
+        /* PAYWALL MODAL */
+        .paywall-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .paywall-overlay.active {
+            display: flex;
+        }
+
+        .paywall-modal {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .paywall-modal h2 {
+            color: var(--dark);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .paywall-modal p {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .pricing-box {
+            background: #f0f9f7;
+            border: 2px solid var(--green);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .pricing-box .price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--green);
+            margin-bottom: 5px;
+        }
+
+        .pricing-box .price-desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin-bottom: 30px;
+            padding: 0;
+        }
+
+        .benefits-list li {
+            padding: 10px 0;
+            color: #555;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .benefits-list li:before {
+            content: "✓";
+            color: var(--green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        #stripe-card-element {
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 20px;
+            background: white;
+        }
+
+        #payment-message {
+            display: none;
+            margin-bottom: 20px;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        #payment-message.success {
+            display: block;
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid var(--green);
+        }
+
+        #payment-message.error {
+            display: block;
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #ef4444;
+        }
+
+        .paywall-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-pay {
+            flex: 1;
+            padding: 12px;
+            background: var(--green);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-pay:hover:not(:disabled) {
+            background: var(--dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-pay:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-close {
+            flex: 1;
+            padding: 12px;
+            background: #e5e7eb;
+            color: #333;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-close:hover {
+            background: #d1d5db;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover {
+            color: #333;
+        }
+
+        .paywall-modal {
+            position: relative;
+        }
     </style>
 </head>
 <body>
-    <h1>🏆 Top Dividend ETFs Pro</h1>
-    <p class="tagline">Smart Tools • High-Yield ETFs • Monthly Income Strategies</p>
-    
-    <ul>
-        <li>✅ Top Dividend ETF Rankings & Screener</li>
-        <li>✅ SCHD, JEPI, JEPQ, VYM, DGRO, QYLD & more</li>
-        <li>✅ Yield, Growth, and Total Return Comparisons</li>
-        <li>✅ Best ETFs for Retirement Income</li>
-        <li>✅ Portfolio Builders & Dividend Calculators</li>
-    </ul>
+<div class="content">
+    <header>
+        <div class="logo">TopDividendETFsPro.com</div>
+        <div class="header-right">
+            <button class="unlock-btn" id="unlockBtn" onclick="showPaywall()">🔓 Unlock Premium</button>
+        </div>
+    </header>
 
-    <p class="launch">Launching soon with powerful data and insights for serious dividend investors.</p>
-    
-    <p style="margin-top: 80px; font-size: 0.95rem; color: #64748b;">
-        Built with ❤️ for dividend growth & income investors
+    <h1>Premium Dividend ETF Rankings</h1>
+    <p class="intro-text">
+        Professional data on the best dividend ETFs — including yield, tax treatment, total return, payout frequency, and more.
     </p>
+
+    <div id="filters">
+        <button id="resetFilters">Reset Filters</button>
+        <input type="text" id="searchFilter" placeholder="Search ticker or name">
+        <select id="yieldRangeFilter">
+            <option value="">Yield: All</option>
+            <option value="1-5">1–5%</option>
+            <option value="5-10">5–10%</option>
+            <option value="10-15">10–15%</option>
+            <option value="15+">15%+</option>
+        </select>
+    </div>
+
+    <table id="etfTable">
+        <thead>
+            <tr>
+                <th onclick="sortTable(0)">Symbol</th>
+                <th onclick="sortTable(1)">Name</th>
+                <th onclick="sortTable(2)">Fund Provider</th>
+                <th onclick="sortTable(3)">Dividend Yield</th>
+                <th onclick="sortTable(4)">Tax Treatment Grade</th>
+                <th onclick="sortTable(5)">Expense Ratio</th>
+                <th onclick="sortTable(6)">AUM</th>
+                <th onclick="sortTable(7)">Total Return</th>
+                <th onclick="sortTable(8)">Price Decay</th>
+                <th onclick="sortTable(9)">Inception Date</th>
+                <th onclick="sortTable(10)">Payout Frequency</th>
+                <th onclick="sortTable(11)">Rating</th>
+            </tr>
+        </thead>
+        <tbody id="etfBody"></tbody>
+    </table>
+
+    <p class="disclaimer">
+        <strong>Important Disclaimer:</strong> This website is for informational and educational purposes only. 
+        It does not constitute financial, investment, or tax advice. Past performance is not indicative of future results. 
+        Always consult a qualified financial advisor before making any investment decisions.
+    </p>
+
+    <footer>
+        <p>
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="terms.html">Terms of Service</a> | 
+            <a href="mailto:contact@topdividendetfspro.com">Contact Us</a>
+        </p>
+        <p>&copy; 2026 Top Dividend ETFs Pro. All Rights Reserved.</p>
+    </footer>
+</div>
+
+<!-- PAYWALL MODAL -->
+<div class="paywall-overlay" id="paywallOverlay">
+    <div class="paywall-modal">
+        <button class="close-btn" onclick="closePaywall()">✕</button>
+        
+        <h2>Unlock Premium</h2>
+        <p>Get instant access to all premium dividend ETF data and insights</p>
+
+        <div class="pricing-box">
+            <div class="price">$9<span style="font-size: 0.5em; color: #666;">/mo</span></div>
+            <div class="price-desc">Billed monthly • Cancel anytime</div>
+        </div>
+
+        <ul class="benefits-list">
+            <li>Complete ETF Database</li>
+            <li>Advanced Filtering & Sorting</li>
+            <li>Tax Treatment Analysis</li>
+            <li>Instant Access</li>
+        </ul>
+
+        <form id="payment-form">
+            <div id="stripe-card-element"></div>
+            <div id="payment-message"></div>
+            <div class="paywall-actions">
+                <button type="submit" class="btn-pay" id="submit">Pay $9/month</button>
+                <button type="button" class="btn-close" onclick="closePaywall()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // ==================== CONFIGURATION ====================
+    const STRIPE_PUBLIC_KEY = 'pk_live_YOUR_STRIPE_PUBLIC_KEY'; // Replace with your key
+    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTxCiod-Cwry7E6k9Un9dgrM_ANymC36_IO_wLyNj-YDo2KI7mp_1ZzyNBnBGZOxT48QPM8TCwtsmA4/pub?gid=0&single=true&output=csv";
+
+    // ==================== STATE ====================
+    let isUnlocked = localStorage.getItem('topDividendPro_unlocked') === 'true';
+    let allRows = [];
+
+    // ==================== STRIPE SETUP ====================
+    const stripe = Stripe(STRIPE_PUBLIC_KEY);
+    const elements = stripe.elements();
+    const cardElement = elements.create('card');
+
+    // ==================== INIT ====================
+    document.addEventListener('DOMContentLoaded', () => {
+        cardElement.mount('#stripe-card-element');
+        
+        cardElement.addEventListener('change', (event) => {
+            const displayError = document.getElementById('payment-message');
+            if (event.error) {
+                displayError.textContent = event.error.message;
+                displayError.classList.add('error');
+                displayError.classList.remove('success');
+            } else {
+                displayError.textContent = '';
+                displayError.classList.remove('error', 'success');
+            }
+        });
+
+        document.getElementById('payment-form').addEventListener('submit', handlePayment);
+
+        loadData();
+        updateUIState();
+    });
+
+    // ==================== LOAD DATA ====================
+    function loadData() {
+        fetch(CSV_URL + '&t=' + Date.now())
+            .then(r => r.text())
+            .then(txt => renderTable(txt))
+            .catch(() => {
+                document.getElementById('etfBody').innerHTML = `
+                    <tr><td colspan="12" style="padding:40px; color:red; text-align:center;">
+                        Unable to load ETF data. Please refresh the page.
+                    </td></tr>`;
+            });
+    }
+
+    function renderTable(csvText) {
+        const lines = csvText.trim().split('\n');
+        const tbody = document.getElementById('etfBody');
+        tbody.innerHTML = '';
+
+        for (let i = 1; i < lines.length; i++) {
+            const cols = lines[i].split(',').map(c => c.trim().replace(/^"|"$/g, ''));
+            if (cols.length < 12 || !cols[0]) continue;
+
+            const tr = document.createElement('tr');
+
+            cols.forEach((value, index) => {
+                const td = document.createElement('td');
+                td.setAttribute('data-label', [
+                    'Symbol','Name','Fund Provider','Dividend Yield','Tax Treatment Grade',
+                    'Expense Ratio','AUM','Total Return','Price Decay','Inception Date',
+                    'Payout Frequency','Rating'
+                ][index]);
+
+                if (index === 0) td.className = 'symbol';
+                if (index === 1) td.className = 'name';
+
+                td.textContent = value || '-';
+                tr.appendChild(td);
+            });
+
+            tbody.appendChild(tr);
+            allRows.push(tr);
+        }
+
+        sortTable(3, 'desc');
+    }
+
+    // ==================== SORTING ====================
+    let sortDirections = {};
+    function sortTable(col, forceDir) {
+        const tbody = document.getElementById('etfBody');
+        const rows = Array.from(tbody.rows);
+        const dir = forceDir || (sortDirections[col] === 'asc' ? 'desc' : 'asc');
+        sortDirections[col] = dir;
+
+        rows.sort((a, b) => {
+            let valA = a.cells[col].textContent.trim().replace(/[%$,]/g, '');
+            let valB = b.cells[col].textContent.trim().replace(/[%$,]/g, '');
+
+            if (!isNaN(parseFloat(valA)) && !isNaN(parseFloat(valB))) {
+                return dir === 'asc' ? parseFloat(valA) - parseFloat(valB) : parseFloat(valB) - parseFloat(valA);
+            }
+            return dir === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+        });
+
+        rows.forEach(row => tbody.appendChild(row));
+        applyFilters();
+    }
+
+    // ==================== FILTERS ====================
+    function applyFilters() {
+        const searchTerm = document.getElementById('searchFilter').value.toLowerCase().trim();
+        const yieldFilter = document.getElementById('yieldRangeFilter').value;
+
+        allRows.forEach(tr => {
+            const symbol = tr.cells[0].textContent.toLowerCase();
+            const name = tr.cells[1].textContent.toLowerCase();
+            const yieldValue = parseFloat(tr.cells[3].textContent) || 0;
+
+            let visible = true;
+
+            if (searchTerm && !symbol.includes(searchTerm) && !name.includes(searchTerm)) visible = false;
+
+            if (yieldFilter) {
+                const [min, max] = yieldFilter === '15+' ? [15, 999] : yieldFilter.split('-').map(Number);
+                if (yieldValue < min || yieldValue > max) visible = false;
+            }
+
+            tr.style.display = visible ? '' : 'none';
+        });
+    }
+
+    document.getElementById('searchFilter').addEventListener('input', applyFilters);
+    document.getElementById('yieldRangeFilter').addEventListener('change', applyFilters);
+    document.getElementById('resetFilters').addEventListener('click', () => location.reload());
+
+    // ==================== PAYWALL ====================
+    function showPaywall() {
+        document.getElementById('paywallOverlay').classList.add('active');
+    }
+
+    function closePaywall() {
+        document.getElementById('paywallOverlay').classList.remove('active');
+        document.getElementById('payment-message').innerHTML = '';
+        document.getElementById('payment-message').classList.remove('error', 'success');
+    }
+
+    async function handlePayment(e) {
+        e.preventDefault();
+        const submitButton = document.getElementById('submit');
+        submitButton.disabled = true;
+
+        try {
+            const response = await fetch('/.netlify/functions/create-payment-intent', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ amount: 900 })
+            });
+
+            const { clientSecret } = await response.json();
+
+            const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+                payment_method: {
+                    card: cardElement,
+                    billing_details: { name: 'Customer' }
+                }
+            });
+
+            if (error) {
+                showMessage(error.message, 'error');
+                submitButton.disabled = false;
+            } else if (paymentIntent.status === 'succeeded') {
+                unlockPremium();
+                closePaywall();
+                showMessage('Payment successful! Premium access unlocked.', 'success');
+            }
+        } catch (error) {
+            showMessage('Payment error: ' + error.message, 'error');
+            submitButton.disabled = false;
+        }
+    }
+
+    function showMessage(message, type) {
+        const messageElement = document.getElementById('payment-message');
+        messageElement.textContent = message;
+        messageElement.classList.add(type);
+        messageElement.classList.remove(type === 'error' ? 'success' : 'error');
+    }
+
+    function unlockPremium() {
+        isUnlocked = true;
+        localStorage.setItem('topDividendPro_unlocked', 'true');
+        updateUIState();
+    }
+
+    function updateUIState() {
+        const table = document.getElementById('etfTable');
+        const filters = document.getElementById('filters');
+        const unlockBtn = document.getElementById('unlockBtn');
+
+        if (isUnlocked) {
+            table.classList.remove('blurred');
+            filters.classList.remove('blurred');
+            unlockBtn.textContent = '✓ Premium Active';
+            unlockBtn.classList.add('unlocked');
+            unlockBtn.disabled = true;
+        } else {
+            table.classList.add('blurred');
+            filters.classList.add('blurred');
+            unlockBtn.textContent = '🔓 Unlock Premium';
+            unlockBtn.classList.remove('unlocked');
+            unlockBtn.disabled = false;
+        }
+    }
+</script>
 </body>
 </html>
