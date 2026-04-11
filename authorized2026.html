@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -32,7 +32,6 @@
             color: var(--text-dark);
         }
 
-        /* ==================== HEADER ==================== */
         header {
             background: rgba(15, 118, 110, 0.7);
             backdrop-filter: blur(20px);
@@ -52,7 +51,6 @@
             letter-spacing: -1px; 
         }
 
-        /* ==================== HERO SECTION ==================== */
         .hero {
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--accent) 100%);
             color: white;
@@ -101,32 +99,12 @@
             font-weight: 300;
         }
 
-        /* ==================== CONTENT ==================== */
         .content { 
             width: 94%; 
             max-width: 1700px; 
             margin: 0 auto; 
         }
 
-        h2 {
-            color: var(--primary-dark);
-            margin: 30px 0 15px;
-            font-size: 2.2em;
-            text-align: center;
-            font-weight: 900;
-            letter-spacing: -0.5px;
-        }
-
-        .intro-text {
-            max-width: 920px; 
-            margin: 0 auto 35px; 
-            line-height: 1.65; 
-            text-align: center; 
-            color: var(--text-light); 
-            font-size: 1.08em;
-        }
-
-        /* ==================== FILTERS ==================== */
         #filters {
             max-width: 1700px; 
             margin: 30px auto; 
@@ -191,7 +169,6 @@
             box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
         }
 
-        /* ==================== TABLE ==================== */
         #etfTable {
             width: 100%; 
             border-collapse: collapse; 
@@ -369,19 +346,19 @@
     </header>
 
     <!-- ==================== HERO ==================== -->
-<div class="hero">
-    <div class="hero-content">
-        <h1>Top Dividend ETFs PRO Terminal</h1>
-        <p class="hero-subtitle">
-            Advanced analytics & accurate data updated daily for serious dividend income investors. Filter, sort, and analyze the best dividend ETFs with real-time insights.
-        </p>
-        
-        <p style="margin-top: 25px; font-size: 17px; font-weight: 700; color: rgba(255,255,255,0.95);">
-            To learn more about what this data means and everything you need to know check out our 
-            <a href="faq.html" style="color: #fff; text-decoration: underline;">FAQ page here</a>
-        </p>
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Top Dividend ETFs PRO Terminal</h1>
+            <p class="hero-subtitle">
+                Advanced analytics & accurate data updated daily for serious dividend income investors. Filter, sort, and analyze the best dividend ETFs with real-time insights.
+            </p>
+            
+            <p style="margin-top: 25px; font-size: 17px; font-weight: 700; color: rgba(255,255,255,0.95);">
+                To learn more about what this data means and everything you need to know check out our 
+                <a href="faq.html" style="color: #fff; text-decoration: underline;">FAQ page here</a>
+            </p>
+        </div>
     </div>
-</div>
 
     <div class="content">
         <!-- ==================== FILTERS ==================== -->
@@ -447,7 +424,7 @@
             </div>
         </div>
 
-        <!-- Centered Reset Button (moved below filters) -->
+        <!-- Centered Reset Button -->
         <div style="text-align: center; margin: 20px 0 30px;">
             <button id="resetFilters">🔄 Reset Filters</button>
         </div>
@@ -573,12 +550,32 @@
             sortDirections[col] = dir;
 
             rows.sort((a, b) => {
-                let valA = a.cells[col].textContent.trim().replace(/[%$,]/g, '');
-                let valB = b.cells[col].textContent.trim().replace(/[%$,]/g, '');
+                let valA = a.cells[col].textContent.trim();
+                let valB = b.cells[col].textContent.trim();
 
+                // Special handling for Inception Date (column 9)
+                if (col === 9) {
+                    const dateA = new Date(valA);
+                    const dateB = new Date(valB);
+                    if (!isNaN(dateA.getTime()) && !isNaN(dateB.getTime())) {
+                        return dir === 'asc' ? dateA - dateB : dateB - dateA;
+                    }
+                }
+
+                // Special handling for Payout Frequency (column 10)
+                if (col === 10) {
+                    const order = { 'weekly': 1, 'monthly': 2, 'quarterly': 3 };
+                    const orderA = order[valA.toLowerCase()] || 99;
+                    const orderB = order[valB.toLowerCase()] || 99;
+                    return dir === 'asc' ? orderA - orderB : orderB - orderA;
+                }
+
+                // Normal numeric sorting
                 if (!isNaN(parseFloat(valA)) && !isNaN(parseFloat(valB))) {
                     return dir === 'asc' ? parseFloat(valA) - parseFloat(valB) : parseFloat(valB) - parseFloat(valA);
                 }
+
+                // Default string sorting
                 return dir === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
             });
 
@@ -608,32 +605,22 @@
 
                 let visible = true;
 
-                // Search filter
                 if (searchTerm && !symbol.includes(searchTerm) && !name.includes(searchTerm)) visible = false;
 
-                // Yield filter
                 if (visible && yieldFilter) {
                     const [min, max] = yieldFilter === '15+' ? [15, 999] : yieldFilter.split('-').map(Number);
                     if (yieldValue < min || (max && yieldValue > max)) visible = false;
                 }
 
-                // Payout frequency filter
-                if (visible && payoutFilter) {
-                    if (!payoutFrequency.includes(payoutFilter)) visible = false;
-                }
+                if (visible && payoutFilter && !payoutFrequency.includes(payoutFilter)) visible = false;
 
-                // Tax grade filter
-                if (visible && taxGradeFilter) {
-                    if (!taxGrade.includes(taxGradeFilter)) visible = false;
-                }
+                if (visible && taxGradeFilter && !taxGrade.includes(taxGradeFilter)) visible = false;
 
-                // Price Decay filter
                 if (visible && priceDecayFilter) {
                     if (priceDecayFilter === 'yes' && priceDecay !== 'YES') visible = false;
                     if (priceDecayFilter === 'no' && priceDecay !== 'NO') visible = false;
                 }
 
-                // ETF Age filter - calculated from inception date
                 if (visible && ageFilter && inceptionStr) {
                     const inceptionDate = new Date(inceptionStr);
                     if (isNaN(inceptionDate.getTime())) {
@@ -657,7 +644,6 @@
                 if (visible) visibleCount++;
             });
 
-            // No results message
             const tbody = document.getElementById('etfBody');
             const existingNoResults = tbody.querySelector('.no-results');
             if (visibleCount === 0) {
