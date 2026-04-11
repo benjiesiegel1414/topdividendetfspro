@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | TopDividendETFsPro.com</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0F766E;
+            --primary-dark: #134E4A;
+            --primary-light: #14B8A6;
+            --accent: #06B6D4;
+            --text-dark: #0F172A;
+            --text-light: #64748B;
+        }
+
+        body {
+            font-family: 'Lato', Arial, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        /* ==================== HEADER ==================== */
+        header {
+            background: rgba(15, 118, 110, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .header-nav a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .header-nav a:hover {
+            color: white;
+        }
+
+        /* ==================== FAQ CONTENT ==================== */
+        .faq-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #0F766E;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #0F766E;
+            margin-top: 45px;
+            font-size: 1.6em;
+        }
+
+        .faq-item {
+            margin-bottom: 35px;
+        }
+
+        .question {
+            font-weight: 700;
+            font-size: 1.15em;
+            color: #134E4A;
+            margin-bottom: 10px;
+        }
+
+        .answer {
+            color: #444;
+            line-height: 1.6;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        .disclaimer-box {
+            background: #fff3cd;
+            border-left: 6px solid #ffc107;
+            padding: 25px;
+            margin: 50px 0 40px 0;
+            border-radius: 6px;
+            font-size: 0.95em;
+        }
+
+        /* ==================== FOOTER ==================== */
+        footer {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer a {
+            color: #14B8A6;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== HEADER (Banner) - Logo now links to homepage ==================== -->
+<header>
+    <div class="header-container">
+        <a href="index.html" class="logo">Top Dividend ETFs Pro</a>
+        <nav class="header-nav">
+            <a href="index.html#features">Features</a>
+            <a href="index.html#pricing">Pricing</a>
+            <a href="index.html#comparison">Compare</a>
+        </nav>
+    </div>
+</header>
+
+<!-- ==================== FAQ CONTENT ==================== -->
+<div class="faq-container">
+    <h1>Frequently Asked Questions</h1>
+
+    <div class="faq-item">
+        <div class="question">What is TopDividendETFsPro.com?</div>
+        <div class="answer">
+            TopDividendETFsPro.com is a premium platform that provides accurate, daily-updated rankings and detailed data on dividend-focused ETFs. 
+            We help long-term income investors compare ETFs based on yield, tax efficiency, total return, expense ratios, and other important metrics.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">Who is this site for?</div>
+        <div class="answer">
+            This site is designed for serious dividend investors who want reliable, well-organized data to help build and manage income-generating portfolios. 
+            Whether you're just starting or managing a large portfolio, our tools are built for you.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">How often is the data updated?</div>
+        <div class="answer">
+            All data is refreshed daily so you always have the most current information available.
+        </div>
+    </div>
+
+    <h2>Data Columns Explained</h2>
+
+    <div class="faq-item">
+        <div class="question">What does each column mean?</div>
+        <div class="answer">
+            <strong>Symbol</strong>: The ticker symbol of the ETF.<br>
+            <strong>Name</strong>: The full name of the ETF.<br>
+            <strong>Fund Provider</strong>: The company that manages the ETF.<br>
+            <strong>Dividend Yield</strong>: The current annual dividend yield.<br>
+            <strong>Expense Ratio</strong>: The annual fee charged by the fund as a percentage of assets.<br>
+            <strong>AUM</strong>: Assets Under Management – shows the size and liquidity of the fund.<br>
+            <strong>Total Return</strong>: Overall performance including dividends and price return.<br>
+            <strong>Price Decay</strong>: Measures how the ETF price has performed relative to its inception.<br>
+            <strong>Inception Date</strong>: When the ETF was launched.<br>
+            <strong>Payout Frequency</strong>: How often dividends are paid (weekly, monthly, quarterly, etc.).<br>
+            <strong>Rating</strong>: Our overall opinion based on yield, performance, price decay, underlying holdings, and fund provider reputation.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">What is the Tax Treatment Grade?</div>
+        <div class="answer">
+            The Tax Treatment Grade (A–F) reflects how tax-friendly we believe the ETF is for a typical investor holding it in a taxable brokerage account. 
+            Grade A is the most tax-efficient, while Grade F is the least tax-friendly.<br><br>
+            
+            <strong>Important:</strong> Everyone’s tax situation is different. This grade is based on our opinion and general observations only. 
+            It is <strong>not tax advice</strong>. We are not tax professionals. Please consult with a qualified tax advisor or accountant for advice specific to your situation.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">What does the Rating mean?</div>
+        <div class="answer">
+            Our Rating is an overall score (A–F) based on multiple factors including:
+            <ul>
+                <li>Dividend Yield</li>
+                <li>Total Return performance</li>
+                <li>Price Decay</li>
+                <li>Underlying holdings quality</li>
+                <li>Fund provider reputation and track record</li>
+                <li>Expense ratio and overall efficiency</li>
+            </ul>
+            It is our opinion only and should be used as one data point in your research, not as a buy or sell recommendation.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">Is this financial advice?</div>
+        <div class="answer">
+            No. TopDividendETFsPro.com is not a registered investment advisor, broker-dealer, or financial advisor. 
+            All information on this site is for educational and informational purposes only. 
+            Past performance is not indicative of future results. Always do your own research and consult with a qualified financial professional before making any investment decisions.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">Do you offer refunds?</div>
+        <div class="answer">
+            We do not offer refunds for monthly or annual subscriptions. You may cancel your subscription at any time to prevent future charges.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">How do I cancel my subscription?</div>
+        <div class="answer">
+            You can cancel your subscription anytime through your Stripe customer portal or by contacting us at Business@TopDividendETFs.com.
+        </div>
+    </div>
+
+    <div class="faq-item">
+        <div class="question">Can I share my Pro access with others?</div>
+        <div class="answer">
+            No. Your subscription is for personal use only. Sharing your login or the authorized pro link is not permitted and may result in account suspension.
+        </div>
+    </div>
+
+    <!-- Longer Disclaimer -->
+    <div class="disclaimer-box">
+        <h2>Full Disclaimer</h2>
+        <p>
+            The data, rankings, metrics, and content contained on TopDividendETFsPro.com are provided for informational and educational purposes only. 
+            While we strive to keep the information accurate and up-to-date, we do not guarantee that the data is real-time, complete, or error-free.
+        </p>
+        <p>
+            The Website and all its content are provided on an “as is” and “as available” basis without any warranties of any kind. 
+            You bear all risks associated with the use of the site and content, including without limitation, any reliance on the accuracy, 
+            completeness or usefulness of any content available on the site.
+        </p>
+        <p>
+            The Website should not be relied upon as a substitute for extensive independent market research before making your actual trading or investment decisions. 
+            Past performance is not an indicator of future performance.
+        </p>
+        <p>
+            TopDividendETFsPro.com is not a registered investment advisor or broker-dealer. Any opinions, charts, messages, news, research, analyses, 
+            prices, or other information contained on this Website are provided as general market information for educational and entertainment purposes only, 
+            and do not constitute investment advice.
+        </p>
+        <p>
+            By using this website, you acknowledge that you have read, understood, and agreed to this disclaimer.
+        </p>
+    </div>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer>
+        <div class="footer-content">
+            <p>
+                <a href="disclaimer.html">Disclaimer</a> |
+                <a href="privacy.html">Privacy Policy</a> | 
+                <a href="terms.html">Terms of Service</a> | 
+                <a href="about.html">About Us</a> |
+                <a href="mailto:Business@TopDividendETFs.com">Contact</a>
+            </p>
+            <p>&copy; 2026 Top Dividend ETFs Pro. All rights reserved.</p>
+            <p style="margin-top: 20px; font-size: 12px;">
+                <strong>Disclaimer:</strong> The data, rankings, metrics, and content contained on TopDividendETFsPro.com are provided for informational and educational purposes only. While we strive to keep the information accurate and up-to-date, we do not guarantee that the data is real-time, complete, or error-free.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>
