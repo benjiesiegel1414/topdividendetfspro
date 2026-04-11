@@ -5,281 +5,677 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Top Dividend ETFs Pro">
-    <title>Top Dividend ETFs Pro | Premium ETF Rankings & Insights</title>
+    <title>Top Dividend ETFs Pro Terminal | Premium ETF Rankings & Insights</title>
     <meta name="description" content="Professional dividend ETF rankings with yields, AUM, expense ratios, total return, and more for serious income investors.">
     
     <link rel="icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
 
     <style>
-        :root { --green: #2E5D54; --dark: #1A3C34; }
+        :root { 
+            --primary: #0F766E;
+            --primary-dark: #134E4A;
+            --primary-light: #14B8A6;
+            --accent: #06B6D4;
+            --text-dark: #0F172A;
+            --text-light: #64748B;
+            --success: #10B981;
+            --yellow: #FCD34D;
+        }
+
         html, body {
-            margin: 0; padding: 0; overflow-x: hidden;
+            margin: 0; 
+            padding: 0; 
+            overflow-x: hidden;
             font-family: 'Lato', Arial, sans-serif;
-            background: #f4f4f4; color: #333;
+            background: linear-gradient(135deg, #F8FAFC 0%, #F0F9FF 50%, #F5F3FF 100%);
+            color: var(--text-dark);
         }
+
+        /* ==================== HEADER ==================== */
         header {
-            background: var(--dark); padding: 18px 20px; color: #fff;
-            text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .logo { font-size: clamp(26px, 7vw, 42px); font-weight: 900; letter-spacing: -1px; flex: 1; }
-
-        .header-right {
-            display: flex;
-            gap: 15px;
-            align-items: center;
+            background: rgba(15, 118, 110, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 16px 20px; 
+            color: #fff;
+            text-align: center; 
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        .upgrade-btn {
-            background: #10b981;
+        .logo { 
+            font-size: clamp(26px, 7vw, 42px); 
+            font-weight: 900; 
+            letter-spacing: -1px; 
+        }
+
+        /* ==================== HERO SECTION ==================== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--accent) 100%);
             color: white;
-            border: none;
-            padding: 12px 26px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 1.08em;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
         }
 
-        .upgrade-btn:hover {
-            background: #059669;
-            transform: translateY(-2px);
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
         }
 
-        h1 { color: var(--dark); margin: 30px 0 15px; font-size: 2.2em; text-align: center; }
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 { 
+            color: white;
+            margin: 0 0 15px; 
+            font-size: clamp(36px, 8vw, 56px); 
+            text-align: center;
+            font-weight: 900;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 0;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        /* ==================== CONTENT ==================== */
+        .content { 
+            width: 94%; 
+            max-width: 1700px; 
+            margin: 0 auto; 
+        }
+
+        h2 {
+            color: var(--primary-dark);
+            margin: 30px 0 15px;
+            font-size: 2.2em;
+            text-align: center;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+        }
+
         .intro-text {
-            max-width: 920px; margin: 0 auto 25px; line-height: 1.65; 
-            text-align: center; color: #444; font-size: 1.08em;
+            max-width: 920px; 
+            margin: 0 auto 35px; 
+            line-height: 1.65; 
+            text-align: center; 
+            color: var(--text-light); 
+            font-size: 1.08em;
         }
-        .content { width: 94%; max-width: 1700px; margin: 0 auto; }
 
+        /* ==================== FILTERS ==================== */
         #filters {
-            max-width: 1700px; margin: 20px auto; display: flex; flex-wrap: wrap; 
-            gap: 12px; justify-content: center;
+            max-width: 1700px; 
+            margin: 30px auto; 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 12px; 
+            justify-content: center;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .filter-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         #filters input, #filters select {
-            padding: 10px 14px; border: 2px solid var(--green); border-radius: 6px; font-size: 1em;
-        }
-        #resetFilters {
-            padding: 10px 20px; background: var(--green); color: white; border: none; 
-            border-radius: 6px; cursor: pointer; font-weight: bold;
+            padding: 12px 14px; 
+            border: 2px solid var(--primary-light); 
+            border-radius: 8px; 
+            font-size: 1em;
+            background: white;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            font-weight: 600;
         }
 
+        #filters input:focus, #filters select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+        }
+
+        #resetFilters {
+            padding: 12px 28px; 
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent) 100%); 
+            color: white; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+            align-self: flex-end;
+            margin-top: 28px;
+        }
+
+        #resetFilters:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(20, 184, 166, 0.4);
+        }
+
+        /* ==================== TABLE ==================== */
         #etfTable {
-            width: 100%; border-collapse: collapse; background: #fff;
-            border: 3px solid var(--green); border-radius: 10px; overflow: hidden;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            width: 100%; 
+            border-collapse: collapse; 
+            background: white;
+            border: 2px solid var(--primary-light); 
+            border-radius: 12px; 
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(15, 118, 110, 0.15);
+            margin-bottom: 40px;
         }
 
         th {
-            background: var(--green); color: #fff; padding: 12px 6px; 
-            cursor: pointer; font-size: 0.95em; white-space: nowrap;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: #fff; 
+            padding: 16px 8px; 
+            cursor: pointer; 
+            font-size: 0.95em; 
+            white-space: nowrap;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            user-select: none;
+            border-bottom: 2px solid rgba(20, 184, 166, 0.3);
         }
-        td { padding: 10px 6px; text-align: center; font-size: 0.98em; }
-        tr:nth-child(even) { background: #f9f9f9; }
-        tr:hover { background: #e6f4ef; }
-        .symbol { font-weight: 900; font-size: 1.25em; color: var(--dark); }
-        .name { text-align: left; font-weight: 600; }
 
+        th:hover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            transform: translateY(-2px);
+        }
+
+        td { 
+            padding: 14px 8px; 
+            text-align: center; 
+            font-size: 0.98em;
+            border-bottom: 1px solid rgba(20, 184, 166, 0.1);
+        }
+
+        tr:nth-child(even) { 
+            background: rgba(20, 184, 166, 0.03); 
+        }
+
+        tr:hover { 
+            background: rgba(20, 184, 166, 0.08);
+            transition: all 0.2s ease;
+        }
+
+        .symbol { 
+            font-weight: 900; 
+            font-size: 1.25em; 
+            color: var(--primary-dark);
+        }
+
+        .name { 
+            text-align: left; 
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .rating-a { color: #10B981; font-weight: 900; }
+        .rating-b { color: #06B6D4; font-weight: 900; }
+        .rating-c { color: #FCD34D; font-weight: 900; }
+        .rating-d { color: #F97316; font-weight: 900; }
+        .rating-f { color: #EF4444; font-weight: 900; }
+
+        .tax-a { background: rgba(16, 185, 129, 0.15); color: #10B981; padding: 4px 8px; border-radius: 6px; font-weight: 700; }
+        .tax-b { background: rgba(6, 182, 212, 0.15); color: #06B6D4; padding: 4px 8px; border-radius: 6px; font-weight: 700; }
+        .tax-c { background: rgba(252, 211, 77, 0.15); color: #FBBF24; padding: 4px 8px; border-radius: 6px; font-weight: 700; }
+        .tax-d { background: rgba(249, 115, 22, 0.15); color: #F97316; padding: 4px 8px; border-radius: 6px; font-weight: 700; }
+        .tax-f { background: rgba(239, 68, 68, 0.15); color: #EF4444; padding: 4px 8px; border-radius: 6px; font-weight: 700; }
+
+        /* ==================== MOBILE ==================== */
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 15px;
+            .hero {
+                padding: 40px 20px;
             }
-            .header-right { width: 100%; }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            #filters {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            #filters input, #filters select {
+                width: 100%;
+            }
+
+            #resetFilters {
+                width: 100%;
+                align-self: stretch;
+            }
+
             th { display: none; }
-            tr { display: flex; flex-direction: column; margin: 10px 0; padding: 12px; border-radius: 8px; box-shadow: 0 3px 10px rgba(0,0,0,0.1); }
-            td { display: flex; justify-content: space-between; padding: 8px 0; }
-            td:before { content: attr(data-label); font-weight: bold; color: var(--dark); min-width: 160px; }
+            
+            tr { 
+                display: flex; 
+                flex-direction: column; 
+                margin: 10px 0; 
+                padding: 16px; 
+                border-radius: 8px; 
+                box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+                border: 1px solid rgba(20, 184, 166, 0.2);
+                background: white;
+            }
+            
+            tr:nth-child(even) {
+                background: white;
+            }
+
+            tr:hover {
+                background: rgba(20, 184, 166, 0.05);
+            }
+            
+            td { 
+                display: flex; 
+                justify-content: space-between; 
+                padding: 10px 0;
+                text-align: right;
+                border-bottom: none;
+            }
+            
+            td:before { 
+                content: attr(data-label); 
+                font-weight: 700; 
+                color: var(--primary-dark); 
+                min-width: 140px;
+                text-align: left;
+            }
+        }
+
+        .no-results {
+            padding: 40px;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 16px;
+            font-weight: 600;
         }
 
         .disclaimer {
-            font-size: 0.9em; color: #555; max-width: 900px; margin: 50px auto 30px; 
-            text-align: center; line-height: 1.5;
+            font-size: 0.9em; 
+            color: var(--text-light); 
+            max-width: 900px; 
+            margin: 50px auto 30px; 
+            text-align: center; 
+            line-height: 1.5;
+            padding: 25px;
+            background: rgba(20, 184, 166, 0.05);
+            border-left: 4px solid var(--primary-light);
+            border-radius: 8px;
         }
+
         footer {
-            margin: 40px auto 30px; padding-top: 15px; border-top: 1px solid #ddd;
-            text-align: center; color: #666; font-size: 0.9em; max-width: 900px;
+            margin: 40px auto 30px; 
+            padding-top: 15px; 
+            border-top: 1px solid rgba(20, 184, 166, 0.2);
+            text-align: center; 
+            color: var(--text-light); 
+            font-size: 0.9em; 
+            max-width: 900px;
         }
-        footer a { color: var(--dark); text-decoration: none; }
+
+        footer a { 
+            color: var(--primary-dark); 
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
     </style>
 </head>
 <body>
-<div class="content">
+
+    <!-- ==================== HEADER ==================== -->
     <header>
-        <div class="logo">TopDividendETFsPro.com</div>
-        <div class="header-right">
-            <a href="https://buy.stripe.com/YOUR_STRIPE_MONTHLY_LINK" target="_blank">
-                <button class="upgrade-btn">🚀 Upgrade to Pro – $9/month</button>
-            </a>
-        </div>
+        <div class="logo">Top Dividend ETFs PRO </div>
     </header>
 
-    <h1>Premium Dividend ETF Rankings</h1>
-    <p class="intro-text">
-        Professional data on the best dividend ETFs — including yield, tax treatment, total return, payout frequency, and more.
-    </p>
-
-    <div id="filters">
-        <button id="resetFilters">Reset Filters</button>
-        <input type="text" id="searchFilter" placeholder="Search ticker or name">
-        <select id="yieldRangeFilter">
-            <option value="">Yield: All</option>
-            <option value="1-5">1–5%</option>
-            <option value="5-10">5–10%</option>
-            <option value="10-15">10–15%</option>
-            <option value="15+">15%+</option>
-        </select>
+    <!-- ==================== HERO ==================== -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Top Dividend ETFs PRO Terminal</h1>
+            <p class="hero-subtitle">
+                Advanced analytics & accurate data updated daily for serious dividend income investors. Filter, sort, and analyze the best dividend ETFs with real-time insights.
+            </p>
+        </div>
     </div>
 
-    <table id="etfTable">
-        <thead>
-            <tr>
-                <th onclick="sortTable(0)">Symbol</th>
-                <th onclick="sortTable(1)">Name</th>
-                <th onclick="sortTable(2)">Fund Provider</th>
-                <th onclick="sortTable(3)">Dividend Yield</th>
-                <th onclick="sortTable(4)">Tax Treatment Grade</th>
-                <th onclick="sortTable(5)">Expense Ratio</th>
-                <th onclick="sortTable(6)">AUM</th>
-                <th onclick="sortTable(7)">Total Return</th>
-                <th onclick="sortTable(8)">Price Decay</th>
-                <th onclick="sortTable(9)">Inception Date</th>
-                <th onclick="sortTable(10)">Payout Frequency</th>
-                <th onclick="sortTable(11)">Rating</th>
-            </tr>
-        </thead>
-        <tbody id="etfBody"></tbody>
-    </table>
+    <div class="content">
+        <!-- ==================== FILTERS ==================== -->
+        <div id="filters">
+            <div class="filter-group">
+                <span class="filter-label">🔍 Search</span>
+                <input type="text" id="searchFilter" placeholder="Ticker or name...">
+            </div>
 
-    <p class="disclaimer">
-        <strong>Important Disclaimer:</strong> This website is for informational and educational purposes only. 
-        It does not constitute financial, investment, or tax advice. Past performance is not indicative of future results. 
-        Always consult a qualified financial advisor before making any investment decisions.
-    </p>
+            <div class="filter-group">
+                <span class="filter-label">📊 Yield</span>
+                <select id="yieldRangeFilter">
+                    <option value="">All Yields</option>
+                    <option value="1-5">1–5%</option>
+                    <option value="5-10">5–10%</option>
+                    <option value="10-15">10–15%</option>
+                    <option value="15+">15%+</option>
+                </select>
+            </div>
 
-    <footer>
-        <p>
-            <a href="privacy.html">Privacy Policy</a> | 
-            <a href="terms.html">Terms of Service</a> | 
-            <a href="about.html">About Us</a> |
-            <a href="disclaimer.html">Disclaimer</a> |
-            <a href="mailto:Business@TopDividendETFs.com">Contact</a>
+            <div class="filter-group">
+                <span class="filter-label">💸 Payout Frequency</span>
+                <select id="payoutFilter">
+                    <option value="">All Frequencies</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="quarterly">Quarterly</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <span class="filter-label">🏦 Tax Grade</span>
+                <select id="taxGradeFilter">
+                    <option value="">All Grades</option>
+                    <option value="A">Grade A</option>
+                    <option value="B">Grade B</option>
+                    <option value="C">Grade C</option>
+                    <option value="D">Grade D</option>
+                    <option value="F">Grade F</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <span class="filter-label">📉 Price Decay</span>
+                <select id="priceDecayFilter">
+                    <option value="">All</option>
+                    <option value="yes">YES</option>
+                    <option value="no">NO</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <span class="filter-label">⏰ ETF Age</span>
+                <select id="ageFilter">
+                    <option value="">All Ages</option>
+                    <option value="under1">Under 1 Year</option>
+                    <option value="1-2">1–2 Years</option>
+                    <option value="2-3">2–3 Years</option>
+                    <option value="3-4">3–4 Years</option>
+                    <option value="4-5">4–5 Years</option>
+                    <option value="5plus">5+ Years</option>
+                </select>
+            </div>
+
+            <button id="resetFilters">🔄 Reset Filters</button>
+        </div>
+
+        <!-- ==================== TABLE ==================== -->
+        <table id="etfTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Symbol ↕</th>
+                    <th onclick="sortTable(1)">Name ↕</th>
+                    <th onclick="sortTable(2)">Fund Provider ↕</th>
+                    <th onclick="sortTable(3)">Dividend Yield ↕</th>
+                    <th onclick="sortTable(4)">Tax Grade ↕</th>
+                    <th onclick="sortTable(5)">Expense Ratio ↕</th>
+                    <th onclick="sortTable(6)">AUM ↕</th>
+                    <th onclick="sortTable(7)">Total Return ↕</th>
+                    <th onclick="sortTable(8)">Price Decay ↕</th>
+                    <th onclick="sortTable(9)">Inception Date ↕</th>
+                    <th onclick="sortTable(10)">Payout Frequency ↕</th>
+                    <th onclick="sortTable(11)">Rating ↕</th>
+                </tr>
+            </thead>
+            <tbody id="etfBody"></tbody>
+        </table>
+
+        <!-- ==================== DISCLAIMER ==================== -->
+        <p class="disclaimer">
+            <strong>📌 Disclaimer:</strong> This platform is for informational and educational purposes only. 
+            It does not constitute financial, investment, or tax advice. Past performance is not indicative of future results. 
+            Always consult a qualified financial advisor before making any investment decisions.
         </p>
-        <p>&copy; 2026 Top Dividend ETFs Pro. All Rights Reserved.</p>
-    </footer>
-</div>
 
-<script>
-    // ==================== CONFIGURATION ====================
-    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTxCiod-Cwry7E6k9Un9dgrM_ANymC36_IO_wLyNj-YDo2KI7mp_1ZzyNBnBGZOxT48QPM8TCwtsmA4/pub?gid=0&single=true&output=csv";
+        <!-- ==================== FOOTER ==================== -->
+        <footer>
+            <p>
+                <a href="privacy.html">Privacy Policy</a> | 
+                <a href="terms.html">Terms of Service</a> | 
+                <a href="about.html">About Us</a> |
+                <a href="disclaimer.html">Disclaimer</a> |
+                <a href="mailto:Business@TopDividendETFs.com">Contact</a>
+            </p>
+            <p>&copy; 2026 Top Dividend ETFs Pro. All Rights Reserved.</p>
+        </footer>
+    </div>
 
-    let allRows = [];
+    <script>
+        const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTxCiod-Cwry7E6k9Un9dgrM_ANymC36_IO_wLyNj-YDo2KI7mp_1ZzyNBnBGZOxT48QPM8TCwtsmA4/pub?gid=0&single=true&output=csv";
 
-    // ==================== INIT ====================
-    document.addEventListener('DOMContentLoaded', () => {
-        loadData();
-    });
+        let allRows = [];
 
-    // ==================== LOAD DATA ====================
-    function loadData() {
-        fetch(CSV_URL + '&t=' + Date.now())
-            .then(r => r.text())
-            .then(txt => renderTable(txt))
-            .catch(() => {
-                document.getElementById('etfBody').innerHTML = `
-                    <tr><td colspan="12" style="padding:40px; color:red; text-align:center;">
-                        Unable to load ETF data. Please refresh the page.
-                    </td></tr>`;
-            });
-    }
+        document.addEventListener('DOMContentLoaded', () => {
+            loadData();
+        });
 
-    function renderTable(csvText) {
-        const lines = csvText.trim().split('\n');
-        const tbody = document.getElementById('etfBody');
-        tbody.innerHTML = '';
-
-        for (let i = 1; i < lines.length; i++) {
-            const cols = lines[i].split(',').map(c => c.trim().replace(/^"|"$/g, ''));
-            if (cols.length < 12 || !cols[0]) continue;
-
-            const tr = document.createElement('tr');
-
-            cols.forEach((value, index) => {
-                const td = document.createElement('td');
-                td.setAttribute('data-label', [
-                    'Symbol','Name','Fund Provider','Dividend Yield','Tax Treatment Grade',
-                    'Expense Ratio','AUM','Total Return','Price Decay','Inception Date',
-                    'Payout Frequency','Rating'
-                ][index]);
-
-                if (index === 0) td.className = 'symbol';
-                if (index === 1) td.className = 'name';
-
-                td.textContent = value || '-';
-                tr.appendChild(td);
-            });
-
-            tbody.appendChild(tr);
-            allRows.push(tr);
+        function loadData() {
+            fetch(CSV_URL + '&t=' + Date.now())
+                .then(r => r.text())
+                .then(txt => renderTable(txt))
+                .catch(() => {
+                    document.getElementById('etfBody').innerHTML = `
+                        <tr><td colspan="12" style="padding:40px; color:red; text-align:center; font-weight:700;">
+                            ⚠️ Unable to load ETF data. Please refresh the page.
+                        </td></tr>`;
+                });
         }
 
-        sortTable(3, 'desc');
-    }
+        function renderTable(csvText) {
+            const lines = csvText.trim().split('\n');
+            const tbody = document.getElementById('etfBody');
+            tbody.innerHTML = '';
 
-    // ==================== SORTING ====================
-    let sortDirections = {};
-    function sortTable(col, forceDir) {
-        const tbody = document.getElementById('etfBody');
-        const rows = Array.from(tbody.rows);
-        const dir = forceDir || (sortDirections[col] === 'asc' ? 'desc' : 'asc');
-        sortDirections[col] = dir;
+            for (let i = 1; i < lines.length; i++) {
+                const cols = lines[i].split(',').map(c => c.trim().replace(/^"|"$/g, ''));
+                if (cols.length < 12 || !cols[0]) continue;
 
-        rows.sort((a, b) => {
-            let valA = a.cells[col].textContent.trim().replace(/[%$,]/g, '');
-            let valB = b.cells[col].textContent.trim().replace(/[%$,]/g, '');
+                const tr = document.createElement('tr');
 
-            if (!isNaN(parseFloat(valA)) && !isNaN(parseFloat(valB))) {
-                return dir === 'asc' ? parseFloat(valA) - parseFloat(valB) : parseFloat(valB) - parseFloat(valA);
-            }
-            return dir === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
-        });
+                cols.forEach((value, index) => {
+                    const td = document.createElement('td');
+                    const labels = [
+                        'Symbol','Name','Fund Provider','Dividend Yield','Tax Treatment Grade',
+                        'Expense Ratio','AUM','Total Return','Price Decay','Inception Date',
+                        'Payout Frequency','Rating'
+                    ];
+                    td.setAttribute('data-label', labels[index]);
 
-        rows.forEach(row => tbody.appendChild(row));
-        applyFilters();
-    }
+                    if (index === 0) td.className = 'symbol';
+                    if (index === 1) td.className = 'name';
+                    
+                    if (index === 4) {
+                        const grade = value.toUpperCase();
+                        td.className = `tax-${grade.toLowerCase()}`;
+                    }
 
-    // ==================== FILTERS ====================
-    function applyFilters() {
-        const searchTerm = document.getElementById('searchFilter').value.toLowerCase().trim();
-        const yieldFilter = document.getElementById('yieldRangeFilter').value;
+                    if (index === 11) {
+                        const rating = value.toUpperCase();
+                        td.className = `rating-${rating.toLowerCase()}`;
+                    }
 
-        allRows.forEach(tr => {
-            const symbol = tr.cells[0].textContent.toLowerCase();
-            const name = tr.cells[1].textContent.toLowerCase();
-            const yieldValue = parseFloat(tr.cells[3].textContent) || 0;
+                    td.textContent = value || '-';
+                    tr.appendChild(td);
+                });
 
-            let visible = true;
-
-            if (searchTerm && !symbol.includes(searchTerm) && !name.includes(searchTerm)) visible = false;
-
-            if (yieldFilter) {
-                const [min, max] = yieldFilter === '15+' ? [15, 999] : yieldFilter.split('-').map(Number);
-                if (yieldValue < min || yieldValue > max) visible = false;
+                tbody.appendChild(tr);
+                allRows.push(tr);
             }
 
-            tr.style.display = visible ? '' : 'none';
-        });
-    }
+            if (allRows.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="12" class="no-results">No ETF data available.</td></tr>';
+            } else {
+                sortTable(3, 'desc');
+            }
+        }
 
-    document.getElementById('searchFilter').addEventListener('input', applyFilters);
-    document.getElementById('yieldRangeFilter').addEventListener('change', applyFilters);
-    document.getElementById('resetFilters').addEventListener('click', () => location.reload());
-</script>
+        let sortDirections = {};
+        function sortTable(col, forceDir) {
+            const tbody = document.getElementById('etfBody');
+            const rows = Array.from(tbody.querySelectorAll('tr')).filter(r => r.cells.length > col);
+            
+            if (rows.length === 0) return;
+
+            const dir = forceDir || (sortDirections[col] === 'asc' ? 'desc' : 'asc');
+            sortDirections[col] = dir;
+
+            rows.sort((a, b) => {
+                let valA = a.cells[col].textContent.trim().replace(/[%$,]/g, '');
+                let valB = b.cells[col].textContent.trim().replace(/[%$,]/g, '');
+
+                if (!isNaN(parseFloat(valA)) && !isNaN(parseFloat(valB))) {
+                    return dir === 'asc' ? parseFloat(valA) - parseFloat(valB) : parseFloat(valB) - parseFloat(valA);
+                }
+                return dir === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+            });
+
+            rows.forEach(row => tbody.appendChild(row));
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchFilter').value.toLowerCase().trim();
+            const yieldFilter = document.getElementById('yieldRangeFilter').value;
+            const payoutFilter = document.getElementById('payoutFilter').value.toLowerCase();
+            const taxGradeFilter = document.getElementById('taxGradeFilter').value;
+            const priceDecayFilter = document.getElementById('priceDecayFilter').value;
+            const ageFilter = document.getElementById('ageFilter').value;
+
+            let visibleCount = 0;
+            const today = new Date();
+
+            allRows.forEach(tr => {
+                const symbol = tr.cells[0].textContent.toLowerCase();
+                const name = tr.cells[1].textContent.toLowerCase();
+                const yieldValue = parseFloat(tr.cells[3].textContent) || 0;
+                const taxGrade = tr.cells[4].textContent.trim().toUpperCase();
+                const priceDecay = tr.cells[8].textContent.trim().toUpperCase();
+                const inceptionStr = tr.cells[9].textContent.trim();
+                const payoutFrequency = tr.cells[10].textContent.trim().toLowerCase();
+
+                let visible = true;
+
+                // Search filter
+                if (searchTerm && !symbol.includes(searchTerm) && !name.includes(searchTerm)) visible = false;
+
+                // Yield filter
+                if (visible && yieldFilter) {
+                    const [min, max] = yieldFilter === '15+' ? [15, 999] : yieldFilter.split('-').map(Number);
+                    if (yieldValue < min || (max && yieldValue > max)) visible = false;
+                }
+
+                // Payout frequency filter
+                if (visible && payoutFilter) {
+                    if (!payoutFrequency.includes(payoutFilter)) visible = false;
+                }
+
+                // Tax grade filter
+                if (visible && taxGradeFilter) {
+                    if (!taxGrade.includes(taxGradeFilter)) visible = false;
+                }
+
+                // Price Decay filter
+                if (visible && priceDecayFilter) {
+                    if (priceDecayFilter === 'yes' && priceDecay !== 'YES') visible = false;
+                    if (priceDecayFilter === 'no' && priceDecay !== 'NO') visible = false;
+                }
+
+                // ETF Age filter - calculated from inception date
+                if (visible && ageFilter && inceptionStr) {
+                    const inceptionDate = new Date(inceptionStr);
+                    if (isNaN(inceptionDate.getTime())) {
+                        visible = false;
+                    } else {
+                        const ageInYears = (today - inceptionDate) / (1000 * 60 * 60 * 24 * 365.25);
+
+                        let ageMatches = false;
+                        if (ageFilter === 'under1' && ageInYears < 1) ageMatches = true;
+                        else if (ageFilter === '1-2' && ageInYears >= 1 && ageInYears < 2) ageMatches = true;
+                        else if (ageFilter === '2-3' && ageInYears >= 2 && ageInYears < 3) ageMatches = true;
+                        else if (ageFilter === '3-4' && ageInYears >= 3 && ageInYears < 4) ageMatches = true;
+                        else if (ageFilter === '4-5' && ageInYears >= 4 && ageInYears < 5) ageMatches = true;
+                        else if (ageFilter === '5plus' && ageInYears >= 5) ageMatches = true;
+
+                        if (!ageMatches) visible = false;
+                    }
+                }
+
+                tr.style.display = visible ? '' : 'none';
+                if (visible) visibleCount++;
+            });
+
+            // No results message
+            const tbody = document.getElementById('etfBody');
+            const existingNoResults = tbody.querySelector('.no-results');
+            if (visibleCount === 0) {
+                if (!existingNoResults) {
+                    const noRow = document.createElement('tr');
+                    noRow.innerHTML = '<td colspan="12" class="no-results">No ETFs match your filters. Try adjusting your criteria.</td>';
+                    tbody.appendChild(noRow);
+                }
+            } else if (existingNoResults) {
+                existingNoResults.remove();
+            }
+        }
+
+        // Event listeners
+        document.getElementById('searchFilter').addEventListener('input', applyFilters);
+        document.getElementById('yieldRangeFilter').addEventListener('change', applyFilters);
+        document.getElementById('payoutFilter').addEventListener('change', applyFilters);
+        document.getElementById('taxGradeFilter').addEventListener('change', applyFilters);
+        document.getElementById('priceDecayFilter').addEventListener('change', applyFilters);
+        document.getElementById('ageFilter').addEventListener('change', applyFilters);
+        document.getElementById('resetFilters').addEventListener('click', () => location.reload());
+    </script>
 </body>
 </html>
