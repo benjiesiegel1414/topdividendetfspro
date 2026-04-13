@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Top Dividend ETFs Pro">
+    <title>Top Dividend ETFs Pro Terminal | Premium ETF Rankings & Insights</title>
+    <meta name="description" content="Professional dividend ETF rankings with yields, AUM, expense ratios, total return, and more for serious income investors.">
+    
+    <link rel="icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root { 
+            --primary: #0F766E;
+            --primary-dark: #134E4A;
+            --primary-light: #14B8A6;
+            --accent: #06B6D4;
+            --text-dark: #0F172A;
+            --text-light: #64748B;
+            --success: #10B981;
+            --yellow: #FCD34D;
+        }
+
+        html, body {
+            margin: 0; 
+            padding: 0; 
+            overflow-x: hidden;
+            font-family: 'Lato', Arial, sans-serif;
+            background: linear-gradient(135deg, #F8FAFC 0%, #F0F9FF 50%, #F5F3FF 100%);
+            color: var(--text-dark);
+        }
+
+        header {
+            background: rgba(15, 118, 110, 0.7);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 16px 20px; 
+            color: #fff;
+            text-align: center; 
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo { 
+            font-size: clamp(26px, 7vw, 42px); 
+            font-weight: 900; 
+            letter-spacing: -1px; 
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--accent) 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 { 
+            color: white;
+            margin: 0 0 15px; 
+            font-size: clamp(36px, 8vw, 56px); 
+            text-align: center;
+            font-weight: 900;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            opacity: 0.95;
+            margin-bottom: 0;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .content { 
+            width: 94%; 
+            max-width: 1700px; 
+            margin: 0 auto; 
+        }
+
+        #filters {
+            max-width: 1700px; 
+            margin: 30px auto; 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 12px; 
+            justify-content: center;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .filter-label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        #filters input, #filters select {
+            padding: 12px 14px; 
+            border: 2px solid var(--primary-light); 
+            border-radius: 8px; 
+            font-size: 1em;
+            background: white;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        #filters input:focus, #filters select:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
+        }
+
+        #resetFilters {
+            padding: 12px 28px; 
+            background: linear-gradient(135deg, #10B981, #0F766E); 
+            color: white; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            margin: 20px auto 0;
+            display: block;
+        }
+
+        #resetFilters:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+        }
+
+        #etfTable {
+            width: 100%; 
+            border-collapse: collapse; 
+            background: white;
+            border: 2px solid var(--primary-light); 
+            border-radius: 12px; 
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(15, 118, 110, 0.15);
+            margin-bottom: 40px;
+        }
+
+        th {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: #fff; 
+            padding: 16px 8px; 
+            cursor: pointer; 
+            font-size: 0.95em; 
+            white-space: nowrap;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            user-select: none;
+            border-bottom: 2px solid rgba(20, 184, 166, 0.3);
+        }
+
+        th:hover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            transform: translateY(-2px);
+        }
+
+        td { 
+            padding: 14px 8px; 
+            text-align: center; 
+            font-size: 0.98em;
+            border-bottom: 1px solid rgba(20, 184, 166, 0.1);
+        }
+
+        tr:nth-child(even) { 
+            background: rgba(20, 184, 166, 0.03); 
+        }
+
+        tr:hover { 
+            background: rgba(20, 184, 166, 0.08);
+            transition: all 0.2s ease;
+        }
+
+        .symbol { 
+            font-weight: 900; 
+            font-size: 1.25em; 
+            color: var(--primary-dark);
+        }
+
+        .name { 
+            text-align: left; 
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .rating-a { color: #10B981; font-weight: 900; }
+        .rating-b { color: #06B6D4; font-weight: 900; }
+        .rating-c { color: #FCD34D; font-weight: 900; }
+        .rating-d { color: #F97316; font-weight: 900; }
+        .rating-f { color: #EF4444; font-weight: 900; }
+
+        .tax-a { background: rgba(16, 185, 129, 0.15); color: #10B981; padding: 4px 8px; border-radius: 6px; font-weight: 700; }
+        .tax-b { background: rgba(6, 182, 212, 0.15); color: #06B6D4; padding: 4px 8px; border-radius: 6px; font-weight: 700; }
+        .tax-c { background: rgba(252, 211, 77, 0.15); color: #FBBF24; padding: 4px 8px; border-radius: 6px; font-weight: 700; }
+        .tax-d { background: rgba(249, 115, 22, 0.15); color: #F97316; padding: 4px 8px; border-radius: 6px; font-weight: 700; }
+        .tax-f { background: rgba(239, 68, 68, 0.15); color: #EF4444; padding: 4px 8px; border-radius: 6px; font-weight: 700; }
+
+        /* ==================== MOBILE ==================== */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            #filters {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            #filters input, #filters select {
+                width: 100%;
+            }
+
+            th { display: none; }
+            
+            tr { 
+                display: flex; 
+                flex-direction: column; 
+                margin: 10px 0; 
+                padding: 16px; 
+                border-radius: 8px; 
+                box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+                border: 1px solid rgba(20, 184, 166, 0.2);
+                background: white;
+            }
+            
+            tr:nth-child(even) {
+                background: white;
+            }
+
+            tr:hover {
+                background: rgba(20, 184, 166, 0.05);
+            }
+            
+            td { 
+                display: flex; 
+                justify-content: space-between; 
+                padding: 10px 0;
+                text-align: right;
+                border-bottom: none;
+            }
+            
+            td:before { 
+                content: attr(data-label); 
+                font-weight: 700; 
+                color: var(--primary-dark); 
+                min-width: 140px;
+                text-align: left;
+            }
+        }
+
+        .no-results {
+            padding: 40px;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .disclaimer {
+            font-size: 0.9em; 
+            color: var(--text-light); 
+            max-width: 900px; 
+            margin: 50px auto 30px; 
+            text-align: center; 
+            line-height: 1.5;
+            padding: 25px;
+            background: rgba(20, 184, 166, 0.05);
+            border-left: 4px solid var(--primary-light);
+            border-radius: 8px;
+        }
+
+        footer {
+            margin: 40px auto 30px; 
+            padding-top: 15px; 
+            border-top: 1px solid rgba(20, 184, 166, 0.2);
+            text-align: center; 
+            color: var(--text-light); 
+            font-size: 0.9em; 
+            max-width: 900px;
+        }
+
+        footer a { 
+            color: var(--primary-dark); 
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <header>
+        <div class="logo">Top Dividend ETFs PRO 📈🏆 </div>
+    </header>
+
+    <!-- ==================== HERO ==================== -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Top Dividend ETFs PRO Terminal</h1>
+            <p class="hero-subtitle">
+                Advanced analytics & accurate data updated daily for serious dividend income investors. Filter, sort, and analyze the best dividend ETFs with real-time insights.
+            </p>
+            
+            <p style="margin-top: 25px; font-size: 17px; font-weight: 700; color: rgba(255,255,255,0.95);">
+                To learn more about what this data means and everything you need to know check out our 
+                <a href="faq.html" style="color: #fff; text-decoration: underline;">FAQ page here</a>
+            </p>
+        </div>
+    </div>
+
+    <div class="content">
+        <!-- ==================== FILTERS ==================== -->
+        <div id="filters">
+            <div class="filter-group">
+                <span class="filter-label">🔍 Search</span>
+                <input type="text" id="searchFilter" placeholder="Ticker or name...">
+            </div>
+
+            <div class="filter-group">
+                <span class="filter-label">📊 Yield</span>
+                <select id="yieldRangeFilter">
+                    <option value="">All Yields</option>
+                    <option value="1-5">1–5%</option>
+                    <option value="5-10">5–10%</option>
+                    <option value="10-15">10–15%</option>
+                    <option value="15+">15%+</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <span class="filter-label">💸 Payout Frequency</span>
+                <select id="payoutFilter">
+                    <option value="">All Frequencies</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="quarterly">Quarterly</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <span class="filter-label">🏦 Tax Grade</span>
+                <select id="taxGradeFilter">
+                    <option value="">All Grades</option>
+                    <option value="A">Grade A</option>
+                    <option value="B">Grade B</option>
+                    <option value="C">Grade C</option>
+                    <option value="D">Grade D</option>
+                    <option value="F">Grade F</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <span class="filter-label">📉 Price Decay</span>
+                <select id="priceDecayFilter">
+                    <option value="">All</option>
+                    <option value="yes">YES</option>
+                    <option value="no">NO</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <span class="filter-label">⏰ ETF Age</span>
+                <select id="ageFilter">
+                    <option value="">All Ages</option>
+                    <option value="under1">Under 1 Year</option>
+                    <option value="1-2">1–2 Years</option>
+                    <option value="2-3">2–3 Years</option>
+                    <option value="3-4">3–4 Years</option>
+                    <option value="4-5">4–5 Years</option>
+                    <option value="5plus">5+ Years</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Centered Reset Button -->
+        <div style="text-align: center; margin: 20px 0 30px;">
+            <button id="resetFilters">🔄 Reset Filters</button>
+        </div>
+
+        <!-- ==================== TABLE ==================== -->
+        <table id="etfTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Symbol ↕</th>
+                    <th onclick="sortTable(1)">Name ↕</th>
+                    <th onclick="sortTable(2)">Fund Provider ↕</th>
+                    <th onclick="sortTable(3)">Dividend Yield ↕</th>
+                    <th onclick="sortTable(4)">Tax Grade ↕</th>
+                    <th onclick="sortTable(5)">Expense Ratio ↕</th>
+                    <th onclick="sortTable(6)">AUM ↕</th>
+                    <th onclick="sortTable(7)">Total Return ↕</th>
+                    <th onclick="sortTable(8)">Price Decay ↕</th>
+                    <th onclick="sortTable(9)">Inception Date ↕</th>
+                    <th onclick="sortTable(10)">Payout Frequency ↕</th>
+                    <th onclick="sortTable(11)">Rating ↕</th>
+                </tr>
+            </thead>
+            <tbody id="etfBody"></tbody>
+        </table>
+
+        <!-- ==================== DISCLAIMER ==================== -->
+        <p class="disclaimer">
+            <strong>📌 Disclaimer:</strong> This platform is for informational and educational purposes only. 
+            It does not constitute financial, investment, or tax advice. Past performance is not indicative of future results. 
+            Always consult a qualified financial advisor before making any investment decisions.
+        </p>
+
+        <!-- ==================== FOOTER ==================== -->
+        <footer>
+            <p>
+                <a href="privacy.html">Privacy Policy</a> | 
+                <a href="terms.html">Terms of Service</a> | 
+                <a href="about.html">About Us</a> |
+                <a href="disclaimer.html">Disclaimer</a> |
+                <a href="mailto:Business@TopDividendETFs.com">Contact</a>
+            </p>
+            <p>&copy; 2026 Top Dividend ETFs Pro. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // ==================== 45 FAKE DEMO ETFs (including 10 Weekly) ====================
+        const demoData = [
+            ["DIVX1", "Aether High Income Core ETF", "Aether Capital", "8.4", "A", "0.28", "$4.2B", "11.7", "NO", "2019-03-15", "monthly", "A"],
+            ["YLDZ9", "Zenith Dividend Momentum ETF", "Zenith Funds", "6.2", "A", "0.19", "$12.8B", "14.3", "NO", "2018-06-22", "quarterly", "A"],
+            ["INCM7", "IncomeForge Strategic Yield ETF", "Forge Asset Mgmt", "9.1", "B", "0.41", "$3.9B", "9.8", "YES", "2021-11-08", "monthly", "B"],
+            ["PRMY4", "Premier Yield Builders ETF", "Premier Invest", "4.7", "A", "0.12", "$27.5B", "13.9", "NO", "2017-02-10", "quarterly", "A"],
+            ["HIGH8", "Horizon Ultra Dividend ETF", "Horizon Partners", "11.3", "C", "0.55", "$1.8B", "6.4", "YES", "2022-09-05", "monthly", "C"],
+            ["STBL2", "StableWealth Dividend ETF", "StableWealth", "3.9", "A", "0.08", "$45.1B", "12.6", "NO", "2015-04-18", "quarterly", "A"],
+            ["GROW5", "GrowthHarvest Income ETF", "GrowthHarvest", "5.6", "B", "0.33", "$8.7B", "15.2", "NO", "2020-01-12", "monthly", "B"],
+            ["MAXY3", "MaxYield Covered Call ETF", "MaxYield Advisors", "12.8", "B", "0.67", "$2.4B", "8.1", "YES", "2023-07-20", "monthly", "B"],
+            ["PURE6", "Pure Income Select ETF", "Pure Capital", "7.5", "A", "0.24", "$6.3B", "10.9", "NO", "2019-10-03", "monthly", "A"],
+            ["VOLT9", "Voltage High Dividend ETF", "Voltage Funds", "4.2", "A", "0.15", "$19.6B", "13.4", "NO", "2016-05-25", "quarterly", "A"],
+            ["ECHO4", "Echo Chamber Yield ETF", "Echo Invest", "10.6", "C", "0.49", "$1.1B", "7.3", "YES", "2022-03-14", "monthly", "C"],
+            ["NOVA7", "NovaStar Dividend Growth ETF", "NovaStar", "2.8", "A", "0.11", "$31.4B", "16.8", "NO", "2014-08-09", "quarterly", "A"],
+            ["FLUX2", "Flux Income Accelerator ETF", "Flux Capital", "8.9", "B", "0.38", "$5.2B", "11.2", "NO", "2021-04-30", "monthly", "B"],
+            ["LUNA5", "Lunar Dividend Shield ETF", "Lunar Asset", "6.8", "B", "0.29", "$9.4B", "10.5", "NO", "2020-12-01", "monthly", "B"],
+            ["PULSE8", "Pulse Yield Leaders ETF", "Pulse Management", "5.1", "A", "0.22", "$14.7B", "12.1", "NO", "2018-09-17", "quarterly", "A"],
+            ["QUANT3", "Quantum Income ETF", "Quantum Edge", "9.7", "C", "0.52", "$2.9B", "5.9", "YES", "2023-01-22", "monthly", "C"],
+            ["RIVER6", "RiverFlow Dividend ETF", "RiverFlow Partners", "4.5", "A", "0.14", "$22.3B", "14.7", "NO", "2017-07-11", "quarterly", "A"],
+            ["SUMMIT9", "Summit Peak Yield ETF", "Summit Global", "7.2", "B", "0.31", "$7.6B", "9.6", "NO", "2021-06-05", "monthly", "B"],
+            ["TITAN4", "Titan Core Income ETF", "Titan Wealth", "3.4", "A", "0.09", "$38.2B", "13.1", "NO", "2013-11-19", "quarterly", "A"],
+            ["ULTRA7", "UltraYield Dynamic ETF", "Ultra Capital", "13.5", "D", "0.71", "$0.8B", "4.8", "YES", "2024-02-14", "monthly", "D"],
+            ["VISTA2", "Vista Horizon Dividend ETF", "Vista Funds", "5.9", "A", "0.26", "$11.9B", "12.8", "NO", "2019-08-28", "monthly", "A"],
+            ["WAVE8", "Wave Rider Income ETF", "Wave Advisors", "6.4", "B", "0.36", "$4.8B", "11.5", "NO", "2020-10-15", "monthly", "B"],
+            ["XENON5", "Xenon High Yield ETF", "Xenon Partners", "8.1", "C", "0.44", "$3.1B", "8.7", "YES", "2022-05-09", "monthly", "C"],
+            ["YIELD9", "YieldForge Elite ETF", "YieldForge", "4.9", "A", "0.17", "$16.5B", "14.2", "NO", "2018-03-12", "quarterly", "A"],
+            ["ZEST3", "Zest Dividend Accelerator ETF", "Zest Capital", "10.2", "B", "0.48", "$2.6B", "9.3", "YES", "2023-04-18", "monthly", "B"],
+            ["ALPHA6", "Alpha Income Vanguard ETF", "Alpha Core", "3.7", "A", "0.13", "$24.8B", "15.6", "NO", "2016-12-05", "quarterly", "A"],
+            ["BETA4", "BetaShield Monthly Income ETF", "Beta Dynamics", "7.8", "B", "0.39", "$5.7B", "10.8", "NO", "2021-09-22", "monthly", "B"],
+            ["CORE8", "Core Dividend Fortress ETF", "Core Fortress", "5.3", "A", "0.21", "$13.2B", "12.4", "NO", "2019-05-30", "quarterly", "A"],
+            ["DELTA2", "Delta Yield Masters ETF", "Delta Masters", "9.4", "C", "0.46", "$2.2B", "7.9", "YES", "2022-11-03", "monthly", "C"],
+            ["ECHO7", "Echo Premium Yield ETF", "Echo Premium", "6.7", "B", "0.34", "$8.9B", "11.9", "NO", "2020-07-14", "monthly", "B"],
+            ["FORGE9", "Forge High Income ETF", "Forge Income", "8.6", "B", "0.42", "$4.5B", "9.1", "YES", "2023-08-01", "monthly", "B"],
+            ["GLINT5", "Glint Dividend Spark ETF", "Glint Spark", "4.1", "A", "0.16", "$18.4B", "13.7", "NO", "2017-10-20", "quarterly", "A"],
+            ["HORIZ4", "Horizon Eternal Yield ETF", "Horizon Eternal", "7.9", "C", "0.37", "$6.1B", "10.3", "NO", "2021-02-28", "monthly", "C"],
+            ["INFIN8", "Infinite Income Builders ETF", "Infinite Group", "5.8", "A", "0.25", "$10.3B", "14.5", "NO", "2019-12-09", "quarterly", "A"],
+            ["JUPIT3", "Jupiter Dividend Orbit ETF", "Jupiter Orbit", "11.1", "D", "0.59", "$1.4B", "6.2", "YES", "2024-01-05", "monthly", "D"],
+
+            // 10 Weekly Paying Dividend ETFs
+            ["WKLY1", "Apex Weekly Dividend Elite ETF", "Apex Weekly", "7.9", "A", "0.32", "$5.6B", "10.8", "NO", "2022-01-10", "weekly", "A"],
+            ["WKLY2", "Velocity Weekly Income ETF", "Velocity Partners", "9.3", "B", "0.45", "$3.2B", "8.7", "YES", "2023-03-15", "weekly", "B"],
+            ["WKLY3", "Pulse Weekly High Yield ETF", "Pulse Weekly", "12.4", "C", "0.61", "$1.9B", "6.5", "YES", "2024-02-20", "weekly", "C"],
+            ["WKLY4", "Summit Weekly Shield ETF", "Summit Weekly", "6.5", "A", "0.27", "$8.4B", "12.1", "NO", "2021-08-05", "weekly", "A"],
+            ["WKLY5", "Forge Weekly Premium ETF", "Forge Weekly", "8.7", "B", "0.39", "$4.1B", "9.4", "NO", "2022-11-12", "weekly", "B"],
+            ["WKLY6", "Quantum Weekly Dividend ETF", "Quantum Weekly", "10.8", "C", "0.52", "$2.7B", "7.2", "YES", "2023-06-18", "weekly", "C"],
+            ["WKLY7", "Titan Weekly Income ETF", "Titan Weekly", "5.8", "A", "0.24", "$14.3B", "13.6", "NO", "2020-09-22", "weekly", "A"],
+            ["WKLY8", "Nova Weekly Yield Accelerator ETF", "Nova Weekly", "11.6", "B", "0.58", "$2.3B", "8.9", "YES", "2024-01-08", "weekly", "B"],
+            ["WKLY9", "Echo Weekly Ultra ETF", "Echo Weekly", "13.2", "D", "0.68", "$1.5B", "5.4", "YES", "2023-10-30", "weekly", "D"],
+            ["WKLY0", "Zenith Weekly Dividend Pro ETF", "Zenith Weekly", "7.2", "A", "0.31", "$6.8B", "11.5", "NO", "2021-05-14", "weekly", "A"]
+        ];
+
+        let allRows = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderDemoTable();
+        });
+
+        function renderDemoTable() {
+            const tbody = document.getElementById('etfBody');
+            tbody.innerHTML = '';
+
+            demoData.forEach(rowData => {
+                const tr = document.createElement('tr');
+
+                rowData.forEach((value, index) => {
+                    const td = document.createElement('td');
+                    const labels = [
+                        'Symbol','Name','Fund Provider','Dividend Yield','Tax Treatment Grade',
+                        'Expense Ratio','AUM','Total Return','Price Decay','Inception Date',
+                        'Payout Frequency','Rating'
+                    ];
+                    td.setAttribute('data-label', labels[index]);
+
+                    if (index === 0) td.className = 'symbol';
+                    if (index === 1) td.className = 'name';
+                    
+                    if (index === 4) {
+                        const grade = value.toUpperCase();
+                        td.className = `tax-${grade.toLowerCase()}`;
+                    }
+
+                    if (index === 11) {
+                        const rating = value.toUpperCase();
+                        td.className = `rating-${rating.toLowerCase()}`;
+                    }
+
+                    td.textContent = value || '-';
+                    tr.appendChild(td);
+                });
+
+                tbody.appendChild(tr);
+                allRows.push(tr);
+            });
+
+            if (allRows.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="12" class="no-results">No ETF data available.</td></tr>';
+            } else {
+                sortTable(3, 'desc');
+            }
+        }
+
+        let sortDirections = {};
+        function sortTable(col, forceDir) {
+            const tbody = document.getElementById('etfBody');
+            const rows = Array.from(tbody.querySelectorAll('tr')).filter(r => r.cells.length > col);
+            
+            if (rows.length === 0) return;
+
+            const dir = forceDir || (sortDirections[col] === 'asc' ? 'desc' : 'asc');
+            sortDirections[col] = dir;
+
+            rows.sort((a, b) => {
+                let valA = a.cells[col].textContent.trim();
+                let valB = b.cells[col].textContent.trim();
+
+                // Special handling for Inception Date (column 9)
+                if (col === 9) {
+                    const dateA = new Date(valA);
+                    const dateB = new Date(valB);
+                    if (!isNaN(dateA.getTime()) && !isNaN(dateB.getTime())) {
+                        return dir === 'asc' ? dateA - dateB : dateB - dateA;
+                    }
+                }
+
+                // Special handling for Payout Frequency (column 10)
+                if (col === 10) {
+                    const order = { 'weekly': 1, 'monthly': 2, 'quarterly': 3 };
+                    const orderA = order[valA.toLowerCase()] || 99;
+                    const orderB = order[valB.toLowerCase()] || 99;
+                    return dir === 'asc' ? orderA - orderB : orderB - orderA;
+                }
+
+                // Normal numeric sorting
+                if (!isNaN(parseFloat(valA)) && !isNaN(parseFloat(valB))) {
+                    return dir === 'asc' ? parseFloat(valA) - parseFloat(valB) : parseFloat(valB) - parseFloat(valA);
+                }
+
+                // Default string sorting
+                return dir === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
+            });
+
+            rows.forEach(row => tbody.appendChild(row));
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const searchTerm = document.getElementById('searchFilter').value.toLowerCase().trim();
+            const yieldFilter = document.getElementById('yieldRangeFilter').value;
+            const payoutFilter = document.getElementById('payoutFilter').value.toLowerCase();
+            const taxGradeFilter = document.getElementById('taxGradeFilter').value;
+            const priceDecayFilter = document.getElementById('priceDecayFilter').value;
+            const ageFilter = document.getElementById('ageFilter').value;
+
+            let visibleCount = 0;
+            const today = new Date();
+
+            allRows.forEach(tr => {
+                const symbol = tr.cells[0].textContent.toLowerCase();
+                const name = tr.cells[1].textContent.toLowerCase();
+                const yieldValue = parseFloat(tr.cells[3].textContent) || 0;
+                const taxGrade = tr.cells[4].textContent.trim().toUpperCase();
+                const priceDecay = tr.cells[8].textContent.trim().toUpperCase();
+                const inceptionStr = tr.cells[9].textContent.trim();
+                const payoutFrequency = tr.cells[10].textContent.trim().toLowerCase();
+
+                let visible = true;
+
+                if (searchTerm && !symbol.includes(searchTerm) && !name.includes(searchTerm)) visible = false;
+
+                if (visible && yieldFilter) {
+                    const [min, max] = yieldFilter === '15+' ? [15, 999] : yieldFilter.split('-').map(Number);
+                    if (yieldValue < min || (max && yieldValue > max)) visible = false;
+                }
+
+                if (visible && payoutFilter && !payoutFrequency.includes(payoutFilter)) visible = false;
+
+                if (visible && taxGradeFilter && taxGrade !== taxGradeFilter) visible = false;
+
+                if (visible && priceDecayFilter) {
+                    if (priceDecayFilter === 'yes' && priceDecay !== 'YES') visible = false;
+                    if (priceDecayFilter === 'no' && priceDecay !== 'NO') visible = false;
+                }
+
+                if (visible && ageFilter && inceptionStr) {
+                    const inceptionDate = new Date(inceptionStr);
+                    if (isNaN(inceptionDate.getTime())) {
+                        visible = false;
+                    } else {
+                        const ageInYears = (today - inceptionDate) / (1000 * 60 * 60 * 24 * 365.25);
+
+                        let ageMatches = false;
+                        if (ageFilter === 'under1' && ageInYears < 1) ageMatches = true;
+                        else if (ageFilter === '1-2' && ageInYears >= 1 && ageInYears < 2) ageMatches = true;
+                        else if (ageFilter === '2-3' && ageInYears >= 2 && ageInYears < 3) ageMatches = true;
+                        else if (ageFilter === '3-4' && ageInYears >= 3 && ageInYears < 4) ageMatches = true;
+                        else if (ageFilter === '4-5' && ageInYears >= 4 && ageInYears < 5) ageMatches = true;
+                        else if (ageFilter === '5plus' && ageInYears >= 5) ageMatches = true;
+
+                        if (!ageMatches) visible = false;
+                    }
+                }
+
+                tr.style.display = visible ? '' : 'none';
+                if (visible) visibleCount++;
+            });
+
+            const tbody = document.getElementById('etfBody');
+            const existingNoResults = tbody.querySelector('.no-results');
+            if (visibleCount === 0) {
+                if (!existingNoResults) {
+                    const noRow = document.createElement('tr');
+                    noRow.innerHTML = '<td colspan="12" class="no-results">No ETFs match your filters. Try adjusting your criteria.</td>';
+                    tbody.appendChild(noRow);
+                }
+            } else if (existingNoResults) {
+                existingNoResults.remove();
+            }
+        }
+
+        // Event listeners
+        document.getElementById('searchFilter').addEventListener('input', applyFilters);
+        document.getElementById('yieldRangeFilter').addEventListener('change', applyFilters);
+        document.getElementById('payoutFilter').addEventListener('change', applyFilters);
+        document.getElementById('taxGradeFilter').addEventListener('change', applyFilters);
+        document.getElementById('priceDecayFilter').addEventListener('change', applyFilters);
+        document.getElementById('ageFilter').addEventListener('change', applyFilters);
+        document.getElementById('resetFilters').addEventListener('click', () => location.reload());
+    </script>
+</body>
+</html>
