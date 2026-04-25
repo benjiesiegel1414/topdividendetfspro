@@ -382,7 +382,7 @@
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 30px;
         }
 
@@ -640,6 +640,10 @@
         @media (max-width: 1024px) {
             .hero-container {
                 gap: 40px;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .section {
@@ -1054,10 +1058,19 @@
                 <p>You get full access for 24 hours. After that, your account will be automatically charged ($12.95/month or $74.95 lifetime). Cancel anytime before 24 hours to avoid charges.</p>
             </div>
 
+            <div class="faq-card">
+                <h3>🔄 Can I upgrade after the trial?</h3>
+                <p>Absolutely! If you love it, upgrade to monthly ($12.95/month) or lifetime ($74.95 one-time) access anytime during your trial.</p>
+            </div>
 
             <div class="faq-card">
                 <h3>📊 Is this data accurate?</h3>
                 <p>Yes! Our data is researched, verified, and updated daily from reliable financial sources to ensure accuracy for serious investors.</p>
+            </div>
+
+            <div class="faq-card">
+                <h3>🔒 Is my data safe?</h3>
+                <p>Your information is protected with industry-standard security. We never share your data with third parties.</p>
             </div>
 
             <div class="faq-card">
