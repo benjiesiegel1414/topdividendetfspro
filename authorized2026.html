@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -500,9 +500,33 @@
             const tbody = document.getElementById('etfBody');
             tbody.innerHTML = '';
 
+            console.log("Total CSV lines:", lines.length);
+            console.log("CSV first 500 chars:", csvText.substring(0, 500));
+
+            let successCount = 0;
+            let skipCount = 0;
+
             for (let i = 1; i < lines.length; i++) {
                 const cols = lines[i].split(',').map(c => c.trim().replace(/^"|"$/g, ''));
-                if (cols.length < 12 || !cols[0]) continue;
+                
+                // DIAGNOSTIC LOG FOR LAST ROW (your new ETF)
+                if (i === lines.length - 1) {
+                    console.log("=== NEW ETF ROW (LAST ROW) ===");
+                    console.log("Row index:", i);
+                    console.log("Raw line:", lines[i]);
+                    console.log("Parsed columns:", cols);
+                    console.log("Column count:", cols.length);
+                    console.log("Symbol (col[0]):", cols[0]);
+                    console.log("Name (col[1]):", cols[1]);
+                    console.log("All columns:", cols);
+                    console.log("All columns filled?", cols.every(c => c !== ''));
+                }
+
+                if (cols.length < 12 || !cols[0]) {
+                    console.warn(`❌ Row ${i} SKIPPED: cols.length=${cols.length}, cols[0]="${cols[0]}"`);
+                    skipCount++;
+                    continue;
+                }
 
                 const tr = document.createElement('tr');
 
@@ -534,7 +558,11 @@
 
                 tbody.appendChild(tr);
                 allRows.push(tr);
+                successCount++;
             }
+
+            console.log(`✅ Loaded ${successCount} ETFs successfully`);
+            console.log(`❌ Skipped ${skipCount} rows`);
 
             if (allRows.length === 0) {
                 tbody.innerHTML = '<tr><td colspan="12" class="no-results">No ETF data available.</td></tr>';
