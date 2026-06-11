@@ -419,10 +419,13 @@
                 <select id="ageFilter">
                     <option value="">All Ages</option>
                     <option value="under1">Under 1 Year</option>
-                    <option value="1-2">1–2 Years</option>
-                    <option value="2-3">2–3 Years</option>
-                    <option value="3-4">3–4 Years</option>
-                    <option value="4-5">4–5 Years</option>
+                    <option value="under2">Under 2 Years</option>
+                    <option value="under3">Under 3 Years</option>
+                    <option value="under5">Under 5 Years</option>
+                    <option value="1-2">1–2 Years (exact)</option>
+                    <option value="2-3">2–3 Years (exact)</option>
+                    <option value="3-4">3–4 Years (exact)</option>
+                    <option value="4-5">4–5 Years (exact)</option>
                     <option value="5plus">5+ Years</option>
                 </select>
             </div>
@@ -508,8 +511,7 @@
 
             for (let i = 1; i < lines.length; i++) {
                 const cols = lines[i].split(',').map(c => c.trim().replace(/^"|"$/g, ''));
-                
-                // DIAGNOSTIC LOG FOR LAST ROW (your new ETF)
+
                 if (i === lines.length - 1) {
                     console.log("=== NEW ETF ROW (LAST ROW) ===");
                     console.log("Row index:", i);
@@ -585,16 +587,14 @@
                 let valA = a.cells[col].textContent.trim();
                 let valB = b.cells[col].textContent.trim();
 
-                // Special handling for Inception Date (column 9)
                 if (col === 9) {
-                    const dateA = new Date(valA);
-                    const dateB = new Date(valB);
+                    const dateA = new Date(normalizeDate(valA));
+                    const dateB = new Date(normalizeDate(valB));
                     if (!isNaN(dateA.getTime()) && !isNaN(dateB.getTime())) {
                         return dir === 'asc' ? dateA - dateB : dateB - dateA;
                     }
                 }
 
-                // Special handling for Payout Frequency (column 10)
                 if (col === 10) {
                     const order = { 'weekly': 1, 'monthly': 2, 'quarterly': 3 };
                     const orderA = order[valA.toLowerCase()] || 99;
@@ -602,17 +602,36 @@
                     return dir === 'asc' ? orderA - orderB : orderB - orderA;
                 }
 
-                // Normal numeric sorting
                 if (!isNaN(parseFloat(valA)) && !isNaN(parseFloat(valB))) {
                     return dir === 'asc' ? parseFloat(valA) - parseFloat(valB) : parseFloat(valB) - parseFloat(valA);
                 }
 
-                // Default string sorting
                 return dir === 'asc' ? valA.localeCompare(valB) : valB.localeCompare(valA);
             });
 
             rows.forEach(row => tbody.appendChild(row));
             applyFilters();
+        }
+
+        // Normalize date strings like MM/DD/YYYY or M/D/YY into YYYY-MM-DD for reliable parsing
+        function normalizeDate(str) {
+            if (!str || str === '-') return '';
+            // Handle MM/DD/YYYY or M/D/YY
+            const slashMatch = str.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})$/);
+            if (slashMatch) {
+                let [ , m, d, y ] = slashMatch;
+                if (y.length === 2) y = '20' + y;
+                return `${y}-${m.padStart(2,'0')}-${d.padStart(2,'0')}`;
+            }
+            // Handle MM-DD-YYYY or M-D-YY
+            const dashMatch = str.match(/^(\d{1,2})-(\d{1,2})-(\d{2,4})$/);
+            if (dashMatch) {
+                let [ , m, d, y ] = dashMatch;
+                if (y.length === 2) y = '20' + y;
+                return `${y}-${m.padStart(2,'0')}-${d.padStart(2,'0')}`;
+            }
+            // Return as-is for formats like "Jan 15, 2024" or "2024-01-15" which Date() handles fine
+            return str;
         }
 
         function applyFilters() {
@@ -653,20 +672,26 @@
                     if (priceDecayFilter === 'no' && priceDecay !== 'NO') visible = false;
                 }
 
-                if (visible && ageFilter && inceptionStr) {
-                    const inceptionDate = new Date(inceptionStr);
+                if (visible && ageFilter && inceptionStr && inceptionStr !== '-') {
+                    const normalized = normalizeDate(inceptionStr);
+                    const inceptionDate = new Date(normalized);
+
                     if (isNaN(inceptionDate.getTime())) {
+                        console.warn('Could not parse inception date:', inceptionStr, '→', normalized);
                         visible = false;
                     } else {
                         const ageInYears = (today - inceptionDate) / (1000 * 60 * 60 * 24 * 365.25);
-
                         let ageMatches = false;
-                        if (ageFilter === 'under1' && ageInYears < 1) ageMatches = true;
-                        else if (ageFilter === '1-2' && ageInYears >= 1 && ageInYears < 2) ageMatches = true;
-                        else if (ageFilter === '2-3' && ageInYears >= 2 && ageInYears < 3) ageMatches = true;
-                        else if (ageFilter === '3-4' && ageInYears >= 3 && ageInYears < 4) ageMatches = true;
-                        else if (ageFilter === '4-5' && ageInYears >= 4 && ageInYears < 5) ageMatches = true;
-                        else if (ageFilter === '5plus' && ageInYears >= 5) ageMatches = true;
+
+                        if      (ageFilter === 'under1' && ageInYears < 1)                     ageMatches = true;
+                        else if (ageFilter === 'under2' && ageInYears < 2)                     ageMatches = true;
+                        else if (ageFilter === 'under3' && ageInYears < 3)                     ageMatches = true;
+                        else if (ageFilter === 'under5' && ageInYears < 5)                     ageMatches = true;
+                        else if (ageFilter === '1-2'   && ageInYears >= 1 && ageInYears < 2)  ageMatches = true;
+                        else if (ageFilter === '2-3'   && ageInYears >= 2 && ageInYears < 3)  ageMatches = true;
+                        else if (ageFilter === '3-4'   && ageInYears >= 3 && ageInYears < 4)  ageMatches = true;
+                        else if (ageFilter === '4-5'   && ageInYears >= 4 && ageInYears < 5)  ageMatches = true;
+                        else if (ageFilter === '5plus' && ageInYears >= 5)                     ageMatches = true;
 
                         if (!ageMatches) visible = false;
                     }
@@ -685,11 +710,10 @@
                     tbody.appendChild(noRow);
                 }
             } else if (existingNoResults) {
-                existingNoResults.remove();
+                existingNoResults.parentNode.removeChild(existingNoResults);
             }
         }
 
-        // Event listeners
         document.getElementById('searchFilter').addEventListener('input', applyFilters);
         document.getElementById('yieldRangeFilter').addEventListener('change', applyFilters);
         document.getElementById('payoutFilter').addEventListener('change', applyFilters);
