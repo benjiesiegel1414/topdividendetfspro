@@ -1207,7 +1207,205 @@
     </style>
 </head>
 <body>
+<!-- ==================== LIFETIME DEAL BANNER — 2026 GLASS ==================== -->
+<!-- Place this directly above the existing <header> tag -->
+<div class="deal-banner" onclick="document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})">
+    <div class="deal-banner-glow"></div>
+    <div class="deal-banner-inner">
+        <span class="deal-banner-badge">
+            <span class="deal-banner-dot"></span>
+            Ending Soon
+        </span>
+        <span class="deal-banner-headline">
+            Lifetime access to <span class="deal-banner-gradient-text">Top Dividend ETFs Pro</span> — One payment, yours FOREVER!
+        </span>
+        <span class="deal-banner-cta">
+            $74.95 lifetime
+            <svg class="deal-banner-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+        </span>
+    </div>
+</div>
 
+<style>
+/* ============ LIFETIME DEAL BANNER — GLASSMORPHIC, SITE TEAL PALETTE ============ */
+
+@keyframes deal-glow-drift {
+    0%, 100% { transform: translate(-10%, -20%) scale(1); }
+    50%      { transform: translate(10%, 10%) scale(1.15); }
+}
+
+@keyframes deal-banner-rise {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes deal-dot-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(98, 161, 150, 0.65); }
+    70%      { box-shadow: 0 0 0 6px rgba(98, 161, 150, 0); }
+}
+
+@keyframes deal-gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+}
+
+.deal-banner {
+    --primary: #30776C;
+    --primary-dark: #1d4d46;
+    --accent: #62A196;
+    --mid: #9BBCB6;
+    --light: #EEF1F1;
+
+    position: relative;
+    background: linear-gradient(180deg, #0E2420 0%, #0A1A17 100%);
+    color: var(--light);
+    cursor: pointer;
+    z-index: 101;
+    overflow: hidden;
+    isolation: isolate;
+    border-bottom: 1px solid rgba(98, 161, 150, 0.25);
+    animation: deal-banner-rise 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    font-family: 'Lato', Arial, sans-serif;
+}
+
+.deal-banner-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background:
+        radial-gradient(circle at 15% 30%, rgba(98, 161, 150, 0.35) 0%, transparent 55%),
+        radial-gradient(circle at 85% 70%, rgba(48, 119, 108, 0.4) 0%, transparent 55%);
+    filter: blur(20px);
+    animation: deal-glow-drift 9s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.deal-banner-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 13px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    backdrop-filter: blur(0.5px);
+}
+
+.deal-banner-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    color: var(--light);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 6px 12px 6px 10px;
+    border-radius: 100px;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.deal-banner-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    animation: deal-dot-pulse 2s ease-out infinite;
+}
+
+.deal-banner-headline {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: rgba(238, 241, 241, 0.92);
+    line-height: 1.4;
+}
+
+.deal-banner-gradient-text {
+    font-weight: 800;
+    background: linear-gradient(90deg, #9BBCB6 0%, #ffffff 35%, #62A196 70%, #9BBCB6 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: deal-gradient-shift 6s ease-in-out infinite;
+}
+
+.deal-banner-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    color: #06241F;
+    background: linear-gradient(135deg, #B9DDD4 0%, #ffffff 50%, #B9DDD4 100%);
+    padding: 9px 16px;
+    border-radius: 100px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    box-shadow: 0 2px 14px rgba(98, 161, 150, 0.3), inset 0 1px 0 rgba(255,255,255,0.5);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+}
+
+.deal-banner-arrow {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.deal-banner:hover .deal-banner-cta {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(98, 161, 150, 0.5), inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+.deal-banner:hover .deal-banner-arrow {
+    transform: translateX(3px);
+}
+
+@media (max-width: 720px) {
+    .deal-banner-inner {
+        padding: 12px 18px;
+        gap: 10px;
+    }
+    .deal-banner-headline {
+        order: 2;
+        flex: 1 1 100%;
+        text-align: center;
+        font-size: 13px;
+    }
+    .deal-banner-badge {
+        order: 1;
+    }
+    .deal-banner-cta {
+        order: 3;
+        flex: 1 1 100%;
+        justify-content: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .deal-banner-glow,
+    .deal-banner-dot,
+    .deal-banner-gradient-text,
+    .deal-banner {
+        animation: none;
+    }
+}
+</style>
 <!-- ==================== HEADER ==================== -->
 <header>
     <div class="header-container">
