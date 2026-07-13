@@ -23,18 +23,25 @@
             --yellow: #FCD34D;
         }
 
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         html, body {
             margin: 0; 
             padding: 0; 
             overflow-x: hidden;
+            width: 100%;
             font-family: 'Lato', Arial, sans-serif;
             background: linear-gradient(135deg, #F8FAFC 0%, #F0F9FF 50%, #F5F3FF 100%);
             color: var(--text-dark);
+            -webkit-text-size-adjust: 100%;
         }
 
         header {
             background: rgba(15, 118, 110, 0.7);
             backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             padding: 16px 20px; 
             color: #fff;
@@ -84,7 +91,7 @@
         .hero h1 { 
             color: white;
             margin: 0 0 15px; 
-            font-size: clamp(36px, 8vw, 56px); 
+            font-size: clamp(30px, 8vw, 56px); 
             text-align: center;
             font-weight: 900;
             letter-spacing: -1px;
@@ -133,40 +140,75 @@
             letter-spacing: 0.5px;
         }
 
-        #filters input, #filters select {
+        #filters input, #filters select, #mobileSortBar select {
             padding: 12px 14px; 
             border: 2px solid var(--primary-light); 
             border-radius: 8px; 
-            font-size: 1em;
+            font-size: 16px; /* 16px+ prevents iOS auto-zoom on focus */
             background: white;
             color: var(--text-dark);
             transition: all 0.3s ease;
             font-weight: 600;
+            font-family: 'Lato', Arial, sans-serif;
+            min-height: 48px; /* comfortable touch target */
         }
 
-        #filters input:focus, #filters select:focus {
+        #filters input:focus, #filters select:focus, #mobileSortBar select:focus {
             outline: none;
             border-color: var(--accent);
             box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
         }
 
         #resetFilters {
-            padding: 12px 28px; 
+            padding: 14px 28px; 
             background: linear-gradient(135deg, #10B981, #0F766E); 
             color: white; 
             border: none; 
             border-radius: 8px; 
             cursor: pointer; 
             font-weight: 700;
+            font-size: 16px;
+            min-height: 48px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-            margin: 20px auto 0;
-            display: block;
+            margin: 0 auto;
+            display: inline-block;
+            -webkit-tap-highlight-color: transparent;
         }
 
         #resetFilters:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Mobile-only sort control (table headers are hidden on mobile) */
+        #mobileSortBar {
+            display: none;
+            max-width: 1700px;
+            margin: 0 auto 20px;
+            padding: 16px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+        }
+
+        #mobileSortBar .filter-label {
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        #mobileSortBar select {
+            width: 100%;
+        }
+
+        /* Scroll wrapper keeps the wide table usable on tablets */
+        .table-wrap {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 12px;
+            margin-bottom: 40px;
         }
 
         #etfTable {
@@ -177,7 +219,6 @@
             border-radius: 12px; 
             overflow: hidden;
             box-shadow: 0 12px 40px rgba(15, 118, 110, 0.15);
-            margin-bottom: 40px;
         }
 
         th {
@@ -190,6 +231,7 @@
             font-weight: 700;
             transition: all 0.3s ease;
             user-select: none;
+            -webkit-user-select: none;
             border-bottom: 2px solid rgba(20, 184, 166, 0.3);
         }
 
@@ -238,33 +280,88 @@
         .tax-d { background: rgba(249, 115, 22, 0.15); color: #F97316; padding: 4px 8px; border-radius: 6px; font-weight: 700; }
         .tax-f { background: rgba(239, 68, 68, 0.15); color: #EF4444; padding: 4px 8px; border-radius: 6px; font-weight: 700; }
 
-        /* ==================== MOBILE ==================== */
+        /* ==================== TABLET (769px – 1100px) ==================== */
+        /* Table stays a table but scrolls horizontally instead of crushing 12 columns */
+        @media (min-width: 769px) and (max-width: 1100px) {
+            #etfTable {
+                min-width: 1100px;
+            }
+
+            th {
+                padding: 14px 10px;
+            }
+        }
+
+        /* ==================== MOBILE (≤768px) ==================== */
         @media (max-width: 768px) {
+            header {
+                padding: 10px 16px;
+            }
+
             .hero {
-                padding: 40px 20px;
+                padding: 36px 18px;
+                margin-bottom: 24px;
             }
 
             .hero h1 {
-                font-size: 32px;
+                font-size: 30px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+            }
+
+            .content {
+                width: 100%;
+                padding: 0 14px;
             }
 
             #filters {
                 flex-direction: column;
+                align-items: stretch;
                 gap: 16px;
+                padding: 18px 16px;
+                margin: 20px auto;
+            }
+
+            .filter-group {
+                width: 100%;
             }
 
             #filters input, #filters select {
                 width: 100%;
             }
 
-            th { display: none; }
+            #resetFilters {
+                width: 100%;
+            }
+
+            /* Show the mobile sort control since table headers are hidden */
+            #mobileSortBar {
+                display: block;
+            }
+
+            .table-wrap {
+                overflow-x: visible;
+                margin-bottom: 24px;
+            }
+
+            #etfTable {
+                border: none;
+                box-shadow: none;
+                background: transparent;
+                display: block;
+            }
+
+            thead { display: none; }
+            tbody { display: block; }
             
             tr { 
                 display: flex; 
                 flex-direction: column; 
-                margin: 10px 0; 
+                margin: 0 0 14px; 
                 padding: 16px; 
-                border-radius: 8px; 
+                border-radius: 10px; 
                 box-shadow: 0 3px 10px rgba(0,0,0,0.1);
                 border: 1px solid rgba(20, 184, 166, 0.2);
                 background: white;
@@ -281,8 +378,16 @@
             td { 
                 display: flex; 
                 justify-content: space-between; 
-                padding: 10px 0;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 4px 12px;
+                padding: 9px 0;
                 text-align: right;
+                font-size: 15px;
+                border-bottom: 1px solid rgba(20, 184, 166, 0.08);
+            }
+
+            td:last-child {
                 border-bottom: none;
             }
             
@@ -290,8 +395,76 @@
                 content: attr(data-label); 
                 font-weight: 700; 
                 color: var(--primary-dark); 
-                min-width: 140px;
+                flex: 0 0 auto;
+                min-width: 0;
                 text-align: left;
+                font-size: 13px;
+                text-transform: uppercase;
+                letter-spacing: 0.4px;
+            }
+
+            /* Symbol becomes the card header */
+            td.symbol {
+                justify-content: flex-start;
+                font-size: 1.4em;
+                padding-top: 0;
+                border-bottom: none;
+            }
+
+            td.symbol:before {
+                display: none;
+            }
+
+            /* Name sits directly under the symbol, full width, wraps cleanly */
+            td.name {
+                justify-content: flex-start;
+                text-align: left;
+                padding-top: 0;
+                padding-bottom: 12px;
+                margin-bottom: 6px;
+                border-bottom: 2px solid rgba(20, 184, 166, 0.15);
+                word-break: break-word;
+            }
+
+            td.name:before {
+                display: none;
+            }
+
+            /* No-results row shouldn't render as a card */
+            tr.no-results-row {
+                box-shadow: none;
+                border: none;
+                background: transparent;
+            }
+
+            .disclaimer {
+                margin: 30px auto 20px;
+                padding: 18px 16px;
+                font-size: 0.85em;
+            }
+
+            footer {
+                margin: 24px auto 20px;
+                padding-left: 14px;
+                padding-right: 14px;
+            }
+
+            footer p:first-child {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 6px 10px;
+            }
+        }
+
+        /* Very small phones */
+        @media (max-width: 380px) {
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            td {
+                font-size: 14px;
             }
         }
 
@@ -436,26 +609,47 @@
             <button id="resetFilters">🔄 Reset Filters</button>
         </div>
 
+        <!-- ==================== MOBILE SORT (visible only on phones) ==================== -->
+        <div id="mobileSortBar">
+            <span class="filter-label">↕️ Sort By</span>
+            <select id="mobileSortSelect">
+                <option value="3-desc">Dividend Yield (High → Low)</option>
+                <option value="3-asc">Dividend Yield (Low → High)</option>
+                <option value="0-asc">Symbol (A → Z)</option>
+                <option value="0-desc">Symbol (Z → A)</option>
+                <option value="5-asc">Expense Ratio (Low → High)</option>
+                <option value="5-desc">Expense Ratio (High → Low)</option>
+                <option value="6-desc">AUM (High → Low)</option>
+                <option value="7-desc">Total Return (High → Low)</option>
+                <option value="9-desc">Inception Date (Newest First)</option>
+                <option value="9-asc">Inception Date (Oldest First)</option>
+                <option value="10-asc">Payout Frequency (Weekly First)</option>
+                <option value="11-asc">Rating (Best First)</option>
+            </select>
+        </div>
+
         <!-- ==================== TABLE ==================== -->
-        <table id="etfTable">
-            <thead>
-                <tr>
-                    <th onclick="sortTable(0)">Symbol ↕</th>
-                    <th onclick="sortTable(1)">Name ↕</th>
-                    <th onclick="sortTable(2)">Fund Provider ↕</th>
-                    <th onclick="sortTable(3)">Dividend Yield ↕</th>
-                    <th onclick="sortTable(4)">Tax Grade ↕</th>
-                    <th onclick="sortTable(5)">Expense Ratio ↕</th>
-                    <th onclick="sortTable(6)">AUM ↕</th>
-                    <th onclick="sortTable(7)">Total Return ↕</th>
-                    <th onclick="sortTable(8)">Price Decay ↕</th>
-                    <th onclick="sortTable(9)">Inception Date ↕</th>
-                    <th onclick="sortTable(10)">Payout Frequency ↕</th>
-                    <th onclick="sortTable(11)">Rating ↕</th>
-                </tr>
-            </thead>
-            <tbody id="etfBody"></tbody>
-        </table>
+        <div class="table-wrap">
+            <table id="etfTable">
+                <thead>
+                    <tr>
+                        <th onclick="sortTable(0)">Symbol ↕</th>
+                        <th onclick="sortTable(1)">Name ↕</th>
+                        <th onclick="sortTable(2)">Fund Provider ↕</th>
+                        <th onclick="sortTable(3)">Dividend Yield ↕</th>
+                        <th onclick="sortTable(4)">Tax Grade ↕</th>
+                        <th onclick="sortTable(5)">Expense Ratio ↕</th>
+                        <th onclick="sortTable(6)">AUM ↕</th>
+                        <th onclick="sortTable(7)">Total Return ↕</th>
+                        <th onclick="sortTable(8)">Price Decay ↕</th>
+                        <th onclick="sortTable(9)">Inception Date ↕</th>
+                        <th onclick="sortTable(10)">Payout Frequency ↕</th>
+                        <th onclick="sortTable(11)">Rating ↕</th>
+                    </tr>
+                </thead>
+                <tbody id="etfBody"></tbody>
+            </table>
+        </div>
 
         <!-- ==================== DISCLAIMER ==================== -->
         <p class="disclaimer">
@@ -567,7 +761,7 @@
             console.log(`❌ Skipped ${skipCount} rows`);
 
             if (allRows.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="12" class="no-results">No ETF data available.</td></tr>';
+                tbody.innerHTML = '<tr class="no-results-row"><td colspan="12" class="no-results">No ETF data available.</td></tr>';
             } else {
                 sortTable(3, 'desc');
             }
@@ -706,6 +900,7 @@
             if (visibleCount === 0) {
                 if (!existingNoResults) {
                     const noRow = document.createElement('tr');
+                    noRow.className = 'no-results-row';
                     noRow.innerHTML = '<td colspan="12" class="no-results">No ETFs match your filters. Try adjusting your criteria.</td>';
                     tbody.appendChild(noRow);
                 }
@@ -721,6 +916,12 @@
         document.getElementById('priceDecayFilter').addEventListener('change', applyFilters);
         document.getElementById('ageFilter').addEventListener('change', applyFilters);
         document.getElementById('resetFilters').addEventListener('click', () => location.reload());
+
+        // Mobile sort dropdown → drives the same sortTable() logic
+        document.getElementById('mobileSortSelect').addEventListener('change', (e) => {
+            const [col, dir] = e.target.value.split('-');
+            sortTable(parseInt(col, 10), dir);
+        });
     </script>
 </body>
 </html>
