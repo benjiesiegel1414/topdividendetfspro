@@ -3,122 +3,463 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | TopDividendETFsPro.com</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>About Us | The Story Behind Top Dividend ETFs PRO | TopDividendETFsPro.com</title>
+    <meta name="description" content="Meet the founder of Top Dividend ETFs PRO. A dividend investor of 10+ years who got tired of hunting across a dozen websites for ETF data, so he built the platform he always wished existed.">
+    <link rel="canonical" href="https://topdividendetfspro.com/about.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="About Us | The Story Behind Top Dividend ETFs PRO">
+    <meta property="og:description" content="Built by a real dividend investor who got tired of scattered, inconsistent ETF data. Here's the story.">
+    <meta property="og:url" content="https://topdividendetfspro.com/about.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Top Dividend ETFs Pro">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- TODO: Paste your PRO-site GA4 tag here (same one as index.html) -->
+
     <style>
+        :root {
+            --emerald: #0F766E;
+            --emerald-dark: #0B5952;
+            --emerald-deep: #073B36;
+            --gold: #D4A017;
+            --gold-light: #F5C242;
+            --ink: #1A2B29;
+            --muted: #5A6B69;
+            --bg: #F6F9F8;
+            --card: #FFFFFF;
+            --line: #E2ECEA;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'Lato', Arial, sans-serif;
-            line-height: 1.7;
-            color: #333;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            background: #f8f9fa;
+            font-family: 'Sora', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--ink);
+            line-height: 1.75;
         }
-        h1 {
-            color: #0F766E;
-            font-size: 2.4em;
+
+        a { color: var(--emerald); }
+
+        /* ============ NAV ============ */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--emerald-deep);
+            border-bottom: 3px solid var(--gold);
+        }
+        .nav-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 14px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .brand {
+            font-weight: 800;
+            font-size: 1.05em;
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 0.2px;
+            white-space: nowrap;
+        }
+        .brand span { color: var(--gold-light); }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            flex-wrap: wrap;
+        }
+        .nav-links a {
+            color: #D8E8E6;
+            text-decoration: none;
+            font-size: 0.92em;
+            font-weight: 600;
+            transition: color 0.15s;
+        }
+        .nav-links a:hover { color: var(--gold-light); }
+        .nav-cta {
+            background: var(--gold);
+            color: var(--emerald-deep) !important;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-weight: 700 !important;
+        }
+        .nav-cta:hover { background: var(--gold-light); color: var(--emerald-deep) !important; }
+
+        /* ============ HERO ============ */
+        .hero {
+            background: linear-gradient(160deg, var(--emerald-deep) 0%, var(--emerald-dark) 60%, var(--emerald) 100%);
+            color: #fff;
             text-align: center;
-            margin-bottom: 30px;
+            padding: 72px 20px 84px;
         }
+        .hero .eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold-light);
+            margin-bottom: 18px;
+        }
+        .hero h1 {
+            font-size: clamp(1.9em, 4.5vw, 2.9em);
+            font-weight: 800;
+            line-height: 1.25;
+            max-width: 780px;
+            margin: 0 auto 20px;
+        }
+        .hero h1 em {
+            font-style: normal;
+            color: var(--gold-light);
+        }
+        .hero p {
+            max-width: 640px;
+            margin: 0 auto;
+            color: #CFE3E0;
+            font-size: 1.1em;
+        }
+
+        /* ============ LAYOUT ============ */
+        .wrap {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        section { margin: 64px 0; }
         h2 {
-            color: #0F766E;
+            font-size: 1.6em;
+            font-weight: 800;
+            color: var(--emerald-deep);
+            margin-bottom: 18px;
+        }
+        p + p { margin-top: 16px; }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            padding: 40px;
+            box-shadow: 0 6px 24px rgba(7, 59, 54, 0.06);
+        }
+
+        /* Founder story */
+        .founder-tag {
+            display: inline-block;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75em;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--emerald);
+            background: #E7F4F2;
+            border-radius: 999px;
+            padding: 5px 14px;
+            margin-bottom: 16px;
+        }
+        .signature {
+            margin-top: 28px;
+            padding-top: 22px;
+            border-top: 1px solid var(--line);
+        }
+        .signature .name {
+            font-weight: 800;
+            color: var(--emerald-deep);
+            font-size: 1.05em;
+        }
+        .signature .role {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8em;
+            color: var(--muted);
+        }
+
+        /* Problem list */
+        .pain-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        .pain-list li {
+            padding: 14px 0 14px 34px;
+            position: relative;
+            border-bottom: 1px solid var(--line);
+        }
+        .pain-list li:last-child { border-bottom: none; }
+        .pain-list li::before {
+            content: "✕";
+            position: absolute;
+            left: 0;
+            color: #C0392B;
+            font-weight: 700;
+        }
+
+        /* What sets us apart */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            margin-top: 24px;
+        }
+        .feature {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--emerald);
+            border-radius: 10px;
+            padding: 22px;
+        }
+        .feature h3 {
+            font-size: 1em;
+            font-weight: 700;
+            color: var(--emerald-deep);
+            margin-bottom: 6px;
+        }
+        .feature p { font-size: 0.92em; color: var(--muted); }
+
+        /* Mission */
+        .mission {
+            background: linear-gradient(145deg, #EAF6F4, #F3FAF8);
+            border-left: 6px solid var(--gold);
+            border-radius: 14px;
+            padding: 36px 40px;
+        }
+
+        /* CTA band */
+        .cta-band {
+            background: var(--emerald-deep);
+            border-radius: 16px;
+            color: #fff;
+            text-align: center;
+            padding: 52px 30px;
+            margin: 72px 0;
+        }
+        .cta-band h2 { color: #fff; }
+        .cta-band p { color: #CFE3E0; max-width: 560px; margin: 0 auto 26px; }
+        .btn-gold {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--emerald-deep);
+            font-weight: 800;
+            text-decoration: none;
+            padding: 15px 34px;
+            border-radius: 10px;
+            font-size: 1.05em;
+            transition: transform 0.12s, background 0.15s;
+        }
+        .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+        .cta-sub {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78em !important;
+            margin-top: 16px !important;
+            color: #9FC4C0 !important;
+        }
+
+        /* ============ FOOTER ============ */
+        footer {
+            background: var(--emerald-deep);
+            color: #B9D2CF;
+            padding: 44px 20px 30px;
             margin-top: 40px;
         }
-        .intro {
-            font-size: 1.15em;
+        .footer-inner {
+            max-width: 1080px;
+            margin: 0 auto;
             text-align: center;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            color: #444;
         }
-        .founder {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            margin: 40px 0;
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px 20px;
+            margin-bottom: 20px;
         }
-        .mission {
-            background: #f0f9f7;
-            padding: 35px;
-            border-radius: 12px;
-            margin: 50px 0;
-            border-left: 6px solid #0F766E;
+        .footer-links a {
+            color: #D8E8E6;
+            text-decoration: none;
+            font-size: 0.88em;
         }
-        footer {
-            margin-top: 80px;
-            text-align: center;
-            color: #777;
-            font-size: 0.95em;
+        .footer-links a:hover { color: var(--gold-light); }
+        .footer-disclaimer {
+            font-size: 0.78em;
+            line-height: 1.6;
+            max-width: 760px;
+            margin: 0 auto 16px;
+            color: #8FB3AF;
+        }
+        .copyright { font-size: 0.82em; }
+
+        @media (max-width: 600px) {
+            .card, .mission { padding: 26px 22px; }
+            .nav-links { gap: 14px; }
         }
     </style>
 </head>
 <body>
 
-    <h1>About TopDividendETFsPro.com</h1>
-    
-    <p class="intro">
-        We help serious dividend investors cut through the noise and make better-informed decisions with accurate, well-researched dividend ETF data.
-    </p>
+    <!-- ============ NAVIGATION ============ -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a class="brand" href="https://topdividendetfspro.com/">Top Dividend ETFs <span>PRO</span> 📈🏆</a>
+            <div class="nav-links">
+                <a href="https://topdividendetfspro.com/video-demo">Demo</a>
+                <a href="https://topdividendetfspro.com/#features">Features</a>
+                <a href="https://topdividendetfspro.com/#comparison">Compare</a>
+                <a href="https://topdividendetfspro.com/faq.html">FAQs</a>
+                <a class="nav-cta" href="https://topdividendetfspro.com/#pricing">Get PRO Access</a>
+            </div>
+        </div>
+    </nav>
 
-    <div class="founder">
-        <h2>Hi, I'm the Founder</h2>
-        <p>
-            I have been investing for about 10 years with a strong focus on dividend investing. 
-            What started as a personal passion for building reliable income portfolios quickly turned into a deep interest in dividend ETFs.
-        </p>
-        <p>
-            Over the years, I became frustrated with how scattered and inconsistent the available data was. 
-            I was constantly jumping between multiple websites, spreadsheets, and broker tools just to compare yields, 
-            tax treatment, expense ratios, total returns, and other important metrics.
-        </p>
-        <p>
-            That's why I created TopDividendETFsPro.com. My goal was to build the clean, comprehensive, 
-            and trustworthy resource I always wished existed for dividend investors like myself.
-        </p>
-        <p>
-            Today, I continue to actively manage my own dividend portfolio while researching and updating the data on this site. 
-            I am committed to providing high-quality, well-organized ETF information that actually helps long-term income investors.
-        </p>
-    </div>
+    <!-- ============ HERO ============ -->
+    <header class="hero">
+        <div class="eyebrow">About Top Dividend ETFs PRO</div>
+        <h1>Built by a dividend investor who got tired of hunting for data across <em>a dozen different websites</em></h1>
+        <p>This isn't a faceless data company. It's one investor's answer to a problem every serious dividend investor knows all too well.</p>
+    </header>
 
-    <div class="mission">
-        <h2>Our Mission</h2>
-        <p>
-            At TopDividendETFsPro.com, our mission is to empower long-term dividend investors with accurate, 
-            well-organized, and actionable ETF data. We believe that with the right information, anyone can build 
-            a strong, reliable dividend portfolio that generates consistent income over time.
-        </p>
-        <p>
-            We focus exclusively on dividend ETFs because we believe they are one of the most effective tools 
-            for building sustainable income in a portfolio. Our aim is to be the most reliable and user-friendly 
-            destination for serious dividend ETF research.
-        </p>
-    </div>
+    <main class="wrap">
 
-    <h2>What Sets Us Apart</h2>
-    <ul>
-        <li>Daily updated dividend ETF rankings and key metrics</li>
-        <li>Focus on the factors that actually matter to income investors: tax treatment, payout consistency, price decay, and total returns</li>
-        <li>Clean, easy-to-use tables and powerful filters designed specifically for dividend investors</li>
-        <li>Independent research with no affiliation to any ETF issuer or financial institution</li>
-        <li>Transparent and honest presentation of data</li>
-    </ul>
+        <!-- ============ FOUNDER STORY ============ -->
+        <section>
+            <div class="card">
+                <span class="founder-tag">The Founder's Story</span>
+                <h2>Hi, I'm Benjie 👋</h2>
+                <p>
+                    I've been a dividend investor for over 10 years. Not a hedge fund manager, not a Wall Street analyst. Just a regular
+                    retail investor building an income portfolio one share at a time, the same way you probably are.
+                </p>
+                <p>
+                    You might already know me from <strong>DevotedDividend</strong>, where I share dividend investing content with
+                    hundreds of thousands of income investors on YouTube and X, or from <strong>TopDividendETFs.com</strong>,
+                    the free daily-updated dividend ETF rankings site I built for our community.
+                </p>
+                <p>
+                    Along the way, I ran into a problem that drove me crazy, and if you've ever seriously researched a dividend ETF,
+                    it's probably driven you crazy too.
+                </p>
+                <div class="signature">
+                    <div class="name">Benjie</div>
+                    <div class="role">Founder, Top Dividend ETFs PRO · DevotedDividend</div>
+                </div>
+            </div>
+        </section>
 
-    <h2>Join Our Community</h2>
-    <p>
-        Whether you are just beginning your dividend journey or you are a seasoned investor, 
-        TopDividendETFsPro.com was built for you. We are constantly improving the platform based on feedback 
-        from real dividend investors.
-    </p>
+        <!-- ============ THE PROBLEM ============ -->
+        <section>
+            <h2>The Problem I Set Out to Solve</h2>
+            <p>
+                Researching a single dividend ETF properly meant a scavenger hunt across the entire internet.
+                One tab for the yield. Another for the expense ratio. The fund provider's site for tax documents.
+                A broker tool for total returns. A spreadsheet to figure out price decay myself. And half the time,
+                two sources would show two different numbers for the same fund.
+            </p>
+            <div class="card" style="margin-top: 24px;">
+                <p style="font-weight: 700; color: var(--emerald-deep);">Sound familiar?</p>
+                <ul class="pain-list">
+                    <li>Yields that were outdated or flat-out wrong on major finance sites</li>
+                    <li>Tax treatment info buried in 19a-1 notices and fund documents nobody reads</li>
+                    <li>Total return data that ignored price decay, making some high-yield funds look far better than they really performed</li>
+                    <li>No single place to compare expense ratios, payout frequency, and inception dates side by side</li>
+                    <li>Hours wasted every week just re-checking data that should take minutes</li>
+                </ul>
+            </div>
+            <p style="margin-top: 24px;">
+                I kept waiting for someone to build the tool I needed. Nobody did. So in true dividend-investor
+                fashion, I stopped waiting and built it myself: <strong>one clean platform with every critical metric
+                for the most popular dividend ETFs: accurate, organized, and updated daily.</strong>
+            </p>
+            <p>
+                That's Top Dividend ETFs PRO. It's the resource I wished existed for 10 years, and now it's the
+                exact tool I use to manage my own dividend portfolio every single day.
+            </p>
+        </section>
 
-    <p style="text-align: center; margin-top: 50px;">
-        Thank you for visiting. Happy investing, and may your dividends keep growing!
-    </p>
+        <!-- ============ MISSION ============ -->
+        <section>
+            <div class="mission">
+                <h2>Our Mission</h2>
+                <p>
+                    Empower long-term dividend investors with accurate, well-organized, and actionable ETF data,
+                    so you can stop hunting for numbers and start making confident decisions.
+                </p>
+                <p>
+                    We focus <strong>exclusively on dividend ETFs</strong> because we believe they're one of the most
+                    effective tools for building sustainable income. Our goal is simple: be the single most reliable
+                    and user-friendly destination for serious dividend ETF research, period.
+                </p>
+            </div>
+        </section>
 
+        <!-- ============ WHAT SETS US APART ============ -->
+        <section>
+            <h2>What Sets Us Apart</h2>
+            <div class="feature-grid">
+                <div class="feature">
+                    <h3>📅 Updated Daily</h3>
+                    <p>Rankings, yields, and key metrics refreshed every day, not quarterly, not "whenever."</p>
+                </div>
+                <div class="feature">
+                    <h3>🎯 Metrics That Actually Matter</h3>
+                    <p>Tax treatment grades, payout consistency, price decay, and true total returns: the numbers income investors actually need.</p>
+                </div>
+                <div class="feature">
+                    <h3>🔍 Built for Filtering</h3>
+                    <p>Clean tables and powerful filters designed specifically for dividend investors, not generic stock screeners.</p>
+                </div>
+                <div class="feature">
+                    <h3>🛡️ Truly Independent</h3>
+                    <p>No affiliation with any ETF issuer or financial institution. The data says what the data says.</p>
+                </div>
+                <div class="feature">
+                    <h3>👤 Run by a Real Investor</h3>
+                    <p>Every metric on this site is one I personally use to manage my own dividend portfolio.</p>
+                </div>
+                <div class="feature">
+                    <h3>🤝 Community-Driven</h3>
+                    <p>Constantly improving based on feedback from real dividend investors in the DevotedDividend community.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CTA ============ -->
+        <div class="cta-band">
+            <h2>Ready to Stop Hunting for Data?</h2>
+            <p>
+                Join serious dividend investors using Top Dividend ETFs PRO: advanced rankings, tax treatment grades,
+                total returns, expense ratios, and daily-updated data. All in one place.
+            </p>
+            <a class="btn-gold" href="https://topdividendetfspro.com/#pricing">Get PRO Access →</a>
+            <p class="cta-sub">Monthly or lifetime plans · Cancel anytime · Instant access</p>
+        </div>
+
+    </main>
+
+    <!-- ============ FOOTER ============ -->
     <footer>
-        <p>&copy; 2026 Top Dividend ETFs Pro. All rights reserved.</p>
+        <div class="footer-inner">
+            <div class="footer-links">
+                <a href="https://topdividendetfspro.com/">Home</a>
+                <a href="https://topdividendetfspro.com/video-demo">Demo</a>
+                <a href="https://topdividendetfspro.com/faq.html">FAQs</a>
+                <a href="https://topdividendetfspro.com/about.html">About Us</a>
+                <a href="https://topdividendetfspro.com/disclaimer.html">Disclaimer</a>
+                <a href="https://topdividendetfspro.com/privacy.html">Privacy Policy</a>
+                <a href="https://topdividendetfspro.com/terms.html">Terms of Service</a>
+                <a href="mailto:Business@TopDividendETFs.com">Contact</a>
+            </div>
+            <p class="footer-disclaimer">
+                <strong>Disclaimer:</strong> The data, rankings, metrics, and content on TopDividendETFsPro.com are provided
+                for informational and educational purposes only and do not constitute financial, investment, or tax advice.
+                Past performance is not indicative of future results. Always consult a qualified financial advisor before
+                making any investment decisions.
+            </p>
+            <p class="copyright">&copy; 2026 Top Dividend ETFs Pro. All rights reserved.</p>
+        </div>
     </footer>
 
 </body>
