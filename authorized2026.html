@@ -171,7 +171,6 @@
             min-height: 48px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-            margin: 0 auto;
             display: inline-block;
             -webkit-tap-highlight-color: transparent;
         }
@@ -179,6 +178,75 @@
         #resetFilters:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+        }
+
+        /* ==================== WATCHLIST TOGGLE BUTTON ==================== */
+        #watchlistToggle {
+            padding: 14px 28px;
+            background: white;
+            color: var(--primary-dark);
+            border: 2px solid var(--primary-light);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 16px;
+            min-height: 48px;
+            font-family: 'Lato', Arial, sans-serif;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(20, 184, 166, 0.15);
+            display: inline-block;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        #watchlistToggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(20, 184, 166, 0.25);
+        }
+
+        #watchlistToggle.active {
+            background: linear-gradient(135deg, #F59E0B, #D97706);
+            color: white;
+            border-color: #D97706;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.35);
+        }
+
+        .action-bar {
+            text-align: center;
+            margin: 20px 0 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        /* ==================== WATCH STAR ==================== */
+        .watch-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            line-height: 1;
+            padding: 6px;
+            color: #CBD5E1;
+            transition: transform 0.15s ease, color 0.15s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .watch-btn:hover {
+            transform: scale(1.25);
+            color: #F59E0B;
+        }
+
+        .watch-btn.watched {
+            color: #F59E0B;
+        }
+
+        .watch-btn.watched:hover {
+            color: #D97706;
+        }
+
+        td.watch-cell {
+            width: 54px;
         }
 
         /* Mobile-only sort control (table headers are hidden on mobile) */
@@ -235,6 +303,10 @@
             border-bottom: 2px solid rgba(20, 184, 166, 0.3);
         }
 
+        th.no-sort {
+            cursor: default;
+        }
+
         th:hover {
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
             transform: translateY(-2px);
@@ -280,11 +352,22 @@
         .tax-d { background: rgba(249, 115, 22, 0.15); color: #F97316; padding: 4px 8px; border-radius: 6px; font-weight: 700; }
         .tax-f { background: rgba(239, 68, 68, 0.15); color: #EF4444; padding: 4px 8px; border-radius: 6px; font-weight: 700; }
 
+        /* Empty watchlist message */
+        .empty-watchlist {
+            padding: 50px 20px;
+            text-align: center;
+            color: var(--text-light);
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.7;
+        }
+        .empty-watchlist .big { font-size: 2.2em; display: block; margin-bottom: 10px; }
+
         /* ==================== TABLET (769px – 1100px) ==================== */
-        /* Table stays a table but scrolls horizontally instead of crushing 12 columns */
+        /* Table stays a table but scrolls horizontally instead of crushing 13 columns */
         @media (min-width: 769px) and (max-width: 1100px) {
             #etfTable {
-                min-width: 1100px;
+                min-width: 1150px;
             }
 
             th {
@@ -332,7 +415,12 @@
                 width: 100%;
             }
 
-            #resetFilters {
+            .action-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            #resetFilters, #watchlistToggle {
                 width: 100%;
             }
 
@@ -365,6 +453,7 @@
                 box-shadow: 0 3px 10px rgba(0,0,0,0.1);
                 border: 1px solid rgba(20, 184, 166, 0.2);
                 background: white;
+                position: relative;
             }
             
             tr:nth-child(even) {
@@ -409,6 +498,7 @@
                 font-size: 1.4em;
                 padding-top: 0;
                 border-bottom: none;
+                padding-right: 48px; /* room for the pinned star */
             }
 
             td.symbol:before {
@@ -428,6 +518,25 @@
 
             td.name:before {
                 display: none;
+            }
+
+            /* Watch star pins to the top-right corner of the card */
+            td.watch-cell {
+                position: absolute;
+                top: 8px;
+                right: 8px;
+                width: auto;
+                padding: 0;
+                border-bottom: none;
+            }
+
+            td.watch-cell:before {
+                display: none;
+            }
+
+            .watch-btn {
+                font-size: 28px;
+                padding: 8px;
             }
 
             /* No-results row shouldn't render as a card */
@@ -604,8 +713,9 @@
             </div>
         </div>
 
-        <!-- Centered Reset Button -->
-        <div style="text-align: center; margin: 20px 0 30px;">
+        <!-- Centered Action Buttons -->
+        <div class="action-bar">
+            <button id="watchlistToggle">⭐ My Watchlist (<span id="watchCount">0</span>)</button>
             <button id="resetFilters">🔄 Reset Filters</button>
         </div>
 
@@ -645,6 +755,7 @@
                         <th onclick="sortTable(9)">Inception Date ↕</th>
                         <th onclick="sortTable(10)">Payout Frequency ↕</th>
                         <th onclick="sortTable(11)">Rating ↕</th>
+                        <th class="no-sort">⭐ Watch</th>
                     </tr>
                 </thead>
                 <tbody id="etfBody"></tbody>
@@ -676,7 +787,58 @@
 
         let allRows = [];
 
+        // ==================== WATCHLIST ====================
+        const WATCHLIST_KEY = 'tdep_watchlist';
+        let watchlist = [];
+        let watchlistOnly = false;
+
+        function loadWatchlist() {
+            try {
+                const stored = localStorage.getItem(WATCHLIST_KEY);
+                watchlist = stored ? JSON.parse(stored) : [];
+                if (!Array.isArray(watchlist)) watchlist = [];
+            } catch (e) {
+                watchlist = [];
+            }
+        }
+
+        function saveWatchlist() {
+            try {
+                localStorage.setItem(WATCHLIST_KEY, JSON.stringify(watchlist));
+            } catch (e) {
+                // localStorage unavailable (private mode etc.) — watchlist still works for this session
+            }
+        }
+
+        function isWatched(symbol) {
+            return watchlist.includes(symbol);
+        }
+
+        function toggleWatch(symbol, btn) {
+            const idx = watchlist.indexOf(symbol);
+            if (idx === -1) {
+                watchlist.push(symbol);
+                btn.classList.add('watched');
+                btn.textContent = '★';
+                btn.setAttribute('aria-label', 'Remove ' + symbol + ' from watchlist');
+            } else {
+                watchlist.splice(idx, 1);
+                btn.classList.remove('watched');
+                btn.textContent = '☆';
+                btn.setAttribute('aria-label', 'Add ' + symbol + ' to watchlist');
+            }
+            saveWatchlist();
+            updateWatchCount();
+            if (watchlistOnly) applyFilters();
+        }
+
+        function updateWatchCount() {
+            document.getElementById('watchCount').textContent = watchlist.length;
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
+            loadWatchlist();
+            updateWatchCount();
             loadData();
         });
 
@@ -686,7 +848,7 @@
                 .then(txt => renderTable(txt))
                 .catch(() => {
                     document.getElementById('etfBody').innerHTML = `
-                        <tr><td colspan="12" style="padding:40px; color:red; text-align:center; font-weight:700;">
+                        <tr><td colspan="13" style="padding:40px; color:red; text-align:center; font-weight:700;">
                             ⚠️ Unable to load ETF data. Please refresh the page.
                         </td></tr>`;
                 });
@@ -727,6 +889,7 @@
                 const tr = document.createElement('tr');
 
                 cols.forEach((value, index) => {
+                    if (index > 11) return; // only the 12 data columns
                     const td = document.createElement('td');
                     const labels = [
                         'Symbol','Name','Fund Provider','Dividend Yield','Tax Treatment Grade',
@@ -752,6 +915,24 @@
                     tr.appendChild(td);
                 });
 
+                // ==================== WATCH CELL (13th column) ====================
+                const symbol = cols[0];
+                const watchTd = document.createElement('td');
+                watchTd.className = 'watch-cell';
+                watchTd.setAttribute('data-label', 'Watchlist');
+                const watchBtn = document.createElement('button');
+                watchBtn.className = 'watch-btn' + (isWatched(symbol) ? ' watched' : '');
+                watchBtn.type = 'button';
+                watchBtn.textContent = isWatched(symbol) ? '★' : '☆';
+                watchBtn.setAttribute('aria-label', (isWatched(symbol) ? 'Remove ' : 'Add ') + symbol + (isWatched(symbol) ? ' from watchlist' : ' to watchlist'));
+                watchBtn.title = 'Add/remove from watchlist';
+                watchBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    toggleWatch(symbol, watchBtn);
+                });
+                watchTd.appendChild(watchBtn);
+                tr.appendChild(watchTd);
+
                 tbody.appendChild(tr);
                 allRows.push(tr);
                 successCount++;
@@ -761,7 +942,7 @@
             console.log(`❌ Skipped ${skipCount} rows`);
 
             if (allRows.length === 0) {
-                tbody.innerHTML = '<tr class="no-results-row"><td colspan="12" class="no-results">No ETF data available.</td></tr>';
+                tbody.innerHTML = '<tr class="no-results-row"><td colspan="13" class="no-results">No ETF data available.</td></tr>';
             } else {
                 sortTable(3, 'desc');
             }
@@ -850,7 +1031,10 @@
 
                 let visible = true;
 
-                if (searchTerm && !symbol.includes(searchTerm) && !name.includes(searchTerm)) visible = false;
+                // Watchlist-only mode
+                if (watchlistOnly && !isWatched(tr.cells[0].textContent.trim())) visible = false;
+
+                if (visible && searchTerm && !symbol.includes(searchTerm) && !name.includes(searchTerm)) visible = false;
 
                 if (visible && yieldFilter) {
                     const [min, max] = yieldFilter === '15+' ? [15, 999] : yieldFilter.split('-').map(Number);
@@ -896,16 +1080,21 @@
             });
 
             const tbody = document.getElementById('etfBody');
-            const existingNoResults = tbody.querySelector('.no-results');
+            const existingNoResults = tbody.querySelector('.no-results, .empty-watchlist');
             if (visibleCount === 0) {
                 if (!existingNoResults) {
                     const noRow = document.createElement('tr');
                     noRow.className = 'no-results-row';
-                    noRow.innerHTML = '<td colspan="12" class="no-results">No ETFs match your filters. Try adjusting your criteria.</td>';
+                    if (watchlistOnly && watchlist.length === 0) {
+                        noRow.innerHTML = '<td colspan="13" class="empty-watchlist"><span class="big">⭐</span>Your watchlist is empty.<br>Tap the ☆ star on any ETF to add it — your list saves automatically on this device.</td>';
+                    } else {
+                        noRow.innerHTML = '<td colspan="13" class="no-results">No ETFs match your filters. Try adjusting your criteria.</td>';
+                    }
                     tbody.appendChild(noRow);
                 }
             } else if (existingNoResults) {
-                existingNoResults.parentNode.removeChild(existingNoResults);
+                const parentRow = existingNoResults.closest('tr');
+                if (parentRow) parentRow.parentNode.removeChild(parentRow);
             }
         }
 
@@ -916,6 +1105,15 @@
         document.getElementById('priceDecayFilter').addEventListener('change', applyFilters);
         document.getElementById('ageFilter').addEventListener('change', applyFilters);
         document.getElementById('resetFilters').addEventListener('click', () => location.reload());
+
+        // Watchlist toggle → filter to starred ETFs only
+        document.getElementById('watchlistToggle').addEventListener('click', () => {
+            watchlistOnly = !watchlistOnly;
+            const btn = document.getElementById('watchlistToggle');
+            btn.classList.toggle('active', watchlistOnly);
+            btn.innerHTML = (watchlistOnly ? '⭐ Showing Watchlist (' : '⭐ My Watchlist (') + '<span id="watchCount">' + watchlist.length + '</span>)';
+            applyFilters();
+        });
 
         // Mobile sort dropdown → drives the same sortTable() logic
         document.getElementById('mobileSortSelect').addEventListener('change', (e) => {
