@@ -376,6 +376,11 @@
       "date": "2026-07-28",
       "yield": 48,
       "totalReturn": 31
+    },
+    {
+      "date": "2026-07-29",
+      "yield": 40,
+      "totalReturn": 31
     }
   ],
   "PYPY": [
@@ -512,6 +517,11 @@
       "date": "2026-07-28",
       "yield": 40,
       "totalReturn": 158
+    },
+    {
+      "date": "2026-07-29",
+      "yield": 41,
+      "totalReturn": 158
     }
   ],
   "YMAG": [
@@ -528,6 +538,11 @@
     {
       "date": "2026-07-28",
       "yield": 41,
+      "totalReturn": 55
+    },
+    {
+      "date": "2026-07-29",
+      "yield": 43,
       "totalReturn": 55
     }
   ],
@@ -1694,6 +1709,11 @@
       "date": "2026-07-28",
       "yield": 45,
       "totalReturn": 58
+    },
+    {
+      "date": "2026-07-29",
+      "yield": 51,
+      "totalReturn": 58
     }
   ],
   "TSII": [
@@ -1711,6 +1731,11 @@
       "date": "2026-07-28",
       "yield": 63,
       "totalReturn": -9
+    },
+    {
+      "date": "2026-07-29",
+      "yield": 58,
+      "totalReturn": -9
     }
   ],
   "WMTI": [
@@ -1727,6 +1752,11 @@
     {
       "date": "2026-07-28",
       "yield": 25,
+      "totalReturn": 5
+    },
+    {
+      "date": "2026-07-29",
+      "yield": 23,
       "totalReturn": 5
     }
   ],
