@@ -1356,6 +1356,11 @@
       "date": "2026-07-28",
       "yield": 42,
       "totalReturn": 51
+    },
+    {
+      "date": "2026-08-01",
+      "yield": 25,
+      "totalReturn": 51
     }
   ],
   "XDTE": [
@@ -1377,6 +1382,11 @@
     {
       "date": "2026-07-28",
       "yield": 18,
+      "totalReturn": 41
+    },
+    {
+      "date": "2026-08-01",
+      "yield": 12,
       "totalReturn": 41
     }
   ],
@@ -1422,6 +1432,11 @@
       "date": "2026-07-31",
       "yield": 77,
       "totalReturn": -3
+    },
+    {
+      "date": "2026-08-01",
+      "yield": 41,
+      "totalReturn": -3
     }
   ],
   "YETH": [
@@ -1439,6 +1454,11 @@
       "date": "2026-07-28",
       "yield": 37,
       "totalReturn": -39
+    },
+    {
+      "date": "2026-08-01",
+      "yield": 40,
+      "totalReturn": -39
     }
   ],
   "COIW": [
@@ -1455,6 +1475,11 @@
     {
       "date": "2026-07-31",
       "yield": 72,
+      "totalReturn": -50
+    },
+    {
+      "date": "2026-08-01",
+      "yield": 74,
       "totalReturn": -50
     }
   ],
@@ -1482,6 +1507,11 @@
     {
       "date": "2026-07-31",
       "yield": 36,
+      "totalReturn": 40
+    },
+    {
+      "date": "2026-08-01",
+      "yield": 42,
       "totalReturn": 40
     }
   ],
@@ -1517,6 +1547,11 @@
       "date": "2026-07-31",
       "yield": 26,
       "totalReturn": 16
+    },
+    {
+      "date": "2026-08-01",
+      "yield": 32,
+      "totalReturn": 16
     }
   ],
   "TSLW": [
@@ -1544,6 +1579,11 @@
       "date": "2026-07-31",
       "yield": 36,
       "totalReturn": -25
+    },
+    {
+      "date": "2026-08-01",
+      "yield": 16,
+      "totalReturn": -25
     }
   ],
   "GOOW": [
@@ -1570,6 +1610,11 @@
     {
       "date": "2026-07-31",
       "yield": 31,
+      "totalReturn": 84
+    },
+    {
+      "date": "2026-08-01",
+      "yield": 12,
       "totalReturn": 84
     }
   ],
