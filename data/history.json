@@ -24,6 +24,11 @@
       "date": "2026-07-31",
       "yield": 50,
       "totalReturn": -25
+    },
+    {
+      "date": "2026-08-07",
+      "yield": 45,
+      "totalReturn": -25
     }
   ],
   "YBTY": [
@@ -51,6 +56,11 @@
       "date": "2026-08-04",
       "yield": 61,
       "totalReturn": -31
+    },
+    {
+      "date": "2026-08-07",
+      "yield": 53,
+      "totalReturn": -31
     }
   ],
   "AMYY": [
@@ -73,6 +83,11 @@
       "date": "2026-07-31",
       "yield": 80,
       "totalReturn": 30
+    },
+    {
+      "date": "2026-08-07",
+      "yield": 76,
+      "totalReturn": 30
     }
   ],
   "XBTY": [
@@ -89,6 +104,11 @@
     {
       "date": "2026-08-04",
       "yield": 40,
+      "totalReturn": -39
+    },
+    {
+      "date": "2026-08-07",
+      "yield": 29,
       "totalReturn": -39
     }
   ],
@@ -116,6 +136,11 @@
     {
       "date": "2026-08-04",
       "yield": 74,
+      "totalReturn": -59
+    },
+    {
+      "date": "2026-08-07",
+      "yield": 73,
       "totalReturn": -59
     }
   ],
@@ -149,6 +174,11 @@
       "date": "2026-08-04",
       "yield": 73,
       "totalReturn": -48
+    },
+    {
+      "date": "2026-08-07",
+      "yield": 74,
+      "totalReturn": -48
     }
   ],
   "NVYY": [
@@ -180,6 +210,11 @@
     {
       "date": "2026-08-04",
       "yield": 46,
+      "totalReturn": 34
+    },
+    {
+      "date": "2026-08-07",
+      "yield": 45,
       "totalReturn": 34
     }
   ],
@@ -225,6 +260,11 @@
       "date": "2026-07-31",
       "yield": 75,
       "totalReturn": -33
+    },
+    {
+      "date": "2026-08-07",
+      "yield": 74,
+      "totalReturn": -33
     }
   ],
   "YSPY": [
@@ -258,6 +298,11 @@
     {
       "date": "2026-08-04",
       "yield": 50,
+      "totalReturn": -35
+    },
+    {
+      "date": "2026-08-07",
+      "yield": 49,
       "totalReturn": -35
     }
   ],
@@ -3043,6 +3088,11 @@
       "date": "2026-08-04",
       "yield": 10.2,
       "totalReturn": 200
+    },
+    {
+      "date": "2026-08-07",
+      "yield": 10.5,
+      "totalReturn": 200
     }
   ],
   "KHPI": [
@@ -3267,6 +3317,20 @@
       "date": "2026-08-04",
       "yield": 14.5,
       "totalReturn": 19
+    }
+  ],
+  "OVS": [
+    {
+      "date": "2026-08-07",
+      "yield": 10.5,
+      "totalReturn": 125
+    }
+  ],
+  "OVF": [
+    {
+      "date": "2026-08-07",
+      "yield": 10.4,
+      "totalReturn": 86
     }
   ]
 }
