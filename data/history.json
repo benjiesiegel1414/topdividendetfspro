@@ -1219,6 +1219,11 @@
       "date": "2026-08-08",
       "yield": 11.94,
       "totalReturn": 77
+    },
+    {
+      "date": "2026-08-10",
+      "yield": 12.04,
+      "totalReturn": 77
     }
   ],
   "QQQI": [
@@ -1263,12 +1268,22 @@
       "date": "2026-08-08",
       "yield": 28,
       "totalReturn": -3
+    },
+    {
+      "date": "2026-08-10",
+      "yield": 26.7,
+      "totalReturn": -3
     }
   ],
   "CSHI": [
     {
       "date": "2026-07-22",
       "yield": 4.9,
+      "totalReturn": 23
+    },
+    {
+      "date": "2026-08-10",
+      "yield": 4.7,
       "totalReturn": 23
     }
   ],
@@ -1297,6 +1312,11 @@
       "date": "2026-08-08",
       "yield": 9,
       "totalReturn": 22
+    },
+    {
+      "date": "2026-08-10",
+      "yield": 9.2,
+      "totalReturn": 22
     }
   ],
   "IWMI": [
@@ -1324,6 +1344,11 @@
       "date": "2026-08-08",
       "yield": 14.1,
       "totalReturn": 45
+    },
+    {
+      "date": "2026-08-10",
+      "yield": 14.4,
+      "totalReturn": 45
     }
   ],
   "IYRI": [
@@ -1346,6 +1371,11 @@
       "date": "2026-08-04",
       "yield": 10.8,
       "totalReturn": 18
+    },
+    {
+      "date": "2026-08-10",
+      "yield": 10.9,
+      "totalReturn": 18
     }
   ],
   "IAUI": [
@@ -1367,6 +1397,11 @@
     {
       "date": "2026-08-08",
       "yield": 12.5,
+      "totalReturn": 18
+    },
+    {
+      "date": "2026-08-10",
+      "yield": 11.8,
       "totalReturn": 18
     }
   ],
@@ -1397,6 +1432,11 @@
       "date": "2026-08-04",
       "yield": 7.6,
       "totalReturn": 29
+    },
+    {
+      "date": "2026-08-10",
+      "yield": 7.9,
+      "totalReturn": 29
     }
   ],
   "NIHI": [
@@ -1413,6 +1453,11 @@
     {
       "date": "2026-08-08",
       "yield": 9.7,
+      "totalReturn": 17
+    },
+    {
+      "date": "2026-08-10",
+      "yield": 9.9,
       "totalReturn": 17
     }
   ],
@@ -1446,6 +1491,11 @@
       "date": "2026-08-08",
       "yield": 15,
       "totalReturn": 11
+    },
+    {
+      "date": "2026-08-10",
+      "yield": 17,
+      "totalReturn": 11
     }
   ],
   "XQQI": [
@@ -1473,6 +1523,11 @@
       "date": "2026-08-08",
       "yield": 20,
       "totalReturn": 13
+    },
+    {
+      "date": "2026-08-10",
+      "yield": 21,
+      "totalReturn": 13
     }
   ],
   "XBCI": [
@@ -1489,6 +1544,11 @@
     {
       "date": "2026-07-28",
       "yield": 37,
+      "totalReturn": -19
+    },
+    {
+      "date": "2026-08-10",
+      "yield": 41,
       "totalReturn": -19
     }
   ],
@@ -3903,6 +3963,18 @@
       "date": "2026-08-08",
       "yield": 14.5,
       "totalReturn": 18
+    },
+    {
+      "date": "2026-08-10",
+      "yield": 14.8,
+      "totalReturn": 18
+    }
+  ],
+  "AHD": [
+    {
+      "date": "2026-08-10",
+      "yield": 27,
+      "totalReturn": 12
     }
   ]
 }
