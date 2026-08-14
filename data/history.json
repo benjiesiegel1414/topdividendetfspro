@@ -103,6 +103,11 @@
       "date": "2026-08-12",
       "yield": 76,
       "totalReturn": 30
+    },
+    {
+      "date": "2026-08-14",
+      "yield": 80,
+      "totalReturn": 30
     }
   ],
   "XBTY": [
@@ -129,6 +134,11 @@
     {
       "date": "2026-08-08",
       "yield": 29,
+      "totalReturn": -38
+    },
+    {
+      "date": "2026-08-14",
+      "yield": 31,
       "totalReturn": -38
     }
   ],
@@ -172,6 +182,11 @@
       "date": "2026-08-12",
       "yield": 73,
       "totalReturn": -59
+    },
+    {
+      "date": "2026-08-14",
+      "yield": 70,
+      "totalReturn": -59
     }
   ],
   "HOYY": [
@@ -213,6 +228,11 @@
     {
       "date": "2026-08-12",
       "yield": 74,
+      "totalReturn": -47
+    },
+    {
+      "date": "2026-08-14",
+      "yield": 76,
       "totalReturn": -47
     }
   ],
@@ -256,6 +276,11 @@
       "date": "2026-08-12",
       "yield": 45,
       "totalReturn": 35
+    },
+    {
+      "date": "2026-08-14",
+      "yield": 38,
+      "totalReturn": 35
     }
   ],
   "TQQY": [
@@ -277,6 +302,11 @@
     {
       "date": "2026-08-12",
       "yield": 35,
+      "totalReturn": -1
+    },
+    {
+      "date": "2026-08-14",
+      "yield": 30,
       "totalReturn": -1
     }
   ],
@@ -363,6 +393,11 @@
     {
       "date": "2026-08-12",
       "yield": 49,
+      "totalReturn": -34
+    },
+    {
+      "date": "2026-08-14",
+      "yield": 44,
       "totalReturn": -34
     }
   ],
