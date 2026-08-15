@@ -29,6 +29,11 @@
       "date": "2026-08-07",
       "yield": 45,
       "totalReturn": -25
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 45,
+      "totalReturn": -24
     }
   ],
   "YBTY": [
@@ -66,6 +71,11 @@
       "date": "2026-08-08",
       "yield": 53,
       "totalReturn": -30
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 53,
+      "totalReturn": -29
     }
   ],
   "AMYY": [
@@ -108,6 +118,11 @@
       "date": "2026-08-14",
       "yield": 80,
       "totalReturn": 30
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 80,
+      "totalReturn": 32
     }
   ],
   "XBTY": [
@@ -281,6 +296,11 @@
       "date": "2026-08-14",
       "yield": 38,
       "totalReturn": 35
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 38,
+      "totalReturn": 36
     }
   ],
   "TQQY": [
@@ -308,6 +328,11 @@
       "date": "2026-08-14",
       "yield": 30,
       "totalReturn": -1
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 30,
+      "totalReturn": 0
     }
   ],
   "SMYY": [
@@ -345,6 +370,11 @@
       "date": "2026-08-12",
       "yield": 74,
       "totalReturn": -32
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 74,
+      "totalReturn": -31
     }
   ],
   "YSPY": [
@@ -451,6 +481,11 @@
       "date": "2026-08-13",
       "yield": 65,
       "totalReturn": 16
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 65,
+      "totalReturn": 17
     }
   ],
   "ULTY": [
@@ -488,6 +523,11 @@
       "date": "2026-08-12",
       "yield": 61,
       "totalReturn": 7
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 61,
+      "totalReturn": 10
     }
   ],
   "MSTY": [
@@ -535,6 +575,11 @@
       "date": "2026-08-13",
       "yield": 76,
       "totalReturn": 17
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 76,
+      "totalReturn": 14
     }
   ],
   "SMCY": [
@@ -587,6 +632,11 @@
       "date": "2026-08-13",
       "yield": 75,
       "totalReturn": -45
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 75,
+      "totalReturn": -34
     }
   ],
   "TSLY": [
@@ -634,6 +684,11 @@
       "date": "2026-08-13",
       "yield": 43,
       "totalReturn": 27
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 43,
+      "totalReturn": 30
     }
   ],
   "YBIT": [
@@ -671,6 +726,11 @@
       "date": "2026-08-13",
       "yield": 39,
       "totalReturn": -28
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 39,
+      "totalReturn": -29
     }
   ],
   "PLTY": [
@@ -723,6 +783,11 @@
       "date": "2026-08-13",
       "yield": 100,
       "totalReturn": 183
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 100,
+      "totalReturn": 180
     }
   ],
   "NVDY": [
@@ -770,6 +835,11 @@
       "date": "2026-08-12",
       "yield": 40,
       "totalReturn": 345
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 40,
+      "totalReturn": 361
     }
   ],
   "AMDY": [
@@ -822,6 +892,11 @@
       "date": "2026-08-13",
       "yield": 65,
       "totalReturn": 196
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 65,
+      "totalReturn": 218
     }
   ],
   "SNOY": [
@@ -874,6 +949,11 @@
       "date": "2026-08-13",
       "yield": 91,
       "totalReturn": 129
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 91,
+      "totalReturn": 128
     }
   ],
   "YMAX": [
@@ -963,6 +1043,11 @@
       "date": "2026-08-13",
       "yield": 91,
       "totalReturn": 8
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 91,
+      "totalReturn": 11
     }
   ],
   "AMZY": [
@@ -1010,6 +1095,11 @@
       "date": "2026-08-13",
       "yield": 61,
       "totalReturn": 96
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 61,
+      "totalReturn": 91
     }
   ],
   "GOOY": [
@@ -1104,6 +1194,11 @@
       "date": "2026-08-13",
       "yield": 60,
       "totalReturn": 28
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 60,
+      "totalReturn": 24
     }
   ],
   "OARK": [
@@ -1198,6 +1293,11 @@
       "date": "2026-08-13",
       "yield": 62,
       "totalReturn": 41
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 62,
+      "totalReturn": 43
     }
   ],
   "LFGY": [
@@ -1230,6 +1330,11 @@
       "date": "2026-08-12",
       "yield": 46,
       "totalReturn": -3
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 46,
+      "totalReturn": -2
     }
   ],
   "CHPY": [
@@ -1272,6 +1377,11 @@
       "date": "2026-08-12",
       "yield": 41,
       "totalReturn": 165
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 41,
+      "totalReturn": 173
     }
   ],
   "YMAG": [
@@ -1314,6 +1424,11 @@
       "date": "2026-08-12",
       "yield": 50,
       "totalReturn": 65
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 50,
+      "totalReturn": 66
     }
   ],
   "FBY": [
@@ -1361,6 +1476,11 @@
       "date": "2026-08-13",
       "yield": 39,
       "totalReturn": 53
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 39,
+      "totalReturn": 51
     }
   ],
   "SOXY": [
@@ -1393,6 +1513,11 @@
       "date": "2026-08-12",
       "yield": 12,
       "totalReturn": 125
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 12,
+      "totalReturn": 130
     }
   ],
   "IWMY": [
@@ -1420,6 +1545,11 @@
       "date": "2026-08-12",
       "yield": 30,
       "totalReturn": 49
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 30,
+      "totalReturn": 50
     }
   ],
   "QQQY": [
@@ -1452,6 +1582,11 @@
       "date": "2026-08-08",
       "yield": 30,
       "totalReturn": 54
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 30,
+      "totalReturn": 57
     }
   ],
   "SPYI": [
@@ -1474,6 +1609,11 @@
       "date": "2026-08-10",
       "yield": 12.04,
       "totalReturn": 77
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 12.04,
+      "totalReturn": 78
     }
   ],
   "QQQI": [
@@ -1496,6 +1636,11 @@
       "date": "2026-08-08",
       "yield": 14,
       "totalReturn": 58
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 14,
+      "totalReturn": 60
     }
   ],
   "BTCI": [
@@ -1572,6 +1717,11 @@
       "date": "2026-08-10",
       "yield": 9.2,
       "totalReturn": 22
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 9.2,
+      "totalReturn": 24
     }
   ],
   "IWMI": [
@@ -1604,6 +1754,11 @@
       "date": "2026-08-10",
       "yield": 14.4,
       "totalReturn": 45
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 14.4,
+      "totalReturn": 47
     }
   ],
   "IYRI": [
@@ -1636,6 +1791,11 @@
       "date": "2026-08-12",
       "yield": 10.9,
       "totalReturn": 16
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 10.9,
+      "totalReturn": 18
     }
   ],
   "IAUI": [
@@ -1668,6 +1828,11 @@
       "date": "2026-08-12",
       "yield": 11.8,
       "totalReturn": 19
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 11.8,
+      "totalReturn": 20
     }
   ],
   "BNDI": [
@@ -1685,6 +1850,11 @@
       "date": "2026-08-12",
       "yield": 5.7,
       "totalReturn": 15
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 5.7,
+      "totalReturn": 16
     }
   ],
   "SPYH": [
@@ -1734,6 +1904,11 @@
       "date": "2026-08-10",
       "yield": 9.9,
       "totalReturn": 17
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 9.9,
+      "totalReturn": 18
     }
   ],
   "XSPI": [
@@ -1776,6 +1951,11 @@
       "date": "2026-08-12",
       "yield": 17,
       "totalReturn": 12
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 17,
+      "totalReturn": 13
     }
   ],
   "XQQI": [
@@ -1813,6 +1993,11 @@
       "date": "2026-08-12",
       "yield": 21,
       "totalReturn": 12
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 21,
+      "totalReturn": 15
     }
   ],
   "XBCI": [
@@ -1840,6 +2025,11 @@
       "date": "2026-08-12",
       "yield": 41,
       "totalReturn": -21
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 41,
+      "totalReturn": -22
     }
   ],
   "DIVO": [
@@ -1872,6 +2062,11 @@
       "date": "2026-08-12",
       "yield": 4.8,
       "totalReturn": 224
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 4.8,
+      "totalReturn": 226
     }
   ],
   "YYY": [
@@ -1946,6 +2141,11 @@
       "date": "2026-08-12",
       "yield": 6,
       "totalReturn": 116
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 6,
+      "totalReturn": 117
     }
   ],
   "QDVO": [
@@ -1978,6 +2178,11 @@
       "date": "2026-08-12",
       "yield": 10,
       "totalReturn": 47
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 10,
+      "totalReturn": 48
     }
   ],
   "GPIX": [
@@ -2010,6 +2215,11 @@
       "date": "2026-08-08",
       "yield": 7.9,
       "totalReturn": 81
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 7.9,
+      "totalReturn": 82
     }
   ],
   "SCHD": [
@@ -2042,6 +2252,11 @@
       "date": "2026-08-12",
       "yield": 3.4,
       "totalReturn": 556
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 3.4,
+      "totalReturn": 561
     }
   ],
   "DGRO": [
@@ -2069,6 +2284,11 @@
       "date": "2026-08-12",
       "yield": 2,
       "totalReturn": 327
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 2,
+      "totalReturn": 328
     }
   ],
   "DGRW": [
@@ -2101,6 +2321,11 @@
       "date": "2026-08-08",
       "yield": 1.5,
       "totalReturn": 420
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 1.5,
+      "totalReturn": 421
     }
   ],
   "VIG": [
@@ -2123,6 +2348,11 @@
       "date": "2026-08-12",
       "yield": 1.6,
       "totalReturn": 634
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 1.6,
+      "totalReturn": 633
     }
   ],
   "VYM": [
@@ -2160,6 +2390,11 @@
       "date": "2026-08-12",
       "yield": 2.5,
       "totalReturn": 501
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 2.5,
+      "totalReturn": 502
     }
   ],
   "SPHD": [
@@ -2192,6 +2427,11 @@
       "date": "2026-08-12",
       "yield": 3.6,
       "totalReturn": 257
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 3.6,
+      "totalReturn": 262
     }
   ],
   "FDVV": [
@@ -2224,6 +2464,11 @@
       "date": "2026-08-12",
       "yield": 2.8,
       "totalReturn": 259
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 2.8,
+      "totalReturn": 262
     }
   ],
   "BATT": [
@@ -2246,6 +2491,11 @@
       "date": "2026-08-08",
       "yield": 2.2,
       "totalReturn": -9
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 2.2,
+      "totalReturn": -8
     }
   ],
   "COWS": [
@@ -2283,6 +2533,11 @@
       "date": "2026-08-12",
       "yield": 3.1,
       "totalReturn": 71
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 3.1,
+      "totalReturn": 70
     }
   ],
   "BITY": [
@@ -2332,6 +2587,11 @@
       "date": "2026-08-12",
       "yield": 37,
       "totalReturn": -31
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 37,
+      "totalReturn": -32
     }
   ],
   "HCOW": [
@@ -2406,6 +2666,11 @@
       "date": "2026-08-12",
       "yield": 24,
       "totalReturn": 58
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 36,
+      "totalReturn": 61
     }
   ],
   "XDTE": [
@@ -2448,6 +2713,11 @@
       "date": "2026-08-12",
       "yield": 15,
       "totalReturn": 46
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 27,
+      "totalReturn": 47
     }
   ],
   "YBTC": [
@@ -2480,6 +2750,11 @@
       "date": "2026-08-12",
       "yield": 30,
       "totalReturn": 17
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 31,
+      "totalReturn": 16
     }
   ],
   "PLTW": [
@@ -2527,6 +2802,11 @@
       "date": "2026-08-12",
       "yield": 45,
       "totalReturn": 48
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 71,
+      "totalReturn": 46
     }
   ],
   "YETH": [
@@ -2559,6 +2839,11 @@
       "date": "2026-08-12",
       "yield": 40,
       "totalReturn": -40
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 51,
+      "totalReturn": -39
     }
   ],
   "COIW": [
@@ -2595,6 +2880,11 @@
     {
       "date": "2026-08-12",
       "yield": 52,
+      "totalReturn": -56
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 83,
       "totalReturn": -56
     }
   ],
@@ -2638,6 +2928,11 @@
       "date": "2026-08-08",
       "yield": 25,
       "totalReturn": 45
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 39,
+      "totalReturn": 47
     }
   ],
   "WEEK": [
@@ -2645,6 +2940,11 @@
       "date": "2026-07-22",
       "yield": 3.4,
       "totalReturn": 5
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 3.4,
+      "totalReturn": 6
     }
   ],
   "MAGY": [
@@ -2687,6 +2987,11 @@
       "date": "2026-08-08",
       "yield": 29,
       "totalReturn": 21
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 25,
+      "totalReturn": 20
     }
   ],
   "TSLW": [
@@ -2734,6 +3039,11 @@
       "date": "2026-08-12",
       "yield": 44,
       "totalReturn": -19
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 57,
+      "totalReturn": -16
     }
   ],
   "GOOW": [
@@ -2781,6 +3091,11 @@
       "date": "2026-08-12",
       "yield": 45,
       "totalReturn": 93
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 33,
+      "totalReturn": 92
     }
   ],
   "ACKY": [
@@ -2813,6 +3128,11 @@
       "date": "2026-08-12",
       "yield": 15,
       "totalReturn": 2
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 15,
+      "totalReturn": 4
     }
   ],
   "OMAH": [
@@ -2850,6 +3170,11 @@
       "date": "2026-08-12",
       "yield": 15,
       "totalReturn": 15
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 15,
+      "totalReturn": 16
     }
   ],
   "DRKY": [
@@ -2882,6 +3207,11 @@
       "date": "2026-08-12",
       "yield": 15,
       "totalReturn": 22
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 15,
+      "totalReturn": 21
     }
   ],
   "QUSA": [
@@ -2953,6 +3283,11 @@
       "date": "2026-08-08",
       "yield": 11,
       "totalReturn": 101
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 11,
+      "totalReturn": 102
     }
   ],
   "HDV": [
@@ -2985,6 +3320,11 @@
       "date": "2026-08-12",
       "yield": 3.3,
       "totalReturn": 390
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 3.3,
+      "totalReturn": 395
     }
   ],
   "DVY": [
@@ -3022,6 +3362,11 @@
       "date": "2026-08-12",
       "yield": 3.3,
       "totalReturn": 622
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 3.3,
+      "totalReturn": 635
     }
   ],
   "SDY": [
@@ -3049,6 +3394,11 @@
       "date": "2026-08-08",
       "yield": 2.6,
       "totalReturn": 507
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 2.6,
+      "totalReturn": 510
     }
   ],
   "BALI": [
@@ -3071,6 +3421,11 @@
       "date": "2026-08-08",
       "yield": 7,
       "totalReturn": 77
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 7,
+      "totalReturn": 79
     }
   ],
   "NOBL": [
@@ -3135,6 +3490,11 @@
       "date": "2026-08-12",
       "yield": 4.8,
       "totalReturn": 154
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 4.8,
+      "totalReturn": 156
     }
   ],
   "VYMI": [
@@ -3226,6 +3586,11 @@
       "date": "2026-08-12",
       "yield": 0.4,
       "totalReturn": 1181
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 0.4,
+      "totalReturn": 1185
     }
   ],
   "RYLD": [
@@ -3248,6 +3613,11 @@
       "date": "2026-08-08",
       "yield": 12.2,
       "totalReturn": 54
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 12.2,
+      "totalReturn": 55
     }
   ],
   "QYLD": [
@@ -3280,6 +3650,11 @@
       "date": "2026-08-08",
       "yield": 13.4,
       "totalReturn": 187
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 13.4,
+      "totalReturn": 188
     }
   ],
   "JEPI": [
@@ -3312,6 +3687,11 @@
       "date": "2026-08-12",
       "yield": 8,
       "totalReturn": 99
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 8,
+      "totalReturn": 97
     }
   ],
   "JEPQ": [
@@ -3344,6 +3724,11 @@
       "date": "2026-08-08",
       "yield": 12.8,
       "totalReturn": 87
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 12.8,
+      "totalReturn": 90
     }
   ],
   "MAXI": [
@@ -3376,6 +3761,11 @@
       "date": "2026-08-12",
       "yield": 9,
       "totalReturn": 69
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 9,
+      "totalReturn": 83
     }
   ],
   "BLOX": [
@@ -3440,6 +3830,11 @@
       "date": "2026-08-08",
       "yield": 24,
       "totalReturn": 30
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 24,
+      "totalReturn": 35
     }
   ],
   "SVOL": [
@@ -3467,6 +3862,11 @@
       "date": "2026-08-12",
       "yield": 20,
       "totalReturn": 51
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 20,
+      "totalReturn": 54
     }
   ],
   "BITO": [
@@ -3563,6 +3963,11 @@
       "date": "2026-08-12",
       "yield": 25.2,
       "totalReturn": 61
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 25.2,
+      "totalReturn": 64
     }
   ],
   "AIPI": [
@@ -3600,6 +4005,11 @@
       "date": "2026-08-12",
       "yield": 34.8,
       "totalReturn": 52
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 34.8,
+      "totalReturn": 53
     }
   ],
   "CEPI": [
@@ -3632,6 +4042,11 @@
       "date": "2026-08-12",
       "yield": 42.6,
       "totalReturn": 17
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 42.6,
+      "totalReturn": 21
     }
   ],
   "NVII": [
@@ -3679,6 +4094,11 @@
       "date": "2026-08-12",
       "yield": 47,
       "totalReturn": 70
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 47,
+      "totalReturn": 78
     }
   ],
   "TSII": [
@@ -3726,6 +4146,11 @@
       "date": "2026-08-12",
       "yield": 47,
       "totalReturn": -1
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 47,
+      "totalReturn": 3
     }
   ],
   "WMTI": [
@@ -3763,6 +4188,11 @@
       "date": "2026-08-12",
       "yield": 27,
       "totalReturn": 7
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 27,
+      "totalReturn": 9
     }
   ],
   "ULTI": [
@@ -3795,6 +4225,11 @@
       "date": "2026-08-12",
       "yield": 72,
       "totalReturn": -50
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 72,
+      "totalReturn": -47
     }
   ],
   "GPIQ": [
@@ -3827,6 +4262,11 @@
       "date": "2026-08-08",
       "yield": 10,
       "totalReturn": 97
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 10,
+      "totalReturn": 99
     }
   ],
   "TSPY": [
@@ -3891,6 +4331,11 @@
       "date": "2026-08-08",
       "yield": 17.4,
       "totalReturn": 26
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 17.4,
+      "totalReturn": 28
     }
   ],
   "SPYT": [
@@ -3913,6 +4358,11 @@
       "date": "2026-08-08",
       "yield": 21,
       "totalReturn": 43
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 21,
+      "totalReturn": 44
     }
   ],
   "ISPY": [
@@ -3940,6 +4390,11 @@
       "date": "2026-08-08",
       "yield": 10,
       "totalReturn": 55
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 10,
+      "totalReturn": 56
     }
   ],
   "KGLD": [
@@ -4009,6 +4464,11 @@
       "date": "2026-08-12",
       "yield": 20,
       "totalReturn": -3
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 20,
+      "totalReturn": 11
     }
   ],
   "TDAX": [
@@ -4041,6 +4501,11 @@
       "date": "2026-08-12",
       "yield": 24,
       "totalReturn": 14
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 24,
+      "totalReturn": 17
     }
   ],
   "FTHI": [
@@ -4068,6 +4533,11 @@
       "date": "2026-08-12",
       "yield": 9,
       "totalReturn": 157
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 9,
+      "totalReturn": 161
     }
   ],
   "BUYW": [
@@ -4127,6 +4597,11 @@
       "date": "2026-08-12",
       "yield": 21,
       "totalReturn": 35
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 21,
+      "totalReturn": 37
     }
   ],
   "XLKI": [
@@ -4159,6 +4634,11 @@
       "date": "2026-08-12",
       "yield": 19,
       "totalReturn": 29
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 19,
+      "totalReturn": 31
     }
   ],
   "KNG": [
@@ -4233,6 +4713,11 @@
       "date": "2026-08-08",
       "yield": 10.5,
       "totalReturn": 206
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 10.5,
+      "totalReturn": 209
     }
   ],
   "KHPI": [
@@ -4260,6 +4745,11 @@
       "date": "2026-08-08",
       "yield": 9,
       "totalReturn": 25
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 9,
+      "totalReturn": 26
     }
   ],
   "VOO": [
@@ -4292,6 +4782,11 @@
       "date": "2026-08-08",
       "yield": 1.1,
       "totalReturn": 834
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 1.1,
+      "totalReturn": 840
     }
   ],
   "QDPL": [
@@ -4319,6 +4814,11 @@
       "date": "2026-08-08",
       "yield": 5.18,
       "totalReturn": 81
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 5.18,
+      "totalReturn": 82
     }
   ],
   "QSIX": [
@@ -4346,6 +4846,11 @@
       "date": "2026-08-08",
       "yield": 4.65,
       "totalReturn": 44
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 4.65,
+      "totalReturn": 46
     }
   ],
   "TYLG": [
@@ -4378,6 +4883,11 @@
       "date": "2026-08-08",
       "yield": 11,
       "totalReturn": 134
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 11,
+      "totalReturn": 137
     }
   ],
   "EGGY": [
@@ -4415,6 +4925,11 @@
       "date": "2026-08-12",
       "yield": 33,
       "totalReturn": 33
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 33,
+      "totalReturn": 47
     }
   ],
   "ODTE": [
@@ -4452,6 +4967,11 @@
       "date": "2026-08-12",
       "yield": 14,
       "totalReturn": 9
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 14,
+      "totalReturn": 10
     }
   ],
   "SPCI": [
@@ -4479,6 +4999,11 @@
       "date": "2026-08-13",
       "yield": 28,
       "totalReturn": 14
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 28,
+      "totalReturn": 17
     }
   ],
   "VAIE": [
@@ -4496,6 +5021,11 @@
       "date": "2026-08-08",
       "yield": 15,
       "totalReturn": 4
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 15,
+      "totalReturn": 5
     }
   ],
   "PDI": [
@@ -4534,6 +5064,11 @@
       "date": "2026-08-12",
       "yield": 10.5,
       "totalReturn": 127
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 10.5,
+      "totalReturn": 130
     }
   ],
   "OVF": [
@@ -4546,6 +5081,11 @@
       "date": "2026-08-12",
       "yield": 10.4,
       "totalReturn": 87
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 10.4,
+      "totalReturn": 88
     }
   ],
   "MLPI": [
@@ -4563,6 +5103,11 @@
       "date": "2026-08-12",
       "yield": 14.8,
       "totalReturn": 20
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 14.8,
+      "totalReturn": 22
     }
   ],
   "AHD": [
@@ -4570,6 +5115,11 @@
       "date": "2026-08-10",
       "yield": 27,
       "totalReturn": 12
+    },
+    {
+      "date": "2026-08-15",
+      "yield": 27,
+      "totalReturn": 14
     }
   ]
 }
