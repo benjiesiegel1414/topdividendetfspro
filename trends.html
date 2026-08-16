@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Yield & Return Trends | Top Dividend ETFs PRO</title>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --primary:#0F766E;--primary-dark:#134E4A;--primary-light:#14B8A6;--accent:#06B6D4;
+  --text-dark:#0F172A;--text-light:#64748B;--faint:#94A3B8;
+  --up:#059669;--up-bg:rgba(5,150,105,.1);--down:#DC2626;--down-bg:rgba(220,38,38,.09);
+  --warn:#F59E0B;--line:rgba(20,184,166,.22);
+  --mono:'JetBrains Mono','SF Mono',Menlo,Consolas,monospace;
+}
+html,body{margin:0;padding:0;overflow-x:hidden;width:100%}
+body{font-family:'Lato',Arial,sans-serif;background:linear-gradient(135deg,#F8FAFC,#F0F9FF 50%,#F5F3FF);color:var(--text-dark);-webkit-text-size-adjust:100%}
+
+header{background:rgba(15,118,110,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.2);padding:14px 20px;color:#fff;position:sticky;top:0;z-index:100;
+  box-shadow:0 8px 32px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+.brand{font-size:clamp(19px,4.5vw,26px);font-weight:900;letter-spacing:-.6px}
+.back{color:#fff;text-decoration:none;font-weight:900;font-size:13.5px;padding:10px 18px;
+  border:1.5px solid rgba(255,255,255,.45);border-radius:8px;transition:background .25s;white-space:nowrap;min-height:42px;display:inline-flex;align-items:center}
+.back:hover{background:rgba(255,255,255,.16)}
+
+.hero{background:linear-gradient(135deg,var(--primary-dark),var(--primary) 55%,var(--accent));color:#fff;
+  padding:44px 20px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 20% 50%,rgba(255,255,255,.1) 0,transparent 50%),radial-gradient(circle at 80% 80%,rgba(255,255,255,.05) 0,transparent 50%)}
+.hero h1{margin:0 0 12px;font-size:clamp(26px,6vw,44px);font-weight:900;letter-spacing:-1px;line-height:1.15;position:relative}
+.hero p{margin:0 auto;max-width:720px;font-size:16px;line-height:1.6;opacity:.95;font-weight:300;position:relative}
+
+.wrap{width:94%;max-width:1400px;margin:0 auto;padding-bottom:50px}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;margin:24px auto;
+  box-shadow:0 8px 24px rgba(0,0,0,.07)}
+
+.controls{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-end}
+.seg-label{display:block;font-size:10.5px;font-weight:900;letter-spacing:1.1px;text-transform:uppercase;color:var(--text-light);margin-bottom:7px}
+.seg{display:inline-flex;background:rgba(20,184,166,.08);border:1px solid var(--line);border-radius:10px;padding:4px;gap:3px;flex-wrap:wrap}
+.seg button{border:none;background:transparent;font-family:'Lato',Arial,sans-serif;font-weight:900;font-size:13.5px;
+  color:var(--text-light);padding:11px 17px;border-radius:7px;cursor:pointer;transition:all .2s;white-space:nowrap;min-height:44px;-webkit-tap-highlight-color:transparent}
+.seg button:hover{color:var(--primary-dark)}
+.seg button.on{background:linear-gradient(135deg,var(--primary-light),var(--accent));color:#fff;box-shadow:0 3px 10px rgba(20,184,166,.3)}
+
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-top:20px}
+.stat{background:linear-gradient(135deg,rgba(20,184,166,.07),rgba(6,182,212,.035));border:1px solid var(--line);
+  border-radius:10px;padding:15px 10px;text-align:center}
+.stat .k{font-size:10px;font-weight:900;letter-spacing:1px;text-transform:uppercase;color:var(--text-light);margin-bottom:7px}
+.stat .v{font-family:var(--mono);font-size:24px;font-weight:900;color:var(--primary-dark);line-height:1}
+.stat .v.up{color:var(--up)}.stat .v.down{color:var(--down)}
+.stat .n{font-size:10.5px;color:var(--faint);margin-top:5px}
+
+.cols{display:grid;grid-template-columns:1fr;gap:18px;margin:24px auto}
+@media(min-width:980px){.cols{grid-template-columns:1fr 1fr}}
+.phead{display:flex;align-items:center;gap:9px;padding:13px 18px;border-radius:11px 11px 0 0;font-weight:900;font-size:15px}
+.phead.up{background:var(--up-bg);color:var(--up)}
+.phead.down{background:var(--down-bg);color:var(--down)}
+.phead .cnt{margin-left:auto;font-family:var(--mono);font-size:12px;opacity:.75}
+.pbody{border:1px solid var(--line);border-top:none;border-radius:0 0 11px 11px;overflow:hidden;background:#fff}
+
+table{width:100%;border-collapse:collapse}
+th{background:#FAFDFC;color:var(--faint);text-align:left;padding:10px 12px;font-size:10px;letter-spacing:.8px;
+  text-transform:uppercase;font-weight:900;border-bottom:1px solid var(--line);white-space:nowrap}
+th.c{text-align:center}th.r{text-align:right}
+td{padding:10px 12px;border-bottom:1px solid rgba(20,184,166,.09);font-size:13px;vertical-align:middle}
+td.c{text-align:center}td.r{text-align:right}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:nth-child(even){background:rgba(20,184,166,.025)}
+tbody tr:hover{background:rgba(20,184,166,.07)}
+.tk{font-family:var(--mono);font-weight:900;font-size:13.5px;color:var(--primary-dark)}
+.nm{font-size:11px;color:var(--faint);margin-top:1px;max-width:210px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vals{font-family:var(--mono);font-size:11.5px;color:var(--text-light);white-space:nowrap;margin-top:2px}
+.vals b{color:var(--text-dark);font-weight:900}
+.chg{font-family:var(--mono);font-weight:900;font-size:14px;white-space:nowrap}
+.chg.up{color:var(--up)}.chg.down{color:var(--down)}.chg.flat{color:var(--faint)}
+.pts{font-family:var(--mono);font-size:10.5px;color:var(--faint)}
+.empty{padding:30px 18px;text-align:center;color:var(--faint);font-size:13px}
+.freq{display:inline-block;font-size:9px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;
+  padding:2px 6px;border-radius:99px;background:rgba(20,184,166,.13);color:var(--primary);margin-left:6px;vertical-align:1px}
+
+/* full table */
+#allTable th{cursor:pointer;user-select:none;-webkit-user-select:none;background:linear-gradient(135deg,var(--primary-dark),var(--primary));color:#fff}
+#allTable th::after{content:' ⇅';opacity:.45;font-size:.9em}
+#allTable th.no-sort{cursor:default}
+#allTable th.no-sort::after{content:''}
+#allTable th:hover{background:linear-gradient(135deg,var(--primary),var(--accent))}
+.tbl-wrap{width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:11px;background:#fff}
+.spark-cell{width:74px;padding:5px 4px}
+.spark-wrap{display:flex;flex-direction:column;align-items:center;gap:1px}
+.spark-chg{font-family:var(--mono);font-size:10.5px;font-weight:900;line-height:1;white-space:nowrap}
+.spark-chg.up{color:var(--up)}.spark-chg.down{color:var(--down)}.spark-chg.flat{color:var(--faint)}
+.none{color:#CBD5E1;font-size:12px;font-weight:700}
+
+.note{padding:13px 16px;border-radius:9px;font-size:13px;line-height:1.6;margin-top:16px}
+.note.info{background:rgba(20,184,166,.08);border-left:4px solid var(--primary-light);color:var(--primary-dark)}
+.note.warn{background:rgba(245,158,11,.12);border-left:4px solid var(--warn);color:#92400E}
+.note.err{background:rgba(220,38,38,.08);border-left:4px solid var(--down);color:#991B1B}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
+.chips span{font-family:var(--mono);font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:99px;background:rgba(245,158,11,.14);color:#92400E}
+
+.loading{text-align:center;padding:70px 20px;color:var(--text-light)}
+.spin{width:34px;height:34px;border:3px solid rgba(20,184,166,.2);border-top-color:var(--primary-light);
+  border-radius:50%;margin:0 auto 16px;animation:sp .8s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+.hidden{display:none}
+.search{width:100%;max-width:340px;padding:12px 14px;border:2px solid var(--primary-light);border-radius:8px;
+  font-size:16px;font-weight:600;font-family:'Lato',Arial,sans-serif;min-height:46px;outline:none}
+.search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(6,182,212,.1)}
+.disclaimer{font-size:.88em;color:var(--text-light);max-width:900px;margin:34px auto 20px;text-align:center;
+  line-height:1.55;padding:20px;background:rgba(20,184,166,.05);border-left:4px solid var(--primary-light);border-radius:8px}
+footer{margin:30px auto;padding-top:15px;border-top:1px solid var(--line);text-align:center;color:var(--text-light);font-size:.88em;max-width:900px}
+footer a{color:var(--primary-dark);text-decoration:none;font-weight:600}
+footer a:hover{color:var(--accent)}
+@media(max-width:768px){
+  .wrap{width:100%;padding:0 14px 40px}
+  .card{padding:16px}
+  .hero{padding:32px 16px}
+  .controls{gap:16px}
+  .seg button{padding:10px 13px;font-size:12.5px}
+  .nm{max-width:130px}
+  td,th{padding:9px 8px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">📊 Yield &amp; Return Trends</div>
+  <a href="authorized2026.html" class="back">← Back to Terminal</a>
+</header>
+
+<div class="hero">
+  <h1>What Changed, and By How Much</h1>
+  <p>Every distribution raise and cut across the PRO universe, rebuilt from daily snapshots. Pick a window, pick a metric, and see who moved.</p>
+</div>
+
+<div class="wrap">
+
+  <div id="loading" class="loading">
+    <div class="spin"></div>
+    <p>Loading snapshot history…</p>
+  </div>
+
+  <div id="main" class="hidden">
+
+    <div class="card">
+      <div class="controls">
+        <div>
+          <span class="seg-label">Time window</span>
+          <div class="seg" id="segWindow">
+            <button type="button" data-w="7" class="on">7 days</button>
+            <button type="button" data-w="14">14 days</button>
+            <button type="button" data-w="30">30 days</button>
+            <button type="button" data-w="0">All time</button>
+          </div>
+        </div>
+        <div>
+          <span class="seg-label">Rank by</span>
+          <div class="seg" id="segMetric">
+            <button type="button" data-m="y" class="on">Yield</button>
+            <button type="button" data-m="t">Total Return</button>
+          </div>
+        </div>
+      </div>
+      <div class="stats" id="stats"></div>
+      <div id="notes"></div>
+    </div>
+
+    <div class="cols">
+      <div>
+        <div class="phead up">▲ <span id="upTitle">Biggest Increases</span><span class="cnt" id="upCount"></span></div>
+        <div class="pbody">
+          <table>
+            <thead><tr><th>Fund</th><th class="c">Trend</th><th class="r">Change</th></tr></thead>
+            <tbody id="upBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <div class="phead down">▼ <span id="downTitle">Biggest Decreases</span><span class="cnt" id="downCount"></span></div>
+        <div class="pbody">
+          <table>
+            <thead><tr><th>Fund</th><th class="c">Trend</th><th class="r">Change</th></tr></thead>
+            <tbody id="downBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:16px">
+        <div>
+          <h2 style="margin:0;font-size:19px;font-weight:900;color:var(--primary-dark)">Every Fund</h2>
+          <p style="margin:4px 0 0;font-size:13px;color:var(--text-light)">Both trends side by side. Click any header to sort.</p>
+        </div>
+        <input type="text" id="search" class="search" placeholder="Filter by ticker or name…" autocomplete="off">
+      </div>
+      <div class="tbl-wrap">
+        <table id="allTable">
+          <thead>
+            <tr>
+              <th onclick="sortAll(0)">Symbol</th>
+              <th onclick="sortAll(1)">Name</th>
+              <th onclick="sortAll(2)" class="c">Yield</th>
+              <th onclick="sortAll(3)" class="c" id="hYieldTrend">Yield Trend 7d</th>
+              <th onclick="sortAll(4)" class="c">Total Return</th>
+              <th onclick="sortAll(5)" class="c" id="hTrTrend">Return Trend 7d</th>
+            </tr>
+          </thead>
+          <tbody id="allBody"></tbody>
+        </table>
+      </div>
+      <div id="allEmpty" class="empty hidden">No funds match that search.</div>
+    </div>
+
+  </div>
+
+  <p class="disclaimer">
+    <strong>📌 Disclaimer:</strong> Distribution rates are annualized from the most recent payment and move constantly on
+    option-income funds. A change shown here is not necessarily a formally declared cut or raise. Informational and
+    educational use only — not financial, investment, or tax advice.
+  </p>
+
+  <footer>
+    <p>
+      <a href="authorized2026.html">PRO Terminal</a> |
+      <a href="faq.html">FAQ</a> |
+      <a href="privacy.html">Privacy Policy</a> |
+      <a href="terms.html">Terms of Service</a> |
+      <a href="mailto:Business@TopDividendETFs.com">Contact</a>
+    </p>
+    <p>&copy; 2026 Top Dividend ETFs Pro. All Rights Reserved.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+/* ═══════════ CONFIG ═══════════ */
+var HISTORY_PATH = 'data/history.json';
+var CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTxCiod-Cwry7E6k9Un9dgrM_ANymC36_IO_wLyNj-YDo2KI7mp_1ZzyNBnBGZOxT48QPM8TCwtsmA4/pub?gid=0&single=true&output=csv';
+
+var C_SYMBOL = 0, C_NAME = 1, C_YIELD = 3, C_TR = 7, C_FREQ = 10;
+var TOP_N = 15;
+var MIN_MOVE = 0.5;      // relative % — yield
+var MIN_MOVE_PTS = 0.5;  // percentage points — total return
+
+var state = { window: 7, metric: 'y' };
+var HIST = null, HDATES = [], NEWEST = null, META = {}, histError = null;
+
+/* ═══════════ HELPERS ═══════════ */
+function num(v){
+  if(v===null||v===undefined) return NaN;
+  if(typeof v==='number') return isFinite(v)?v:NaN;
+  var n=parseFloat(String(v).replace(/[%$,\s]/g,''));
+  return isNaN(n)?NaN:n;
+}
+function normDate(v){
+  if(!v) return null;
+  var s=String(v).trim(), m;
+  m=s.match(/^(\d{4})-(\d{2})-(\d{2})/); if(m) return m[1]+'-'+m[2]+'-'+m[3];
+  m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+  if(m) return m[3]+'-'+String(m[1]).padStart(2,'0')+'-'+String(m[2]).padStart(2,'0');
+  var d=new Date(s); return isNaN(d.getTime())?null:d.toISOString().slice(0,10);
+}
+function addDays(iso,n){ var d=new Date(iso+'T00:00:00'); d.setDate(d.getDate()+n); return d.toISOString().slice(0,10); }
+function daysBetween(a,b){ return Math.round((new Date(b+'T00:00:00')-new Date(a+'T00:00:00'))/86400000); }
+function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+var YIELD_KEYS=['yield','Yield','distributionYield','distribution_yield','divYield','dividendYield','yld'];
+var TR_KEYS=['totalReturn','total_return','totalreturn','TotalReturn','tr'];
+var DATE_KEYS=['date','d','timestamp','Date'];
+function pickBy(o,keys){ for(var i=0;i<keys.length;i++){ if(o[keys[i]]!==undefined) return num(o[keys[i]]); } return NaN; }
+function pickDate(o){ for(var i=0;i<DATE_KEYS.length;i++){ if(o[DATE_KEYS[i]]!==undefined) return normDate(o[DATE_KEYS[i]]); } return null; }
+
+function parseCsvLine(line){
+  var out=[],cur='',q=false;
+  for(var i=0;i<line.length;i++){
+    var ch=line[i];
+    if(ch==='"'){ if(q&&line[i+1]==='"'){cur+='"';i++;} else q=!q; }
+    else if(ch===','&&!q){ out.push(cur.trim()); cur=''; }
+    else cur+=ch;
+  }
+  out.push(cur.trim());
+  return out;
+}
+
+/* history.json is a change log — carry values forward into a dense daily series */
+function dense(series,field){
+  var valid=series.filter(function(p){ return p.date && !isNaN(p[field]); });
+  if(!valid.length) return [];
+  var out=[],idx=0,cur=valid[0][field],d=valid[0].date,guard=0;
+  if(daysBetween(d,NEWEST)<0) return [];
+  while(daysBetween(d,NEWEST)>=0 && guard++<4000){
+    while(idx<valid.length && valid[idx].date<=d){ cur=valid[idx][field]; idx++; }
+    out.push({date:d,v:cur});
+    d=addDays(d,1);
+  }
+  return out;
+}
+function valueOn(a,iso){ for(var i=a.length-1;i>=0;i--){ if(a[i].date<=iso) return a[i].v; } return NaN; }
+
+function trendFor(sym,metric,win){
+  if(!HIST||!HIST[sym]) return null;
+  var dn=dense(HIST[sym], metric==='y'?'y':'t');
+  if(dn.length<2) return null;
+  var wanted = win===0 ? HDATES[0] : addDays(NEWEST,-win);
+  var startIso = wanted<HDATES[0] ? HDATES[0] : wanted;
+  if(daysBetween(dn[0].date,startIso)<0) return null;
+  var then=valueOn(dn,startIso), now=dn[dn.length-1].v;
+  if(isNaN(then)||isNaN(now)) return null;
+  var abs=now-then;
+  var pct = then!==0 ? (abs/Math.abs(then))*100 : 0;
+  return { then:then, now:now, abs:abs, pct:pct, spark:dn.filter(function(p){return p.date>=startIso;}) };
+}
+
+function sparkline(pts,color,w,h){
+  if(!pts||pts.length<2) return '';
+  w=w||70; h=h||18;
+  var pad=2, vs=pts.map(function(p){return p.v;});
+  var lo=Math.min.apply(null,vs), hi=Math.max.apply(null,vs), range=(hi-lo)||1;
+  var step=(w-pad*2)/(pts.length-1);
+  var d=pts.map(function(p,i){
+    var x=pad+i*step, y=h-pad-((p.v-lo)/range)*(h-pad*2);
+    return (i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);
+  }).join(' ');
+  var lx=pad+(pts.length-1)*step, ly=h-pad-((vs[vs.length-1]-lo)/range)*(h-pad*2);
+  return '<svg width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'" aria-hidden="true" style="display:block">'+
+    '<path d="'+d+'" fill="none" stroke="'+color+'" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" opacity=".85"/>'+
+    '<circle cx="'+lx.toFixed(1)+'" cy="'+ly.toFixed(1)+'" r="2.2" fill="'+color+'"/></svg>';
+}
+
+/* ═══════════ LOAD ═══════════ */
+Promise.all([
+  fetch(HISTORY_PATH+'?t='+Date.now()).then(function(r){
+    if(!r.ok){ histError='HTTP '+r.status+' fetching '+HISTORY_PATH; return null; }
+    return r.json().catch(function(e){ histError='File found but is not valid JSON ('+e.message+')'; return null; });
+  }).catch(function(e){ histError='Network error: '+e.message; return null; }),
+  fetch(CSV_URL+'&t='+Date.now()).then(function(r){ return r.ok?r.text():''; }).catch(function(){ return ''; })
+]).then(function(res){
+  if(res[1]){
+    var lines=res[1].trim().split('\n');
+    for(var i=1;i<lines.length;i++){
+      var c=parseCsvLine(lines[i]);
+      if(!c[C_SYMBOL]) continue;
+      META[c[C_SYMBOL].toUpperCase()]={
+        name:c[C_NAME]||'', freq:(c[C_FREQ]||'').trim(),
+        yield:c[C_YIELD]||'', tr:c[C_TR]||''
+      };
+    }
+  }
+  if(res[0]) prepHistory(res[0]);
+  if(!HIST){ fail(); return; }
+  document.getElementById('loading').classList.add('hidden');
+  document.getElementById('main').classList.remove('hidden');
+  render();
+}).catch(function(e){
+  histError = histError || e.message;
+  fail();
+});
+
+function prepHistory(raw){
+  var all={}, norm={}, sampleKeys=null, points=0, dated=0, yields=0;
+  Object.keys(raw).forEach(function(sym){
+    var series=raw[sym];
+    if(!Array.isArray(series)) return;
+    var clean=[];
+    series.forEach(function(p){
+      if(!p||typeof p!=='object') return;
+      points++;
+      if(!sampleKeys) sampleKeys=Object.keys(p);
+      var d=pickDate(p), y=pickBy(p,YIELD_KEYS), t=pickBy(p,TR_KEYS);
+      if(d) dated++;
+      if(!isNaN(y)) yields++;
+      if(!d) return;
+      clean.push({date:d,y:y,t:t});
+    });
+    if(!clean.length) return;
+    clean.sort(function(a,b){ return a.date<b.date?-1:1; });
+    norm[sym.toUpperCase()]=clean;
+    clean.forEach(function(p){ all[p.date]=1; });
+  });
+  HDATES=Object.keys(all).sort();
+  if(!HDATES.length||!Object.keys(norm).length||!yields){
+    histError = histError || (points
+      ? 'Found '+points+' snapshot points but could not read '+(dated?'yield values':'dates')+
+        '. Keys present: '+(sampleKeys?sampleKeys.join(', '):'none')+'.'
+      : 'history.json contained no snapshot points.');
+    return;
+  }
+  HIST=norm;
+  NEWEST=HDATES[HDATES.length-1];
+}
+
+function fail(){
+  document.getElementById('loading').innerHTML =
+    '<div class="note err" style="text-align:left;max-width:760px;margin:0 auto">'+
+    '<strong>Trend data unavailable.</strong> '+esc(histError||'Unknown error')+'<br><br>'+
+    'This page needs <code>'+esc(HISTORY_PATH)+'</code>. Confirm it loads at <code>'+
+    esc(location.origin+'/'+HISTORY_PATH.replace(/^\.?\//,''))+'</code>, then reload. '+
+    'The main <a href="authorized2026.html" style="font-weight:900;color:#991B1B">PRO Terminal</a> is unaffected.'+
+    '</div>';
+}
+
+/* ═══════════ MOVERS ═══════════ */
+function compute(){
+  var isY = state.metric==='y';
+  var movers=[], collecting=[], flat=0;
+  Object.keys(HIST).forEach(function(sym){
+    var t=trendFor(sym,state.metric,state.window);
+    if(!t){ collecting.push(sym); return; }
+    /* Yield ranks on relative change (a 50%→30% cut is "-40%").
+       Total return is already a percentage, so it ranks on points. */
+    var rank = isY ? t.pct : t.abs;
+    if(Math.abs(rank) < (isY?MIN_MOVE:MIN_MOVE_PTS)){ flat++; return; }
+    movers.push({sym:sym,then:t.then,now:t.now,abs:t.abs,pct:t.pct,spark:t.spark,rank:rank});
+  });
+  return {movers:movers,collecting:collecting,flat:flat};
+}
+
+function moverRow(m,dir){
+  var color = dir==='up' ? '#059669' : '#DC2626';
+  var meta = META[m.sym]||{};
+  var isY = state.metric==='y';
+  var sign = function(v){ return v>0?'+':''; };
+  var primary = isY ? sign(m.pct)+m.pct.toFixed(1)+'%' : sign(m.abs)+m.abs.toFixed(2)+' pts';
+  var secondary = isY ? sign(m.abs)+m.abs.toFixed(2)+' pts' : '';
+  return '<tr>'+
+    '<td><div class="tk">'+esc(m.sym)+(meta.freq?'<span class="freq">'+esc(meta.freq)+'</span>':'')+'</div>'+
+    (meta.name?'<div class="nm">'+esc(meta.name)+'</div>':'')+
+    '<div class="vals"><b>'+m.then.toFixed(2)+'%</b> → <b>'+m.now.toFixed(2)+'%</b></div></td>'+
+    '<td class="c">'+sparkline(m.spark,color,78,22)+'</td>'+
+    '<td class="r"><div class="chg '+dir+'">'+primary+'</div>'+
+    (secondary?'<div class="pts">'+secondary+'</div>':'')+'</td></tr>';
+}
+
+/* ═══════════ FULL TABLE ═══════════ */
+var allRows=[];
+function buildAll(){
+  var body=document.getElementById('allBody');
+  body.innerHTML='';
+  allRows=[];
+  var label = state.window===0 ? 'All-time' : state.window+'d';
+  document.getElementById('hYieldTrend').textContent='Yield Trend '+label;
+  document.getElementById('hTrTrend').textContent='Return Trend '+label;
+
+  Object.keys(HIST).sort().forEach(function(sym){
+    var meta=META[sym]||{};
+    var ty=trendFor(sym,'y',state.window);
+    var tt=trendFor(sym,'t',state.window);
+    var tr=document.createElement('tr');
+
+    function cell(html,cls,attrs){
+      var td=document.createElement('td');
+      if(cls) td.className=cls;
+      td.innerHTML=html;
+      if(attrs) Object.keys(attrs).forEach(function(k){ td.setAttribute(k,attrs[k]); });
+      return td;
+    }
+    function trendCell(t,isY){
+      if(!t) return cell('<span class="none">—</span>','c spark-cell',{'data-change':''});
+      var rank = isY ? t.pct : t.abs;
+      var thr = isY ? MIN_MOVE : MIN_MOVE_PTS;
+      var dir = Math.abs(rank)<thr ? 'flat' : (rank>0?'up':'down');
+      var color = dir==='up' ? '#059669' : dir==='down' ? '#DC2626' : '#94A3B8';
+      var txt = isY ? (t.pct>0?'+':'')+t.pct.toFixed(1)+'%' : (t.abs>0?'+':'')+t.abs.toFixed(2)+' pts';
+      return cell('<div class="spark-wrap">'+sparkline(t.spark,color,64,18)+
+        '<span class="spark-chg '+dir+'">'+txt+'</span></div>','c spark-cell',{'data-change':rank.toFixed(4)});
+    }
+
+    tr.appendChild(cell('<span class="tk">'+esc(sym)+'</span>'+(meta.freq?'<span class="freq">'+esc(meta.freq)+'</span>':'')));
+    tr.appendChild(cell('<span style="font-size:12.5px">'+esc(meta.name||'')+'</span>'));
+    tr.appendChild(cell(esc(meta.yield||(ty?ty.now.toFixed(2)+'%':'—')),'c'));
+    tr.appendChild(trendCell(ty,true));
+    tr.appendChild(cell(esc(meta.tr||(tt?tt.now.toFixed(2)+'%':'—')),'c'));
+    tr.appendChild(trendCell(tt,false));
+
+    body.appendChild(tr);
+    allRows.push(tr);
+  });
+  filterAll();
+}
+
+var sortDirs={};
+window.sortAll=function(col,forceDir){
+  var body=document.getElementById('allBody');
+  var rows=Array.prototype.slice.call(body.querySelectorAll('tr'));
+  if(!rows.length) return;
+  var dir = forceDir || (sortDirs[col]==='asc' ? 'desc' : 'asc');
+  sortDirs[col]=dir;
+  rows.sort(function(a,b){
+    if(col===3||col===5){
+      var ra=a.cells[col].getAttribute('data-change'), rb=b.cells[col].getAttribute('data-change');
+      var ha=ra!==''&&ra!==null, hb=rb!==''&&rb!==null;
+      if(!ha&&!hb) return 0;
+      if(!ha) return 1;
+      if(!hb) return -1;
+      return dir==='asc' ? parseFloat(ra)-parseFloat(rb) : parseFloat(rb)-parseFloat(ra);
+    }
+    var va=a.cells[col].textContent.trim(), vb=b.cells[col].textContent.trim();
+    var na=parseFloat(va.replace(/[%,]/g,'')), nb=parseFloat(vb.replace(/[%,]/g,''));
+    if(!isNaN(na)&&!isNaN(nb)) return dir==='asc' ? na-nb : nb-na;
+    return dir==='asc' ? va.localeCompare(vb) : vb.localeCompare(va);
+  });
+  rows.forEach(function(r){ body.appendChild(r); });
+};
+
+function filterAll(){
+  var q=document.getElementById('search').value.toLowerCase().trim();
+  var shown=0;
+  allRows.forEach(function(tr){
+    var txt=(tr.cells[0].textContent+' '+tr.cells[1].textContent).toLowerCase();
+    var vis=!q||txt.indexOf(q)>-1;
+    tr.style.display=vis?'':'none';
+    if(vis) shown++;
+  });
+  document.getElementById('allEmpty').classList.toggle('hidden',shown>0);
+}
+
+/* ═══════════ RENDER ═══════════ */
+function render(){
+  var r=compute();
+  var ups=r.movers.filter(function(m){return m.rank>0;}).sort(function(a,b){return b.rank-a.rank;});
+  var downs=r.movers.filter(function(m){return m.rank<0;}).sort(function(a,b){return a.rank-b.rank;});
+  var word = state.metric==='y' ? 'Yield' : 'Return';
+  var unit = state.metric==='y' ? MIN_MOVE+'%' : MIN_MOVE_PTS+' pts';
+
+  document.getElementById('stats').innerHTML=
+    '<div class="stat"><div class="k">Rising</div><div class="v up">'+ups.length+'</div></div>'+
+    '<div class="stat"><div class="k">Falling</div><div class="v down">'+downs.length+'</div></div>'+
+    '<div class="stat"><div class="k">Unchanged</div><div class="v">'+r.flat+'</div><div class="n">under '+unit+' move</div></div>'+
+    '<div class="stat"><div class="k">Collecting</div><div class="v">'+r.collecting.length+'</div><div class="n">need more history</div></div>'+
+    '<div class="stat"><div class="k">Universe</div><div class="v">'+Object.keys(HIST).length+'</div><div class="n">funds tracked</div></div>';
+
+  document.getElementById('upTitle').textContent='Biggest '+word+' Increases';
+  document.getElementById('downTitle').textContent='Biggest '+word+' Decreases';
+  document.getElementById('upCount').textContent=ups.length?'top '+Math.min(TOP_N,ups.length)+' of '+ups.length:'';
+  document.getElementById('downCount').textContent=downs.length?'top '+Math.min(TOP_N,downs.length)+' of '+downs.length:'';
+
+  document.getElementById('upBody').innerHTML=
+    ups.slice(0,TOP_N).map(function(m){return moverRow(m,'up');}).join('') ||
+    '<tr><td colspan="3" class="empty">No increases above '+unit+' in this window.</td></tr>';
+  document.getElementById('downBody').innerHTML=
+    downs.slice(0,TOP_N).map(function(m){return moverRow(m,'down');}).join('') ||
+    '<tr><td colspan="3" class="empty">No decreases above '+unit+' in this window.</td></tr>';
+
+  var span = HDATES.length ? daysBetween(HDATES[0],NEWEST)+1 : 0;
+  var stale = daysBetween(NEWEST,new Date().toISOString().slice(0,10));
+  var notes='';
+  if(stale>3){
+    notes+='<div class="note err"><strong>Data may be stale.</strong> The most recent snapshot is '+stale+
+      ' days old. Check that the snapshot job is still running.</div>';
+  }
+  if(state.window!==0 && state.window>span){
+    notes+='<div class="note warn"><strong>Window is longer than the history available.</strong> There are '+span+
+      ' days of snapshots, so this shows changes since tracking began on '+HDATES[0]+
+      '. It becomes a true '+state.window+'-day window once that much history exists.</div>';
+  }
+  if(r.collecting.length){
+    notes+='<div class="note info"><strong>'+r.collecting.length+' fund(s) still collecting history.</strong> '+
+      'They join the tables automatically once they have enough data.'+
+      '<div class="chips">'+r.collecting.sort().map(function(s){return '<span>'+esc(s)+'</span>';}).join('')+'</div></div>';
+  }
+  document.getElementById('notes').innerHTML=notes;
+
+  buildAll();
+}
+
+/* ═══════════ CONTROLS ═══════════ */
+document.getElementById('segWindow').addEventListener('click',function(e){
+  var b=e.target.closest('button'); if(!b) return;
+  this.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});
+  b.classList.add('on');
+  state.window=parseInt(b.dataset.w,10);
+  render();
+});
+document.getElementById('segMetric').addEventListener('click',function(e){
+  var b=e.target.closest('button'); if(!b) return;
+  this.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});
+  b.classList.add('on');
+  state.metric=b.dataset.m;
+  render();
+});
+document.getElementById('search').addEventListener('input',filterAll);
+})();
+</script>
+</body>
+</html>
