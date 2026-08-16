@@ -3899,6 +3899,11 @@
       "date": "2026-08-12",
       "yield": 80,
       "totalReturn": -24
+    },
+    {
+      "date": "2026-08-16",
+      "yield": 61,
+      "totalReturn": -24
     }
   ],
   "KQQQ": [
@@ -4930,6 +4935,11 @@
       "date": "2026-08-15",
       "yield": 33,
       "totalReturn": 47
+    },
+    {
+      "date": "2026-08-16",
+      "yield": 37,
+      "totalReturn": 47
     }
   ],
   "ODTE": [
@@ -5120,6 +5130,34 @@
       "date": "2026-08-15",
       "yield": 27,
       "totalReturn": 14
+    }
+  ],
+  "EGGS": [
+    {
+      "date": "2026-08-16",
+      "yield": 24,
+      "totalReturn": 31
+    }
+  ],
+  "ISBG": [
+    {
+      "date": "2026-08-16",
+      "yield": 17,
+      "totalReturn": -48
+    }
+  ],
+  "ISSB": [
+    {
+      "date": "2026-08-16",
+      "yield": 17,
+      "totalReturn": -25
+    }
+  ],
+  "TMGN": [
+    {
+      "date": "2026-08-16",
+      "yield": 0,
+      "totalReturn": null
     }
   ]
 }
