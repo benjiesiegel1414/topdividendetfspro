@@ -25,23 +25,46 @@
         }
 
         @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes bounceDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        @keyframes pulseRing {
+            0% { transform: scale(1); opacity: 0.55; }
+            70% { transform: scale(1.06); opacity: 0; }
+            100% { transform: scale(1.06); opacity: 0; }
+        }
+
+        @keyframes flashGlow {
+            0%, 100% {
+                box-shadow: 0 14px 38px rgba(20, 184, 166, 0.4);
+                filter: brightness(1);
             }
-            to {
-                opacity: 1;
+            50% {
+                box-shadow: 0 16px 50px rgba(6, 182, 212, 0.9),
+                            0 0 0 8px rgba(6, 182, 212, 0.22);
+                filter: brightness(1.22) saturate(1.15);
             }
+        }
+
+        @keyframes shimmerSweep {
+            0% { left: -70%; }
+            50%, 100% { left: 140%; }
+        }
+
+        @keyframes arrowFlash {
+            0%, 100% { opacity: 1; transform: translateY(0) scale(1); }
+            50% { opacity: 0.45; transform: translateY(10px) scale(1.15); }
         }
 
         body {
@@ -58,6 +81,12 @@
             margin: 0 auto;
         }
 
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid var(--accent);
+            outline-offset: 3px;
+        }
+
         /* ==================== HEADER ==================== */
         header {
             background: rgba(15, 118, 110, 0.7);
@@ -65,7 +94,7 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             color: white;
             padding: 16px 0;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             border-radius: 12px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
         }
@@ -83,10 +112,28 @@
             color: white;
         }
 
-        /* ==================== THANK YOU SECTION ==================== */
-        .thank-you-container {
+        /* ==================== PAYMENT CONFIRMED BAR ==================== */
+        .paid-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            color: #047857;
+            font-size: 15px;
+            font-weight: 700;
+            padding: 12px 20px;
+            border-radius: 10px;
+            margin-bottom: 24px;
+            text-align: center;
+            animation: fadeIn 0.6s ease-out both;
+        }
+
+        /* ==================== ACCESS CARD ==================== */
+        .access-card {
             background: white;
-            padding: 60px 40px;
+            padding: 50px 40px;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(15, 118, 110, 0.15);
             border: 2px solid rgba(20, 184, 166, 0.2);
@@ -94,9 +141,10 @@
             animation: slideDown 0.6s ease-out;
             position: relative;
             overflow: hidden;
+            text-align: center;
         }
 
-        .thank-you-container::before {
+        .access-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -106,28 +154,23 @@
             background: linear-gradient(90deg, var(--primary-light), var(--accent));
         }
 
-        .success-icon {
-            font-size: 5.5em;
-            margin-bottom: 25px;
-            display: inline-block;
-            animation: fadeIn 0.8s ease-out 0.2s both;
-        }
-
         h1 {
             color: var(--primary-dark);
-            font-size: clamp(32px, 6vw, 48px);
-            margin-bottom: 15px;
+            font-size: clamp(30px, 5.5vw, 44px);
+            margin-bottom: 12px;
             font-weight: 900;
             letter-spacing: -0.5px;
-            animation: fadeIn 0.8s ease-out 0.3s both;
+            line-height: 1.15;
+            animation: fadeIn 0.8s ease-out 0.2s both;
         }
 
         .subtitle {
             font-size: 18px;
             color: var(--text-light);
-            margin-bottom: 30px;
             line-height: 1.6;
-            animation: fadeIn 0.8s ease-out 0.4s both;
+            max-width: 560px;
+            margin: 0 auto;
+            animation: fadeIn 0.8s ease-out 0.3s both;
         }
 
         .highlight {
@@ -135,127 +178,196 @@
             font-weight: 700;
         }
 
-        .highlight-yellow {
-            color: #F59E0B;
-            font-weight: 700;
+        /* ==================== STEPS ==================== */
+        .step {
+            margin-top: 45px;
+            padding-top: 35px;
+            border-top: 2px dashed rgba(20, 184, 166, 0.3);
+            animation: fadeIn 0.8s ease-out 0.4s both;
         }
 
-        /* ==================== PRO LINK SECTION ==================== */
-        .link-section {
-            margin: 40px 0;
-            animation: fadeIn 0.8s ease-out 0.5s both;
+        .step:first-of-type {
+            border-top: none;
+            padding-top: 0;
         }
 
-        .link-label {
-            font-size: 15px;
-            font-weight: 700;
-            color: var(--primary-dark);
-            margin-bottom: 15px;
+        .step-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--primary-dark);
+            color: white;
+            font-size: 13px;
+            font-weight: 900;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
+            padding: 8px 18px;
+            border-radius: 100px;
+            margin-bottom: 18px;
+        }
+
+        .step-heading {
+            font-size: clamp(22px, 4vw, 28px);
+            font-weight: 900;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            letter-spacing: -0.3px;
+        }
+
+        .step-text {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.6;
+            max-width: 520px;
+            margin: 0 auto 26px auto;
+        }
+
+        /* ==================== THE BIG BUTTON ==================== */
+        .arrow-cue {
+            font-size: 34px;
+            line-height: 1;
+            margin-bottom: 14px;
+            animation: arrowFlash 1.3s ease-in-out infinite;
+        }
+
+        .enter-wrap {
+            position: relative;
+            display: block;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .enter-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            border: 3px solid var(--primary-light);
+            animation: pulseRing 2s ease-out infinite;
+            pointer-events: none;
+        }
+
+        .btn-enter {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent) 100%);
+            color: white;
+            font-family: 'Lato', Arial, sans-serif;
+            font-size: clamp(20px, 3.6vw, 26px);
+            font-weight: 900;
+            letter-spacing: 0.3px;
+            padding: 28px 30px;
+            border: none;
+            border-radius: 16px;
+            text-decoration: none;
+            cursor: pointer;
+            box-shadow: 0 14px 38px rgba(20, 184, 166, 0.4);
+            transition: transform 0.25s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            animation: flashGlow 1.3s ease-in-out infinite;
+        }
+
+        .btn-enter::after {
+            content: '';
+            position: absolute;
+            top: -60%;
+            left: -70%;
+            width: 40%;
+            height: 220%;
+            background: linear-gradient(100deg,
+                        rgba(255, 255, 255, 0) 0%,
+                        rgba(255, 255, 255, 0.45) 50%,
+                        rgba(255, 255, 255, 0) 100%);
+            transform: rotate(18deg);
+            animation: shimmerSweep 2.4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .btn-enter:hover {
+            transform: translateY(-4px);
+        }
+
+        .btn-enter:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-enter .btn-sub {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            opacity: 0.9;
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* ==================== BOOKMARK / LINK ==================== */
+        .link-row {
+            display: flex;
+            gap: 12px;
+            align-items: stretch;
+            max-width: 620px;
+            margin: 0 auto;
+            flex-wrap: wrap;
         }
 
         .pro-link {
-            background: linear-gradient(135deg, rgba(20, 184, 166, 0.08) 0%, rgba(6, 182, 212, 0.08) 100%);
+            flex: 1 1 340px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(20, 184, 166, 0.07);
             border: 2px solid var(--primary-light);
-            padding: 24px;
-            margin: 20px 0;
+            padding: 18px 20px;
             border-radius: 12px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             word-break: break-all;
             color: var(--primary-dark);
-            box-shadow: 0 8px 24px rgba(20, 184, 166, 0.1);
+            text-decoration: none;
             transition: all 0.3s ease;
         }
 
         .pro-link:hover {
-            box-shadow: 0 12px 32px rgba(20, 184, 166, 0.2);
+            background: rgba(20, 184, 166, 0.14);
             border-color: var(--accent);
-            background: linear-gradient(135deg, rgba(20, 184, 166, 0.12) 0%, rgba(6, 182, 212, 0.12) 100%);
         }
 
-        .link-note {
-            font-size: 14px;
-            color: var(--text-light);
-            margin-top: 15px;
-            padding: 12px 16px;
-            background: rgba(20, 184, 166, 0.05);
-            border-left: 4px solid var(--primary-light);
-            border-radius: 6px;
-        }
-
-        /* ==================== BUTTONS ==================== */
-        .button-group {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 35px 0;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 16px 40px;
-            font-size: 16px;
-            font-weight: 700;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-            text-decoration: none;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.2);
-            transition: left 0.5s ease;
-            z-index: -1;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent) 100%);
-            color: white;
-            box-shadow: 0 10px 30px rgba(20, 184, 166, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 40px rgba(20, 184, 166, 0.4);
-        }
-
-        .btn-secondary {
+        .btn-copy {
+            flex: 0 0 auto;
             background: white;
             color: var(--primary-dark);
             border: 2px solid var(--primary-light);
-            box-shadow: 0 8px 24px rgba(15, 118, 110, 0.1);
+            border-radius: 12px;
+            padding: 18px 26px;
+            font-family: 'Lato', Arial, sans-serif;
+            font-size: 15px;
+            font-weight: 900;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            white-space: nowrap;
         }
 
-        .btn-secondary:hover {
+        .btn-copy:hover {
             background: var(--primary-light);
             color: white;
-            transform: translateY(-4px);
         }
 
-        /* ==================== CONTACT SECTION ==================== */
+        .btn-copy.copied {
+            background: var(--success);
+            border-color: var(--success);
+            color: white;
+        }
+
+        /* ==================== CONTACT ==================== */
         .contact-section {
             background: linear-gradient(135deg, rgba(20, 184, 166, 0.05) 0%, rgba(6, 182, 212, 0.05) 100%);
             border: 1px solid rgba(20, 184, 166, 0.2);
             padding: 25px;
             border-radius: 12px;
-            margin-top: 30px;
+            margin-top: 45px;
             text-align: center;
         }
 
@@ -286,7 +398,7 @@
             margin-top: 8px;
         }
 
-        /* ==================== FAQ SECTION ==================== */
+        /* ==================== FAQ ==================== */
         .faq-section {
             margin-top: 60px;
             animation: fadeIn 1s ease-out 0.6s both;
@@ -330,6 +442,12 @@
             border-color: var(--primary-light);
         }
 
+        .faq-card.faq-featured {
+            grid-column: 1 / -1;
+            border: 2px solid var(--primary-light);
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.06) 0%, rgba(6, 182, 212, 0.06) 100%);
+        }
+
         .faq-question {
             font-size: 16px;
             font-weight: 700;
@@ -356,6 +474,12 @@
         .faq-answer strong {
             color: var(--primary-dark);
             font-weight: 700;
+        }
+
+        .faq-inline-link {
+            color: var(--primary-dark);
+            font-weight: 900;
+            text-decoration: underline;
         }
 
         /* ==================== FOOTER ==================== */
@@ -391,29 +515,33 @@
 
         /* ==================== RESPONSIVE ==================== */
         @media (max-width: 768px) {
-            .thank-you-container {
-                padding: 40px 25px;
+            body { padding: 20px 14px; }
+
+            .access-card {
+                padding: 35px 20px;
             }
 
-            h1 {
-                font-size: 32px;
+            .btn-enter {
+                padding: 24px 18px;
             }
 
-            .button-group {
+            .link-row {
                 flex-direction: column;
             }
 
-            .btn {
+            .btn-copy {
                 width: 100%;
             }
 
             .faq-grid {
                 grid-template-columns: 1fr;
             }
+        }
 
-            .pro-link {
-                font-size: 14px;
-                padding: 18px;
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
             }
         }
     </style>
@@ -427,45 +555,62 @@
             </div>
         </header>
 
-        <!-- ==================== THANK YOU SECTION ==================== -->
-        <div class="thank-you-container">
-            <div class="success-icon">🎉</div>
-            <h1>Welcome to Top Dividend ETFs Pro!</h1>
+        <!-- ==================== ACCESS CARD ==================== -->
+        <div class="access-card">
+            <div class="paid-bar">
+                <span>✅</span>
+                <span>Payment confirmed — your PRO membership is active</span>
+            </div>
+
+            <h1>You're in. Now open your terminal.</h1>
             <p class="subtitle">
-                Your payment was successful. You now have <span class="highlight">full access</span> to all premium ETF rankings, advanced filters, and exclusive data.
+                There's <span class="highlight">no login and no password</span>. Your access link below is the terminal. Click it and you're inside.
             </p>
 
-            <!-- ==================== PRO LINK SECTION ==================== -->
-            <div class="link-section">
-                <div class="link-label">Your Exclusive Access Link</div>
-                <div class="pro-link">
-                    https://topdividendetfspro.com/authorized2026.html
-                </div>
-                <div class="link-note">
-                    <strong>💾 Bookmark this link</strong> — Save it to your browser favorites for instant access anytime.
+            <!-- ---------- STEP 1 ---------- -->
+            <div class="step">
+                <div class="step-badge">Step 1 — Do this now</div>
+                <div class="step-heading">Click the button to go in</div>
+                <p class="step-text">
+                    This opens the full PRO terminal with every ranking, filter, and daily-updated data set.
+                </p>
+
+                <div class="arrow-cue">👇</div>
+
+                <div class="enter-wrap">
+                    <a href="https://topdividendetfspro.com/authorized2026.html" class="btn-enter">
+                        🚀 Open the PRO Terminal
+                        <span class="btn-sub">Click here to enter</span>
+                    </a>
                 </div>
             </div>
 
-            <!-- ==================== BUTTONS ==================== -->
-            <div class="button-group">
-                <a href="https://topdividendetfspro.com/authorized2026.html" class="btn btn-primary">
-                    🚀 Go to Top Dividend ETFs PRO Now
-                </a>
-                <a href="mailto:Business@TopDividendETFs.com" class="btn btn-secondary">
-                    📧 Need Help?
-                </a>
+            <!-- ---------- STEP 2 ---------- -->
+            <div class="step">
+                <div class="step-badge">Step 2 — Save it for next time</div>
+                <div class="step-heading">Bookmark your access link</div>
+                <p class="step-text">
+                    This is your permanent door into PRO. Bookmark it in your browser or copy it somewhere safe so you can get back in anytime.
+                </p>
+
+                <div class="link-row">
+                    <a href="https://topdividendetfspro.com/authorized2026.html" class="pro-link" id="proLink">
+                        topdividendetfspro.com/authorized2026.html
+                    </a>
+                    <button class="btn-copy" id="copyBtn" type="button">Copy link</button>
+                </div>
             </div>
 
-            <!-- ==================== CONTACT SECTION ==================== -->
+            <!-- ---------- CONTACT ---------- -->
             <div class="contact-section">
-                <p><strong>Questions or issues?</strong></p>
-                <p>Our support team is here to help! Reach out anytime:</p>
+                <p><strong>Link not working? Can't get in?</strong></p>
+                <p>Email us and we'll get you access the same day:</p>
                 <p>
                     <a href="mailto:Business@TopDividendETFs.com" class="email-highlight">
                         Business@TopDividendETFs.com
                     </a>
                 </p>
-                <p style="margin-top: 15px; font-size: 12px;">You'll also receive a receipt by email shortly.</p>
+                <p style="margin-top: 15px; font-size: 12px;">You'll also receive a payment receipt by email shortly.</p>
             </div>
         </div>
 
@@ -475,6 +620,22 @@
             <p class="faq-subtitle">Everything you need to know about your membership</p>
 
             <div class="faq-grid">
+                <div class="faq-card faq-featured">
+                    <div class="faq-question">How do I get into the PRO terminal?</div>
+                    <div class="faq-answer">
+                        Click the big green button above, or go straight to
+                        <a href="https://topdividendetfspro.com/authorized2026.html" class="faq-inline-link">topdividendetfspro.com/authorized2026.html</a>.
+                        <strong>There is no username, password, or account to create.</strong> That link is your access — bookmark it and you can return anytime.
+                    </div>
+                </div>
+
+                <div class="faq-card">
+                    <div class="faq-question">I lost my access link. What now?</div>
+                    <div class="faq-answer">
+                        Email <strong>Business@TopDividendETFs.com</strong> from the address you paid with and we'll resend it. You can also find it in your original receipt email.
+                    </div>
+                </div>
+
                 <div class="faq-card">
                     <div class="faq-question">What is TopDividendETFsPro.com?</div>
                     <div class="faq-answer">
@@ -492,7 +653,7 @@
                 <div class="faq-card">
                     <div class="faq-question">What does each data column mean?</div>
                     <div class="faq-answer">
-                        <strong>Symbol:</strong> Ticker symbol | <strong>Yield:</strong> Annual dividend yield | <strong>Expense Ratio:</strong> Annual fund fee | <strong>AUM:</strong> Fund size & liquidity | <strong>Total Return:</strong> Overall performance | <strong>Price Decay:</strong> Price performance since inception | <strong>Rating:</strong> Our overall score (A–F) based on multiple factors
+                        <strong>Symbol:</strong> Ticker symbol | <strong>Yield:</strong> Annual dividend yield | <strong>Expense Ratio:</strong> Annual fund fee | <strong>AUM:</strong> Fund size &amp; liquidity | <strong>Total Return:</strong> Overall performance | <strong>Price Decay:</strong> Price performance since inception | <strong>Rating:</strong> Our overall score (A–F) based on multiple factors
                     </div>
                 </div>
 
@@ -534,7 +695,7 @@
                 <div class="faq-card">
                     <div class="faq-question">Can I share my access with others?</div>
                     <div class="faq-answer">
-                        No. Your subscription is for <strong>personal use only</strong>. Sharing your login credentials is not permitted and may result in account suspension.
+                        No. Your subscription is for <strong>personal use only</strong>. Sharing your access link is not permitted and may result in account suspension.
                     </div>
                 </div>
             </div>
@@ -544,21 +705,21 @@
         <div style="background: linear-gradient(135deg, rgba(20, 184, 166, 0.08) 0%, rgba(6, 182, 212, 0.08) 100%); border-left: 6px solid var(--primary-light); padding: 30px; margin: 60px 0 50px 0; border-radius: 12px; font-size: 0.95em;">
             <h2 style="color: var(--primary-dark); margin-top: 0; margin-bottom: 20px; font-size: 24px;">📋 Full Disclaimer</h2>
             <p style="margin-bottom: 15px;">
-                The data, rankings, metrics, and content contained on TopDividendETFsPro.com are provided for <strong>informational and educational purposes only</strong>. 
+                The data, rankings, metrics, and content contained on TopDividendETFsPro.com are provided for <strong>informational and educational purposes only</strong>.
                 While we strive to keep the information accurate and up-to-date, we do not guarantee that the data is real-time, complete, or error-free.
             </p>
             <p style="margin-bottom: 15px;">
-                The Website and all its content are provided on an <strong>"as is" and "as available" basis without any warranties of any kind</strong>. 
-                You bear all risks associated with the use of the site and content, including without limitation, any reliance on the accuracy, 
+                The Website and all its content are provided on an <strong>"as is" and "as available" basis without any warranties of any kind</strong>.
+                You bear all risks associated with the use of the site and content, including without limitation, any reliance on the accuracy,
                 completeness or usefulness of any content available on the site.
             </p>
             <p style="margin-bottom: 15px;">
-                The Website should not be relied upon as a substitute for <strong>extensive independent market research</strong> before making your actual trading or investment decisions. 
+                The Website should not be relied upon as a substitute for <strong>extensive independent market research</strong> before making your actual trading or investment decisions.
                 <strong>Past performance is not an indicator of future performance.</strong>
             </p>
             <p style="margin-bottom: 15px;">
-                <strong>TopDividendETFsPro.com is not a registered investment advisor or broker-dealer.</strong> Any opinions, charts, messages, news, research, analyses, 
-                prices, or other information contained on this Website are provided as general market information for educational and entertainment purposes only, 
+                <strong>TopDividendETFsPro.com is not a registered investment advisor or broker-dealer.</strong> Any opinions, charts, messages, news, research, analyses,
+                prices, or other information contained on this Website are provided as general market information for educational and entertainment purposes only,
                 and do <strong>not constitute investment advice</strong>.
             </p>
             <p style="margin-bottom: 0;">
@@ -572,7 +733,7 @@
         <!-- ==================== FOOTER ==================== -->
         <div class="footer-section">
             <p class="footer-text">
-                <strong>Need more help?</strong> Check out our full documentation or contact support.
+                <strong>Need more help?</strong> Email <a href="mailto:Business@TopDividendETFs.com" style="color: var(--primary-dark); font-weight: 700;">Business@TopDividendETFs.com</a> and we'll respond the same day.
             </p>
             <div class="footer-links">
                 <a href="#">Privacy Policy</a> |
@@ -585,5 +746,47 @@
             </p>
         </div>
     </div>
+
+    <script>
+        (function () {
+            var copyBtn = document.getElementById('copyBtn');
+            var url = 'https://topdividendetfspro.com/authorized2026.html';
+
+            function markCopied() {
+                copyBtn.textContent = '✓ Copied';
+                copyBtn.classList.add('copied');
+                setTimeout(function () {
+                    copyBtn.textContent = 'Copy link';
+                    copyBtn.classList.remove('copied');
+                }, 2200);
+            }
+
+            copyBtn.addEventListener('click', function () {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(url).then(markCopied).catch(fallbackCopy);
+                } else {
+                    fallbackCopy();
+                }
+            });
+
+            function fallbackCopy() {
+                var temp = document.createElement('textarea');
+                temp.value = url;
+                temp.setAttribute('readonly', '');
+                temp.style.position = 'absolute';
+                temp.style.left = '-9999px';
+                document.body.appendChild(temp);
+                temp.select();
+                try {
+                    document.execCommand('copy');
+                    markCopied();
+                } catch (e) {
+                    copyBtn.textContent = 'Copy failed';
+                    setTimeout(function () { copyBtn.textContent = 'Copy link'; }, 2200);
+                }
+                document.body.removeChild(temp);
+            }
+        })();
+    </script>
 </body>
 </html>
