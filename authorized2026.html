@@ -112,6 +112,95 @@
             margin: 0 auto; 
         }
 
+        /* ==================== TRENDS CTA ==================== */
+        .trends-cta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            max-width: 1700px;
+            margin: 0 auto;
+            padding: 24px 28px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--accent) 100%);
+            color: #fff;
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 8px 24px rgba(15, 118, 110, 0.25);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .trends-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .trends-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(15, 118, 110, 0.35);
+        }
+
+        .trends-cta-icon {
+            font-size: 40px;
+            line-height: 1;
+            flex: 0 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .trends-cta-text {
+            flex: 1 1 auto;
+            min-width: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .trends-cta-text strong {
+            display: block;
+            font-size: 22px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            margin-bottom: 5px;
+        }
+
+        .trends-cta-text small {
+            display: block;
+            font-size: 15px;
+            opacity: 0.95;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .trends-cta-go {
+            flex: 0 0 auto;
+            background: rgba(255, 255, 255, 0.18);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            padding: 14px 26px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 16px;
+            white-space: nowrap;
+            min-height: 48px;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .trends-cta:hover .trends-cta-go {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
         #filters {
             max-width: 1700px; 
             margin: 30px auto; 
@@ -399,6 +488,26 @@
                 padding: 0 14px;
             }
 
+            .trends-cta {
+                flex-direction: column;
+                text-align: center;
+                gap: 14px;
+                padding: 22px 18px;
+            }
+
+            .trends-cta-text strong {
+                font-size: 19px;
+            }
+
+            .trends-cta-text small {
+                font-size: 14px;
+            }
+
+            .trends-cta-go {
+                width: 100%;
+                justify-content: center;
+            }
+
             #filters {
                 flex-direction: column;
                 align-items: stretch;
@@ -647,6 +756,16 @@
             Always consult a qualified financial advisor before making any investment decisions.
         </p>
     <div class="content">
+        <!-- ==================== YIELD & RETURN TRENDS CTA ==================== -->
+        <a href="trends.html" class="trends-cta">
+            <span class="trends-cta-icon">📊</span>
+            <span class="trends-cta-text">
+                <strong>Yield &amp; Return Trends</strong>
+                <small>See exactly which funds raised or cut distributions &mdash; 7, 14, 30 day and all-time movers, with a trend line on every fund.</small>
+            </span>
+            <span class="trends-cta-go">Open Trends &rarr;</span>
+        </a>
+
         <!-- ==================== FILTERS ==================== -->
         <div id="filters">
             <div class="filter-group">
