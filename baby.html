@@ -487,22 +487,23 @@
 
         /* ==================== TREND CELL ==================== */
         td.trend-cell {
-            width: 126px;
-            padding: 8px 6px;
+            width: 78px;
+            padding: 4px 4px;
         }
 
         .trend-wrap {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 2px;
+            gap: 1px;
         }
 
         .trend-chg {
             font-family: var(--mono);
-            font-size: 11.5px;
+            font-size: 10.5px;
             font-weight: 900;
             line-height: 1;
+            white-space: nowrap;
         }
         .trend-chg.up { color: var(--up); }
         .trend-chg.down { color: var(--down); }
@@ -543,24 +544,33 @@
             width: 100%; 
             border-collapse: collapse; 
             background: white;
-            border: 2px solid var(--primary-light); 
-            border-radius: 12px; 
+            border: 1px solid var(--primary-light);
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 12px 40px rgba(15, 118, 110, 0.15);
+            box-shadow: 0 8px 28px rgba(15, 118, 110, 0.12);
         }
 
         th {
             background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-            color: #fff; 
-            padding: 16px 8px; 
-            cursor: pointer; 
-            font-size: 0.95em; 
-            white-space: nowrap;
+            color: #fff;
+            padding: 9px 6px;
+            cursor: pointer;
+            font-size: 11.5px;
+            line-height: 1.25;
+            letter-spacing: 0.2px;
+            white-space: normal;
             font-weight: 700;
-            transition: all 0.3s ease;
+            transition: background 0.25s ease;
             user-select: none;
             -webkit-user-select: none;
             border-bottom: 2px solid rgba(20, 184, 166, 0.3);
+        }
+
+        /* Sort affordance as a pseudo-element so it survives textContent updates */
+        th[onclick]::after {
+            content: ' ⇅';
+            opacity: 0.45;
+            font-size: 0.9em;
         }
 
         th.no-sort {
@@ -569,13 +579,13 @@
 
         th:hover {
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            transform: translateY(-2px);
         }
 
-        td { 
-            padding: 14px 8px; 
-            text-align: center; 
-            font-size: 0.98em;
+        td {
+            padding: 6px 6px;
+            text-align: center;
+            font-size: 13px;
+            line-height: 1.3;
             border-bottom: 1px solid rgba(20, 184, 166, 0.1);
         }
 
@@ -588,16 +598,21 @@
             transition: all 0.2s ease;
         }
 
-        .symbol { 
-            font-weight: 900; 
-            font-size: 1.25em; 
+        .symbol {
+            font-weight: 900;
+            font-size: 14px;
+            letter-spacing: 0.3px;
             color: var(--primary-dark);
+            white-space: nowrap;
         }
 
-        .name { 
-            text-align: left; 
+        .name {
+            text-align: left;
             font-weight: 600;
+            font-size: 12px;
+            line-height: 1.3;
             color: var(--text-dark);
+            max-width: 220px;
         }
 
         .rating-a { color: #10B981; font-weight: 900; }
@@ -606,11 +621,11 @@
         .rating-d { color: #F97316; font-weight: 900; }
         .rating-f { color: #EF4444; font-weight: 900; }
 
-        .tax-a { background: rgba(16, 185, 129, 0.15); color: #10B981; padding: 4px 8px; border-radius: 6px; font-weight: 700; }
-        .tax-b { background: rgba(6, 182, 212, 0.15); color: #06B6D4; padding: 4px 8px; border-radius: 6px; font-weight: 700; }
-        .tax-c { background: rgba(252, 211, 77, 0.15); color: #FBBF24; padding: 4px 8px; border-radius: 6px; font-weight: 700; }
-        .tax-d { background: rgba(249, 115, 22, 0.15); color: #F97316; padding: 4px 8px; border-radius: 6px; font-weight: 700; }
-        .tax-f { background: rgba(239, 68, 68, 0.15); color: #EF4444; padding: 4px 8px; border-radius: 6px; font-weight: 700; }
+        .tax-a { background: rgba(16, 185, 129, 0.15); color: #10B981; padding: 2px 6px; border-radius: 5px; font-weight: 700; font-size: 12px; }
+        .tax-b { background: rgba(6, 182, 212, 0.15); color: #06B6D4; padding: 2px 6px; border-radius: 5px; font-weight: 700; font-size: 12px; }
+        .tax-c { background: rgba(252, 211, 77, 0.15); color: #FBBF24; padding: 2px 6px; border-radius: 5px; font-weight: 700; font-size: 12px; }
+        .tax-d { background: rgba(249, 115, 22, 0.15); color: #F97316; padding: 2px 6px; border-radius: 5px; font-weight: 700; font-size: 12px; }
+        .tax-f { background: rgba(239, 68, 68, 0.15); color: #EF4444; padding: 2px 6px; border-radius: 5px; font-weight: 700; font-size: 12px; }
 
         /* Empty watchlist message */
         .empty-watchlist {
@@ -627,7 +642,7 @@
         /* Table stays a table but scrolls horizontally instead of crushing 14 columns */
         @media (min-width: 769px) and (max-width: 1100px) {
             #etfTable {
-                min-width: 1430px;
+                min-width: 1160px;
             }
 
             th {
@@ -733,17 +748,21 @@
                 background: rgba(20, 184, 166, 0.05);
             }
             
-            td { 
-                display: flex; 
-                justify-content: space-between; 
+            td {
+                display: flex;
+                justify-content: space-between;
                 align-items: center;
                 flex-wrap: wrap;
                 gap: 4px 12px;
-                padding: 9px 0;
+                padding: 8px 0;
                 text-align: right;
-                font-size: 15px;
+                font-size: 14.5px;
+                line-height: 1.4;
                 border-bottom: 1px solid rgba(20, 184, 166, 0.08);
             }
+
+            .name { max-width: none; font-size: 14px; }
+            .symbol { font-size: 20px; }
 
             td:last-child {
                 border-bottom: none;
@@ -1015,12 +1034,12 @@
         <div id="mobileSortBar">
             <span class="filter-label">↕️ Sort By</span>
             <select id="mobileSortSelect">
-                <option value="3-desc">Dividend Yield (High → Low)</option>
-                <option value="3-asc">Dividend Yield (Low → High)</option>
+                <option value="3-desc">Yield (High → Low)</option>
+                <option value="3-asc">Yield (Low → High)</option>
                 <option value="4-desc">Yield Trend (Biggest Risers)</option>
                 <option value="4-asc">Yield Trend (Biggest Fallers)</option>
-                <option value="9-desc">Total Return Trend (Biggest Risers)</option>
-                <option value="9-asc">Total Return Trend (Biggest Fallers)</option>
+                <option value="9-desc">Return Trend (Biggest Risers)</option>
+                <option value="9-asc">Return Trend (Biggest Fallers)</option>
                 <option value="0-asc">Symbol (A → Z)</option>
                 <option value="0-desc">Symbol (Z → A)</option>
                 <option value="6-asc">Expense Ratio (Low → High)</option>
@@ -1039,21 +1058,21 @@
             <table id="etfTable">
                 <thead>
                     <tr>
-                        <th onclick="sortTable(0)">Symbol ↕</th>
-                        <th onclick="sortTable(1)">Name ↕</th>
-                        <th onclick="sortTable(2)">Fund Provider ↕</th>
-                        <th onclick="sortTable(3)">Dividend Yield ↕</th>
-                        <th onclick="sortTable(4)" id="yieldTrendHeader">Yield Trend (7d) ↕</th>
-                        <th onclick="sortTable(5)">Tax Grade ↕</th>
-                        <th onclick="sortTable(6)">Expense Ratio ↕</th>
-                        <th onclick="sortTable(7)">AUM ↕</th>
-                        <th onclick="sortTable(8)">Total Return ↕</th>
-                        <th onclick="sortTable(9)" id="trTrendHeader">Total Return Trend (7d) ↕</th>
-                        <th onclick="sortTable(10)">Price Decay ↕</th>
-                        <th onclick="sortTable(11)">Inception Date ↕</th>
-                        <th onclick="sortTable(12)">Payout Frequency ↕</th>
-                        <th onclick="sortTable(13)">Rating ↕</th>
-                        <th class="no-sort">⭐ Watch</th>
+                        <th onclick="sortTable(0)">Symbol</th>
+                        <th onclick="sortTable(1)">Name</th>
+                        <th onclick="sortTable(2)">Provider</th>
+                        <th onclick="sortTable(3)">Yield</th>
+                        <th onclick="sortTable(4)" id="yieldTrendHeader">Yield Trend 7d</th>
+                        <th onclick="sortTable(5)">Tax</th>
+                        <th onclick="sortTable(6)">Expense</th>
+                        <th onclick="sortTable(7)">AUM</th>
+                        <th onclick="sortTable(8)">Total Return</th>
+                        <th onclick="sortTable(9)" id="trTrendHeader">Return Trend 7d</th>
+                        <th onclick="sortTable(10)">Decay</th>
+                        <th onclick="sortTable(11)">Inception</th>
+                        <th onclick="sortTable(12)">Payout</th>
+                        <th onclick="sortTable(13)">Rating</th>
+                        <th class="no-sort">⭐</th>
                     </tr>
                 </thead>
                 <tbody id="etfBody"></tbody>
@@ -1458,8 +1477,8 @@
 
                 const tr = document.createElement('tr');
                 const labels = [
-                    'Symbol', 'Name', 'Fund Provider', 'Dividend Yield', 'Yield Trend', 'Tax Treatment Grade',
-                    'Expense Ratio', 'AUM', 'Total Return', 'Total Return Trend', 'Price Decay',
+                    'Symbol', 'Name', 'Fund Provider', 'Yield', 'Yield Trend', 'Tax Grade',
+                    'Expense Ratio', 'AUM', 'Total Return', 'Return Trend', 'Price Decay',
                     'Inception Date', 'Payout Frequency', 'Rating'
                 ];
 
@@ -1529,7 +1548,7 @@
             const metric = td.getAttribute('data-metric');
             const isYield = metric === 'yield';
             const windowLabel = moversState.window === 0 ? 'All-time' : moversState.window + 'd';
-            td.setAttribute('data-label', (isYield ? 'Yield Trend' : 'Total Return Trend') + ' (' + windowLabel + ')');
+            td.setAttribute('data-label', (isYield ? 'Yield Trend' : 'Return Trend') + ' ' + windowLabel);
 
             const t = trendFor(symbol, metric, moversState.window);
 
@@ -1553,7 +1572,7 @@
             td.setAttribute('data-change', rank.toFixed(4));
             td.setAttribute('data-dir', dir);
             td.innerHTML =
-                '<div class="trend-wrap">' + sparkline(t.spark, color) +
+                '<div class="trend-wrap">' + sparkline(t.spark, color, 58, 17) +
                 '<span class="trend-chg ' + dir + '">' + text + '</span></div>';
         }
 
@@ -1563,8 +1582,8 @@
             const label = moversState.window === 0 ? 'All-time' : moversState.window + 'd';
             const yh = document.getElementById('yieldTrendHeader');
             const th = document.getElementById('trTrendHeader');
-            if (yh) yh.textContent = 'Yield Trend (' + label + ') ↕';
-            if (th) th.textContent = 'Total Return Trend (' + label + ') ↕';
+            if (yh) yh.textContent = 'Yield Trend ' + label;
+            if (th) th.textContent = 'Return Trend ' + label;
 
             document.querySelectorAll('#etfBody td.trend-cell').forEach(paintTrendCell);
 
