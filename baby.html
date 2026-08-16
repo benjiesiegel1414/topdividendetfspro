@@ -120,7 +120,7 @@
         /* ==================== MOVERS PANEL ==================== */
         #moversSection {
             max-width: 1700px;
-            margin: 0 auto 26px;
+            margin: 10px auto 30px;
             background: white;
             border-radius: 12px;
             border: 1px solid rgba(20, 184, 166, 0.2);
@@ -487,7 +487,7 @@
 
         /* ==================== TREND CELL ==================== */
         td.trend-cell {
-            width: 118px;
+            width: 126px;
             padding: 8px 6px;
         }
 
@@ -627,7 +627,7 @@
         /* Table stays a table but scrolls horizontally instead of crushing 14 columns */
         @media (min-width: 769px) and (max-width: 1100px) {
             #etfTable {
-                min-width: 1270px;
+                min-width: 1430px;
             }
 
             th {
@@ -929,60 +929,6 @@
         </p>
     <div class="content">
 
-        <!-- ==================== MOVERS PANEL ==================== -->
-        <section id="moversSection" style="display:none;">
-            <div class="movers-bar" id="moversBar">
-                <h2>📊 Movers</h2>
-                <span class="tagline">Biggest distribution changes across the PRO universe</span>
-                <span class="movers-caret" id="moversCaret">▼</span>
-            </div>
-            <div class="movers-body">
-                <div class="movers-controls">
-                    <div>
-                        <span class="seg-label">Time window</span>
-                        <div class="seg" id="segWindow">
-                            <button type="button" data-w="7" class="on">7 days</button>
-                            <button type="button" data-w="14">14 days</button>
-                            <button type="button" data-w="30">30 days</button>
-                            <button type="button" data-w="0">All time</button>
-                        </div>
-                    </div>
-                    <div>
-                        <span class="seg-label">Metric</span>
-                        <div class="seg" id="segMetric">
-                            <button type="button" data-m="y" class="on">Yield</button>
-                            <button type="button" data-m="t">Total Return</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="movers-stats" id="moversStats"></div>
-
-                <div class="movers-cols">
-                    <div>
-                        <div class="mpanel-head up">▲ <span id="upTitle">Biggest Increases</span><span class="cnt" id="upCount"></span></div>
-                        <div class="mpanel-body">
-                            <table class="movers-table">
-                                <thead><tr><th>Fund</th><th class="c">Trend</th><th class="r">Change</th></tr></thead>
-                                <tbody id="upBody"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="mpanel-head down">▼ <span id="downTitle">Biggest Decreases</span><span class="cnt" id="downCount"></span></div>
-                        <div class="mpanel-body">
-                            <table class="movers-table">
-                                <thead><tr><th>Fund</th><th class="c">Trend</th><th class="r">Change</th></tr></thead>
-                                <tbody id="downBody"></tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="moversNotes"></div>
-            </div>
-        </section>
-
         <!-- ==================== FILTERS ==================== -->
         <div id="filters">
             <div class="filter-group">
@@ -1073,16 +1019,18 @@
                 <option value="3-asc">Dividend Yield (Low → High)</option>
                 <option value="4-desc">Yield Trend (Biggest Risers)</option>
                 <option value="4-asc">Yield Trend (Biggest Fallers)</option>
+                <option value="9-desc">Total Return Trend (Biggest Risers)</option>
+                <option value="9-asc">Total Return Trend (Biggest Fallers)</option>
                 <option value="0-asc">Symbol (A → Z)</option>
                 <option value="0-desc">Symbol (Z → A)</option>
                 <option value="6-asc">Expense Ratio (Low → High)</option>
                 <option value="6-desc">Expense Ratio (High → Low)</option>
                 <option value="7-desc">AUM (High → Low)</option>
                 <option value="8-desc">Total Return (High → Low)</option>
-                <option value="10-desc">Inception Date (Newest First)</option>
-                <option value="10-asc">Inception Date (Oldest First)</option>
-                <option value="11-asc">Payout Frequency (Weekly First)</option>
-                <option value="12-asc">Rating (Best First)</option>
+                <option value="11-desc">Inception Date (Newest First)</option>
+                <option value="11-asc">Inception Date (Oldest First)</option>
+                <option value="12-asc">Payout Frequency (Weekly First)</option>
+                <option value="13-asc">Rating (Best First)</option>
             </select>
         </div>
 
@@ -1095,21 +1043,76 @@
                         <th onclick="sortTable(1)">Name ↕</th>
                         <th onclick="sortTable(2)">Fund Provider ↕</th>
                         <th onclick="sortTable(3)">Dividend Yield ↕</th>
-                        <th onclick="sortTable(4)" id="trendHeader">7d Trend ↕</th>
+                        <th onclick="sortTable(4)" id="yieldTrendHeader">Yield Trend (7d) ↕</th>
                         <th onclick="sortTable(5)">Tax Grade ↕</th>
                         <th onclick="sortTable(6)">Expense Ratio ↕</th>
                         <th onclick="sortTable(7)">AUM ↕</th>
                         <th onclick="sortTable(8)">Total Return ↕</th>
-                        <th onclick="sortTable(9)">Price Decay ↕</th>
-                        <th onclick="sortTable(10)">Inception Date ↕</th>
-                        <th onclick="sortTable(11)">Payout Frequency ↕</th>
-                        <th onclick="sortTable(12)">Rating ↕</th>
+                        <th onclick="sortTable(9)" id="trTrendHeader">Total Return Trend (7d) ↕</th>
+                        <th onclick="sortTable(10)">Price Decay ↕</th>
+                        <th onclick="sortTable(11)">Inception Date ↕</th>
+                        <th onclick="sortTable(12)">Payout Frequency ↕</th>
+                        <th onclick="sortTable(13)">Rating ↕</th>
                         <th class="no-sort">⭐ Watch</th>
                     </tr>
                 </thead>
                 <tbody id="etfBody"></tbody>
             </table>
         </div>
+
+        <!-- ==================== MOVERS PANEL ==================== -->
+        <section id="moversSection" style="display:none;">
+            <div class="movers-bar" id="moversBar">
+                <h2>📊 Movers</h2>
+                <span class="tagline">Biggest distribution changes across the PRO universe</span>
+                <span class="movers-caret" id="moversCaret">▼</span>
+            </div>
+            <div class="movers-body">
+                <div class="movers-controls">
+                    <div>
+                        <span class="seg-label">Time window</span>
+                        <div class="seg" id="segWindow">
+                            <button type="button" data-w="7" class="on">7 days</button>
+                            <button type="button" data-w="14">14 days</button>
+                            <button type="button" data-w="30">30 days</button>
+                            <button type="button" data-w="0">All time</button>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="seg-label">Metric</span>
+                        <div class="seg" id="segMetric">
+                            <button type="button" data-m="y" class="on">Yield</button>
+                            <button type="button" data-m="t">Total Return</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="movers-stats" id="moversStats"></div>
+
+                <div class="movers-cols">
+                    <div>
+                        <div class="mpanel-head up">▲ <span id="upTitle">Biggest Increases</span><span class="cnt" id="upCount"></span></div>
+                        <div class="mpanel-body">
+                            <table class="movers-table">
+                                <thead><tr><th>Fund</th><th class="c">Trend</th><th class="r">Change</th></tr></thead>
+                                <tbody id="upBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="mpanel-head down">▼ <span id="downTitle">Biggest Decreases</span><span class="cnt" id="downCount"></span></div>
+                        <div class="mpanel-body">
+                            <table class="movers-table">
+                                <thead><tr><th>Fund</th><th class="c">Trend</th><th class="r">Change</th></tr></thead>
+                                <tbody id="downBody"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="moversNotes"></div>
+            </div>
+        </section>
 
         <!-- ==================== DISCLAIMER ==================== -->
         <p class="disclaimer">
@@ -1138,13 +1141,14 @@
         /* Column map — change here if the table layout ever moves.
            Everything else reads from this, so indices stay in sync. */
         const COL = {
-            SYMBOL: 0, NAME: 1, PROVIDER: 2, YIELD: 3, TREND: 4, TAX: 5,
-            EXPENSE: 6, AUM: 7, TOTAL_RETURN: 8, DECAY: 9, INCEPTION: 10,
-            PAYOUT: 11, RATING: 12, WATCH: 13
+            SYMBOL: 0, NAME: 1, PROVIDER: 2, YIELD: 3, YIELD_TREND: 4, TAX: 5,
+            EXPENSE: 6, AUM: 7, TOTAL_RETURN: 8, TR_TREND: 9, DECAY: 10,
+            INCEPTION: 11, PAYOUT: 12, RATING: 13, WATCH: 14
         };
-        const TOTAL_COLS = 14;
+        const TOTAL_COLS = 15;
 
-        const MIN_MOVE = 0.5;    // % move below this counts as unchanged
+        const MIN_MOVE = 0.5;    // relative % move below this counts as unchanged (yield)
+        const MIN_MOVE_PTS = 0.5; // percentage-POINT move below this counts as unchanged (total return)
         const TOP_N = 15;        // rows per movers panel
 
         let allRows = [];
@@ -1155,6 +1159,7 @@
         let NEWEST = null;
         let META = {};
         let moversState = { window: 7, metric: 'y' };
+        let histError = null;
 
         // ==================== WATCHLIST ====================
         const WATCHLIST_KEY = 'tdep_watchlist';
@@ -1246,16 +1251,49 @@
             return out;
         }
 
+        /* Accepts YYYY-MM-DD, MM/DD/YYYY, or anything Date() can parse. */
+        function normDate(v) {
+            if (!v) return null;
+            const str = String(v).trim();
+            let m = str.match(/^(\d{4})-(\d{2})-(\d{2})/);
+            if (m) return m[1] + '-' + m[2] + '-' + m[3];
+            m = str.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+            if (m) return m[3] + '-' + String(m[1]).padStart(2, '0') + '-' + String(m[2]).padStart(2, '0');
+            const d = new Date(str);
+            return isNaN(d.getTime()) ? null : d.toISOString().slice(0, 10);
+        }
+
+        /* Field names vary between snapshot script versions — try the known ones. */
+        const YIELD_KEYS = ['yield', 'Yield', 'distributionYield', 'distribution_yield', 'divYield', 'dividendYield', 'yld'];
+        const TR_KEYS = ['totalReturn', 'total_return', 'totalreturn', 'TotalReturn', 'tr'];
+        const DATE_KEYS = ['date', 'd', 'timestamp', 'Date'];
+
+        function pickBy(obj, keys) {
+            for (let i = 0; i < keys.length; i++) {
+                if (obj[keys[i]] !== undefined) return num(obj[keys[i]]);
+            }
+            return NaN;
+        }
+        function pickDate(obj) {
+            for (let i = 0; i < DATE_KEYS.length; i++) {
+                if (obj[DATE_KEYS[i]] !== undefined) return normDate(obj[DATE_KEYS[i]]);
+            }
+            return null;
+        }
+
         /* history.json only stores a point when a value CHANGED, so each series is
-           a change log. Carry values forward to rebuild a dense daily series. */
+           a change log. Carry values forward to rebuild a dense daily series.
+           Reads the normalized {date, y, t} form built in prepHistory(). */
         function dense(series, key) {
-            const valid = series.filter(p => !isNaN(num(p[key])));
+            const field = key === 'yield' ? 'y' : 't';
+            const valid = series.filter(p => p.date && !isNaN(p[field]));
             if (!valid.length) return [];
             const out = [];
-            let idx = 0, cur = num(valid[0][key]), d = valid[0].date;
+            let idx = 0, cur = valid[0][field], d = valid[0].date;
             if (daysBetween(d, NEWEST) < 0) return [];
-            while (daysBetween(d, NEWEST) >= 0) {
-                while (idx < valid.length && valid[idx].date <= d) { cur = num(valid[idx][key]); idx++; }
+            let guard = 0;
+            while (daysBetween(d, NEWEST) >= 0 && guard++ < 4000) {
+                while (idx < valid.length && valid[idx].date <= d) { cur = valid[idx][field]; idx++; }
                 out.push({ date: d, v: cur });
                 d = addDays(d, 1);
             }
@@ -1321,18 +1359,22 @@
 
             // History is optional — if it fails the terminal still works exactly as before
             const histP = fetch(HISTORY_PATH + '?t=' + Date.now())
-                .then(r => r.ok ? r.json() : null)
-                .catch(() => null);
+                .then(r => {
+                    if (!r.ok) { histError = 'HTTP ' + r.status + ' fetching ' + HISTORY_PATH; return null; }
+                    return r.json().catch(e => { histError = 'File found but is not valid JSON (' + e.message + ')'; return null; });
+                })
+                .catch(e => { histError = 'Network error: ' + e.message; return null; });
 
             Promise.all([csvP, histP])
                 .then(([csvText, hist]) => {
                     if (hist && typeof hist === 'object' && Object.keys(hist).length) {
                         prepHistory(hist);
-                    } else {
-                        console.warn('history.json unavailable — trend column and movers panel disabled.');
+                    } else if (!histError) {
+                        histError = 'File loaded but contained no ticker data.';
                     }
                     renderTable(csvText);
                     if (HIST) initMovers();
+                    else showHistoryError();
                 })
                 .catch(() => {
                     document.getElementById('etfBody').innerHTML =
@@ -1341,16 +1383,60 @@
                 });
         }
 
-        function prepHistory(hist) {
-            HIST = hist;
+        function prepHistory(raw) {
             const all = {};
-            Object.keys(HIST).forEach(s => {
-                HIST[s] = (HIST[s] || []).slice().sort((a, b) => a.date < b.date ? -1 : 1);
-                HIST[s].forEach(p => { all[p.date] = 1; });
+            const norm = {};
+            let sampleKeys = null, points = 0, datedPoints = 0, yieldPoints = 0;
+
+            Object.keys(raw).forEach(sym => {
+                const series = raw[sym];
+                if (!Array.isArray(series)) return;
+                const clean = [];
+                series.forEach(p => {
+                    if (!p || typeof p !== 'object') return;
+                    points++;
+                    if (!sampleKeys) sampleKeys = Object.keys(p);
+                    const d = pickDate(p);
+                    const y = pickBy(p, YIELD_KEYS);
+                    const t = pickBy(p, TR_KEYS);
+                    if (d) datedPoints++;
+                    if (!isNaN(y)) yieldPoints++;
+                    if (!d) return;
+                    clean.push({ date: d, y: y, t: t });
+                });
+                if (!clean.length) return;
+                clean.sort((a, b) => a.date < b.date ? -1 : 1);
+                norm[sym.toUpperCase()] = clean;
+                clean.forEach(p => { all[p.date] = 1; });
             });
+
             HDATES = Object.keys(all).sort();
-            if (!HDATES.length) { HIST = null; return; }
+
+            if (!HDATES.length || !Object.keys(norm).length) {
+                HIST = null;
+                if (points && !datedPoints) {
+                    histError = 'Found ' + points + ' snapshot points but no readable date field. Keys present: ' +
+                        (sampleKeys ? sampleKeys.join(', ') : 'none') + '.';
+                } else if (points && !yieldPoints) {
+                    histError = 'Found ' + points + ' snapshot points but no readable yield field. Keys present: ' +
+                        (sampleKeys ? sampleKeys.join(', ') : 'none') + '.';
+                } else {
+                    histError = 'history.json parsed but produced no usable series.';
+                }
+                return;
+            }
+
+            if (!yieldPoints) {
+                histError = 'Dates read fine but no yield values could be parsed. Keys present: ' +
+                    (sampleKeys ? sampleKeys.join(', ') : 'none') + '.';
+                HIST = null;
+                return;
+            }
+
+            HIST = norm;
             NEWEST = HDATES[HDATES.length - 1];
+            console.log('History loaded: ' + Object.keys(HIST).length + ' tickers, ' +
+                HDATES.length + ' dates, ' + HDATES[0] + ' → ' + NEWEST);
         }
 
         // ==================== MAIN TABLE ====================
@@ -1372,18 +1458,19 @@
 
                 const tr = document.createElement('tr');
                 const labels = [
-                    'Symbol', 'Name', 'Fund Provider', 'Dividend Yield', '30d Trend', 'Tax Treatment Grade',
-                    'Expense Ratio', 'AUM', 'Total Return', 'Price Decay', 'Inception Date',
-                    'Payout Frequency', 'Rating'
+                    'Symbol', 'Name', 'Fund Provider', 'Dividend Yield', 'Yield Trend', 'Tax Treatment Grade',
+                    'Expense Ratio', 'AUM', 'Total Return', 'Total Return Trend', 'Price Decay',
+                    'Inception Date', 'Payout Frequency', 'Rating'
                 ];
 
-                // The CSV has 12 data columns; we splice the trend cell in after Yield.
+                /* The CSV has 12 data columns. We splice a trend cell in after
+                   Dividend Yield (index 4) and another after Total Return (index 9). */
                 for (let c = 0; c < 12; c++) {
-                    // Insert trend cell in position 4
-                    if (c === 4) tr.appendChild(buildTrendCell(symbol, labels[COL.TREND]));
+                    if (c === 4) tr.appendChild(buildTrendCell(symbol, 'yield'));
+                    if (c === 8) tr.appendChild(buildTrendCell(symbol, 'totalReturn'));
 
                     const td = document.createElement('td');
-                    const displayIndex = c < 4 ? c : c + 1; // shift past the trend column
+                    const displayIndex = c < 4 ? c : (c < 8 ? c + 1 : c + 2);
                     td.setAttribute('data-label', labels[displayIndex]);
 
                     if (c === 0) td.className = 'symbol';
@@ -1426,11 +1513,11 @@
             }
         }
 
-        function buildTrendCell(symbol, label) {
+        function buildTrendCell(symbol, metric) {
             const td = document.createElement('td');
             td.className = 'trend-cell';
-            td.setAttribute('data-label', label);
             td.setAttribute('data-symbol', symbol.toUpperCase());
+            td.setAttribute('data-metric', metric);
             paintTrendCell(td);
             return td;
         }
@@ -1439,7 +1526,12 @@
            so the table column and the Movers panel always describe the same period. */
         function paintTrendCell(td) {
             const symbol = td.getAttribute('data-symbol');
-            const t = trendFor(symbol, 'yield', moversState.window);
+            const metric = td.getAttribute('data-metric');
+            const isYield = metric === 'yield';
+            const windowLabel = moversState.window === 0 ? 'All-time' : moversState.window + 'd';
+            td.setAttribute('data-label', (isYield ? 'Yield Trend' : 'Total Return Trend') + ' (' + windowLabel + ')');
+
+            const t = trendFor(symbol, metric, moversState.window);
 
             if (!t) {
                 td.setAttribute('data-change', '');
@@ -1448,30 +1540,40 @@
                 return;
             }
 
-            const dir = Math.abs(t.pct) < MIN_MOVE ? 'flat' : (t.pct > 0 ? 'up' : 'down');
+            /* Yield reads as a relative change (a cut from 50% to 30% is "-40%").
+               Total return is already a percentage, so it reads in points. */
+            const rank = isYield ? t.pct : t.abs;
+            const threshold = isYield ? MIN_MOVE : MIN_MOVE_PTS;
+            const dir = Math.abs(rank) < threshold ? 'flat' : (rank > 0 ? 'up' : 'down');
             const color = dir === 'up' ? '#059669' : dir === 'down' ? '#DC2626' : '#94A3B8';
-            td.setAttribute('data-change', t.pct.toFixed(4));
+            const text = isYield
+                ? (t.pct > 0 ? '+' : '') + t.pct.toFixed(1) + '%'
+                : (t.abs > 0 ? '+' : '') + t.abs.toFixed(2) + ' pts';
+
+            td.setAttribute('data-change', rank.toFixed(4));
             td.setAttribute('data-dir', dir);
             td.innerHTML =
                 '<div class="trend-wrap">' + sparkline(t.spark, color) +
-                '<span class="trend-chg ' + dir + '">' + (t.pct > 0 ? '+' : '') + t.pct.toFixed(1) + '%</span></div>';
+                '<span class="trend-chg ' + dir + '">' + text + '</span></div>';
         }
 
         /* Called whenever the movers window changes — updates every row and the header. */
         function refreshTrendColumn() {
             if (!HIST) return;
             const label = moversState.window === 0 ? 'All-time' : moversState.window + 'd';
-            const th = document.getElementById('trendHeader');
-            if (th) th.textContent = label + ' Trend ↕';
+            const yh = document.getElementById('yieldTrendHeader');
+            const th = document.getElementById('trTrendHeader');
+            if (yh) yh.textContent = 'Yield Trend (' + label + ') ↕';
+            if (th) th.textContent = 'Total Return Trend (' + label + ') ↕';
 
-            document.querySelectorAll('#etfBody td.trend-cell').forEach(td => {
-                td.setAttribute('data-label', label + ' Trend');
-                paintTrendCell(td);
-            });
+            document.querySelectorAll('#etfBody td.trend-cell').forEach(paintTrendCell);
 
-            // If the table is currently sorted by trend, re-sort with the new numbers
-            if (lastSortCol === COL.TREND) sortTable(COL.TREND, sortDirections[COL.TREND]);
-            else applyFilters();
+            // If the table is currently sorted by either trend column, re-sort
+            if (lastSortCol === COL.YIELD_TREND || lastSortCol === COL.TR_TREND) {
+                sortTable(lastSortCol, sortDirections[lastSortCol]);
+            } else {
+                applyFilters();
+            }
         }
 
         let sortDirections = {};
@@ -1487,7 +1589,7 @@
 
             rows.sort((a, b) => {
                 // Trend column sorts on the stored numeric change, not the rendered SVG
-                if (col === COL.TREND) {
+                if (col === COL.YIELD_TREND || col === COL.TR_TREND) {
                     const rawA = a.cells[col].getAttribute('data-change');
                     const rawB = b.cells[col].getAttribute('data-change');
                     const hasA = rawA !== '' && rawA !== null;
@@ -1566,7 +1668,7 @@
                 const priceDecay = tr.cells[COL.DECAY].textContent.trim().toUpperCase();
                 const inceptionStr = tr.cells[COL.INCEPTION].textContent.trim();
                 const payoutFrequency = tr.cells[COL.PAYOUT].textContent.trim().toLowerCase();
-                const trendDir = tr.cells[COL.TREND].getAttribute('data-dir');
+                const trendDir = tr.cells[COL.YIELD_TREND].getAttribute('data-dir');
 
                 let visible = true;
 
@@ -1638,6 +1740,26 @@
         }
 
         // ==================== MOVERS PANEL ====================
+        /* If history.json can't be read, say so plainly instead of leaving the
+           Trend column looking broken. The terminal itself still works. */
+        function showHistoryError() {
+            const section = document.getElementById('moversSection');
+            section.style.display = '';
+            section.classList.remove('collapsed');
+            section.querySelector('.movers-caret').style.display = 'none';
+            section.querySelector('.movers-bar').style.cursor = 'default';
+            section.querySelector('.movers-body').innerHTML =
+                '<div class="movers-note warn">' +
+                '<strong>Trend data unavailable.</strong> ' + (histError || 'Unknown error') + '<br><br>' +
+                'The terminal and all rankings below are working normally — only the Trend column and this panel need <code>' +
+                HISTORY_PATH + '</code>. Confirm that file is reachable at <code>' +
+                (location.origin + '/' + HISTORY_PATH.replace(/^\.?\//, '')) + '</code>, then reload.' +
+                '</div>';
+            document.querySelectorAll('#etfBody td.trend-cell').forEach(td => {
+                td.innerHTML = '<span class="trend-none" title="' + (histError || '') + '">no data</span>';
+            });
+        }
+
         function initMovers() {
             const section = document.getElementById('moversSection');
             section.style.display = '';
@@ -1682,15 +1804,25 @@
         }
 
         function computeMovers() {
-            const key = moversState.metric === 'y' ? 'yield' : 'totalReturn';
+            const isYield = moversState.metric === 'y';
+            const key = isYield ? 'yield' : 'totalReturn';
             const movers = [], collecting = [];
             let flat = 0;
 
             Object.keys(HIST).forEach(sym => {
                 const t = trendFor(sym, key, moversState.window);
                 if (!t) { collecting.push(sym); return; }
-                if (Math.abs(t.pct) < MIN_MOVE) { flat++; return; }
-                movers.push({ sym, then: t.then, now: t.now, abs: t.abs, pct: t.pct, spark: t.spark });
+
+                /* Yield is ranked on relative change — a drop from 50% to 30% is
+                   "a 40% cut", which is how distribution cuts are described.
+                   Total return is ALREADY a percentage, so relative change of a
+                   percentage is meaningless (1% -> 17% is +16 points, not +1600%).
+                   Rank and threshold it on percentage points instead. */
+                const rank = isYield ? t.pct : t.abs;
+                const move = Math.abs(rank);
+                if (move < (isYield ? MIN_MOVE : MIN_MOVE_PTS)) { flat++; return; }
+
+                movers.push({ sym, then: t.then, now: t.now, abs: t.abs, pct: t.pct, spark: t.spark, rank: rank });
             });
 
             return { movers, collecting, flat };
@@ -1699,26 +1831,39 @@
         function moverRow(m, dir) {
             const color = dir === 'up' ? '#059669' : '#DC2626';
             const meta = META[m.sym] || {};
+            const isYield = moversState.metric === 'y';
+            const sign = v => (v > 0 ? '+' : '');
+
+            // Yield leads with the relative cut/raise; total return leads with points.
+            const primary = isYield
+                ? sign(m.pct) + m.pct.toFixed(1) + '%'
+                : sign(m.abs) + m.abs.toFixed(2) + ' pts';
+            const secondary = isYield
+                ? sign(m.abs) + m.abs.toFixed(2) + ' pts'
+                : '';
+
             return '<tr>' +
                 '<td><div class="m-tk">' + m.sym + '</div>' +
                 (meta.name ? '<div class="m-nm">' + meta.name + '</div>' : '') +
                 '<div class="m-vals"><b>' + m.then.toFixed(2) + '%</b> → <b>' + m.now.toFixed(2) + '%</b></div></td>' +
                 '<td class="c">' + sparkline(m.spark, color, 80, 22) + '</td>' +
-                '<td class="r"><div class="m-chg ' + dir + '">' + (m.pct > 0 ? '+' : '') + m.pct.toFixed(1) + '%</div>' +
-                '<div class="m-pts">' + (m.abs > 0 ? '+' : '') + m.abs.toFixed(2) + ' pts</div></td>' +
+                '<td class="r"><div class="m-chg ' + dir + '">' + primary + '</div>' +
+                (secondary ? '<div class="m-pts">' + secondary + '</div>' : '') + '</td>' +
                 '</tr>';
         }
 
         function renderMovers() {
             const r = computeMovers();
-            const ups = r.movers.filter(m => m.pct > 0).sort((a, b) => b.pct - a.pct);
-            const downs = r.movers.filter(m => m.pct < 0).sort((a, b) => a.pct - b.pct);
+            const ups = r.movers.filter(m => m.rank > 0).sort((a, b) => b.rank - a.rank);
+            const downs = r.movers.filter(m => m.rank < 0).sort((a, b) => a.rank - b.rank);
             const metricWord = moversState.metric === 'y' ? 'Yield' : 'Return';
+            const unitLabel = moversState.metric === 'y' ? MIN_MOVE + '%' : MIN_MOVE_PTS + ' pts';
 
             document.getElementById('moversStats').innerHTML =
                 '<div class="mstat"><div class="k">Rising</div><div class="v up">' + ups.length + '</div></div>' +
                 '<div class="mstat"><div class="k">Falling</div><div class="v down">' + downs.length + '</div></div>' +
-                '<div class="mstat"><div class="k">Unchanged</div><div class="v">' + r.flat + '</div><div class="n">under ' + MIN_MOVE + '% move</div></div>' +
+                '<div class="mstat"><div class="k">Unchanged</div><div class="v">' + r.flat + '</div><div class="n">under ' +
+                (moversState.metric === 'y' ? MIN_MOVE + '% move' : MIN_MOVE_PTS + ' pt move') + '</div></div>' +
                 '<div class="mstat"><div class="k">Collecting</div><div class="v">' + r.collecting.length + '</div><div class="n">need more history</div></div>' +
                 '<div class="mstat"><div class="k">Universe</div><div class="v">' + Object.keys(HIST).length + '</div><div class="n">funds tracked</div></div>';
 
@@ -1729,11 +1874,11 @@
 
             document.getElementById('upBody').innerHTML =
                 ups.slice(0, TOP_N).map(m => moverRow(m, 'up')).join('') ||
-                '<tr><td colspan="3" class="m-empty">No increases above ' + MIN_MOVE + '% in this window.</td></tr>';
+                '<tr><td colspan="3" class="m-empty">No increases above ' + unitLabel + ' in this window.</td></tr>';
 
             document.getElementById('downBody').innerHTML =
                 downs.slice(0, TOP_N).map(m => moverRow(m, 'down')).join('') ||
-                '<tr><td colspan="3" class="m-empty">No decreases above ' + MIN_MOVE + '% in this window.</td></tr>';
+                '<tr><td colspan="3" class="m-empty">No decreases above ' + unitLabel + ' in this window.</td></tr>';
 
             // Notes
             const span = HDATES.length ? daysBetween(HDATES[0], NEWEST) + 1 : 0;
