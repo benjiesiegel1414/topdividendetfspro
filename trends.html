@@ -247,9 +247,10 @@ footer a:hover{color:var(--accent)}
     <p><strong>How these numbers are calculated.</strong> We snapshot the PRO dataset daily and record a new data point
     only when a value actually changes. To compare across a window, the last known value is carried forward across days
     with no recorded change, and the current value is compared against the value in effect at the start of the window.
-    Yield changes are expressed as a relative percentage, because a distribution moving from 50% to 30% is conventionally
-    described as a 40% reduction. Total return changes are expressed in percentage points, because total return is
-    already a percentage and a relative change of a percentage would be misleading.</p>
+    Every change on this page is the straight difference between those two figures, not a relative percentage. A fund
+    whose distribution rate moves from 15% to 16% is shown as +1.00%, and one that moves from 50% to 30% is shown as
+    -20.00%. Total return changes are calculated the same way. Both metrics are already percentages, so expressing a
+    change as a percentage of a percentage would be misleading.</p>
 
     <p><strong>Windows may be shorter than they appear.</strong> Where the selected window is longer than the history we
     have collected, the comparison runs from the earliest snapshot available and a notice is displayed above. Funds added
@@ -291,7 +292,7 @@ var CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTxCiod-Cwry7E6k9
 
 var C_SYMBOL = 0, C_NAME = 1, C_YIELD = 3, C_TR = 7, C_FREQ = 10;
 var TOP_N = 15;
-var MIN_MOVE = 0.5;      // relative % — yield
+var MIN_MOVE = 0.10;     // percentage points — yield
 var MIN_MOVE_PTS = 0.5;  // percentage points — total return
 
 var state = { window: 7, metric: 'y' };
@@ -358,9 +359,10 @@ function trendFor(sym,metric,win){
   if(daysBetween(dn[0].date,startIso)<0) return null;
   var then=valueOn(dn,startIso), now=dn[dn.length-1].v;
   if(isNaN(then)||isNaN(now)) return null;
+  /* Change is ALWAYS the straight difference in percentage points.
+     15% yield -> 16% yield is +1.00%, never +6.7%. Same rule for total return. */
   var abs=now-then;
-  var pct = then!==0 ? (abs/Math.abs(then))*100 : 0;
-  return { then:then, now:now, abs:abs, pct:pct, spark:dn.filter(function(p){return p.date>=startIso;}) };
+  return { then:then, now:now, abs:abs, spark:dn.filter(function(p){return p.date>=startIso;}) };
 }
 
 function sparkline(pts,color,w,h){
@@ -458,11 +460,10 @@ function compute(){
   Object.keys(HIST).forEach(function(sym){
     var t=trendFor(sym,state.metric,state.window);
     if(!t){ collecting.push(sym); return; }
-    /* Yield ranks on relative change (a 50%→30% cut is "-40%").
-       Total return is already a percentage, so it ranks on points. */
-    var rank = isY ? t.pct : t.abs;
+    /* Both metrics rank on the straight point difference. 50% -> 30% is -20.00%. */
+    var rank = t.abs;
     if(Math.abs(rank) < (isY?MIN_MOVE:MIN_MOVE_PTS)){ flat++; return; }
-    movers.push({sym:sym,then:t.then,now:t.now,abs:t.abs,pct:t.pct,spark:t.spark,rank:rank});
+    movers.push({sym:sym,then:t.then,now:t.now,abs:t.abs,spark:t.spark,rank:rank});
   });
   return {movers:movers,collecting:collecting,flat:flat};
 }
@@ -472,8 +473,8 @@ function moverRow(m,dir){
   var meta = META[m.sym]||{};
   var isY = state.metric==='y';
   var sign = function(v){ return v>0?'+':''; };
-  var primary = isY ? sign(m.pct)+m.pct.toFixed(1)+'%' : sign(m.abs)+m.abs.toFixed(2)+' pts';
-  var secondary = isY ? sign(m.abs)+m.abs.toFixed(2)+' pts' : '';
+  var primary = sign(m.abs)+m.abs.toFixed(2)+'%';
+  var secondary = '';
   return '<tr>'+
     '<td><div class="tk">'+esc(m.sym)+(meta.freq?'<span class="freq">'+esc(meta.freq)+'</span>':'')+'</div>'+
     (meta.name?'<div class="nm">'+esc(meta.name)+'</div>':'')+
@@ -508,11 +509,11 @@ function buildAll(){
     }
     function trendCell(t,isY){
       if(!t) return cell('<span class="none">—</span>','c spark-cell',{'data-change':''});
-      var rank = isY ? t.pct : t.abs;
+      var rank = t.abs;
       var thr = isY ? MIN_MOVE : MIN_MOVE_PTS;
       var dir = Math.abs(rank)<thr ? 'flat' : (rank>0?'up':'down');
       var color = dir==='up' ? '#059669' : dir==='down' ? '#DC2626' : '#94A3B8';
-      var txt = isY ? (t.pct>0?'+':'')+t.pct.toFixed(1)+'%' : (t.abs>0?'+':'')+t.abs.toFixed(2)+' pts';
+      var txt = (t.abs>0?'+':'')+t.abs.toFixed(2)+'%';
       return cell('<div class="spark-wrap">'+sparkline(t.spark,color,64,18)+
         '<span class="spark-chg '+dir+'">'+txt+'</span></div>','c spark-cell',{'data-change':rank.toFixed(4)});
     }
@@ -572,7 +573,7 @@ function render(){
   var ups=r.movers.filter(function(m){return m.rank>0;}).sort(function(a,b){return b.rank-a.rank;});
   var downs=r.movers.filter(function(m){return m.rank<0;}).sort(function(a,b){return a.rank-b.rank;});
   var word = state.metric==='y' ? 'Yield' : 'Total Return';
-  var unit = state.metric==='y' ? MIN_MOVE+'%' : MIN_MOVE_PTS+' pts';
+  var unit = (state.metric==='y' ? MIN_MOVE.toFixed(2) : MIN_MOVE_PTS.toFixed(2))+'%';
 
   document.getElementById('stats').innerHTML=
     '<div class="stat"><div class="k">Rising</div><div class="v up">'+ups.length+'</div></div>'+
