@@ -109,8 +109,12 @@ tbody tr:hover{background:rgba(20,184,166,.07)}
 .search{width:100%;max-width:340px;padding:12px 14px;border:2px solid var(--primary-light);border-radius:8px;
   font-size:16px;font-weight:600;font-family:'Lato',Arial,sans-serif;min-height:46px;outline:none}
 .search:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(6,182,212,.1)}
-.disclaimer{font-size:.88em;color:var(--text-light);max-width:900px;margin:34px auto 20px;text-align:center;
-  line-height:1.55;padding:20px;background:rgba(20,184,166,.05);border-left:4px solid var(--primary-light);border-radius:8px}
+.disclaimer{font-size:13px;color:var(--text-light);max-width:1000px;margin:34px auto 20px;text-align:left;
+  line-height:1.7;padding:24px 26px;background:rgba(20,184,166,.05);border-left:4px solid var(--primary-light);border-radius:8px}
+.disclaimer h3{margin:0 0 14px;font-size:16px;font-weight:900;color:var(--primary-dark);letter-spacing:-.2px}
+.disclaimer p{margin:0 0 13px}
+.disclaimer p:last-child{margin-bottom:0}
+.disclaimer strong{color:var(--text-dark);font-weight:900}
 footer{margin:30px auto;padding-top:15px;border-top:1px solid var(--line);text-align:center;color:var(--text-light);font-size:.88em;max-width:900px}
 footer a{color:var(--primary-dark);text-decoration:none;font-weight:600}
 footer a:hover{color:var(--accent)}
@@ -122,6 +126,7 @@ footer a:hover{color:var(--accent)}
   .seg button{padding:10px 13px;font-size:12.5px}
   .nm{max-width:130px}
   td,th{padding:9px 8px}
+  .disclaimer{padding:18px 16px;font-size:12.5px}
 }
 </style>
 </head>
@@ -218,11 +223,53 @@ footer a:hover{color:var(--accent)}
 
   </div>
 
-  <p class="disclaimer">
-    <strong>📌 Disclaimer:</strong> Distribution rates are annualized from the most recent payment and move constantly on
-    option-income funds. A change shown here is not necessarily a formally declared cut or raise. Informational and
-    educational use only — not financial, investment, or tax advice.
-  </p>
+  <div class="disclaimer">
+    <h3>📌 Important Disclosures &amp; Methodology</h3>
+
+    <p><strong>Not investment advice.</strong> Top Dividend ETFs Pro is not a registered investment adviser,
+    broker-dealer, or tax professional. Nothing on this page is a recommendation, solicitation, or endorsement to buy,
+    sell, or hold any security. All content is provided for informational and educational purposes only. Always do your
+    own research and consult a qualified financial, tax, or legal professional before making any investment decision.</p>
+
+    <p><strong>A change shown here is not a declared corporate action.</strong> These figures are derived from observed
+    movement in published data, not from issuer announcements. A fund appearing under "Decreases" has not necessarily
+    declared a distribution cut, and one under "Increases" has not necessarily declared a raise. Distribution amounts on
+    option-income and single-stock funds fluctuate every period by design. For the official record on any fund, consult
+    the issuer's own announcements and the fund's 19a-1 notices.</p>
+
+    <p><strong>Distribution rate is not yield, and neither is total return.</strong> A distribution rate is the most
+    recent payment annualized as if it repeated unchanged for a full year. It is not a forecast, not guaranteed, and not
+    a measure of profit. A fund can pay a very high distribution while its share price declines, leaving an investor with
+    a negative total return. Distributions may include ordinary income, capital gains, and return of capital; return of
+    capital reduces your cost basis and can create tax consequences later. Yield alone tells you very little about
+    whether a fund is making money.</p>
+
+    <p><strong>How these numbers are calculated.</strong> We snapshot the PRO dataset daily and record a new data point
+    only when a value actually changes. To compare across a window, the last known value is carried forward across days
+    with no recorded change, and the current value is compared against the value in effect at the start of the window.
+    Yield changes are expressed as a relative percentage, because a distribution moving from 50% to 30% is conventionally
+    described as a 40% reduction. Total return changes are expressed in percentage points, because total return is
+    already a percentage and a relative change of a percentage would be misleading.</p>
+
+    <p><strong>Windows may be shorter than they appear.</strong> Where the selected window is longer than the history we
+    have collected, the comparison runs from the earliest snapshot available and a notice is displayed above. Funds added
+    to the dataset recently are excluded from the rankings and listed separately until they have enough history to
+    measure. Moves smaller than the stated threshold are treated as unchanged to reduce noise.</p>
+
+    <p><strong>Data may be delayed, incomplete, or wrong.</strong> Figures are compiled from public sources and are not
+    real-time. Snapshots can be missed, source data can contain errors, and fund information can change without being
+    reflected here immediately. We make no representation or warranty as to the accuracy, completeness, or timeliness of
+    anything shown, and we accept no liability for any loss arising from reliance on it. Verify anything material against
+    the fund's official prospectus and issuer disclosures before acting.</p>
+
+    <p><strong>Past performance does not predict future results.</strong> Historical distribution changes and total
+    return figures describe what already happened. They do not indicate what a fund will pay or return going forward.
+    Investing involves risk, including the possible loss of principal.</p>
+
+    <p><strong>No affiliation.</strong> Top Dividend ETFs Pro is not affiliated with, sponsored by, or endorsed by any
+    ETF issuer, fund sponsor, or index provider named on this page. All trademarks and fund names belong to their
+    respective owners.</p>
+  </div>
 
   <footer>
     <p>
@@ -524,7 +571,7 @@ function render(){
   var r=compute();
   var ups=r.movers.filter(function(m){return m.rank>0;}).sort(function(a,b){return b.rank-a.rank;});
   var downs=r.movers.filter(function(m){return m.rank<0;}).sort(function(a,b){return a.rank-b.rank;});
-  var word = state.metric==='y' ? 'Yield' : 'Return';
+  var word = state.metric==='y' ? 'Yield' : 'Total Return';
   var unit = state.metric==='y' ? MIN_MOVE+'%' : MIN_MOVE_PTS+' pts';
 
   document.getElementById('stats').innerHTML=
