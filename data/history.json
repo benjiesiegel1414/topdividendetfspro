@@ -5159,5 +5159,19 @@
       "yield": 0,
       "totalReturn": null
     }
+  ],
+  "SEPI": [
+    {
+      "date": "2026-08-17",
+      "yield": 6.5,
+      "totalReturn": 25
+    }
+  ],
+  "SPUC": [
+    {
+      "date": "2026-08-17",
+      "yield": 12,
+      "totalReturn": 146
+    }
   ]
 }
