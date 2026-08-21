@@ -39,6 +39,11 @@
       "date": "2026-08-19",
       "yield": 45,
       "totalReturn": -25
+    },
+    {
+      "date": "2026-08-21",
+      "yield": 44,
+      "totalReturn": -25
     }
   ],
   "YBTY": [
@@ -217,6 +222,11 @@
       "date": "2026-08-14",
       "yield": 70,
       "totalReturn": -59
+    },
+    {
+      "date": "2026-08-21",
+      "yield": 64,
+      "totalReturn": -59
     }
   ],
   "HOYY": [
@@ -263,6 +273,11 @@
     {
       "date": "2026-08-14",
       "yield": 76,
+      "totalReturn": -47
+    },
+    {
+      "date": "2026-08-21",
+      "yield": 73,
       "totalReturn": -47
     }
   ],
@@ -358,6 +373,11 @@
       "date": "2026-08-19",
       "yield": 30,
       "totalReturn": -1
+    },
+    {
+      "date": "2026-08-21",
+      "yield": 25,
+      "totalReturn": -1
     }
   ],
   "SMYY": [
@@ -416,6 +436,11 @@
     {
       "date": "2026-08-08",
       "yield": 12,
+      "totalReturn": 14
+    },
+    {
+      "date": "2026-08-21",
+      "yield": 10,
       "totalReturn": 14
     }
   ],
@@ -5871,6 +5896,20 @@
       "date": "2026-08-20",
       "yield": 7,
       "totalReturn": 131
+    }
+  ],
+  "ROCY": [
+    {
+      "date": "2026-08-21",
+      "yield": 8,
+      "totalReturn": 13
+    }
+  ],
+  "FOXY": [
+    {
+      "date": "2026-08-21",
+      "yield": 8.8,
+      "totalReturn": 24
     }
   ]
 }
