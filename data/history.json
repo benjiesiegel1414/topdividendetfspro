@@ -6476,5 +6476,12 @@
       "yield": 8.8,
       "totalReturn": 23
     }
+  ],
+  "TOPW": [
+    {
+      "date": "2026-08-24",
+      "yield": 46,
+      "totalReturn": -1
+    }
   ]
 }
