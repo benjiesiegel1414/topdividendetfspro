@@ -5054,6 +5054,11 @@
       "date": "2026-08-23",
       "yield": 41,
       "totalReturn": 70
+    },
+    {
+      "date": "2026-08-25",
+      "yield": 38,
+      "totalReturn": 70
     }
   ],
   "TSII": [
@@ -5121,6 +5126,11 @@
       "date": "2026-08-23",
       "yield": 42,
       "totalReturn": 9
+    },
+    {
+      "date": "2026-08-25",
+      "yield": 38,
+      "totalReturn": 9
     }
   ],
   "WMTI": [
@@ -5172,6 +5182,11 @@
     {
       "date": "2026-08-23",
       "yield": 32,
+      "totalReturn": -2
+    },
+    {
+      "date": "2026-08-25",
+      "yield": 52,
       "totalReturn": -2
     }
   ],
