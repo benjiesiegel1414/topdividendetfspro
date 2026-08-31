@@ -3806,6 +3806,11 @@
       "date": "2026-08-27",
       "yield": 50,
       "totalReturn": 58
+    },
+    {
+      "date": "2026-08-31",
+      "yield": 22,
+      "totalReturn": 58
     }
   ],
   "XDTE": [
@@ -3863,6 +3868,11 @@
       "date": "2026-08-23",
       "yield": 25,
       "totalReturn": 46
+    },
+    {
+      "date": "2026-08-31",
+      "yield": 13,
+      "totalReturn": 46
     }
   ],
   "YBTC": [
@@ -3919,6 +3929,11 @@
     {
       "date": "2026-08-27",
       "yield": 30,
+      "totalReturn": 26
+    },
+    {
+      "date": "2026-08-31",
+      "yield": 20,
       "totalReturn": 26
     }
   ],
@@ -3992,6 +4007,11 @@
       "date": "2026-08-27",
       "yield": 56,
       "totalReturn": 58
+    },
+    {
+      "date": "2026-08-31",
+      "yield": 63,
+      "totalReturn": 58
     }
   ],
   "YETH": [
@@ -4048,6 +4068,11 @@
     {
       "date": "2026-08-27",
       "yield": 50,
+      "totalReturn": -34
+    },
+    {
+      "date": "2026-08-31",
+      "yield": 28,
       "totalReturn": -34
     }
   ],
@@ -4110,6 +4135,11 @@
     {
       "date": "2026-08-27",
       "yield": 50,
+      "totalReturn": -41
+    },
+    {
+      "date": "2026-08-31",
+      "yield": 102,
       "totalReturn": -41
     }
   ],
@@ -4177,6 +4207,11 @@
     {
       "date": "2026-08-27",
       "yield": 41,
+      "totalReturn": 44
+    },
+    {
+      "date": "2026-08-31",
+      "yield": 25,
       "totalReturn": 44
     }
   ],
@@ -4267,6 +4302,11 @@
       "date": "2026-08-27",
       "yield": 26,
       "totalReturn": 21
+    },
+    {
+      "date": "2026-08-31",
+      "yield": 20,
+      "totalReturn": 21
     }
   ],
   "TSLW": [
@@ -4339,6 +4379,11 @@
       "date": "2026-08-27",
       "yield": 55,
       "totalReturn": -13
+    },
+    {
+      "date": "2026-08-31",
+      "yield": 64,
+      "totalReturn": -13
     }
   ],
   "GOOW": [
@@ -4410,6 +4455,11 @@
     {
       "date": "2026-08-27",
       "yield": 27,
+      "totalReturn": 88
+    },
+    {
+      "date": "2026-08-31",
+      "yield": 32,
       "totalReturn": 88
     }
   ],
@@ -7756,6 +7806,11 @@
     {
       "date": "2026-08-26",
       "yield": 46,
+      "totalReturn": 3
+    },
+    {
+      "date": "2026-08-31",
+      "yield": 29,
       "totalReturn": 3
     }
   ]
