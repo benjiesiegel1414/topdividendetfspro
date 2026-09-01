@@ -5994,6 +5994,11 @@
       "date": "2026-08-27",
       "yield": 38,
       "totalReturn": 81
+    },
+    {
+      "date": "2026-09-01",
+      "yield": 74,
+      "totalReturn": 81
     }
   ],
   "TSII": [
@@ -6142,6 +6147,11 @@
     {
       "date": "2026-08-27",
       "yield": 52,
+      "totalReturn": -3
+    },
+    {
+      "date": "2026-09-01",
+      "yield": 30,
       "totalReturn": -3
     }
   ],
