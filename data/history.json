@@ -173,6 +173,11 @@
       "date": "2026-09-02",
       "yield": 80,
       "totalReturn": 29
+    },
+    {
+      "date": "2026-09-04",
+      "yield": 68,
+      "totalReturn": 29
     }
   ],
   "XBTY": [
@@ -286,6 +291,11 @@
     {
       "date": "2026-09-02",
       "yield": 64,
+      "totalReturn": -59
+    },
+    {
+      "date": "2026-09-04",
+      "yield": 63,
       "totalReturn": -59
     }
   ],
@@ -426,6 +436,11 @@
       "date": "2026-08-27",
       "yield": 38,
       "totalReturn": 34
+    },
+    {
+      "date": "2026-09-04",
+      "yield": 39,
+      "totalReturn": 34
     }
   ],
   "TQQY": [
@@ -539,6 +554,11 @@
     {
       "date": "2026-09-02",
       "yield": 74,
+      "totalReturn": -31
+    },
+    {
+      "date": "2026-09-04",
+      "yield": 71,
       "totalReturn": -31
     }
   ],
@@ -6236,6 +6256,11 @@
       "date": "2026-09-02",
       "yield": 13,
       "totalReturn": 45
+    },
+    {
+      "date": "2026-09-04",
+      "yield": 14,
+      "totalReturn": 45
     }
   ],
   "FEPI": [
@@ -8239,6 +8264,11 @@
     {
       "date": "2026-08-26",
       "yield": 27,
+      "totalReturn": 16
+    },
+    {
+      "date": "2026-09-04",
+      "yield": 26,
       "totalReturn": 16
     }
   ],
