@@ -248,6 +248,171 @@
             box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.1);
         }
 
+        /* ==================== YIELD RANGE SLIDER ==================== */
+        #yieldSliderBlock {
+            max-width: 1700px;
+            margin: 0 auto 24px;
+            padding: 22px 28px 12px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(20, 184, 166, 0.2);
+        }
+
+        .yield-slider-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+            margin-bottom: 6px;
+        }
+
+        .yield-readout {
+            font-size: 26px;
+            font-weight: 900;
+            color: var(--primary-dark);
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .yield-readout span {
+            color: var(--accent);
+        }
+
+        .yield-match-count {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-light);
+        }
+
+        .yield-match-count strong {
+            color: var(--primary);
+            font-weight: 900;
+        }
+
+        .range-wrap {
+            position: relative;
+            height: 46px;
+            margin: 4px 0 0;
+        }
+
+        .range-track {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: rgba(20, 184, 166, 0.16);
+            border-radius: 4px;
+        }
+
+        .range-fill {
+            position: absolute;
+            top: 20px;
+            height: 8px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 4px;
+        }
+
+        .range-wrap input[type="range"] {
+            position: absolute;
+            top: 8px;
+            left: 0;
+            width: 100%;
+            height: 32px;
+            margin: 0;
+            padding: 0;
+            background: none;
+            pointer-events: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .range-wrap input[type="range"]:focus {
+            outline: none;
+        }
+
+        .range-wrap input[type="range"]::-webkit-slider-runnable-track {
+            background: none;
+            border: none;
+            height: 32px;
+        }
+
+        .range-wrap input[type="range"]::-moz-range-track {
+            background: none;
+            border: none;
+            height: 32px;
+        }
+
+        .range-wrap input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            pointer-events: auto;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid var(--primary);
+            box-shadow: 0 3px 10px rgba(15, 118, 110, 0.35);
+            cursor: grab;
+            margin-top: 3px;
+            transition: transform 0.15s ease, border-color 0.15s ease;
+        }
+
+        .range-wrap input[type="range"]::-moz-range-thumb {
+            pointer-events: auto;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid var(--primary);
+            box-shadow: 0 3px 10px rgba(15, 118, 110, 0.35);
+            cursor: grab;
+            transition: transform 0.15s ease, border-color 0.15s ease;
+        }
+
+        .range-wrap input[type="range"]:hover::-webkit-slider-thumb,
+        .range-wrap input[type="range"]:focus-visible::-webkit-slider-thumb {
+            border-color: var(--accent);
+            transform: scale(1.12);
+        }
+
+        .range-wrap input[type="range"]:hover::-moz-range-thumb,
+        .range-wrap input[type="range"]:focus-visible::-moz-range-thumb {
+            border-color: var(--accent);
+            transform: scale(1.12);
+        }
+
+        .range-wrap input[type="range"]:focus-visible::-webkit-slider-thumb {
+            box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.35);
+        }
+
+        .range-wrap input[type="range"]:focus-visible::-moz-range-thumb {
+            box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.35);
+        }
+
+        #yieldMin { z-index: 3; }
+        #yieldMax { z-index: 4; }
+
+        .range-scale {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-top: -2px;
+            padding-bottom: 10px;
+        }
+
+        .range-hint {
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--text-light);
+            text-align: center;
+            padding-bottom: 8px;
+        }
+
         #resetFilters {
             padding: 14px 28px; 
             background: linear-gradient(135deg, #10B981, #0F766E); 
@@ -524,6 +689,36 @@
                 width: 100%;
             }
 
+            /* Yield slider gets a little more breathing room on phones */
+            #yieldSliderBlock {
+                padding: 20px 18px 10px;
+                margin-bottom: 18px;
+            }
+
+            .yield-slider-head {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+
+            .yield-readout {
+                font-size: 23px;
+            }
+
+            .range-wrap {
+                height: 52px;
+            }
+
+            .range-wrap input[type="range"]::-webkit-slider-thumb {
+                width: 30px;
+                height: 30px;
+            }
+
+            .range-wrap input[type="range"]::-moz-range-thumb {
+                width: 30px;
+                height: 30px;
+            }
+
             .action-bar {
                 flex-direction: column;
                 align-items: stretch;
@@ -684,6 +879,17 @@
             td {
                 font-size: 14px;
             }
+
+            .yield-readout {
+                font-size: 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+                animation: none !important;
+            }
         }
 
         .no-results {
@@ -774,13 +980,14 @@
             </div>
 
             <div class="filter-group">
-                <span class="filter-label">📊 Yield</span>
+                <span class="filter-label">📊 Yield Presets</span>
                 <select id="yieldRangeFilter">
-                    <option value="">All Yields</option>
-                    <option value="1-5">1–5%</option>
+                    <option value="">Custom Range</option>
+                    <option value="0-5">0–5%</option>
                     <option value="5-10">5–10%</option>
                     <option value="10-15">10–15%</option>
-                    <option value="15+">15%+</option>
+                    <option value="15-25">15–25%</option>
+                    <option value="25+">25%+</option>
                 </select>
             </div>
 
@@ -830,6 +1037,28 @@
                     <option value="5plus">5+ Years</option>
                 </select>
             </div>
+        </div>
+
+        <!-- ==================== YIELD RANGE SLIDER ==================== -->
+        <div id="yieldSliderBlock">
+            <div class="yield-slider-head">
+                <div class="yield-readout">Yield range: <span id="yieldReadout">0% – 0%</span></div>
+                <div class="yield-match-count"><strong id="yieldMatchCount">0</strong> ETFs match your filters</div>
+            </div>
+
+            <div class="range-wrap">
+                <div class="range-track"></div>
+                <div class="range-fill" id="yieldFill"></div>
+                <input type="range" id="yieldMin" min="0" max="100" step="0.5" value="0" aria-label="Minimum dividend yield">
+                <input type="range" id="yieldMax" min="0" max="100" step="0.5" value="100" aria-label="Maximum dividend yield">
+            </div>
+
+            <div class="range-scale">
+                <span>0%</span>
+                <span id="yieldScaleMax">—</span>
+            </div>
+
+            <p class="range-hint">Drag either handle to screen by exact yield. The top of the scale is set by the highest yielding ETF in the database.</p>
         </div>
 
         <!-- Centered Action Buttons -->
@@ -905,6 +1134,11 @@
         const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTxCiod-Cwry7E6k9Un9dgrM_ANymC36_IO_wLyNj-YDo2KI7mp_1ZzyNBnBGZOxT48QPM8TCwtsmA4/pub?gid=0&single=true&output=csv";
 
         let allRows = [];
+
+        // ==================== YIELD RANGE SLIDER STATE ====================
+        const YIELD_STEP = 0.5;
+        let yieldCeiling = 100;      // top of the slider scale, set from the data
+        let syncingPreset = false;   // stops preset <-> slider updates from looping
 
         // ==================== WATCHLIST ====================
         const WATCHLIST_KEY = 'tdep_watchlist';
@@ -1062,9 +1296,91 @@
 
             if (allRows.length === 0) {
                 tbody.innerHTML = '<tr class="no-results-row"><td colspan="13" class="no-results">No ETF data available.</td></tr>';
+                document.getElementById('yieldSliderBlock').style.display = 'none';
             } else {
+                initYieldSlider();
                 sortTable(3, 'desc');
             }
+        }
+
+        // ==================== YIELD SLIDER ====================
+        // Scale runs 0% → the highest yield in the loaded data (rounded up to a clean number)
+        function initYieldSlider() {
+            let highest = 0;
+            allRows.forEach(tr => {
+                const v = parseFloat(tr.cells[3].textContent);
+                if (!isNaN(v) && v > highest) highest = v;
+            });
+
+            // Round up to the next whole percent so the top ETF is always reachable
+            yieldCeiling = Math.max(1, Math.ceil(highest));
+
+            const minEl = document.getElementById('yieldMin');
+            const maxEl = document.getElementById('yieldMax');
+
+            [minEl, maxEl].forEach(el => {
+                el.min = 0;
+                el.max = yieldCeiling;
+                el.step = YIELD_STEP;
+            });
+
+            minEl.value = 0;
+            maxEl.value = yieldCeiling;
+
+            document.getElementById('yieldScaleMax').textContent = yieldCeiling + '%';
+            updateYieldUI();
+        }
+
+        function getYieldRange() {
+            const minEl = document.getElementById('yieldMin');
+            const maxEl = document.getElementById('yieldMax');
+            let lo = parseFloat(minEl.value);
+            let hi = parseFloat(maxEl.value);
+            if (isNaN(lo)) lo = 0;
+            if (isNaN(hi)) hi = yieldCeiling;
+            return { lo, hi };
+        }
+
+        // Keeps the two handles from crossing each other
+        function clampHandles(changed) {
+            const minEl = document.getElementById('yieldMin');
+            const maxEl = document.getElementById('yieldMax');
+            let lo = parseFloat(minEl.value);
+            let hi = parseFloat(maxEl.value);
+
+            if (lo > hi) {
+                if (changed === 'min') {
+                    minEl.value = hi;
+                } else {
+                    maxEl.value = lo;
+                }
+            }
+        }
+
+        function formatPct(n) {
+            return (Math.round(n * 10) / 10).toString().replace(/\.0$/, '') + '%';
+        }
+
+        function updateYieldUI() {
+            const { lo, hi } = getYieldRange();
+            const span = yieldCeiling || 1;
+            const leftPct = (lo / span) * 100;
+            const rightPct = (hi / span) * 100;
+
+            const fill = document.getElementById('yieldFill');
+            fill.style.left = leftPct + '%';
+            fill.style.width = Math.max(0, rightPct - leftPct) + '%';
+
+            document.getElementById('yieldReadout').textContent = formatPct(lo) + ' – ' + formatPct(hi);
+        }
+
+        function setYieldRange(lo, hi) {
+            const minEl = document.getElementById('yieldMin');
+            const maxEl = document.getElementById('yieldMax');
+            minEl.value = Math.max(0, Math.min(lo, yieldCeiling));
+            maxEl.value = Math.max(0, Math.min(hi, yieldCeiling));
+            updateYieldUI();
+            applyFilters();
         }
 
         let sortDirections = {};
@@ -1130,11 +1446,11 @@
 
         function applyFilters() {
             const searchTerm = document.getElementById('searchFilter').value.toLowerCase().trim();
-            const yieldFilter = document.getElementById('yieldRangeFilter').value;
             const payoutFilter = document.getElementById('payoutFilter').value.toLowerCase();
             const taxGradeFilter = document.getElementById('taxGradeFilter').value;
             const priceDecayFilter = document.getElementById('priceDecayFilter').value;
             const ageFilter = document.getElementById('ageFilter').value;
+            const { lo: yieldMinVal, hi: yieldMaxVal } = getYieldRange();
 
             let visibleCount = 0;
             const today = new Date();
@@ -1155,9 +1471,10 @@
 
                 if (visible && searchTerm && !symbol.includes(searchTerm) && !name.includes(searchTerm)) visible = false;
 
-                if (visible && yieldFilter) {
-                    const [min, max] = yieldFilter === '15+' ? [15, 999] : yieldFilter.split('-').map(Number);
-                    if (yieldValue < min || (max && yieldValue > max)) visible = false;
+                // Yield range slider — top handle at the ceiling means "no upper limit"
+                if (visible) {
+                    if (yieldValue < yieldMinVal) visible = false;
+                    else if (yieldMaxVal < yieldCeiling && yieldValue > yieldMaxVal) visible = false;
                 }
 
                 if (visible && payoutFilter && !payoutFrequency.includes(payoutFilter)) visible = false;
@@ -1198,6 +1515,9 @@
                 if (visible) visibleCount++;
             });
 
+            const matchEl = document.getElementById('yieldMatchCount');
+            if (matchEl) matchEl.textContent = visibleCount;
+
             const tbody = document.getElementById('etfBody');
             const existingNoResults = tbody.querySelector('.no-results, .empty-watchlist');
             if (visibleCount === 0) {
@@ -1207,7 +1527,7 @@
                     if (watchlistOnly && watchlist.length === 0) {
                         noRow.innerHTML = '<td colspan="13" class="empty-watchlist"><span class="big">⭐</span>Your watchlist is empty.<br>Tap the ☆ star on any ETF to add it — your list saves automatically on this device.</td>';
                     } else {
-                        noRow.innerHTML = '<td colspan="13" class="no-results">No ETFs match your filters. Try adjusting your criteria.</td>';
+                        noRow.innerHTML = '<td colspan="13" class="no-results">No ETFs match your filters. Try widening the yield range or clearing a filter.</td>';
                     }
                     tbody.appendChild(noRow);
                 }
@@ -1218,12 +1538,43 @@
         }
 
         document.getElementById('searchFilter').addEventListener('input', applyFilters);
-        document.getElementById('yieldRangeFilter').addEventListener('change', applyFilters);
         document.getElementById('payoutFilter').addEventListener('change', applyFilters);
         document.getElementById('taxGradeFilter').addEventListener('change', applyFilters);
         document.getElementById('priceDecayFilter').addEventListener('change', applyFilters);
         document.getElementById('ageFilter').addEventListener('change', applyFilters);
         document.getElementById('resetFilters').addEventListener('click', () => location.reload());
+
+        // Yield slider handles → live filtering
+        document.getElementById('yieldMin').addEventListener('input', () => {
+            clampHandles('min');
+            updateYieldUI();
+            if (!syncingPreset) document.getElementById('yieldRangeFilter').value = '';
+            applyFilters();
+        });
+
+        document.getElementById('yieldMax').addEventListener('input', () => {
+            clampHandles('max');
+            updateYieldUI();
+            if (!syncingPreset) document.getElementById('yieldRangeFilter').value = '';
+            applyFilters();
+        });
+
+        // Preset dropdown → moves the slider handles
+        document.getElementById('yieldRangeFilter').addEventListener('change', (e) => {
+            const preset = e.target.value;
+            syncingPreset = true;
+
+            if (!preset) {
+                setYieldRange(0, yieldCeiling);
+            } else if (preset === '25+') {
+                setYieldRange(25, yieldCeiling);
+            } else {
+                const [lo, hi] = preset.split('-').map(Number);
+                setYieldRange(lo, hi);
+            }
+
+            syncingPreset = false;
+        });
 
         // Watchlist toggle → filter to starred ETFs only
         document.getElementById('watchlistToggle').addEventListener('click', () => {
