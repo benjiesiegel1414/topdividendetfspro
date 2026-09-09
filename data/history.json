@@ -2220,6 +2220,11 @@
       "date": "2026-09-05",
       "yield": 41,
       "totalReturn": 9
+    },
+    {
+      "date": "2026-09-09",
+      "yield": 46,
+      "totalReturn": 9
     }
   ],
   "CHPY": [
@@ -2363,6 +2368,11 @@
     {
       "date": "2026-09-05",
       "yield": 39,
+      "totalReturn": 67
+    },
+    {
+      "date": "2026-09-09",
+      "yield": 34,
       "totalReturn": 67
     }
   ],
@@ -6200,6 +6210,11 @@
       "date": "2026-09-05",
       "yield": 13.4,
       "totalReturn": 193
+    },
+    {
+      "date": "2026-09-09",
+      "yield": 12.4,
+      "totalReturn": 193
     }
   ],
   "JEPI": [
@@ -6267,6 +6282,11 @@
       "date": "2026-09-05",
       "yield": 8,
       "totalReturn": 96
+    },
+    {
+      "date": "2026-09-09",
+      "yield": 7.5,
+      "totalReturn": 96
     }
   ],
   "JEPQ": [
@@ -6333,6 +6353,11 @@
     {
       "date": "2026-09-05",
       "yield": 12.8,
+      "totalReturn": 90
+    },
+    {
+      "date": "2026-09-09",
+      "yield": 11.7,
       "totalReturn": 90
     }
   ],
@@ -7019,6 +7044,11 @@
       "date": "2026-09-05",
       "yield": 74,
       "totalReturn": 85
+    },
+    {
+      "date": "2026-09-09",
+      "yield": 42,
+      "totalReturn": 85
     }
   ],
   "TSII": [
@@ -7106,6 +7136,11 @@
       "date": "2026-09-05",
       "yield": 38,
       "totalReturn": 7
+    },
+    {
+      "date": "2026-09-09",
+      "yield": 50,
+      "totalReturn": 7
     }
   ],
   "WMTI": [
@@ -7188,6 +7223,11 @@
       "date": "2026-09-05",
       "yield": 30,
       "totalReturn": 0
+    },
+    {
+      "date": "2026-09-09",
+      "yield": 24,
+      "totalReturn": 0
     }
   ],
   "ULTI": [
@@ -7254,6 +7294,11 @@
     {
       "date": "2026-09-05",
       "yield": 72,
+      "totalReturn": -51
+    },
+    {
+      "date": "2026-09-09",
+      "yield": 67,
       "totalReturn": -51
     }
   ],
@@ -9337,6 +9382,20 @@
       "date": "2026-09-05",
       "yield": 15.02,
       "totalReturn": 4
+    }
+  ],
+  "TDVI": [
+    {
+      "date": "2026-09-09",
+      "yield": 7.5,
+      "totalReturn": 105
+    }
+  ],
+  "EGGQ": [
+    {
+      "date": "2026-09-09",
+      "yield": 9.5,
+      "totalReturn": 54
     }
   ]
 }
