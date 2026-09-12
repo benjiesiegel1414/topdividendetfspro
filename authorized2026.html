@@ -503,6 +503,15 @@
             width: 54px;
         }
 
+        /* ==================== ANNUALIZED RETURN CELL ==================== */
+        td.annualized {
+            font-weight: 700;
+        }
+        td.annualized.ann-na {
+            color: var(--text-light);
+            font-weight: 400;
+        }
+
         /* Mobile-only sort control (table headers are hidden on mobile) */
         #mobileSortBar {
             display: none;
@@ -618,10 +627,10 @@
         .empty-watchlist .big { font-size: 2.2em; display: block; margin-bottom: 10px; }
 
         /* ==================== TABLET (769px – 1100px) ==================== */
-        /* Table stays a table but scrolls horizontally instead of crushing 13 columns */
+        /* Table stays a table but scrolls horizontally instead of crushing columns */
         @media (min-width: 769px) and (max-width: 1100px) {
             #etfTable {
-                min-width: 1150px;
+                min-width: 1250px;
             }
 
             th {
@@ -1079,6 +1088,7 @@
                 <option value="5-desc">Expense Ratio (High → Low)</option>
                 <option value="6-desc">AUM (High → Low)</option>
                 <option value="7-desc">Total Return (High → Low)</option>
+                <option value="12-desc">Annualized Return (High → Low)</option>
                 <option value="9-desc">Inception Date (Newest First)</option>
                 <option value="9-asc">Inception Date (Oldest First)</option>
                 <option value="10-asc">Payout Frequency (Weekly First)</option>
@@ -1103,6 +1113,7 @@
                         <th onclick="sortTable(9)">Inception Date ↕</th>
                         <th onclick="sortTable(10)">Payout Frequency ↕</th>
                         <th onclick="sortTable(11)">Rating ↕</th>
+                        <th onclick="sortTable(12)">Annualized ↕</th>
                         <th class="no-sort">⭐ Watch</th>
                     </tr>
                 </thead>
@@ -1132,6 +1143,11 @@
 
     <script>
         const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTxCiod-Cwry7E6k9Un9dgrM_ANymC36_IO_wLyNj-YDo2KI7mp_1ZzyNBnBGZOxT48QPM8TCwtsmA4/pub?gid=0&single=true&output=csv";
+
+        // How many years an ETF must have existed before we show an annualized figure.
+        // Below this, annualizing a short track record produces misleading numbers,
+        // so we display "N/A (<1yr)". Change this one number to adjust the threshold.
+        const ANNUALIZED_MIN_YEARS = 1;
 
         let allRows = [];
 
@@ -1201,10 +1217,29 @@
                 .then(txt => renderTable(txt))
                 .catch(() => {
                     document.getElementById('etfBody').innerHTML = `
-                        <tr><td colspan="13" style="padding:40px; color:red; text-align:center; font-weight:700;">
+                        <tr><td colspan="14" style="padding:40px; color:red; text-align:center; font-weight:700;">
                             ⚠️ Unable to load ETF data. Please refresh the page.
                         </td></tr>`;
                 });
+        }
+
+        // ==================== ANNUALIZED TOTAL RETURN (CAGR) ====================
+        // Takes the since-inception Total Return and the inception date, returns the
+        // compound annual growth rate. Returns null when it can't be computed.
+        function computeAnnualized(totalReturnStr, inceptionStr) {
+            const tr = parseFloat(String(totalReturnStr).replace('%', '').trim());
+            if (isNaN(tr)) return null;
+
+            const inc = new Date(normalizeDate(inceptionStr));
+            if (isNaN(inc.getTime())) return null;
+
+            const years = (Date.now() - inc.getTime()) / (1000 * 60 * 60 * 24 * 365.25);
+            if (years <= 0) return null;
+
+            const growth = 1 + tr / 100;
+            if (growth <= 0) return null; // guard against bad "down >100%" data
+
+            return { value: (Math.pow(growth, 1 / years) - 1) * 100, years };
         }
 
         function renderTable(csvText) {
@@ -1212,29 +1247,13 @@
             const tbody = document.getElementById('etfBody');
             tbody.innerHTML = '';
 
-            console.log("Total CSV lines:", lines.length);
-            console.log("CSV first 500 chars:", csvText.substring(0, 500));
-
             let successCount = 0;
             let skipCount = 0;
 
             for (let i = 1; i < lines.length; i++) {
                 const cols = lines[i].split(',').map(c => c.trim().replace(/^"|"$/g, ''));
 
-                if (i === lines.length - 1) {
-                    console.log("=== NEW ETF ROW (LAST ROW) ===");
-                    console.log("Row index:", i);
-                    console.log("Raw line:", lines[i]);
-                    console.log("Parsed columns:", cols);
-                    console.log("Column count:", cols.length);
-                    console.log("Symbol (col[0]):", cols[0]);
-                    console.log("Name (col[1]):", cols[1]);
-                    console.log("All columns:", cols);
-                    console.log("All columns filled?", cols.every(c => c !== ''));
-                }
-
                 if (cols.length < 12 || !cols[0]) {
-                    console.warn(`❌ Row ${i} SKIPPED: cols.length=${cols.length}, cols[0]="${cols[0]}"`);
                     skipCount++;
                     continue;
                 }
@@ -1268,7 +1287,24 @@
                     tr.appendChild(td);
                 });
 
-                // ==================== WATCH CELL (13th column) ====================
+                // ==================== ANNUALIZED RETURN CELL (computed, col index 12) ====================
+                const annTd = document.createElement('td');
+                annTd.setAttribute('data-label', 'Annualized');
+                const ann = computeAnnualized(cols[7], cols[9]);
+                if (ann === null) {
+                    annTd.className = 'annualized ann-na';
+                    annTd.textContent = '-';
+                } else if (ann.years < ANNUALIZED_MIN_YEARS) {
+                    annTd.className = 'annualized ann-na';
+                    annTd.textContent = 'N/A (<1yr)';
+                    annTd.title = 'Fund is under 1 year old — an annualized figure would extrapolate too short a track record.';
+                } else {
+                    annTd.className = 'annualized';
+                    annTd.textContent = ann.value.toFixed(1) + '%';
+                }
+                tr.appendChild(annTd);
+
+                // ==================== WATCH CELL (last column) ====================
                 const symbol = cols[0];
                 const watchTd = document.createElement('td');
                 watchTd.className = 'watch-cell';
@@ -1291,11 +1327,8 @@
                 successCount++;
             }
 
-            console.log(`✅ Loaded ${successCount} ETFs successfully`);
-            console.log(`❌ Skipped ${skipCount} rows`);
-
             if (allRows.length === 0) {
-                tbody.innerHTML = '<tr class="no-results-row"><td colspan="13" class="no-results">No ETF data available.</td></tr>';
+                tbody.innerHTML = '<tr class="no-results-row"><td colspan="14" class="no-results">No ETF data available.</td></tr>';
                 document.getElementById('yieldSliderBlock').style.display = 'none';
             } else {
                 initYieldSlider();
@@ -1412,6 +1445,19 @@
                     return dir === 'asc' ? orderA - orderB : orderB - orderA;
                 }
 
+                // Column 12 (Annualized): numeric sort, but push non-computable
+                // rows ("N/A", "-") to the bottom regardless of direction.
+                if (col === 12) {
+                    const numA = parseFloat(valA);
+                    const numB = parseFloat(valB);
+                    const aBad = isNaN(numA);
+                    const bBad = isNaN(numB);
+                    if (aBad && bBad) return 0;
+                    if (aBad) return 1;
+                    if (bBad) return -1;
+                    return dir === 'asc' ? numA - numB : numB - numA;
+                }
+
                 if (!isNaN(parseFloat(valA)) && !isNaN(parseFloat(valB))) {
                     return dir === 'asc' ? parseFloat(valA) - parseFloat(valB) : parseFloat(valB) - parseFloat(valA);
                 }
@@ -1491,7 +1537,6 @@
                     const inceptionDate = new Date(normalized);
 
                     if (isNaN(inceptionDate.getTime())) {
-                        console.warn('Could not parse inception date:', inceptionStr, '→', normalized);
                         visible = false;
                     } else {
                         const ageInYears = (today - inceptionDate) / (1000 * 60 * 60 * 24 * 365.25);
@@ -1525,9 +1570,9 @@
                     const noRow = document.createElement('tr');
                     noRow.className = 'no-results-row';
                     if (watchlistOnly && watchlist.length === 0) {
-                        noRow.innerHTML = '<td colspan="13" class="empty-watchlist"><span class="big">⭐</span>Your watchlist is empty.<br>Tap the ☆ star on any ETF to add it — your list saves automatically on this device.</td>';
+                        noRow.innerHTML = '<td colspan="14" class="empty-watchlist"><span class="big">⭐</span>Your watchlist is empty.<br>Tap the ☆ star on any ETF to add it — your list saves automatically on this device.</td>';
                     } else {
-                        noRow.innerHTML = '<td colspan="13" class="no-results">No ETFs match your filters. Try widening the yield range or clearing a filter.</td>';
+                        noRow.innerHTML = '<td colspan="14" class="no-results">No ETFs match your filters. Try widening the yield range or clearing a filter.</td>';
                     }
                     tbody.appendChild(noRow);
                 }
