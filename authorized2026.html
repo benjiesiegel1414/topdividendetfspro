@@ -1088,11 +1088,11 @@
                 <option value="5-desc">Expense Ratio (High → Low)</option>
                 <option value="6-desc">AUM (High → Low)</option>
                 <option value="7-desc">Total Return (High → Low)</option>
-                <option value="12-desc">Annualized Return (High → Low)</option>
-                <option value="9-desc">Inception Date (Newest First)</option>
-                <option value="9-asc">Inception Date (Oldest First)</option>
-                <option value="10-asc">Payout Frequency (Weekly First)</option>
-                <option value="11-asc">Rating (Best First)</option>
+                <option value="8-desc">Annualized Return (High → Low)</option>
+                <option value="10-desc">Inception Date (Newest First)</option>
+                <option value="10-asc">Inception Date (Oldest First)</option>
+                <option value="11-asc">Payout Frequency (Weekly First)</option>
+                <option value="12-asc">Rating (Best First)</option>
             </select>
         </div>
 
@@ -1109,11 +1109,11 @@
                         <th onclick="sortTable(5)">Expense Ratio ↕</th>
                         <th onclick="sortTable(6)">AUM ↕</th>
                         <th onclick="sortTable(7)">Total Return ↕</th>
-                        <th onclick="sortTable(8)">Price Decay ↕</th>
-                        <th onclick="sortTable(9)">Inception Date ↕</th>
-                        <th onclick="sortTable(10)">Payout Frequency ↕</th>
-                        <th onclick="sortTable(11)">Rating ↕</th>
-                        <th onclick="sortTable(12)">Annualized ↕</th>
+                        <th onclick="sortTable(8)">Annualized ↕</th>
+                        <th onclick="sortTable(9)">Price Decay ↕</th>
+                        <th onclick="sortTable(10)">Inception Date ↕</th>
+                        <th onclick="sortTable(11)">Payout Frequency ↕</th>
+                        <th onclick="sortTable(12)">Rating ↕</th>
                         <th class="no-sort">⭐ Watch</th>
                     </tr>
                 </thead>
@@ -1285,24 +1285,26 @@
 
                     td.textContent = value || '-';
                     tr.appendChild(td);
+
+                    // Insert Annualized directly after Total Return (CSV index 7)
+                    if (index === 7) {
+                        const annTd = document.createElement('td');
+                        annTd.setAttribute('data-label', 'Annualized');
+                        const ann = computeAnnualized(cols[7], cols[9]);
+                        if (ann === null) {
+                            annTd.className = 'annualized ann-na';
+                            annTd.textContent = '-';
+                        } else {
+                            annTd.className = 'annualized';
+                            annTd.textContent = ann.value.toFixed(1) + '%';
+                            if (ann.years < ANNUALIZED_MIN_YEARS) {
+                                annTd.title = 'Annualized from under 1 year of trading — extrapolated from a short track record.';
+                            }
+                        }
+                        tr.appendChild(annTd);
+                    }
                 });
 
-                // ==================== ANNUALIZED RETURN CELL (computed, col index 12) ====================
-                const annTd = document.createElement('td');
-                annTd.setAttribute('data-label', 'Annualized');
-                const ann = computeAnnualized(cols[7], cols[9]);
-                if (ann === null) {
-                    annTd.className = 'annualized ann-na';
-                    annTd.textContent = '-';
-                } else if (ann.years < ANNUALIZED_MIN_YEARS) {
-                    annTd.className = 'annualized ann-na';
-                    annTd.textContent = 'N/A (<1yr)';
-                    annTd.title = 'Fund is under 1 year old — an annualized figure would extrapolate too short a track record.';
-                } else {
-                    annTd.className = 'annualized';
-                    annTd.textContent = ann.value.toFixed(1) + '%';
-                }
-                tr.appendChild(annTd);
 
                 // ==================== WATCH CELL (last column) ====================
                 const symbol = cols[0];
@@ -1430,7 +1432,7 @@
                 let valA = a.cells[col].textContent.trim();
                 let valB = b.cells[col].textContent.trim();
 
-                if (col === 9) {
+                if (col === 10) {
                     const dateA = new Date(normalizeDate(valA));
                     const dateB = new Date(normalizeDate(valB));
                     if (!isNaN(dateA.getTime()) && !isNaN(dateB.getTime())) {
@@ -1438,16 +1440,16 @@
                     }
                 }
 
-                if (col === 10) {
+                if (col === 11) {
                     const order = { 'weekly': 1, 'monthly': 2, 'quarterly': 3 };
                     const orderA = order[valA.toLowerCase()] || 99;
                     const orderB = order[valB.toLowerCase()] || 99;
                     return dir === 'asc' ? orderA - orderB : orderB - orderA;
                 }
 
-                // Column 12 (Annualized): numeric sort, but push non-computable
+                // Column 8 (Annualized): numeric sort, but push non-computable
                 // rows ("N/A", "-") to the bottom regardless of direction.
-                if (col === 12) {
+                if (col === 8) {
                     const numA = parseFloat(valA);
                     const numB = parseFloat(valB);
                     const aBad = isNaN(numA);
@@ -1506,9 +1508,9 @@
                 const name = tr.cells[1].textContent.toLowerCase();
                 const yieldValue = parseFloat(tr.cells[3].textContent) || 0;
                 const taxGrade = tr.cells[4].textContent.trim().toUpperCase();
-                const priceDecay = tr.cells[8].textContent.trim().toUpperCase();
-                const inceptionStr = tr.cells[9].textContent.trim();
-                const payoutFrequency = tr.cells[10].textContent.trim().toLowerCase();
+                const priceDecay = tr.cells[9].textContent.trim().toUpperCase();
+                const inceptionStr = tr.cells[10].textContent.trim();
+                const payoutFrequency = tr.cells[11].textContent.trim().toLowerCase();
 
                 let visible = true;
 
