@@ -4848,6 +4848,11 @@
       "date": "2026-09-10",
       "yield": 20,
       "totalReturn": 45
+    },
+    {
+      "date": "2026-09-12",
+      "yield": 18,
+      "totalReturn": 45
     }
   ],
   "YBTC": [
@@ -4924,6 +4929,11 @@
     {
       "date": "2026-09-10",
       "yield": 28,
+      "totalReturn": 24
+    },
+    {
+      "date": "2026-09-12",
+      "yield": 20,
       "totalReturn": 24
     }
   ],
@@ -5017,6 +5027,11 @@
       "date": "2026-09-10",
       "yield": 66,
       "totalReturn": 41
+    },
+    {
+      "date": "2026-09-12",
+      "yield": 40,
+      "totalReturn": 41
     }
   ],
   "YETH": [
@@ -5088,6 +5103,11 @@
     {
       "date": "2026-09-05",
       "yield": 39,
+      "totalReturn": -35
+    },
+    {
+      "date": "2026-09-12",
+      "yield": 31,
       "totalReturn": -35
     }
   ],
@@ -5170,6 +5190,11 @@
     {
       "date": "2026-09-10",
       "yield": 52,
+      "totalReturn": -47
+    },
+    {
+      "date": "2026-09-12",
+      "yield": 86,
       "totalReturn": -47
     }
   ],
@@ -5257,6 +5282,11 @@
     {
       "date": "2026-09-10",
       "yield": 25,
+      "totalReturn": 41
+    },
+    {
+      "date": "2026-09-12",
+      "yield": 29,
       "totalReturn": 41
     }
   ],
@@ -5367,6 +5397,11 @@
       "date": "2026-09-10",
       "yield": 19,
       "totalReturn": 23
+    },
+    {
+      "date": "2026-09-12",
+      "yield": 20,
+      "totalReturn": 23
     }
   ],
   "TSLW": [
@@ -5453,6 +5488,11 @@
     {
       "date": "2026-09-10",
       "yield": 30,
+      "totalReturn": -9
+    },
+    {
+      "date": "2026-09-12",
+      "yield": 45,
       "totalReturn": -9
     }
   ],
@@ -5545,6 +5585,11 @@
     {
       "date": "2026-09-10",
       "yield": 34,
+      "totalReturn": 81
+    },
+    {
+      "date": "2026-09-12",
+      "yield": 27,
       "totalReturn": 81
     }
   ],
@@ -9896,6 +9941,11 @@
     {
       "date": "2026-09-10",
       "yield": 29,
+      "totalReturn": 0
+    },
+    {
+      "date": "2026-09-12",
+      "yield": 39,
       "totalReturn": 0
     }
   ],
