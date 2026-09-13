@@ -10143,6 +10143,25 @@
       "date": "2026-09-11",
       "yield": null,
       "totalReturn": 1
+    },
+    {
+      "date": "2026-09-13",
+      "yield": 0,
+      "totalReturn": 1
+    }
+  ],
+  "WRTH": [
+    {
+      "date": "2026-09-13",
+      "yield": 9,
+      "totalReturn": 5
+    }
+  ],
+  "SEPQ": [
+    {
+      "date": "2026-09-13",
+      "yield": 11,
+      "totalReturn": 82
     }
   ]
 }
