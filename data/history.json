@@ -6226,6 +6226,11 @@
       "date": "2026-09-10",
       "yield": 7,
       "totalReturn": 33
+    },
+    {
+      "date": "2026-09-14",
+      "yield": 7,
+      "totalReturn": 76
     }
   ],
   "NOBL": [
@@ -6886,6 +6891,11 @@
       "date": "2026-09-10",
       "yield": 9,
       "totalReturn": 54
+    },
+    {
+      "date": "2026-09-14",
+      "yield": 9,
+      "totalReturn": 181
     }
   ],
   "BLOX": [
