@@ -2460,6 +2460,11 @@
       "date": "2026-09-15",
       "yield": 45,
       "totalReturn": -7
+    },
+    {
+      "date": "2026-09-16",
+      "yield": 40,
+      "totalReturn": -7
     }
   ],
   "CHPY": [
@@ -2541,6 +2546,11 @@
     {
       "date": "2026-09-15",
       "yield": 40,
+      "totalReturn": 153
+    },
+    {
+      "date": "2026-09-16",
+      "yield": 60,
       "totalReturn": 153
     }
   ],
@@ -2628,6 +2638,11 @@
     {
       "date": "2026-09-15",
       "yield": 34,
+      "totalReturn": 69
+    },
+    {
+      "date": "2026-09-16",
+      "yield": 31,
       "totalReturn": 69
     }
   ],
