@@ -836,6 +836,11 @@
       "date": "2026-09-15",
       "yield": 85,
       "totalReturn": 45
+    },
+    {
+      "date": "2026-09-17",
+      "yield": 81,
+      "totalReturn": 45
     }
   ],
   "ULTY": [
@@ -1005,6 +1010,11 @@
       "date": "2026-09-15",
       "yield": 101,
       "totalReturn": 56
+    },
+    {
+      "date": "2026-09-17",
+      "yield": 85,
+      "totalReturn": 56
     }
   ],
   "SMCY": [
@@ -1112,6 +1122,11 @@
       "date": "2026-09-15",
       "yield": 101,
       "totalReturn": -37
+    },
+    {
+      "date": "2026-09-17",
+      "yield": 71,
+      "totalReturn": -37
     }
   ],
   "TSLY": [
@@ -1214,6 +1229,11 @@
       "date": "2026-09-15",
       "yield": 51,
       "totalReturn": 36
+    },
+    {
+      "date": "2026-09-17",
+      "yield": 50,
+      "totalReturn": 36
     }
   ],
   "YBIT": [
@@ -1300,6 +1320,11 @@
     {
       "date": "2026-09-15",
       "yield": 76,
+      "totalReturn": -13
+    },
+    {
+      "date": "2026-09-17",
+      "yield": 70,
       "totalReturn": -13
     }
   ],
@@ -1408,6 +1433,11 @@
       "date": "2026-09-15",
       "yield": 40,
       "totalReturn": 178
+    },
+    {
+      "date": "2026-09-17",
+      "yield": 33,
+      "totalReturn": 178
     }
   ],
   "NVDY": [
@@ -1504,6 +1534,11 @@
     {
       "date": "2026-09-15",
       "yield": 40,
+      "totalReturn": 340
+    },
+    {
+      "date": "2026-09-17",
+      "yield": 38,
       "totalReturn": 340
     }
   ],
@@ -1888,6 +1923,11 @@
       "date": "2026-09-15",
       "yield": 30,
       "totalReturn": -2
+    },
+    {
+      "date": "2026-09-17",
+      "yield": 31,
+      "totalReturn": -2
     }
   ],
   "AMZY": [
@@ -1990,6 +2030,11 @@
       "date": "2026-09-15",
       "yield": 25,
       "totalReturn": 87
+    },
+    {
+      "date": "2026-09-17",
+      "yield": 26,
+      "totalReturn": 87
     }
   ],
   "GOOY": [
@@ -2087,6 +2132,11 @@
       "date": "2026-09-15",
       "yield": 23,
       "totalReturn": 84
+    },
+    {
+      "date": "2026-09-17",
+      "yield": 26,
+      "totalReturn": 84
     }
   ],
   "BABO": [
@@ -2178,6 +2228,11 @@
     {
       "date": "2026-09-15",
       "yield": 36,
+      "totalReturn": 14
+    },
+    {
+      "date": "2026-09-17",
+      "yield": 41,
       "totalReturn": 14
     }
   ],
@@ -2275,6 +2330,11 @@
     {
       "date": "2026-09-15",
       "yield": 36,
+      "totalReturn": 55
+    },
+    {
+      "date": "2026-09-17",
+      "yield": 29,
       "totalReturn": 55
     }
   ],
@@ -2377,6 +2437,11 @@
     {
       "date": "2026-09-15",
       "yield": 101,
+      "totalReturn": 81
+    },
+    {
+      "date": "2026-09-17",
+      "yield": 78,
       "totalReturn": 81
     }
   ],
@@ -2740,6 +2805,11 @@
     {
       "date": "2026-09-15",
       "yield": 36,
+      "totalReturn": 63
+    },
+    {
+      "date": "2026-09-17",
+      "yield": 41,
       "totalReturn": 63
     }
   ],
