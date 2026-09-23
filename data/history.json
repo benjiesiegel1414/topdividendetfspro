@@ -1991,6 +1991,11 @@
       "date": "2026-09-22",
       "yield": 40,
       "totalReturn": 48
+    },
+    {
+      "date": "2026-09-23",
+      "yield": 41,
+      "totalReturn": 48
     }
   ],
   "PYPY": [
@@ -2765,6 +2770,11 @@
       "date": "2026-09-22",
       "yield": 40,
       "totalReturn": 12
+    },
+    {
+      "date": "2026-09-23",
+      "yield": 41,
+      "totalReturn": 12
     }
   ],
   "CHPY": [
@@ -2861,6 +2871,11 @@
     {
       "date": "2026-09-22",
       "yield": 60,
+      "totalReturn": 178
+    },
+    {
+      "date": "2026-09-23",
+      "yield": 41,
       "totalReturn": 178
     }
   ],
@@ -2963,6 +2978,11 @@
     {
       "date": "2026-09-22",
       "yield": 31,
+      "totalReturn": 75
+    },
+    {
+      "date": "2026-09-23",
+      "yield": 32,
       "totalReturn": 75
     }
   ],
