@@ -13657,5 +13657,12 @@
       "yield": 9,
       "totalReturn": 39
     }
+  ],
+  "ITWO": [
+    {
+      "date": "2026-10-01",
+      "yield": 9,
+      "totalReturn": 36
+    }
   ]
 }
