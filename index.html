@@ -446,36 +446,6 @@
         .hero-tagline strong { color: var(--yellow); }
 
 
-        /* ==================== HERO LIVE PREVIEW ==================== */
-        .pv { position: relative; background: #fff; text-align: left; }
-        .pv-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-        .pv-table { width: 100%; min-width: 760px; border-collapse: collapse; font-size: 12.5px; color: var(--text-dark); }
-        .pv-table thead th { background: var(--primary-dark); color: #fff; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: .5px; padding: 11px 10px; text-align: left; white-space: nowrap; }
-        .pv-table td { padding: 10px 10px; border-bottom: 1px solid var(--border); white-space: nowrap; font-weight: 700; }
-        .pv-table tbody:first-of-type tr:hover { background: #F0FDFA; }
-        .pv-t { font-weight: 900 !important; color: var(--primary); }
-        .pv-n { color: var(--text-light); font-weight: 400 !important; max-width: 200px; overflow: hidden; text-overflow: ellipsis; }
-        .pv-up { color: #047857; }
-        .pv-grade { display: inline-block; min-width: 28px; text-align: center; padding: 2px 7px; border-radius: 6px; background: rgba(15,118,110,.1); color: var(--primary-dark); font-weight: 900; }
-        .pv-rate { background: var(--primary); color: #fff; }
-        .pv-ok { color: #047857; font-weight: 900; }
-        .pv-bad { color: var(--urgent); font-weight: 900; }
-        .pv-locked { filter: blur(5px); user-select: none; pointer-events: none; opacity: .75; }
-        .pv-overlay { position: absolute; left: 0; right: 0; bottom: 0; height: 56%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 20px; background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.75) 30%, rgba(255,255,255,.92) 100%); }
-        .pv-lock { display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 12px 18px; box-shadow: 0 10px 30px rgba(15,23,42,.12); color: var(--primary-dark); }
-        .pv-lock strong { display: block; font-size: 15px; font-weight: 900; color: var(--text-dark); }
-        .pv-lock span { display: block; font-size: 13px; color: var(--text-light); }
-        .pv-btn { display: inline-block; background: linear-gradient(135deg, var(--yellow) 0%, #FBBF24 100%); color: #1F2937; font-weight: 900; font-size: 15px; padding: 12px 26px; border-radius: 10px; text-decoration: none; box-shadow: 0 8px 22px rgba(251,191,36,.45); }
-        .pv-btn:hover { transform: translateY(-2px); }
-        @media (max-width: 768px) {
-            .pv-overlay { height: 64%; }
-            .pv-table { min-width: 600px; }
-            .pv-table thead th:nth-child(2), .pv-n { display: none; }
-            .pv-lock { padding: 10px 12px; }
-            .pv-lock strong { font-size: 13px; }
-            .pv-lock span { font-size: 12px; }
-        }
-
         /* ==================== PROOF STRIP ==================== */
         .proof-strip {
             background: var(--primary-dark);
@@ -1336,22 +1306,7 @@
                     <span class="b-dot r"></span><span class="b-dot y"></span><span class="b-dot g"></span>
                     <span class="b-url">🔒 topdividendetfspro.com</span>
                 </div>
-                <div class="pv">
-                    <div class="pv-scroll">
-                        <table class="pv-table">
-                            <thead><tr><th>Symbol</th><th>Name</th><th>Yield</th><th>Tax Grade</th><th>Expense</th><th>AUM</th><th>Total Return</th><th>Price Decay</th><th>Payout</th><th>Rating</th></tr></thead>
-                            <tbody><tr data-t="SCHD"><td class="pv-t">$SCHD</td><td class="pv-n">Schwab U.S. Dividend Equity ETF</td><td data-k="y">3.0%</td><td data-k="g"><span class="pv-grade">A</span></td><td data-k="e">0.06%</td><td data-k="a">$112.2B</td><td data-k="tr" class="pv-up">531%</td><td data-k="d"><span class="pv-ok">No</span></td><td data-k="f">Quarterly</td><td data-k="r"><span class="pv-grade pv-rate">A+</span></td></tr><tr data-t="JEPI"><td class="pv-t">$JEPI</td><td class="pv-n">JPMorgan Equity Premium Income ETF</td><td data-k="y">7.5%</td><td data-k="g"><span class="pv-grade">C</span></td><td data-k="e">0.35%</td><td data-k="a">$46.3B</td><td data-k="tr" class="pv-up">93%</td><td data-k="d"><span class="pv-ok">No</span></td><td data-k="f">Monthly</td><td data-k="r"><span class="pv-grade pv-rate">A</span></td></tr><tr data-t="JEPQ"><td class="pv-t">$JEPQ</td><td class="pv-n">JPMorgan NASDAQ Equity Premium Income ETF</td><td data-k="y">12.0%</td><td data-k="g"><span class="pv-grade">C</span></td><td data-k="e">0.35%</td><td data-k="a">$41.8B</td><td data-k="tr" class="pv-up">96%</td><td data-k="d"><span class="pv-ok">No</span></td><td data-k="f">Monthly</td><td data-k="r"><span class="pv-grade pv-rate">A</span></td></tr><tr data-t="QQQI"><td class="pv-t">$QQQI</td><td class="pv-n">NEOS Nasdaq 100 High Income ETF</td><td data-k="y">14.0%</td><td data-k="g"><span class="pv-grade">B</span></td><td data-k="e">0.68%</td><td data-k="a">$14.1B</td><td data-k="tr" class="pv-up">65%</td><td data-k="d"><span class="pv-ok">No</span></td><td data-k="f">Monthly</td><td data-k="r"><span class="pv-grade pv-rate">A-</span></td></tr></tbody>
-                            <tbody class="pv-locked"><tr aria-hidden="true"><td class="pv-t">KXRW</td><td class="pv-n">Placeholder Income Strategy ETF</td><td>9.4%</td><td><span class="pv-grade">B</span></td><td>0.59%</td><td>$2.1B</td><td>41%</td><td><span class="pv-ok">No</span></td><td>Monthly</td><td><span class="pv-grade pv-rate">B+</span></td></tr><tr aria-hidden="true"><td class="pv-t">TQPL</td><td class="pv-n">Placeholder Covered Call ETF</td><td>18.2%</td><td><span class="pv-grade">C</span></td><td>0.99%</td><td>$860M</td><td>12%</td><td><span class="pv-ok">No</span></td><td>Weekly</td><td><span class="pv-grade pv-rate">B</span></td></tr><tr aria-hidden="true"><td class="pv-t">MVDN</td><td class="pv-n">Placeholder Dividend Growth ETF</td><td>2.7%</td><td><span class="pv-grade">A</span></td><td>0.08%</td><td>$31.4B</td><td>388%</td><td><span class="pv-ok">No</span></td><td>Quarterly</td><td><span class="pv-grade pv-rate">A</span></td></tr><tr aria-hidden="true"><td class="pv-t">ZRCY</td><td class="pv-n">Placeholder Option Income ETF</td><td>22.6%</td><td><span class="pv-grade">D</span></td><td>1.01%</td><td>$1.4B</td><td>-6%</td><td><span class="pv-ok">No</span></td><td>Weekly</td><td><span class="pv-grade pv-rate">C+</span></td></tr><tr aria-hidden="true"><td class="pv-t">HLBE</td><td class="pv-n">Placeholder High Yield Equity ETF</td><td>6.1%</td><td><span class="pv-grade">B</span></td><td>0.45%</td><td>$5.7B</td><td>112%</td><td><span class="pv-ok">No</span></td><td>Monthly</td><td><span class="pv-grade pv-rate">A-</span></td></tr><tr aria-hidden="true"><td class="pv-t">PWNX</td><td class="pv-n">Placeholder Premium Yield ETF</td><td>15.3%</td><td><span class="pv-grade">C</span></td><td>0.79%</td><td>$3.3B</td><td>48%</td><td><span class="pv-ok">No</span></td><td>Monthly</td><td><span class="pv-grade pv-rate">B</span></td></tr></tbody>
-                        </table>
-                    </div>
-                    <div class="pv-overlay">
-                        <div class="pv-lock">
-                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-                            <div><strong>100+ more dividend ETFs inside PRO</strong><span>Every fund, every metric, sortable and filterable.</span></div>
-                        </div>
-                        <a href="#pricing" class="pv-btn">Unlock Full Access →</a>
-                    </div>
-                </div>
+                <img src="https://i.postimg.cc/4xMLP6sG/Screenshot-2026-04-10-19-43-20.png" alt="Top Dividend ETFs Pro Platform — live dividend ETF rankings">
             </div>
         </div>
 
@@ -1809,24 +1764,6 @@
         });
     });
 
-    // Hero preview: refresh the visible rows from the live PRO data sheet
-    (function () {
-        const CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTxCiod-Cwry7E6k9Un9dgrM_ANymC36_IO_wLyNj-YDo2KI7mp_1ZzyNBnBGZOxT48QPM8TCwtsmA4/pub?gid=0&single=true&output=csv';
-        const split = l => { const o = []; let c = '', q = false; for (const ch of l) { if (ch === '"') q = !q; else if (ch === ',' && !q) { o.push(c); c = ''; } else c += ch; } o.push(c); return o.map(v => v.trim()); };
-        const aum = v => { const m = String(v).replace(/[$,\s]/g, '').match(/^([\d.]+)([MB]?)$/i); if (!m) return null; const n = parseFloat(m[1]) * (m[2].toUpperCase() === 'B' ? 1000 : 1); return n >= 1000 ? '$' + (n / 1000).toFixed(1) + 'B' : '$' + Math.round(n) + 'M'; };
-        fetch(CSV).then(r => r.text()).then(t => {
-            const L = t.trim().split(/\r?\n/), H = split(L.shift()).map(h => h.toLowerCase());
-            const col = n => H.findIndex(h => h.startsWith(n));
-            const ix = { s: col('symbol'), y: col('dividend yield'), g: col('tax'), e: col('expense'), a: col('aum'), tr: col('total return'), d: col('price decay'), f: col('payout'), r: col('rating') };
-            const by = {}; L.forEach(l => { const c = split(l); by[(c[ix.s] || '').toUpperCase()] = c; });
-            document.querySelectorAll('.pv-table tr[data-t]').forEach(tr => {
-                const c = by[tr.dataset.t]; if (!c) return;
-                const set = (k, v) => { const td = tr.querySelector('[data-k="' + k + '"]'); if (!td || !v) return; const b = td.querySelector('span'); (b || td).textContent = v; };
-                set('y', c[ix.y]); set('g', c[ix.g]); set('e', c[ix.e]); set('a', aum(c[ix.a])); set('tr', c[ix.tr]); set('f', c[ix.f]); set('r', c[ix.r]);
-                const d = tr.querySelector('[data-k="d"]'); if (d && c[ix.d]) d.innerHTML = /^no/i.test(c[ix.d]) ? '<span class="pv-ok">No</span>' : '<span class="pv-bad">Yes</span>';
-            });
-        }).catch(() => {});
-    })();
 </script>
 </body>
 </html>
