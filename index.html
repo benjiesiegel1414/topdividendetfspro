@@ -58,6 +58,7 @@
         }
 
         html { scroll-behavior: smooth; }
+        section[id] { scroll-margin-top: 76px; }
 
         @keyframes slide-in-up {
             from {
@@ -126,6 +127,7 @@
         }
 
         .deal-text strong { color: var(--yellow); font-weight: 900; }
+        .deal-link { font-size: 13px; font-weight: 900; color: var(--yellow); white-space: nowrap; }
 
         .countdown {
             display: inline-flex;
@@ -443,6 +445,37 @@
 
         .hero-tagline strong { color: var(--yellow); }
 
+
+        /* ==================== HERO LIVE PREVIEW ==================== */
+        .pv { position: relative; background: #fff; text-align: left; }
+        .pv-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        .pv-table { width: 100%; min-width: 760px; border-collapse: collapse; font-size: 12.5px; color: var(--text-dark); }
+        .pv-table thead th { background: var(--primary-dark); color: #fff; font-size: 11px; font-weight: 900; text-transform: uppercase; letter-spacing: .5px; padding: 11px 10px; text-align: left; white-space: nowrap; }
+        .pv-table td { padding: 10px 10px; border-bottom: 1px solid var(--border); white-space: nowrap; font-weight: 700; }
+        .pv-table tbody:first-of-type tr:hover { background: #F0FDFA; }
+        .pv-t { font-weight: 900 !important; color: var(--primary); }
+        .pv-n { color: var(--text-light); font-weight: 400 !important; max-width: 200px; overflow: hidden; text-overflow: ellipsis; }
+        .pv-up { color: #047857; }
+        .pv-grade { display: inline-block; min-width: 28px; text-align: center; padding: 2px 7px; border-radius: 6px; background: rgba(15,118,110,.1); color: var(--primary-dark); font-weight: 900; }
+        .pv-rate { background: var(--primary); color: #fff; }
+        .pv-ok { color: #047857; font-weight: 900; }
+        .pv-bad { color: var(--urgent); font-weight: 900; }
+        .pv-locked { filter: blur(5px); user-select: none; pointer-events: none; opacity: .75; }
+        .pv-overlay { position: absolute; left: 0; right: 0; bottom: 0; height: 56%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 20px; background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.75) 30%, rgba(255,255,255,.92) 100%); }
+        .pv-lock { display: flex; align-items: center; gap: 12px; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 12px 18px; box-shadow: 0 10px 30px rgba(15,23,42,.12); color: var(--primary-dark); }
+        .pv-lock strong { display: block; font-size: 15px; font-weight: 900; color: var(--text-dark); }
+        .pv-lock span { display: block; font-size: 13px; color: var(--text-light); }
+        .pv-btn { display: inline-block; background: linear-gradient(135deg, var(--yellow) 0%, #FBBF24 100%); color: #1F2937; font-weight: 900; font-size: 15px; padding: 12px 26px; border-radius: 10px; text-decoration: none; box-shadow: 0 8px 22px rgba(251,191,36,.45); }
+        .pv-btn:hover { transform: translateY(-2px); }
+        @media (max-width: 768px) {
+            .pv-overlay { height: 64%; }
+            .pv-table { min-width: 600px; }
+            .pv-table thead th:nth-child(2), .pv-n { display: none; }
+            .pv-lock { padding: 10px 12px; }
+            .pv-lock strong { font-size: 13px; }
+            .pv-lock span { font-size: 12px; }
+        }
+
         /* ==================== PROOF STRIP ==================== */
         .proof-strip {
             background: var(--primary-dark);
@@ -560,7 +593,7 @@
         /* ==================== FEATURES SECTION ==================== */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
             margin-bottom: 60px;
         }
@@ -575,17 +608,26 @@
         }
 
         .feature-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-4px);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
             border-color: rgba(20, 184, 166, 0.5);
             background: rgba(255, 255, 255, 1);
         }
 
-        .feature-icon {
-            font-size: 44px;
+        .feature-icon, .why-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 18px;
-            display: block;
+            background: linear-gradient(135deg, rgba(15,118,110,.12) 0%, rgba(6,182,212,.12) 100%);
+            border: 1px solid rgba(15,118,110,.18);
+            color: var(--primary);
         }
+        .feature-icon svg, .why-icon svg { width: 26px; height: 26px; }
+        .why-icon { margin: 0 auto 18px; }
 
         .feature-card h3 {
             font-size: 20px;
@@ -647,7 +689,7 @@
         /* ==================== WHY CHOOSE US ==================== */
         .why-choose {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 30px;
             margin-top: 50px;
         }
@@ -663,16 +705,11 @@
 
         .why-item:hover {
             background: rgba(255, 255, 255, 1);
-            transform: translateY(-8px);
+            transform: translateY(-4px);
             border-color: rgba(20, 184, 166, 0.3);
             box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
         }
 
-        .why-icon {
-            font-size: 52px;
-            margin-bottom: 18px;
-            display: block;
-        }
 
         .why-item h3 {
             font-size: 20px;
@@ -933,13 +970,15 @@
             justify-content: center;
             gap: 12px;
             margin: 0 26px 16px;
-            background: rgba(239, 68, 68, 0.07);
-            border: 1px solid rgba(239, 68, 68, 0.3);
+            background: rgba(252, 211, 77, 0.14);
+            border: 1px solid rgba(251, 191, 36, 0.45);
             border-radius: 8px;
             padding: 10px 16px;
-            font-size: 13.5px;
-            font-weight: 900;
-            color: var(--urgent);
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 1.45;
+            text-align: center;
+            color: #78590A;
         }
 
         .seats-left .seats-bar {
@@ -1153,6 +1192,27 @@
         }
 
         /* ==================== RESPONSIVE ==================== */
+        /* Compact pricing cards so both plans fit on one laptop screen */
+        @media (min-width: 861px) {
+            .pricing-badge { padding: 10px 20px; }
+            .pricing-header { padding: 18px 26px 2px; }
+            .pricing-plan-name { font-size: 22px; }
+            .pricing-price { padding: 8px 26px 2px; }
+            .price-amount { font-size: 48px; }
+            .price-period { margin-top: 4px; }
+            .price-save { margin-top: 8px; padding: 5px 12px; }
+            .pricing-features { padding: 12px 30px; }
+            .pricing-features li { padding: 6px 0; font-size: 14.5px; }
+            .seats-left { margin: 0 26px 12px; padding: 8px 14px; font-size: 12.5px; }
+            .pricing-cta { padding: 0 26px 22px; }
+            .pricing-cta .cta-btn { padding: 15px 20px; font-size: 16px; }
+        }
+
+        @media (max-width: 1024px) {
+            .why-choose { grid-template-columns: repeat(2, 1fr); }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
         @media (max-width: 860px) {
             .pricing-container {
                 grid-template-columns: 1fr;
@@ -1181,12 +1241,14 @@
             .data-columns { grid-template-columns: 1fr 1fr; }
 
             .features-grid { grid-template-columns: 1fr; }
+            .why-choose { grid-template-columns: 1fr; }
 
             .cta-btn { width: 100%; padding: 18px 26px; font-size: 17px; }
 
             .shot-badge { font-size: 12px; padding: 9px 14px; top: -14px; right: 4px; }
 
-            .deal-text { display: none; }
+            .deal-text { font-size: 13px; }
+            .deal-link { display: none; }
 
             .sticky-cta { display: block; }
             body { padding-bottom: 74px; }
@@ -1199,18 +1261,12 @@
 </head>
 <body>
 
-<!-- ==================== COUNTDOWN DEAL BANNER ==================== -->
-<div class="deal-banner" onclick="document.getElementById('pricing').scrollIntoView({behavior: 'smooth'})">
+<!-- ==================== LAUNCH PRICING BANNER ==================== -->
+<div class="deal-banner" onclick="goPricing()">
     <div class="deal-banner-inner">
-        <span class="deal-tag">⚠️ Ending Soon</span>
-        <span class="deal-text">Lifetime access — <strong>$74.95 one-time</strong>, yours FOREVER</span>
-        <span class="countdown" id="countdown">
-            <span id="cd-h">00</span>:<span id="cd-m">00</span>:<span id="cd-s">00</span>
-        </span>
-        <span class="deal-seats">
-            7 of 30 left
-            <span class="deal-seats-bar"><span class="deal-seats-fill"></span></span>
-        </span>
+        <span class="deal-tag">Launch Pricing</span>
+        <span class="deal-text">Lifetime access is <strong>$74.95 one-time</strong> at launch. This price will go up.</span>
+        <span class="deal-link">See plans →</span>
     </div>
 </div>
 
@@ -1255,7 +1311,22 @@
                     <span class="b-dot r"></span><span class="b-dot y"></span><span class="b-dot g"></span>
                     <span class="b-url">🔒 topdividendetfspro.com</span>
                 </div>
-                <img src="https://i.postimg.cc/4xMLP6sG/Screenshot-2026-04-10-19-43-20.png" alt="Top Dividend ETFs Pro Platform — live dividend ETF rankings">
+                <div class="pv">
+                    <div class="pv-scroll">
+                        <table class="pv-table">
+                            <thead><tr><th>Symbol</th><th>Name</th><th>Yield</th><th>Tax Grade</th><th>Expense</th><th>AUM</th><th>Total Return</th><th>Price Decay</th><th>Payout</th><th>Rating</th></tr></thead>
+                            <tbody><tr data-t="SCHD"><td class="pv-t">$SCHD</td><td class="pv-n">Schwab U.S. Dividend Equity ETF</td><td data-k="y">3.0%</td><td data-k="g"><span class="pv-grade">A</span></td><td data-k="e">0.06%</td><td data-k="a">$112.2B</td><td data-k="tr" class="pv-up">531%</td><td data-k="d"><span class="pv-ok">No</span></td><td data-k="f">Quarterly</td><td data-k="r"><span class="pv-grade pv-rate">A+</span></td></tr><tr data-t="JEPI"><td class="pv-t">$JEPI</td><td class="pv-n">JPMorgan Equity Premium Income ETF</td><td data-k="y">7.5%</td><td data-k="g"><span class="pv-grade">C</span></td><td data-k="e">0.35%</td><td data-k="a">$46.3B</td><td data-k="tr" class="pv-up">93%</td><td data-k="d"><span class="pv-ok">No</span></td><td data-k="f">Monthly</td><td data-k="r"><span class="pv-grade pv-rate">A</span></td></tr><tr data-t="JEPQ"><td class="pv-t">$JEPQ</td><td class="pv-n">JPMorgan NASDAQ Equity Premium Income ETF</td><td data-k="y">12.0%</td><td data-k="g"><span class="pv-grade">C</span></td><td data-k="e">0.35%</td><td data-k="a">$41.8B</td><td data-k="tr" class="pv-up">96%</td><td data-k="d"><span class="pv-ok">No</span></td><td data-k="f">Monthly</td><td data-k="r"><span class="pv-grade pv-rate">A</span></td></tr><tr data-t="QQQI"><td class="pv-t">$QQQI</td><td class="pv-n">NEOS Nasdaq 100 High Income ETF</td><td data-k="y">14.0%</td><td data-k="g"><span class="pv-grade">B</span></td><td data-k="e">0.68%</td><td data-k="a">$14.1B</td><td data-k="tr" class="pv-up">65%</td><td data-k="d"><span class="pv-ok">No</span></td><td data-k="f">Monthly</td><td data-k="r"><span class="pv-grade pv-rate">A-</span></td></tr></tbody>
+                            <tbody class="pv-locked"><tr aria-hidden="true"><td class="pv-t">KXRW</td><td class="pv-n">Placeholder Income Strategy ETF</td><td>9.4%</td><td><span class="pv-grade">B</span></td><td>0.59%</td><td>$2.1B</td><td>41%</td><td><span class="pv-ok">No</span></td><td>Monthly</td><td><span class="pv-grade pv-rate">B+</span></td></tr><tr aria-hidden="true"><td class="pv-t">TQPL</td><td class="pv-n">Placeholder Covered Call ETF</td><td>18.2%</td><td><span class="pv-grade">C</span></td><td>0.99%</td><td>$860M</td><td>12%</td><td><span class="pv-ok">No</span></td><td>Weekly</td><td><span class="pv-grade pv-rate">B</span></td></tr><tr aria-hidden="true"><td class="pv-t">MVDN</td><td class="pv-n">Placeholder Dividend Growth ETF</td><td>2.7%</td><td><span class="pv-grade">A</span></td><td>0.08%</td><td>$31.4B</td><td>388%</td><td><span class="pv-ok">No</span></td><td>Quarterly</td><td><span class="pv-grade pv-rate">A</span></td></tr><tr aria-hidden="true"><td class="pv-t">ZRCY</td><td class="pv-n">Placeholder Option Income ETF</td><td>22.6%</td><td><span class="pv-grade">D</span></td><td>1.01%</td><td>$1.4B</td><td>-6%</td><td><span class="pv-ok">No</span></td><td>Weekly</td><td><span class="pv-grade pv-rate">C+</span></td></tr><tr aria-hidden="true"><td class="pv-t">HLBE</td><td class="pv-n">Placeholder High Yield Equity ETF</td><td>6.1%</td><td><span class="pv-grade">B</span></td><td>0.45%</td><td>$5.7B</td><td>112%</td><td><span class="pv-ok">No</span></td><td>Monthly</td><td><span class="pv-grade pv-rate">A-</span></td></tr><tr aria-hidden="true"><td class="pv-t">PWNX</td><td class="pv-n">Placeholder Premium Yield ETF</td><td>15.3%</td><td><span class="pv-grade">C</span></td><td>0.79%</td><td>$3.3B</td><td>48%</td><td><span class="pv-ok">No</span></td><td>Monthly</td><td><span class="pv-grade pv-rate">B</span></td></tr></tbody>
+                        </table>
+                    </div>
+                    <div class="pv-overlay">
+                        <div class="pv-lock">
+                            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                            <div><strong>100+ more dividend ETFs inside PRO</strong><span>Every fund, every metric, sortable and filterable.</span></div>
+                        </div>
+                        <a href="#pricing" class="pv-btn">Unlock Full Access →</a>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -1269,7 +1340,7 @@
         <div class="proof-item"><div class="n">100+</div><div class="l">Dividend ETFs Tracked</div></div>
         <div class="proof-item"><div class="n">11+</div><div class="l">Data Points Per Fund</div></div>
         <div class="proof-item"><div class="n">Daily</div><div class="l">Data Refreshes</div></div>
-        <div class="proof-item"><div class="n">$12.95</div><div class="l">$199 Value</div></div>
+        <div class="proof-item"><div class="n">$12.95/mo</div><div class="l">vs. $199+/yr for similar tools</div></div>
     </div>
 </div>
 
@@ -1277,7 +1348,7 @@
 <section class="video-demo-section">
     <div class="section-container">
         <div class="kicker">Live Demo</div>
-        <h2 class="section-title">Watch The Tool In Action 🎥</h2>
+        <h2 class="section-title">Watch The Tool In Action</h2>
         <p class="section-sub">This is the actual PRO platform — rankings, filters, tax treatment, total returns, and how to find your next income ETF fast.</p>
 
         <div class="video-container">
@@ -1301,36 +1372,36 @@
 <section class="section section-dark" id="features">
     <div class="section-container">
         <div class="kicker">Everything You Get</div>
-        <h2 class="section-title">Here's What's Inside PRO 👇</h2>
+        <h2 class="section-title">Here's What's Inside PRO</h2>
 
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">📊</div>
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg></div>
                 <h3>Comprehensive Data</h3>
                 <p>All the critical metrics for top dividend ETFs in one place. No more hunting across multiple websites.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🎯</div>
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v5h-5"/></svg></div>
                 <h3>Daily Updates</h3>
                 <p>Data refreshed daily so you always have the latest dividend yields, performance metrics, and market data.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">📈</div>
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
                 <h3>Total Return Analysis</h3>
                 <p>Track total returns with price decay analysis to understand the true performance of each ETF.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">💰</div>
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 5L5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></div>
                 <h3>Tax Treatment Grades</h3>
                 <p>Understand the tax efficiency of each fund to optimize your portfolio.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">⚙️</div>
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg></div>
                 <h3>Expense Ratios</h3>
                 <p>Compare fee structures across ETFs to maximize your net returns and minimize costs.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🔍</div>
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h18l-7 8.5V19l-4 2v-8.5L3 4z"/></svg></div>
                 <h3>Advanced Filtering</h3>
                 <p>Filter by yield, expense ratio, AUM, and more to find ETFs that match your investment criteria.</p>
             </div>
@@ -1375,7 +1446,7 @@
                 </div>
                 <div class="data-column">
                     <div class="data-column-title">Ratings</div>
-                    <div class="data-column-desc">Expert analysis and recommendations</div>
+                    <div class="data-column-desc">Our proprietary letter rating for each fund</div>
                 </div>
                 <div class="data-column">
                     <div class="data-column-title">ETF Tickers</div>
@@ -1383,7 +1454,7 @@
                 </div>
                 <div class="data-column">
                     <div class="data-column-title">Grades</div>
-                    <div class="data-column-desc">ETF Grades</div>
+                    <div class="data-column-desc">Letter grades for quick fund comparison</div>
                 </div>
                 <div class="data-column">
                     <div class="data-column-title">And More!</div>
@@ -1402,22 +1473,22 @@
 
         <div class="why-choose">
             <div class="why-item">
-                <div class="why-icon">⏱️</div>
+                <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
                 <h3>Save Hours</h3>
                 <p>No more bouncing between stock market sites, and ETF provider websites. All data in one place.</p>
             </div>
             <div class="why-item">
-                <div class="why-icon">🎓</div>
+                <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
                 <h3>Make Better Decisions</h3>
                 <p>Accurate, researched data and analysis help you build a more effective dividend income strategy.</p>
             </div>
             <div class="why-item">
-                <div class="why-icon">💡</div>
+                <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
                 <h3>Stay Informed</h3>
                 <p>Daily updates mean you never miss important changes in yields, performance, or fund details.</p>
             </div>
             <div class="why-item">
-                <div class="why-icon">🛡️</div>
+                <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
                 <h3>Trusted Data</h3>
                 <p>Accurate, researched information you can rely on for real investment decisions.</p>
             </div>
@@ -1532,11 +1603,6 @@
         <h2 class="section-title">Choose Your Plan & Get Instant Access</h2>
         <p class="section-sub">Both plans unlock every feature. No hidden fees, no surprises. Cancel anytime.</p>
 
-        <div class="urgency-strip">
-            <span>⚡ LIFETIME DEAL: Only 7 of 30 spots remaining</span>
-            <span class="seats-bar"><span class="seats-fill"></span></span>
-        </div>
-
         <div class="pricing-container">
 
             <!-- MONTHLY PLAN -->
@@ -1569,10 +1635,10 @@
 
             <!-- LIFETIME PLAN (FEATURED) -->
             <div class="pricing-card featured">
-                <div class="pricing-badge">🔥 Lifetime Deal — Only 7 Left!</div>
+                <div class="pricing-badge">Best Value · Launch Price</div>
                 <div class="pricing-header">
                     <div class="pricing-plan-name">LIFETIME Access</div>
-                    <div class="pricing-plan-desc">Pay once. Own it forever. 📈🔒</div>
+                    <div class="pricing-plan-desc">Pay once. Never billed again.</div>
                 </div>
                 <div class="pricing-price">
                     <div class="price-row">
@@ -1593,8 +1659,7 @@
                     </ul>
                 </div>
                 <div class="seats-left">
-                    ⚠️ 7 of 30 lifetime spots left
-                    <span class="seats-bar"><span class="seats-fill"></span></span>
+                    Launch price. Lifetime access will increase in the future, but your price is locked in.
                 </div>
                 <div class="pricing-cta">
                     <a href="https://buy.stripe.com/8x2cN69MF6Cqc6j40w1Fe03" target="_blank" class="cta-btn">Claim Lifetime Access →</a>
@@ -1689,30 +1754,47 @@
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script>
-    // Countdown — resets at midnight local time (evergreen urgency)
-    function updateCountdown() {
-        const now = new Date();
-        const midnight = new Date(now);
-        midnight.setHours(24, 0, 0, 0);
-        let diff = Math.max(0, midnight - now);
-        const h = Math.floor(diff / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
-        document.getElementById('cd-h').textContent = String(h).padStart(2, '0');
-        document.getElementById('cd-m').textContent = String(m).padStart(2, '0');
-        document.getElementById('cd-s').textContent = String(s).padStart(2, '0');
+    // Scroll so both pricing cards sit in the middle of the screen, below the sticky header
+    function goPricing() {
+        const cards = document.querySelector('.pricing-container');
+        if (!cards) return;
+        const header = document.querySelector('header');
+        const hh = header ? header.offsetHeight : 0;
+        const r = cards.getBoundingClientRect();
+        const room = window.innerHeight - hh;
+        let y = window.scrollY + r.top - hh - Math.max(16, (room - r.height) / 2);
+        window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
     }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
 
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
+            const href = this.getAttribute('href');
+            if (href === '#pricing') { goPricing(); return; }
+            const target = document.querySelector(href);
             if (target) target.scrollIntoView({ behavior: 'smooth' });
         });
     });
+
+    // Hero preview: refresh the visible rows from the live PRO data sheet
+    (function () {
+        const CSV = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTxCiod-Cwry7E6k9Un9dgrM_ANymC36_IO_wLyNj-YDo2KI7mp_1ZzyNBnBGZOxT48QPM8TCwtsmA4/pub?gid=0&single=true&output=csv';
+        const split = l => { const o = []; let c = '', q = false; for (const ch of l) { if (ch === '"') q = !q; else if (ch === ',' && !q) { o.push(c); c = ''; } else c += ch; } o.push(c); return o.map(v => v.trim()); };
+        const aum = v => { const m = String(v).replace(/[$,\s]/g, '').match(/^([\d.]+)([MB]?)$/i); if (!m) return null; const n = parseFloat(m[1]) * (m[2].toUpperCase() === 'B' ? 1000 : 1); return n >= 1000 ? '$' + (n / 1000).toFixed(1) + 'B' : '$' + Math.round(n) + 'M'; };
+        fetch(CSV).then(r => r.text()).then(t => {
+            const L = t.trim().split(/\r?\n/), H = split(L.shift()).map(h => h.toLowerCase());
+            const col = n => H.findIndex(h => h.startsWith(n));
+            const ix = { s: col('symbol'), y: col('dividend yield'), g: col('tax'), e: col('expense'), a: col('aum'), tr: col('total return'), d: col('price decay'), f: col('payout'), r: col('rating') };
+            const by = {}; L.forEach(l => { const c = split(l); by[(c[ix.s] || '').toUpperCase()] = c; });
+            document.querySelectorAll('.pv-table tr[data-t]').forEach(tr => {
+                const c = by[tr.dataset.t]; if (!c) return;
+                const set = (k, v) => { const td = tr.querySelector('[data-k="' + k + '"]'); if (!td || !v) return; const b = td.querySelector('span'); (b || td).textContent = v; };
+                set('y', c[ix.y]); set('g', c[ix.g]); set('e', c[ix.e]); set('a', aum(c[ix.a])); set('tr', c[ix.tr]); set('f', c[ix.f]); set('r', c[ix.r]);
+                const d = tr.querySelector('[data-k="d"]'); if (d && c[ix.d]) d.innerHTML = /^no/i.test(c[ix.d]) ? '<span class="pv-ok">No</span>' : '<span class="pv-bad">Yes</span>';
+            });
+        }).catch(() => {});
+    })();
 </script>
 </body>
 </html>
