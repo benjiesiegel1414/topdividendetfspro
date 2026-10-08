@@ -796,10 +796,10 @@
 
         .pricing-container {
             display: grid;
-            grid-template-columns: 1fr 1.08fr;
-            gap: 26px;
+            grid-template-columns: 1fr 1.08fr 1fr;
+            gap: 22px;
             margin-top: 10px;
-            max-width: 860px;
+            max-width: 1180px;
             margin-left: auto;
             margin-right: auto;
             align-items: stretch;
@@ -976,6 +976,19 @@
             padding: 18px 20px;
             font-size: 17px;
         }
+
+        /* Lifetime price tiers (driven by lifetime-tiers.js) */
+        .lt-card { position: relative; }
+        .lt-card .price-amount { transition: opacity .2s; }
+        .lt-card.lt-locked > *, .lt-card.lt-soldout > * { filter: grayscale(1); opacity: .62; }
+        .lt-card.lt-locked, .lt-card.lt-soldout { box-shadow: none; }
+        .lt-card.lt-locked:hover, .lt-card.lt-soldout:hover { transform: none; box-shadow: none; }
+        .lt-card.lt-locked .pricing-badge, .lt-card.lt-soldout .pricing-badge { background: #64748B; }
+        .lt-card .lt-btn[aria-disabled="true"] { background: #94A3B8; box-shadow: none; cursor: not-allowed; pointer-events: none; }
+        .lt-card.lt-soldout .price-amount { text-decoration: line-through; }
+        .lt-card.lt-soldout::after { content: "SOLD OUT"; position: absolute; top: 46%; left: 50%; transform: translate(-50%,-50%) rotate(-12deg); border: 4px solid #DC2626; color: #DC2626; font-weight: 900; font-size: 30px; letter-spacing: 3px; padding: 6px 18px; border-radius: 10px; background: rgba(255,255,255,.85); }
+        .lt-card .seats-left { flex-direction: column; gap: 8px; }
+        .lt-card .seats-left .seats-bar { width: 100%; }
 
         /* ==================== GUARANTEE ==================== */
         .guarantee {
@@ -1208,6 +1221,13 @@
             .features-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
+        @media (max-width: 1060px) {
+            .pricing-container {
+                grid-template-columns: 1fr;
+                max-width: 460px;
+            }
+        }
+
         @media (max-width: 860px) {
             .pricing-container {
                 grid-template-columns: 1fr;
@@ -1259,8 +1279,8 @@
 <!-- ==================== LAUNCH PRICING BANNER ==================== -->
 <div class="deal-banner" onclick="goPricing()">
     <div class="deal-banner-inner">
-        <span class="deal-tag">Launch Pricing</span>
-        <span class="deal-text">Lifetime access is <strong>$74.95 one-time</strong> at launch. This price will go up.</span>
+        <span class="deal-tag">Limited Spots</span>
+        <span class="deal-text" data-lt-none="Lifetime spots are sold out for now. Monthly access is open.">Lifetime access is <strong><span data-lt-price>$74.95</span> one-time</strong>. <span data-lt-left>Only 7 left at this price</span>, then the price goes up.</span>
         <span class="deal-link">See plans →</span>
     </div>
 </div>
@@ -1581,7 +1601,7 @@
     <div class="section-container">
         <div class="kicker">Simple Pricing</div>
         <h2 class="section-title">Choose Your Plan & Get Instant Access</h2>
-        <p class="section-sub">Both plans unlock every feature. No hidden fees, no surprises. Cancel anytime.</p>
+        <p class="section-sub">Every plan unlocks every feature. Lifetime is sold in limited batches, and the price goes up when each batch is gone.</p>
 
         <div class="pricing-container">
 
@@ -1613,20 +1633,19 @@
                 </div>
             </div>
 
-            <!-- LIFETIME PLAN (FEATURED) -->
-            <div class="pricing-card featured">
-                <div class="pricing-badge">Best Value · Launch Price</div>
+            <!-- LIFETIME TIER 1 -->
+            <div class="pricing-card lt-card" id="lt1">
+                <div class="pricing-badge lt-badge">Lifetime</div>
                 <div class="pricing-header">
                     <div class="pricing-plan-name">LIFETIME Access</div>
                     <div class="pricing-plan-desc">Pay once. Never billed again.</div>
                 </div>
                 <div class="pricing-price">
                     <div class="price-row">
-                        <div class="price-strike">$155.40/yr</div>
+                        <div class="price-strike">$97</div>
                         <div class="price-amount">$74.95</div>
                     </div>
                     <div class="price-period">one-time payment · never billed again</div>
-                    <span class="price-save">💰 Pays for itself in under 6 months</span>
                 </div>
                 <div class="pricing-features">
                     <ul>
@@ -1639,12 +1658,46 @@
                     </ul>
                 </div>
                 <div class="seats-left">
-                    Launch price. Lifetime access will increase in the future, but your price is locked in.
+                    <span class="lt-count">Limited spots at this price</span>
+                    <div class="seats-bar"><div class="seats-fill" style="width:100%"></div></div>
                 </div>
                 <div class="pricing-cta">
-                    <a href="https://buy.stripe.com/8x2cN69MF6Cqc6j40w1Fe03" target="_blank" class="cta-btn">Claim Lifetime Access →</a>
+                    <a href="https://buy.stripe.com/8x2cN69MF6Cqc6j40w1Fe03" target="_blank" class="cta-btn lt-btn">Claim Lifetime, $74.95 →</a>
                 </div>
             </div>
+
+            <!-- LIFETIME TIER 2 -->
+            <div class="pricing-card lt-card" id="lt2">
+                <div class="pricing-badge lt-badge">Lifetime</div>
+                <div class="pricing-header">
+                    <div class="pricing-plan-name">LIFETIME Access</div>
+                    <div class="pricing-plan-desc">The next lifetime price, 50 spots</div>
+                </div>
+                <div class="pricing-price">
+                    <div class="price-row">
+                        <div class="price-amount">$97</div>
+                    </div>
+                    <div class="price-period">one-time payment · never billed again</div>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li><span class="checkmark">✓</span> Everything in Monthly</li>
+                        <li><span class="checkmark">✓</span> All future premium features FREE</li>
+                        <li><span class="checkmark">✓</span> Price locked in forever</li>
+                        <li><span class="checkmark">✓</span> Daily Data Updates for life</li>
+                        <li><span class="checkmark">✓</span> Tax Treatment Analysis</li>
+                        <li><span class="checkmark">✓</span> Total Return & Price Decay Data</li>
+                    </ul>
+                </div>
+                <div class="seats-left">
+                    <span class="lt-count">Limited spots at this price</span>
+                    <div class="seats-bar"><div class="seats-fill" style="width:100%"></div></div>
+                </div>
+                <div class="pricing-cta">
+                    <a href="https://buy.stripe.com/14AeVe5wp7Gu6LZ7cI1Fe08" target="_blank" class="cta-btn lt-btn">Claim Lifetime, $97 →</a>
+                </div>
+            </div>
+
         </div>
 
         <div class="guarantee">
@@ -1679,7 +1732,7 @@
             </details>
             <details>
                 <summary>What does "Lifetime" actually mean?</summary>
-                <div class="a">One payment of $74.95 and you have full PRO access for as long as the platform exists — including every new premium feature we ship. No renewals, no subscriptions, nothing else to pay. Ever.</div>
+                <div class="a">One payment of <span data-lt-price>$74.95</span> and you have full PRO access for as long as the platform exists — including every new premium feature we ship. No renewals, no subscriptions, nothing else to pay. Ever.</div>
             </details>
             <details>
                 <summary>Is this investment advice?</summary>
@@ -1704,7 +1757,8 @@
     <div class="section-container">
         <h2>Join Top Dividend ETFs PRO Today!</h2>
         <p>Get instant access to the complete dividend ETF database — updated daily.</p>
-        <a href="https://buy.stripe.com/8x2cN69MF6Cqc6j40w1Fe03" target="_blank" class="cta-btn">Get Lifetime Access — $74.95 →</a>
+        <a href="https://buy.stripe.com/8x2cN69MF6Cqc6j40w1Fe03" data-lt-link data-lt-none="Start Monthly, $12.95/mo →" data-lt-none-href="https://buy.stripe.com/fZu14of6Z3qe4DReFa1Fe02" target="_blank" class="cta-btn">Get Lifetime Access, <span data-lt-price>$74.95</span> →</a>
+        <span class="cta-sub" style="display:block;margin-bottom:6px" data-lt-left>Only 7 left at this price</span>
         <span class="cta-sub">🔒 Or start monthly for just $12.95 · Secure Stripe checkout · Instant access</span>
     </div>
 </section>
@@ -1765,5 +1819,6 @@
     });
 
 </script>
+<script src="/lifetime-tiers.js" defer></script>
 </body>
 </html>
