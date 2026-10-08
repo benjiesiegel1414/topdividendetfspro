@@ -1,0 +1,35 @@
+name: Lifetime spots
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"   # every 15 minutes
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: lifetime-spots
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Read spot counts from Stripe
+        env:
+          STRIPE_LIFETIME_KEY: ${{ secrets.STRIPE_LIFETIME_KEY }}
+        run: node scripts/sync-lifetime.mjs
+      - name: Commit if changed
+        run: |
+          git config user.name "pro-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/lifetime.json
+          if git diff --cached --quiet; then echo "No change"; exit 0; fi
+          git commit -m "Lifetime spots update"
+          git pull --rebase -q && git push
