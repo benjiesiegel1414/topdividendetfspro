@@ -989,6 +989,23 @@
         .lt-card.lt-soldout::after { content: "SOLD OUT"; position: absolute; top: 46%; left: 50%; transform: translate(-50%,-50%) rotate(-12deg); border: 4px solid #DC2626; color: #DC2626; font-weight: 900; font-size: 30px; letter-spacing: 3px; padding: 6px 18px; border-radius: 10px; background: rgba(255,255,255,.85); }
         .lt-card .seats-left { flex-direction: column; gap: 8px; }
         .lt-card .seats-left .seats-bar { width: 100%; }
+        /* Open tier: loud spots-left callout */
+        .lt-card.lt-open .seats-left {
+            margin: 4px 22px 18px; padding: 14px 16px 16px;
+            background: linear-gradient(135deg, #DC2626 0%, #EA580C 100%);
+            border: 2px solid #FCA5A5; border-radius: 14px; color: #fff;
+            font-size: 15px; line-height: 1.25;
+            box-shadow: 0 10px 26px rgba(220, 38, 38, .38);
+            animation: ltPulse 1.8s ease-in-out infinite;
+        }
+        .lt-card.lt-open .lt-hot { display: block; font-size: 22px; font-weight: 900; letter-spacing: .3px; text-transform: uppercase; }
+        .lt-card.lt-open .lt-num { display: inline-block; font-size: 42px; line-height: 1; margin: 0 4px; vertical-align: -6px; color: #FEF08A; text-shadow: 0 2px 0 rgba(0,0,0,.18); }
+        .lt-card.lt-open .lt-sub { display: block; margin-top: 6px; font-size: 13.5px; font-weight: 700; opacity: .95; }
+        .lt-card.lt-open .seats-left .seats-bar { height: 10px; background: rgba(255,255,255,.28); border-radius: 6px; }
+        .lt-card.lt-open .seats-left .seats-fill { background: #FEF08A; }
+        @keyframes ltPulse { 0%,100% { transform: scale(1); box-shadow: 0 10px 26px rgba(220,38,38,.38); } 50% { transform: scale(1.03); box-shadow: 0 12px 34px rgba(220,38,38,.6); } }
+        @media (prefers-reduced-motion: reduce) { .lt-card.lt-open .seats-left { animation: none; } }
+        @media (max-width: 600px) { .lt-card.lt-open .lt-hot { font-size: 19px; } .lt-card.lt-open .lt-num { font-size: 36px; } }
 
         /* ==================== GUARANTEE ==================== */
         .guarantee {
@@ -1647,6 +1664,10 @@
                     </div>
                     <div class="price-period">one-time payment · never billed again</div>
                 </div>
+                <div class="seats-left">
+                    <span class="lt-count">Limited spots at this price</span>
+                    <div class="seats-bar"><div class="seats-fill" style="width:100%"></div></div>
+                </div>
                 <div class="pricing-features">
                     <ul>
                         <li><span class="checkmark">✓</span> Everything in Monthly</li>
@@ -1656,10 +1677,6 @@
                         <li><span class="checkmark">✓</span> Tax Treatment Analysis</li>
                         <li><span class="checkmark">✓</span> Total Return & Price Decay Data</li>
                     </ul>
-                </div>
-                <div class="seats-left">
-                    <span class="lt-count">Limited spots at this price</span>
-                    <div class="seats-bar"><div class="seats-fill" style="width:100%"></div></div>
                 </div>
                 <div class="pricing-cta">
                     <a href="https://buy.stripe.com/8x2cN69MF6Cqc6j40w1Fe03" target="_blank" class="cta-btn lt-btn">Claim Lifetime, $74.95 →</a>
@@ -1679,6 +1696,10 @@
                     </div>
                     <div class="price-period">one-time payment · never billed again</div>
                 </div>
+                <div class="seats-left">
+                    <span class="lt-count">Limited spots at this price</span>
+                    <div class="seats-bar"><div class="seats-fill" style="width:100%"></div></div>
+                </div>
                 <div class="pricing-features">
                     <ul>
                         <li><span class="checkmark">✓</span> Everything in Monthly</li>
@@ -1688,10 +1709,6 @@
                         <li><span class="checkmark">✓</span> Tax Treatment Analysis</li>
                         <li><span class="checkmark">✓</span> Total Return & Price Decay Data</li>
                     </ul>
-                </div>
-                <div class="seats-left">
-                    <span class="lt-count">Limited spots at this price</span>
-                    <div class="seats-bar"><div class="seats-fill" style="width:100%"></div></div>
                 </div>
                 <div class="pricing-cta">
                     <a href="https://buy.stripe.com/14AeVe5wp7Gu6LZ7cI1Fe08" target="_blank" class="cta-btn lt-btn">Claim Lifetime, $97 →</a>

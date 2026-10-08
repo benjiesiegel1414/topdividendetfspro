@@ -18,7 +18,12 @@
       el.classList.add("lt-" + state); if (state === "open") el.classList.add("featured");
       var n = left(t), pct = Math.round(100 * n / t.limit);
       var q = function (s) { return el.querySelector(s); };
-      if (q(".lt-count")) q(".lt-count").textContent = state === "soldout" ? "All " + t.limit + " spots claimed" : (state === "locked" ? t.limit + " spots at this price" : "Only " + n + " of " + t.limit + " left at this price");
+      var c = q(".lt-count");
+      if (c) {
+        if (state === "open") c.innerHTML = '<span class="lt-hot">\ud83d\udd25 Only<span class="lt-num">' + n + '</span>left</span>' +
+          '<span class="lt-sub">of ' + t.limit + ' spots at ' + money(t.price) + (t === t1 ? ', then the price goes to ' + money(t2.price) : '') + '</span>';
+        else c.textContent = state === "soldout" ? "All " + t.limit + " spots claimed" : t.limit + " spots at this price";
+      }
       if (q(".seats-fill")) q(".seats-fill").style.width = (state === "locked" ? 100 : pct) + "%";
       var b = q(".lt-btn");
       if (b) {
