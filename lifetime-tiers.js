@@ -20,8 +20,8 @@
       var q = function (s) { return el.querySelector(s); };
       var c = q(".lt-count");
       if (c) {
-        if (state === "open") c.innerHTML = '<span class="lt-hot">\ud83d\udd25 Only<span class="lt-num">' + n + '</span>left</span>' +
-          '<span class="lt-sub">of ' + t.limit + ' spots at ' + money(t.price) + (t === t1 ? ', then the price goes to ' + money(t2.price) : '') + '</span>';
+        if (state === "open") c.innerHTML = '<span class="lt-hot">\ud83d\udd25 Only <span class="lt-num">' + n + '</span> Lifetime ' + (n === 1 ? 'member' : 'members') + ' left at this price!</span>' +
+          '<span class="lt-sub">' + (t === t1 ? 'Then the price goes to ' + money(t2.price) : 'Then the price goes up') + '</span>';
         else c.textContent = state === "soldout" ? "All " + t.limit + " spots claimed" : t.limit + " spots at this price";
       }
       if (q(".seats-fill")) q(".seats-fill").style.width = (state === "locked" ? 100 : pct) + "%";
@@ -34,7 +34,7 @@
     });
     // Anywhere else on the page
     document.querySelectorAll("[data-lt-price]").forEach(function (e) { e.textContent = cur ? money(cur.price) : ""; });
-    document.querySelectorAll("[data-lt-left]").forEach(function (e) { e.textContent = cur ? "Only " + left(cur) + " left at this price" : "Lifetime spots are sold out"; });
+    document.querySelectorAll("[data-lt-left]").forEach(function (e) { e.textContent = cur ? "Only " + left(cur) + " Lifetime " + (left(cur) === 1 ? "member" : "members") + " left at this price!" : "Lifetime spots are sold out"; });
     document.querySelectorAll("a[data-lt-link]").forEach(function (a) {
       if (cur) a.href = cur.link; else { a.href = "#pricing"; a.removeAttribute("target"); }
     });
