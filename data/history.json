@@ -2663,6 +2663,11 @@
       "date": "2026-10-09",
       "yield": 25,
       "totalReturn": -2
+    },
+    {
+      "date": "2026-10-10",
+      "yield": 26,
+      "totalReturn": -2
     }
   ],
   "AMZY": [
@@ -3788,6 +3793,11 @@
     {
       "date": "2026-10-07",
       "yield": 37,
+      "totalReturn": 76
+    },
+    {
+      "date": "2026-10-10",
+      "yield": 39,
       "totalReturn": 76
     }
   ],
@@ -11137,6 +11147,11 @@
       "date": "2026-10-09",
       "yield": 42,
       "totalReturn": 25
+    },
+    {
+      "date": "2026-10-10",
+      "yield": 41.9,
+      "totalReturn": 25
     }
   ],
   "NVII": [
@@ -12324,6 +12339,11 @@
       "date": "2026-10-05",
       "yield": 16,
       "totalReturn": 11
+    },
+    {
+      "date": "2026-10-10",
+      "yield": 20,
+      "totalReturn": 11
     }
   ],
   "TDAX": [
@@ -12435,6 +12455,11 @@
     {
       "date": "2026-10-09",
       "yield": 19,
+      "totalReturn": 19
+    },
+    {
+      "date": "2026-10-10",
+      "yield": 18,
       "totalReturn": 19
     }
   ],
@@ -13712,6 +13737,11 @@
       "date": "2026-10-09",
       "yield": 13.88,
       "totalReturn": 7
+    },
+    {
+      "date": "2026-10-10",
+      "yield": 14.2,
+      "totalReturn": 7
     }
   ],
   "SPCI": [
@@ -13885,6 +13915,11 @@
     {
       "date": "2026-10-05",
       "yield": 16,
+      "totalReturn": 5
+    },
+    {
+      "date": "2026-10-10",
+      "yield": 17,
       "totalReturn": 5
     }
   ],
@@ -15868,6 +15903,11 @@
     {
       "date": "2026-10-09",
       "yield": 74.8,
+      "totalReturn": 340
+    },
+    {
+      "date": "2026-10-10",
+      "yield": 55,
       "totalReturn": 340
     }
   ],
