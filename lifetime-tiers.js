@@ -3,12 +3,13 @@
 (function () {
   var FALLBACK = {tiers: [
     {id: "t1", price: "74.95", limit: 7, sold: 0, active: true, link: "https://buy.stripe.com/8x2cN69MF6Cqc6j40w1Fe03"},
-    {id: "t2", price: "97", limit: 50, sold: 0, active: true, link: "https://buy.stripe.com/14AeVe5wp7Gu6LZ7cI1Fe08"}]};
+    {id: "t2", price: "97", limit: 38, sold: 1, active: true, link: "https://buy.stripe.com/14AeVe5wp7Gu6LZ7cI1Fe08"}],
+    next: "297"};   // the lifetime price after the last tier sells out
   function left(t) { return Math.max(0, t.limit - t.sold); }
   function open(t) { return t.active && left(t) > 0; }
   function money(p) { return "$" + p; }
   function apply(d) {
-    var t1 = d.tiers[0], t2 = d.tiers[1];
+    var t1 = d.tiers[0], t2 = d.tiers[1], nextAfter = d.next || FALLBACK.next;
     var cur = open(t1) ? t1 : open(t2) ? t2 : null;
     // Cards
     [[t1, document.getElementById("lt1")], [t2, document.getElementById("lt2")]].forEach(function (p) {
@@ -21,7 +22,7 @@
       var c = q(".lt-count");
       if (c) {
         if (state === "open") c.innerHTML = '<span class="lt-hot">\ud83d\udd25 Only <span class="lt-num">' + n + '</span> Lifetime ' + (n === 1 ? 'member' : 'members') + ' left at this price!</span>' +
-          '<span class="lt-sub">' + (t === t1 ? 'Then the price goes to ' + money(t2.price) : 'Then the price goes up') + '</span>';
+          '<span class="lt-sub">' + 'Then the price goes to ' + money(t === t1 ? t2.price : nextAfter) + '</span>';
         else c.textContent = state === "soldout" ? "All " + t.limit + " spots claimed" : t.limit + " spots at this price";
       }
       if (q(".seats-fill")) q(".seats-fill").style.width = (state === "locked" ? 100 : pct) + "%";
@@ -35,6 +36,7 @@
     // Anywhere else on the page
     document.querySelectorAll("[data-lt-price]").forEach(function (e) { e.textContent = cur ? money(cur.price) : ""; });
     document.querySelectorAll("[data-lt-left]").forEach(function (e) { e.textContent = cur ? "Only " + left(cur) + " Lifetime " + (left(cur) === 1 ? "member" : "members") + " left at this price!" : "Lifetime spots are sold out"; });
+    document.querySelectorAll("[data-lt-next]").forEach(function (e) { e.textContent = cur ? "Then the price goes to " + money(cur === t1 ? t2.price : nextAfter) + "." : ""; });
     document.querySelectorAll("a[data-lt-link]").forEach(function (a) {
       if (cur) a.href = cur.link; else { a.href = "#pricing"; a.removeAttribute("target"); }
     });
