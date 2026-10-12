@@ -788,5 +788,11 @@
             }
         })();
     </script>
+<script>
+/* PRO onboarding: after Stripe checkout, tell the onboarding bridge so the welcome email goes out right away. */
+(function(){try{var p=new URLSearchParams(location.search),s=p.get('session_id');if(!s||!/^cs_(live|test)_[A-Za-z0-9]+$/.test(s))return;
+fetch('https://script.google.com/macros/s/AKfycbwz_GWHvyH6qixZ0wUL2Z5v8HJygnawGCC1czcTSh2FQI6epCOvZoSux_7z_3vwByl9/exec?session_id='+encodeURIComponent(s),{mode:'no-cors',keepalive:true}).catch(function(){});
+p.delete('session_id');var q=p.toString();history.replaceState(null,'',location.pathname+(q?'?'+q:'')+location.hash);}catch(e){}})();
+</script>
 </body>
 </html>
