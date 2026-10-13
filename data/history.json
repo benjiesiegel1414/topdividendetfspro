@@ -3645,6 +3645,11 @@
       "date": "2026-10-12",
       "yield": 41,
       "totalReturn": 0
+    },
+    {
+      "date": "2026-10-13",
+      "yield": 40,
+      "totalReturn": 0
     }
   ],
   "CHPY": [
@@ -3782,6 +3787,11 @@
       "date": "2026-10-12",
       "yield": 43,
       "totalReturn": 177
+    },
+    {
+      "date": "2026-10-13",
+      "yield": 40,
+      "totalReturn": 177
     }
   ],
   "YMAG": [
@@ -3918,6 +3928,11 @@
     {
       "date": "2026-10-10",
       "yield": 39,
+      "totalReturn": 76
+    },
+    {
+      "date": "2026-10-13",
+      "yield": 35,
       "totalReturn": 76
     }
   ],
