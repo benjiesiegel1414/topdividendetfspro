@@ -1,6 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1856727122438516');
+    fbq('track', 'PageView');
+    document.addEventListener('click', function(e) {
+      var a = e.target.closest ? e.target.closest('a[href*="buy.stripe.com"]') : null;
+      if (a) { fbq('track', 'InitiateCheckout'); }
+    });
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1856727122438516&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy | TopDividendETFsPro.com</title>
@@ -50,7 +72,7 @@
 <body>
 
     <h1>Privacy Policy</h1>
-    <p class="last-updated">Last updated: April 11, 2026</p>
+    <p class="last-updated">Last updated: October 15, 2026</p>
 
     <p>Welcome to TopDividendETFsPro.com (the "Site" or "we", "us", or "our"). We respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our Site, create an account, subscribe to our services, or otherwise interact with us.</p>
 
@@ -79,12 +101,20 @@
     <p>We do not sell your personal information. We may share your information only in these limited situations:</p>
     <ul>
         <li>With trusted service providers who help us operate the Site (e.g., payment processors, hosting services).</li>
+        <li>With advertising and analytics partners (such as Meta, X, and Google) through cookies and pixels, as described in Section 4 below.</li>
         <li>When required by law or government request.</li>
         <li>In connection with a business transfer (merger, acquisition, or sale of assets).</li>
     </ul>
 
-    <h2>4. Cookies and Tracking Technologies</h2>
+    <h2>4. Cookies, Tracking Technologies, and Advertising</h2>
     <p>We use cookies and similar technologies to improve your experience, remember your preferences, and analyze traffic. You can manage your cookie preferences through your browser settings.</p>
+    <p>We also use third-party advertising and analytics pixels on the Site:</p>
+    <ul>
+        <li><strong>Meta Pixel</strong> (Facebook/Instagram): We use the Meta Pixel, provided by Meta Platforms, Inc., to measure the effectiveness of our advertising and to understand actions visitors take on the Site (such as pages viewed and purchases made). The Meta Pixel collects information such as your IP address, browser information, and pages visited, and shares it with Meta, which may combine it with your Meta account information. You can learn more about how Meta uses this data in <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener">Meta's Privacy Policy</a>, and you can manage your ad preferences or opt out of ads based on this data at <a href="https://www.facebook.com/adpreferences/ad_settings" target="_blank" rel="noopener">Meta Ad Preferences</a>.</li>
+        <li><strong>X Pixel</strong> (Twitter/X): We may use the X advertising pixel, provided by X Corp., for similar ad measurement purposes. You can learn more in <a href="https://x.com/en/privacy" target="_blank" rel="noopener">X's Privacy Policy</a> and manage your preferences at <a href="https://x.com/settings/ads_preferences" target="_blank" rel="noopener">X Ads Preferences</a>.</li>
+        <li><strong>Google Analytics</strong>: We use Google Analytics to understand how visitors use the Site. Learn more at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>, or opt out with the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</li>
+    </ul>
+    <p>In addition to the platform-specific controls above, you can opt out of interest-based advertising generally through the <a href="https://optout.aboutads.info/" target="_blank" rel="noopener">Digital Advertising Alliance opt-out tool</a> or by enabling tracking protection features in your browser.</p>
 
     <h2>5. Data Retention</h2>
     <p>We retain your personal information only as long as necessary to provide our services, fulfill legal obligations, or resolve disputes.</p>
