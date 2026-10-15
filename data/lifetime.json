@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-14T16:11:46.914Z",
+ "updated": "2026-10-15T22:32:14.418Z",
  "tiers": [
   {
    "id": "t1",
@@ -14,7 +14,7 @@
    "id": "t2",
    "price": "97",
    "limit": 38,
-   "sold": 4,
+   "sold": 5,
    "active": true,
    "plink": "plink_1UO9eiJqR7lI8PK9TRAnQkq9",
    "link": "https://buy.stripe.com/14AeVe5wp7Gu6LZ7cI1Fe08"
