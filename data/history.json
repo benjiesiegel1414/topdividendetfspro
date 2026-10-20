@@ -2891,6 +2891,11 @@
       "date": "2026-10-19",
       "yield": 41,
       "totalReturn": 42
+    },
+    {
+      "date": "2026-10-20",
+      "yield": 40,
+      "totalReturn": 42
     }
   ],
   "PYPY": [
@@ -4040,6 +4045,11 @@
       "date": "2026-10-19",
       "yield": 40,
       "totalReturn": -8
+    },
+    {
+      "date": "2026-10-20",
+      "yield": 41,
+      "totalReturn": -8
     }
   ],
   "CHPY": [
@@ -4348,6 +4358,11 @@
     {
       "date": "2026-10-19",
       "yield": 35,
+      "totalReturn": 72
+    },
+    {
+      "date": "2026-10-20",
+      "yield": 36,
       "totalReturn": 72
     }
   ],
