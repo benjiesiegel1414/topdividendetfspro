@@ -20053,5 +20053,12 @@
       "yield": 2.3,
       "totalReturn": 252
     }
+  ],
+  "OVQ": [
+    {
+      "date": "2026-10-24",
+      "yield": 12,
+      "totalReturn": 0
+    }
   ]
 }
