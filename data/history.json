@@ -4769,6 +4769,11 @@
       "date": "2026-10-26",
       "yield": 36,
       "totalReturn": 70
+    },
+    {
+      "date": "2026-10-27",
+      "yield": 32,
+      "totalReturn": 70
     }
   ],
   "FBY": [
@@ -20691,6 +20696,13 @@
       "date": "2026-10-26",
       "yield": 1.5,
       "totalReturn": 208
+    }
+  ],
+  "FIZY": [
+    {
+      "date": "2026-10-27",
+      "yield": 14,
+      "totalReturn": 5
     }
   ]
 }
