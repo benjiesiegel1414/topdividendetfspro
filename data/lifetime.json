@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-01T13:55:36.482Z",
+ "updated": "2026-11-01T16:58:30.000Z",
  "tiers": [
   {
    "id": "t1",
@@ -13,7 +13,7 @@
   {
    "id": "t2",
    "price": "97",
-   "limit": 38,
+   "limit": 41,
    "sold": 29,
    "active": true,
    "plink": "plink_1UO9eiJqR7lI8PK9TRAnQkq9",

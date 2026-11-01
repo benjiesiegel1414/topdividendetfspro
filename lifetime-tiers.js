@@ -3,7 +3,7 @@
 (function () {
   var FALLBACK = {tiers: [
     {id: "t1", price: "74.95", limit: 7, sold: 0, active: true, link: "https://buy.stripe.com/8x2cN69MF6Cqc6j40w1Fe03"},
-    {id: "t2", price: "97", limit: 38, sold: 1, active: true, link: "https://buy.stripe.com/14AeVe5wp7Gu6LZ7cI1Fe08"}],
+    {id: "t2", price: "97", limit: 41, sold: 1, active: true, link: "https://buy.stripe.com/14AeVe5wp7Gu6LZ7cI1Fe08"}],
     next: "297"};   // the lifetime price after the last tier sells out
   function left(t) { return Math.max(0, t.limit - t.sold); }
   function open(t) { return t.active && left(t) > 0; }
