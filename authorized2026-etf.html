@@ -155,6 +155,19 @@
             .rets { grid-template-columns: repeat(3, 1fr); }
             .tile .v { font-size: 20px; }
         }
+        /* ===== Dividend history ===== */
+        .dv-sum { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 10px; margin-bottom: 14px; }
+        .dv-sum > div { background: #F0FDFA; border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+        .dv-sum .k { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--text-light); font-weight: 700; }
+        .dv-sum .v { font-size: 18px; font-weight: 900; color: var(--primary-dark); margin-top: 2px; }
+        .dv-chart { display: block; width: 100%; height: 130px; margin: 4px 0 2px; }
+        .dv-ax { display: flex; justify-content: space-between; font-size: 11px; color: var(--text-light); margin-bottom: 12px; }
+        .dv-wrap { max-height: 420px; overflow-y: auto; border: 1px solid var(--line); border-radius: 10px; }
+        .dv-tbl { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+        .dv-tbl th { position: sticky; top: 0; background: var(--primary-dark); color: #fff; text-align: left; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; padding: 9px 12px; }
+        .dv-tbl td { padding: 9px 12px; border-bottom: 1px solid var(--line); }
+        .dv-tbl td.a { font-weight: 800; color: var(--primary-dark); }
+        @media (max-width: 640px) { .dv-sum { grid-template-columns: 1fr 1fr; } .dv-tbl th, .dv-tbl td { padding: 8px 8px; } }
     </style>
 </head>
 <body>
@@ -316,6 +329,8 @@
                 </div>
             </div>
 
+            <div class="panel" id="divPanel" style="margin-top:18px"><h2>Dividend History</h2><div class="sub">Loading payouts…</div></div>
+
             ${sims.length ? `<div class="panel" style="margin-top:18px">
                 <h2>Similar Funds</h2>
                 <div class="sub">Closest yields in the PRO database${f.freq ? ', favoring ' + esc(String(f.freq).toLowerCase()) + ' payers' : ''}</div>
@@ -324,6 +339,8 @@
                     return `<a href="authorized2026-etf.html?t=${encodeURIComponent(o.sym)}"><div class="t">$${esc(o.sym)}</div><div class="n">${esc(o.name)}</div><div class="y">${esc(o.yieldStr)} yield · <span class="${cls(or.r1y)}">${or.r1y != null ? pct(or.r1y, true) + ' 1Y' : 'new fund'}</span></div></a>`;
                 }).join('')}</div>
             </div>` : ''}`;
+
+            loadDividends(f);
 
             // Growth chart range toggle (re-bases the month-end series to $10,000 at the start of the window)
             if (g.length > 1) {
@@ -363,6 +380,44 @@
             });
         }
 
+        // Dividend history: last 2 years of payouts. data/div/<SYM>.json is written by scripts/fetch-returns.mjs
+        // (from the TopETFs daily dividend file); falls back to that file directly if the per-fund file is missing.
+        function loadDividends(f) {
+            const panel = document.getElementById('divPanel');
+            const cut = new Date(Date.now() - 730 * 864e5).toISOString().slice(0, 10);
+            const draw = rows => {
+                rows = (rows || []).filter(x => x && x[0] && x[1] > 0 && x[0] >= cut).sort((a, b) => a[0] < b[0] ? 1 : -1);
+                if (!rows.length) { panel.innerHTML = '<h2>Dividend History</h2><div class="sub">No payout history available for this fund yet.</div>'; return; }
+                const today = new Date().toISOString().slice(0, 10), yAgo = new Date(Date.now() - 365 * 864e5).toISOString().slice(0, 10);
+                const past = rows.filter(x => x[0] <= today);
+                const t12 = past.filter(x => x[0] > yAgo), p12 = past.filter(x => x[0] <= yAgo);
+                const sum = a => a.reduce((s, x) => s + x[1], 0);
+                const chg = p12.length >= t12.length * 0.75 && sum(p12) > 0 && t12.length ? (sum(t12) / sum(p12) - 1) * 100 : null;
+                const amt = v => '$' + (v < 1 ? v.toFixed(4) : v.toFixed(3)).replace(/0+$/, '').replace(/\.(\d)$/, '.$10').replace(/\.$/, '.00');
+                const hasPay = rows.some(x => x[2]);
+                const chron = rows.slice().reverse(), max = Math.max(...chron.map(x => x[1]));
+                const W = 760, H = 130, bw = W / chron.length;
+                const bars = chron.map((x, i) => { const h = Math.max(2, (x[1] / max) * (H - 6)); return `<rect x="${(i * bw + bw * 0.15).toFixed(1)}" y="${(H - h).toFixed(1)}" width="${Math.max(1, bw * 0.7).toFixed(1)}" height="${h.toFixed(1)}" rx="2" fill="${x[0] > today ? '#94A3B8' : '#0F766E'}"><title>${fmtDay(x[0])}: ${amt(x[1])}</title></rect>`; }).join('');
+                const lbl = `<div class="dv-ax"><span>${fmtDay(chron[0][0])}</span><span>${fmtDay(chron[chron.length - 1][0])}</span></div>`;
+                const body = rows.map((x, i) => { const p = rows[i + 1], c = p && p[1] > 0 ? (x[1] / p[1] - 1) * 100 : null;
+                    return `<tr><td>${fmtDay(x[0])}${x[0] > today ? ' <span class="sub" style="display:inline">(declared)</span>' : ''}</td>${hasPay ? `<td>${x[2] ? fmtDay(x[2]) : '-'}</td>` : ''}<td class="a">${amt(x[1])}</td><td class="${c == null || Math.abs(c) < 0.05 ? '' : c > 0 ? 'pos' : 'neg'}">${c == null || Math.abs(c) < 0.05 ? '-' : (c > 0 ? '+' : '') + c.toFixed(1) + '%'}</td></tr>`; }).join('');
+                panel.innerHTML = `<h2>Dividend History</h2>
+                    <div class="sub">Every ${esc(f.sym)} payout over the last 2 years${rows.length < 8 ? ' (or since launch)' : ''}. Newest first.</div>
+                    <div class="dv-sum">
+                        <div><div class="k">Last payout</div><div class="v">${past.length ? amt(past[0][1]) : '-'}</div></div>
+                        <div><div class="k">Last 12 months</div><div class="v">${amt(sum(t12))}</div></div>
+                        <div><div class="k">Payouts (12 mo)</div><div class="v">${t12.length}</div></div>
+                        <div><div class="k">vs prior 12 mo</div><div class="v ${chg == null ? '' : chg >= 0 ? 'pos' : 'neg'}">${chg == null ? '-' : (chg > 0 ? '+' : '') + chg.toFixed(1) + '%'}</div></div>
+                    </div>
+                    <svg class="dv-chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="${esc(f.sym)} dividend payouts over the last 2 years">${bars}</svg>${lbl}
+                    <div class="dv-wrap"><table class="dv-tbl"><thead><tr><th>Ex-Date</th>${hasPay ? '<th>Pay Date</th>' : ''}<th>Amount</th><th>Change</th></tr></thead><tbody>${body}</tbody></table></div>
+                    <div class="sub" style="margin:10px 0 0">Per-share amounts as reported. Distributions can change and may include return of capital.</div>`;
+            };
+            getJSON('data/div/' + encodeURIComponent(f.sym) + '.json').then(d => {
+                if (d && d.rows) return draw(d.rows);
+                return getJSON('https://raw.githubusercontent.com/benjiesiegel1414/topetfs/main/data/dividends.json').then(all => draw(all && all.funds && all.funds[f.sym] ? all.funds[f.sym].rows : []));
+            }).catch(() => { panel.innerHTML = '<h2>Dividend History</h2><div class="sub">Unable to load payouts right now.</div>'; });
+        }
         function fmtAum(a) {
             const n = num(a); if (n == null) return a || '-';
             if (/M$/i.test(a) && n >= 1000) return '$' + (n / 1000).toFixed(1) + 'B';
