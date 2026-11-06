@@ -2,7 +2,12 @@ name: Trailing Total Returns (1Y/3Y/5Y)
 
 on:
   schedule:
-    - cron: "45 22 * * 1-5"   # ~5:45pm ET weekdays, after the market close
+    # Share price + returns refresh 3x per trading day: ~10:00 AM, ~1:00 PM and ~4:20 PM Eastern.
+    # Cron runs in UTC, so both the EST and EDT times are listed; the first step skips the ones
+    # that don't match the current Eastern hour (handles daylight saving automatically).
+    - cron: "5 14,15 * * 1-5"    # 10 AM ET (EDT / EST)
+    - cron: "5 17,18 * * 1-5"    # 1 PM ET (EDT / EST)
+    - cron: "20 20,21 * * 1-5"   # 4:20 PM ET, after the close (EDT / EST)
   workflow_dispatch:
 
 permissions:
@@ -12,20 +17,35 @@ jobs:
   returns:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
+      - name: Check Eastern time
+        id: when
+        run: |
+          H=$(TZ=America/New_York date +%-H)
+          echo "Eastern hour: $H"
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$H" = "10" ] || [ "$H" = "13" ] || [ "$H" = "16" ]; then
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.when.outputs.go == 'true'
+        uses: actions/checkout@v7
+      - if: steps.when.outputs.go == 'true'
+        uses: actions/setup-node@v7
         with:
           node-version: "22"
       - name: Compute returns
+        if: steps.when.outputs.go == 'true'
         run: node scripts/fetch-returns.mjs
       - name: Commit and push if changed
+        if: steps.when.outputs.go == 'true'
         run: |
           git config user.name "returns-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/returns.json
+          git add data/returns.json data/growth.json
           if git diff --cached --quiet; then
             echo "No changes."
           else
-            git commit -m "Update trailing returns [skip ci]"
+            git commit -m "Update share prices and trailing returns [skip ci]"
+            git pull --rebase
             git push
           fi
