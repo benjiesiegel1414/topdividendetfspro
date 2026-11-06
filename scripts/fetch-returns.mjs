@@ -1,6 +1,6 @@
 // Computes trailing total returns (dividends reinvested) for every ETF in the PRO Terminal sheet.
 // Source: Yahoo Finance daily adjusted closes. Output: data/returns.json
-// { asOf, funds: { SCHD: { r1y, r3y, r5y, mdd, px, chg, pxDate } } }  px = latest share price, chg = % change vs prior close  r3y/r5y are annualized; null when the fund is too new.
+// { asOf, funds: { SCHD: { r1y, r3y, r5y, mdd, px, chg, pxDate } } }  px = latest share price, chg = % change vs prior close, pxTime = time of that price  r3y/r5y are annualized; null when the fund is too new.
 // mdd = max drawdown (%) over the last 5 years or since inception
 // data/growth.json = { SCHD: [[YYYY-MM, value], ...] } weekly growth of $10K [[YYYY-MM-DD, value], ...], used by the scorecard chart
 import fs from "node:fs"; import { execSync } from "node:child_process"; import path from "node:path"; import { fileURLToPath } from "node:url";
@@ -24,6 +24,7 @@ async function series(sym) {
           pts.price = res?.meta?.regularMarketPrice ?? (cl.length ? cl[cl.length - 1][1] : null);
           pts.prev = cl.length > 1 ? cl[cl.length - 2][1] : null;
           pts.priceDate = cl.length ? new Date(cl[cl.length - 1][0]).toISOString().slice(0, 10) : null;
+          pts.priceTime = res?.meta?.regularMarketTime ? res.meta.regularMarketTime * 1000 : null;
           return pts;
         }
       }
@@ -71,7 +72,8 @@ for (const s of syms) {
   if (!pts) { failed.push(s); if (prev.funds?.[s]) funds[s] = prev.funds[s]; if (prevGrowth[s]) growth[s] = prevGrowth[s]; continue; }
   funds[s] = { r1y: ret(pts, 1), r3y: ret(pts, 3), r5y: ret(pts, 5), mdd: drawdown(pts),
     px: pts.price != null ? Math.round(pts.price * 100) / 100 : null,
-    chg: pts.price != null && pts.prev ? Math.round((pts.price / pts.prev - 1) * 1000) / 10 : null, pxDate: pts.priceDate };
+    chg: pts.price != null && pts.prev ? Math.round((pts.price / pts.prev - 1) * 1000) / 10 : null, pxDate: pts.priceDate,
+    pxTime: pts.priceTime ? new Date(pts.priceTime).toISOString() : null };
   growth[s] = weekly(pts);
   ok++; await sleep(250);
 }
