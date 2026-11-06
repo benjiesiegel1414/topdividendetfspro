@@ -4,907 +4,1622 @@
   "YBST": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -31.2,
+   "px": 10.58,
+   "chg": -2.1,
+   "pxDate": "2026-11-05"
   },
   "YBTY": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -39.1,
+   "px": 8.7,
+   "chg": -2.3,
+   "pxDate": "2026-11-05"
   },
   "AMYY": {
    "r1y": 4.8,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -16.9,
+   "px": 11.7,
+   "chg": -3,
+   "pxDate": "2026-11-05"
   },
   "XBTY": {
    "r1y": -27,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -49,
+   "px": 5.43,
+   "chg": -1.7,
+   "pxDate": "2026-11-05"
   },
   "COYY": {
    "r1y": -56.8,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -67,
+   "px": 12.12,
+   "chg": -2.9,
+   "pxDate": "2026-11-05"
   },
   "HOYY": {
    "r1y": -51.8,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -55.7,
+   "px": 3.88,
+   "chg": -2.6,
+   "pxDate": "2026-11-05"
   },
   "NVYY": {
    "r1y": -16.5,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -18.4,
+   "px": 9.87,
+   "chg": -3.2,
+   "pxDate": "2026-11-05"
   },
   "TQQY": {
    "r1y": -10,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -25.3,
+   "px": 10.95,
+   "chg": -3.7,
+   "pxDate": "2026-11-05"
   },
   "SMYY": {
    "r1y": -32.4,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -38.3,
+   "px": 5.24,
+   "chg": -1.2,
+   "pxDate": "2026-11-05"
   },
   "YSPY": {
    "r1y": 6.3,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -14.6,
+   "px": 14.79,
+   "chg": -3.3,
+   "pxDate": "2026-11-05"
   },
   "TSYY": {
    "r1y": -27.6,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -42.6,
+   "px": 18.72,
+   "chg": -2.8,
+   "pxDate": "2026-11-05"
   },
   "AHD": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -4.1,
+   "px": 25.79,
+   "chg": -1.9,
+   "pxDate": "2026-11-05"
   },
   "CONY": {
    "r1y": -48.7,
    "r3y": -2.7,
-   "r5y": null
+   "r5y": null,
+   "mdd": -63.6,
+   "px": 14.35,
+   "chg": -8.7,
+   "pxDate": "2026-11-05"
   },
   "ULTY": {
    "r1y": -15.8,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -26.8,
+   "px": 20.29,
+   "chg": -3.7,
+   "pxDate": "2026-11-05"
   },
   "MSTY": {
    "r1y": -42.6,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -77.4,
+   "px": 12.65,
+   "chg": -9.1,
+   "pxDate": "2026-11-05"
   },
   "SMCY": {
    "r1y": -44.6,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -64.7,
+   "px": 3.39,
+   "chg": -10.3,
+   "pxDate": "2026-11-05"
   },
   "TSLY": {
    "r1y": -19.8,
    "r3y": 7.9,
-   "r5y": null
+   "r5y": null,
+   "mdd": -49.5,
+   "px": 19.22,
+   "chg": -12.1,
+   "pxDate": "2026-11-05"
   },
   "YBIT": {
    "r1y": -22.9,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -47.5,
+   "px": 18.75,
+   "chg": -4.4,
+   "pxDate": "2026-11-05"
   },
   "PLTY": {
    "r1y": -16.3,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -41.4,
+   "px": 28.62,
+   "chg": -10.4,
+   "pxDate": "2026-11-05"
   },
   "NVDY": {
    "r1y": -5.2,
    "r3y": 43.3,
-   "r5y": null
+   "r5y": null,
+   "mdd": -34.1,
+   "px": 9.92,
+   "chg": -10,
+   "pxDate": "2026-11-05"
   },
   "AMDY": {
    "r1y": 39.1,
    "r3y": 35.2,
-   "r5y": null
+   "r5y": null,
+   "mdd": -53.9,
+   "px": 32.52,
+   "chg": -18,
+   "pxDate": "2026-11-05"
   },
   "SNOY": {
    "r1y": 5.2,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -50.9,
+   "px": 8.55,
+   "chg": -7.8,
+   "pxDate": "2026-11-05"
   },
   "YMAX": {
    "r1y": -8.4,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -26.1,
+   "px": 6.52,
+   "chg": -6.5,
+   "pxDate": "2026-11-05"
   },
   "PYPY": {
    "r1y": -12.9,
    "r3y": 1.7,
-   "r5y": null
+   "r5y": null,
+   "mdd": -53.6,
+   "px": 26.5,
+   "chg": -2.2,
+   "pxDate": "2026-11-05"
   },
   "AMZY": {
    "r1y": 4.1,
    "r3y": 21.2,
-   "r5y": null
+   "r5y": null,
+   "mdd": -23.7,
+   "px": 10.47,
+   "chg": -2.4,
+   "pxDate": "2026-11-05"
   },
   "GOOY": {
    "r1y": 0.9,
    "r3y": 16.8,
-   "r5y": null
+   "r5y": null,
+   "mdd": -27.4,
+   "px": 9.76,
+   "chg": -1.9,
+   "pxDate": "2026-11-05"
   },
   "BABO": {
    "r1y": -28.7,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -42.6,
+   "px": 6.79,
+   "chg": 1.7,
+   "pxDate": "2026-11-05"
   },
   "OARK": {
    "r1y": -11.2,
    "r3y": 13.9,
-   "r5y": null
+   "r5y": null,
+   "mdd": -35.5,
+   "px": 24.31,
+   "chg": -9.1,
+   "pxDate": "2026-11-05"
   },
   "HOOY": {
    "r1y": -40.1,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -51.5,
+   "px": 18.28,
+   "chg": -10.2,
+   "pxDate": "2026-11-05"
   },
   "LFGY": {
    "r1y": -29.1,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -35.9,
+   "px": 14.03,
+   "chg": -7.3,
+   "pxDate": "2026-11-05"
   },
   "CHPY": {
    "r1y": 26,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -38.2,
+   "px": 47.09,
+   "chg": -12.8,
+   "pxDate": "2026-11-05"
   },
   "YMAG": {
    "r1y": 0.8,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -26,
+   "px": 10.26,
+   "chg": -4.7,
+   "pxDate": "2026-11-05"
   },
   "FBY": {
    "r1y": -9.9,
    "r3y": 13.6,
-   "r5y": null
+   "r5y": null,
+   "mdd": -31.5,
+   "px": 7.76,
+   "chg": -4.2,
+   "pxDate": "2026-11-05"
   },
   "SOXY": {
    "r1y": 26.7,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -38.6,
+   "px": 66.84,
+   "chg": -11.7,
+   "pxDate": "2026-11-05"
   },
   "IWMY": {
    "r1y": 2.2,
    "r3y": 8.5,
-   "r5y": null
+   "r5y": null,
+   "mdd": -18.7,
+   "px": 15.93,
+   "chg": -5.3,
+   "pxDate": "2026-11-05"
   },
   "QQQY": {
    "r1y": 4.6,
    "r3y": 11.8,
-   "r5y": null
+   "r5y": null,
+   "mdd": -19,
+   "px": 19.05,
+   "chg": -7,
+   "pxDate": "2026-11-05"
   },
   "SPYI": {
    "r1y": 10,
    "r3y": 16.1,
-   "r5y": null
+   "r5y": null,
+   "mdd": -16.5,
+   "px": 51.15,
+   "chg": -3.5,
+   "pxDate": "2026-11-05"
   },
   "QQQI": {
    "r1y": 2.7,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -20,
+   "px": 48.88,
+   "chg": -5.7,
+   "pxDate": "2026-11-05"
   },
   "BTCI": {
    "r1y": -24.1,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -48.4,
+   "px": 30.25,
+   "chg": -4.3,
+   "pxDate": "2026-11-05"
   },
   "CSHI": {
    "r1y": 4.5,
    "r3y": 5.1,
-   "r5y": null
+   "r5y": null,
+   "mdd": -1.7,
+   "px": 49.57,
+   "chg": -0.3,
+   "pxDate": "2026-11-05"
   },
   "QQQH": {
    "r1y": 1.7,
    "r3y": 17,
-   "r5y": 6.1
+   "r5y": 6.1,
+   "mdd": -52.7,
+   "px": 50.95,
+   "chg": -3.7,
+   "pxDate": "2026-11-05"
   },
   "IWMI": {
    "r1y": 14.3,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -23.9,
+   "px": 47.68,
+   "chg": -3.7,
+   "pxDate": "2026-11-05"
   },
   "IYRI": {
    "r1y": 6.6,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -12.1,
+   "px": 47.23,
+   "chg": -1.4,
+   "pxDate": "2026-11-05"
   },
   "IAUI": {
    "r1y": 0.4,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -24.5,
+   "px": 46.92,
+   "chg": 0.6,
+   "pxDate": "2026-11-05"
   },
   "BNDI": {
    "r1y": 1.7,
    "r3y": 5.6,
-   "r5y": null
+   "r5y": null,
+   "mdd": -7,
+   "px": 45.81,
+   "chg": -0.3,
+   "pxDate": "2026-11-05"
   },
   "SPYH": {
    "r1y": 7.6,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -6.4,
+   "px": 54.63,
+   "chg": -2.7,
+   "pxDate": "2026-11-05"
   },
   "NIHI": {
    "r1y": 12.4,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -10.9,
+   "px": 50.15,
+   "chg": -2.1,
+   "pxDate": "2026-11-05"
   },
   "MLPI": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -8.9,
+   "px": 49.47,
+   "chg": -3,
+   "pxDate": "2026-11-05"
   },
   "XSPI": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -11.6,
+   "px": 45.97,
+   "chg": -5.1,
+   "pxDate": "2026-11-05"
   },
   "XQQI": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -19.2,
+   "px": 40.81,
+   "chg": -8.8,
+   "pxDate": "2026-11-05"
   },
   "XBCI": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -37.3,
+   "px": 33.46,
+   "chg": -6.6,
+   "pxDate": "2026-11-05"
   },
   "DIVO": {
    "r1y": 12.1,
    "r3y": 16.3,
-   "r5y": 10.2
+   "r5y": 10.2,
+   "mdd": -13.7,
+   "px": 46.74,
+   "chg": -2.7,
+   "pxDate": "2026-11-05"
   },
   "YYY": {
    "r1y": -0.3,
    "r3y": 9.8,
-   "r5y": 1.7
+   "r5y": 1.7,
+   "mdd": -27.7,
+   "px": 10.19,
+   "chg": -2.2,
+   "pxDate": "2026-11-05"
   },
   "IDVO": {
    "r1y": 10.2,
    "r3y": 19.4,
-   "r5y": null
+   "r5y": null,
+   "mdd": -15.5,
+   "px": 38.71,
+   "chg": -3.3,
+   "pxDate": "2026-11-05"
   },
   "QDVO": {
    "r1y": 2.5,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -17.8,
+   "px": 27.16,
+   "chg": -5.3,
+   "pxDate": "2026-11-05"
   },
   "GPIX": {
    "r1y": 9.3,
    "r3y": 18,
-   "r5y": null
+   "r5y": null,
+   "mdd": -17.5,
+   "px": 53.2,
+   "chg": -4.1,
+   "pxDate": "2026-11-05"
   },
   "SCHD": {
    "r1y": 38.7,
    "r3y": 19.1,
-   "r5y": 10.1
+   "r5y": 10.1,
+   "mdd": -16.8,
+   "px": 35.42,
+   "chg": -2.2,
+   "pxDate": "2026-11-05"
   },
   "DGRO": {
    "r1y": 21.3,
    "r3y": 19.8,
-   "r5y": 10.9
+   "r5y": 10.9,
+   "mdd": -19.3,
+   "px": 80.25,
+   "chg": -2.8,
+   "pxDate": "2026-11-05"
   },
   "DGRW": {
    "r1y": 10.5,
    "r3y": 16,
-   "r5y": 10.7
+   "r5y": 10.7,
+   "mdd": -17.3,
+   "px": 96.44,
+   "chg": -3.6,
+   "pxDate": "2026-11-05"
   },
   "VIG": {
    "r1y": 15.2,
    "r3y": 17.7,
-   "r5y": 10
+   "r5y": 10,
+   "mdd": -20.4,
+   "px": 244.26,
+   "chg": -3.3,
+   "pxDate": "2026-11-05"
   },
   "VYM": {
    "r1y": 17.6,
    "r3y": 18.6,
-   "r5y": 11
+   "r5y": 11,
+   "mdd": -15.8,
+   "px": 159.8,
+   "chg": -3.3,
+   "pxDate": "2026-11-05"
   },
   "SPHD": {
    "r1y": 18.1,
    "r3y": 15,
-   "r5y": 8.5
+   "r5y": 8.5,
+   "mdd": -19.5,
+   "px": 52.79,
+   "chg": -0.9,
+   "pxDate": "2026-11-05"
   },
   "FDVV": {
    "r1y": 14.8,
    "r3y": 20.3,
-   "r5y": 13.1
+   "r5y": 13.1,
+   "mdd": -20.2,
+   "px": 61.86,
+   "chg": -3.1,
+   "pxDate": "2026-11-05"
   },
   "BATT": {
    "r1y": -3.9,
    "r3y": 8.6,
-   "r5y": -6.7
+   "r5y": -6.7,
+   "mdd": -62,
+   "px": 12.31,
+   "chg": -5.2,
+   "pxDate": "2026-11-05"
   },
   "COWS": {
    "r1y": 32.3,
    "r3y": 21,
-   "r5y": null
+   "r5y": null,
+   "mdd": -24.8,
+   "px": 40.79,
+   "chg": -2.8,
+   "pxDate": "2026-11-05"
   },
   "BITY": {
    "r1y": -31.8,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -50.9,
+   "px": 24.59,
+   "chg": -5.2,
+   "pxDate": "2026-11-05"
   },
   "BAGY": {
    "r1y": -34,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -50.7,
+   "px": 20.6,
+   "chg": -5.2,
+   "pxDate": "2026-11-05"
   },
   "HCOW": {
    "r1y": 21.4,
    "r3y": 12.2,
-   "r5y": null
+   "r5y": null,
+   "mdd": -24.1,
+   "px": 25.46,
+   "chg": -2,
+   "pxDate": "2026-11-05"
   },
   "QDTE": {
    "r1y": 6.2,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -22.9,
+   "px": 25.44,
+   "chg": -6.7,
+   "pxDate": "2026-11-05"
   },
   "XDTE": {
    "r1y": 9.3,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -19.1,
+   "px": 36.32,
+   "chg": -4.6,
+   "pxDate": "2026-11-05"
   },
   "YBTC": {
    "r1y": -26.9,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -48.8,
+   "px": 17.2,
+   "chg": -4.2,
+   "pxDate": "2026-11-05"
   },
   "PLTW": {
    "r1y": -30.7,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -57.3,
+   "px": 18.36,
+   "chg": -11.8,
+   "pxDate": "2026-11-05"
   },
   "YETH": {
    "r1y": -26.2,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -64.4,
+   "px": 8.18,
+   "chg": -4.8,
+   "pxDate": "2026-11-05"
   },
   "COIW": {
    "r1y": -65.5,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -77.1,
+   "px": 5.7,
+   "chg": -11.5,
+   "pxDate": "2026-11-05"
   },
   "RDTE": {
    "r1y": 12.8,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -24.3,
+   "px": 25.07,
+   "chg": -4.9,
+   "pxDate": "2026-11-05"
   },
   "WEEK": {
    "r1y": 3.6,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -0.1,
+   "px": 100.01,
+   "chg": 0,
+   "pxDate": "2026-11-05"
   },
   "MAGY": {
    "r1y": -6.3,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -14.3,
+   "px": 39.99,
+   "chg": -4.5,
+   "pxDate": "2026-11-05"
   },
   "TSLW": {
    "r1y": -32.1,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -47.2,
+   "px": 15.56,
+   "chg": -13.2,
+   "pxDate": "2026-11-05"
   },
   "GOOW": {
    "r1y": -3.1,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -37.6,
+   "px": 45.11,
+   "chg": -2.5,
+   "pxDate": "2026-11-05"
   },
   "TOPW": {
    "r1y": -13.4,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -29.9,
+   "px": 30,
+   "chg": -6,
+   "pxDate": "2026-11-05"
   },
   "AMDW": {
    "r1y": 59.7,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -44.7,
+   "px": 58.18,
+   "chg": -20.5,
+   "pxDate": "2026-11-05"
   },
   "ACKY": {
    "r1y": 3.4,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -14.6,
+   "px": 17.57,
+   "chg": -2.9,
+   "pxDate": "2026-11-05"
   },
   "OMAH": {
    "r1y": 12.3,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -11.8,
+   "px": 18.28,
+   "chg": -1,
+   "pxDate": "2026-11-05"
   },
   "DRKY": {
    "r1y": 7.5,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -15.7,
+   "px": 19.07,
+   "chg": -7.1,
+   "pxDate": "2026-11-05"
   },
   "QUSA": {
    "r1y": -3.1,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -14.1,
+   "px": 15.38,
+   "chg": -5,
+   "pxDate": "2026-11-05"
   },
   "SIOO": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -6.9,
+   "px": 18.8,
+   "chg": -2.6,
+   "pxDate": "2026-11-05"
   },
   "XYLD": {
    "r1y": 11.6,
    "r3y": 12.7,
-   "r5y": 6.6
+   "r5y": 6.6,
+   "mdd": -18.7,
+   "px": 40.05,
+   "chg": -3.7,
+   "pxDate": "2026-11-05"
   },
   "HDV": {
    "r1y": 33.7,
    "r3y": 20.1,
-   "r5y": 13.1
+   "r5y": 13.1,
+   "mdd": -15.4,
+   "px": 30.56,
+   "chg": -1.6,
+   "pxDate": "2026-11-05"
   },
   "DVY": {
    "r1y": 20.8,
    "r3y": 18.1,
-   "r5y": 10.1
+   "r5y": 10.1,
+   "mdd": -17.5,
+   "px": 161.15,
+   "chg": -1.7,
+   "pxDate": "2026-11-05"
   },
   "SDY": {
    "r1y": 22.7,
    "r3y": 15,
-   "r5y": 8.2
+   "r5y": 8.2,
+   "mdd": -15.2,
+   "px": 162.67,
+   "chg": -1.4,
+   "pxDate": "2026-11-05"
   },
   "BALI": {
    "r1y": 11.4,
    "r3y": 18.1,
-   "r5y": null
+   "r5y": null,
+   "mdd": -16.6,
+   "px": 32.76,
+   "chg": -4.3,
+   "pxDate": "2026-11-05"
   },
   "NOBL": {
    "r1y": 22.2,
    "r3y": 13.6,
-   "r5y": 7.1
+   "r5y": 7.1,
+   "mdd": -17.9,
+   "px": 60.41,
+   "chg": -1.4,
+   "pxDate": "2026-11-05"
   },
   "IDV": {
    "r1y": 23.4,
    "r3y": 25.7,
-   "r5y": 13.5
+   "r5y": 13.5,
+   "mdd": -29.2,
+   "px": 43.09,
+   "chg": -1,
+   "pxDate": "2026-11-05"
   },
   "VYMI": {
    "r1y": 24.2,
    "r3y": 22.7,
-   "r5y": 13.2
+   "r5y": 13.2,
+   "mdd": -24.1,
+   "px": 101.31,
+   "chg": -1.9,
+   "pxDate": "2026-11-05"
   },
   "SCHP": {
    "r1y": -0.6,
    "r3y": 3.9,
-   "r5y": 0
+   "r5y": 0,
+   "mdd": -14.3,
+   "px": 25.58,
+   "chg": 0.1,
+   "pxDate": "2026-11-05"
   },
   "SCHG": {
    "r1y": 0.1,
    "r3y": 21.1,
-   "r5y": 10.3
+   "r5y": 10.3,
+   "mdd": -34.6,
+   "px": 32.81,
+   "chg": -5.5,
+   "pxDate": "2026-11-05"
   },
   "RYLD": {
    "r1y": 11.4,
    "r3y": 9.6,
-   "r5y": 1.4
+   "r5y": 1.4,
+   "mdd": -22.1,
+   "px": 15.11,
+   "chg": -2.1,
+   "pxDate": "2026-11-05"
   },
   "QYLD": {
    "r1y": 9.4,
    "r3y": 12.8,
-   "r5y": 6.5
+   "r5y": 6.5,
+   "mdd": -24.6,
+   "px": 16.88,
+   "chg": -6.1,
+   "pxDate": "2026-11-05"
   },
   "JEPI": {
    "r1y": 7,
    "r3y": 9.6,
-   "r5y": 6.8
+   "r5y": 6.8,
+   "mdd": -13.7,
+   "px": 56.39,
+   "chg": -3.3,
+   "pxDate": "2026-11-05"
   },
   "JEPQ": {
    "r1y": 1.9,
    "r3y": 15.4,
-   "r5y": null
+   "r5y": null,
+   "mdd": -20.1,
+   "px": 53.71,
+   "chg": -6,
+   "pxDate": "2026-11-05"
   },
   "MAXI": {
    "r1y": -33.2,
    "r3y": 14.4,
-   "r5y": null
+   "r5y": null,
+   "mdd": -68.8,
+   "px": 12.04,
+   "chg": -9,
+   "pxDate": "2026-11-05"
   },
   "BLOX": {
    "r1y": -41.6,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -48.4,
+   "px": 9.68,
+   "chg": -8.1,
+   "pxDate": "2026-11-05"
   },
   "GIAX": {
    "r1y": -1.7,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -21.5,
+   "px": 13.3,
+   "chg": -7.6,
+   "pxDate": "2026-11-05"
   },
   "SVOL": {
    "r1y": 2.9,
    "r3y": 4,
-   "r5y": 4.4
+   "r5y": 4.4,
+   "mdd": -33.5,
+   "px": 14.59,
+   "chg": -8.2,
+   "pxDate": "2026-11-05"
   },
   "BITO": {
    "r1y": -27.2,
    "r3y": 22.1,
-   "r5y": -0.8
+   "r5y": -0.8,
+   "mdd": -77.9,
+   "px": 10.13,
+   "chg": -5.1,
+   "pxDate": "2026-11-05"
   },
   "KQQQ": {
    "r1y": -1.3,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -26.2,
+   "px": 24.92,
+   "chg": -5.2,
+   "pxDate": "2026-11-05"
   },
   "FEPI": {
    "r1y": -5.1,
    "r3y": 12.9,
-   "r5y": null
+   "r5y": null,
+   "mdd": -23.6,
+   "px": 35.29,
+   "chg": -7.8,
+   "pxDate": "2026-11-05"
   },
   "AIPI": {
    "r1y": -3.5,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -25.3,
+   "px": 29.64,
+   "chg": -8.4,
+   "pxDate": "2026-11-05"
   },
   "CEPI": {
    "r1y": -7,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -29.5,
+   "px": 24.83,
+   "chg": -7.5,
+   "pxDate": "2026-11-05"
   },
   "NVII": {
    "r1y": -8.8,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -26.7,
+   "px": 18.38,
+   "chg": -11.8,
+   "pxDate": "2026-11-05"
   },
   "TSII": {
    "r1y": -28.5,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -44.1,
+   "px": 11.54,
+   "chg": -13.8,
+   "pxDate": "2026-11-05"
   },
   "WMTI": {
    "r1y": 16.3,
    "r3y": null,
-   "r5y": null
-  },
-  "ULTI": {
-   "r1y": -55.6,
-   "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -25.7,
+   "px": 21.56,
+   "chg": -0.7,
+   "pxDate": "2026-11-05"
   },
   "GPIQ": {
    "r1y": 4.1,
    "r3y": 18.4,
-   "r5y": null
+   "r5y": null,
+   "mdd": -21.1,
+   "px": 50.58,
+   "chg": -6.2,
+   "pxDate": "2026-11-05"
   },
   "TSPY": {
    "r1y": 8.5,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -18,
+   "px": 23.91,
+   "chg": -4.3,
+   "pxDate": "2026-11-05"
   },
   "TDAQ": {
    "r1y": 3.9,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -15.2,
+   "px": 23.43,
+   "chg": -7.1,
+   "pxDate": "2026-11-05"
   },
   "SPYT": {
    "r1y": 4.3,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -18.2,
+   "px": 15.87,
+   "chg": -4.3,
+   "pxDate": "2026-11-05"
   },
   "ISPY": {
    "r1y": 5.4,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -16.9,
+   "px": 45.74,
+   "chg": -4.3,
+   "pxDate": "2026-11-05"
   },
   "KGLD": {
    "r1y": 2.3,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -31.6,
+   "px": 24.67,
+   "chg": 0.9,
+   "pxDate": "2026-11-05"
   },
   "TSYX": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -13.4,
+   "px": 21.41,
+   "chg": -5.9,
+   "pxDate": "2026-11-05"
   },
   "TDAX": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -18.5,
+   "px": 19.86,
+   "chg": -7.9,
+   "pxDate": "2026-11-05"
   },
   "FTHI": {
    "r1y": 4.2,
    "r3y": 12.6,
-   "r5y": 9.1
+   "r5y": 9.1,
+   "mdd": -16.7,
+   "px": 22.54,
+   "chg": -3.6,
+   "pxDate": "2026-11-05"
   },
   "BUYW": {
    "r1y": 8.2,
    "r3y": 9,
-   "r5y": null
+   "r5y": null,
+   "mdd": -9.4,
+   "px": 14.44,
+   "chg": -0.8,
+   "pxDate": "2026-11-05"
   },
   "XLEI": {
    "r1y": 30.4,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -11.1,
+   "px": 26.51,
+   "chg": -2.9,
+   "pxDate": "2026-11-05"
   },
   "XLKI": {
    "r1y": -0.9,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -19.3,
+   "px": 22.18,
+   "chg": -7.9,
+   "pxDate": "2026-11-05"
   },
   "KNG": {
    "r1y": 19.2,
    "r3y": 11.9,
-   "r5y": 6.2
+   "r5y": 6.2,
+   "mdd": -18.2,
+   "px": 52.65,
+   "chg": -1.3,
+   "pxDate": "2026-11-05"
   },
   "OVL": {
    "r1y": 11,
    "r3y": 22.2,
-   "r5y": 10.8
+   "r5y": 10.8,
+   "mdd": -29.2,
+   "px": 53.12,
+   "chg": -5.3,
+   "pxDate": "2026-11-05"
   },
   "KHPI": {
    "r1y": 7.3,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -10.6,
+   "px": 25.4,
+   "chg": -2,
+   "pxDate": "2026-11-05"
   },
   "VOO": {
    "r1y": 9.8,
    "r3y": 20.6,
-   "r5y": 11
+   "r5y": 11,
+   "mdd": -24.5,
+   "px": 673.97,
+   "chg": -4.4,
+   "pxDate": "2026-11-05"
   },
   "QDPL": {
    "r1y": 9.1,
    "r3y": 18.8,
-   "r5y": 10.1
+   "r5y": 10.1,
+   "mdd": -22.6,
+   "px": 43.96,
+   "chg": -4.2,
+   "pxDate": "2026-11-05"
   },
   "QSIX": {
    "r1y": 4.1,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -20.7,
+   "px": 38.15,
+   "chg": -5.9,
+   "pxDate": "2026-11-05"
   },
   "TYLG": {
    "r1y": 11.4,
    "r3y": 19.2,
-   "r5y": null
+   "r5y": null,
+   "mdd": -24,
+   "px": 37.12,
+   "chg": -7.5,
+   "pxDate": "2026-11-05"
   },
   "EGGY": {
    "r1y": -27.3,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -48.7,
+   "px": 20.13,
+   "chg": -17.1,
+   "pxDate": "2026-11-05"
   },
   "EGGS": {
    "r1y": -22.3,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -33.3,
+   "px": 27.02,
+   "chg": -9.6,
+   "pxDate": "2026-11-05"
   },
   "ODTE": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -12.8,
+   "px": 22.92,
+   "chg": -5.3,
+   "pxDate": "2026-11-05"
   },
   "SPCI": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -73,
+   "px": 13.33,
+   "chg": -8.6,
+   "pxDate": "2026-11-05"
   },
   "VAIE": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -12.1,
+   "px": 21.6,
+   "chg": -9.5,
+   "pxDate": "2026-11-05"
   },
   "ROCY": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -5.1,
+   "px": 52.82,
+   "chg": -4.1,
+   "pxDate": "2026-11-05"
   },
   "OVS": {
    "r1y": 20.6,
    "r3y": 16.8,
-   "r5y": 4.6
+   "r5y": 4.6,
+   "mdd": -30.5,
+   "px": 37.84,
+   "chg": -4.6,
+   "pxDate": "2026-11-05"
   },
   "OVF": {
    "r1y": 12.8,
    "r3y": 19,
-   "r5y": 7.6
+   "r5y": 7.6,
+   "mdd": -28.6,
+   "px": 28.9,
+   "chg": -4.5,
+   "pxDate": "2026-11-05"
   },
   "ISBG": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -59.2,
+   "px": 12.54,
+   "chg": -6.3,
+   "pxDate": "2026-11-05"
   },
   "ISSB": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -35.3,
+   "px": 20.28,
+   "chg": -4.1,
+   "pxDate": "2026-11-05"
   },
   "TMGN": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -13.9,
+   "px": 22.68,
+   "chg": -6.8,
+   "pxDate": "2026-11-05"
   },
   "SEPI": {
    "r1y": 13.2,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -7.7,
+   "px": 27.19,
+   "chg": -3.3,
+   "pxDate": "2026-11-05"
   },
   "SPUC": {
    "r1y": 6.7,
    "r3y": 22.7,
-   "r5y": 10.2
+   "r5y": 10.2,
+   "mdd": -29.2,
+   "px": 46.06,
+   "chg": -4.3,
+   "pxDate": "2026-11-05"
   },
   "QVOL": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -22.9,
+   "px": 78.74,
+   "chg": -7.8,
+   "pxDate": "2026-11-05"
   },
   "VFLO": {
    "r1y": 41.7,
    "r3y": 27.9,
-   "r5y": null
+   "r5y": null,
+   "mdd": -17.8,
+   "px": 52.4,
+   "chg": -3,
+   "pxDate": "2026-11-05"
   },
   "FOXY": {
    "r1y": 6.6,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -13.1,
+   "px": 26.68,
+   "chg": -0.6,
+   "pxDate": "2026-11-05"
   },
   "DRMP": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -57.3,
+   "px": 12.8,
+   "chg": -16.4,
+   "pxDate": "2026-11-05"
   },
   "MEMY": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -46.9,
+   "px": 12.58,
+   "chg": -7.7,
+   "pxDate": "2026-11-05"
   },
   "IACL": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -2.1,
+   "px": 24.57,
+   "chg": -1.7,
+   "pxDate": "2026-11-05"
   },
   "PDI": {
    "r1y": -6.9,
    "r3y": 8.4,
-   "r5y": 1.9
+   "r5y": 1.9,
+   "mdd": -24,
+   "px": 14.51,
+   "chg": -2.2,
+   "pxDate": "2026-11-05"
   },
   "PTY": {
    "r1y": -9.7,
    "r3y": 3.4,
-   "r5y": 0.3
+   "r5y": 0.3,
+   "mdd": -32.7,
+   "px": 11,
+   "chg": -1.5,
+   "pxDate": "2026-11-05"
   },
   "AMZP": {
    "r1y": -1.6,
    "r3y": 19.5,
-   "r5y": null
+   "r5y": null,
+   "mdd": -27.4,
+   "px": 25.73,
+   "chg": -2.1,
+   "pxDate": "2026-11-05"
   },
   "BIGY": {
    "r1y": 2,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -18.9,
+   "px": 47.94,
+   "chg": -4.7,
+   "pxDate": "2026-11-05"
   },
   "FTQI": {
    "r1y": 10.1,
    "r3y": 15,
-   "r5y": 9.9
+   "r5y": 9.9,
+   "mdd": -19.4,
+   "px": 20.4,
+   "chg": -5.6,
+   "pxDate": "2026-11-05"
   },
   "JPIE": {
    "r1y": 2.4,
    "r3y": 6.3,
-   "r5y": 3.1
+   "r5y": 3.1,
+   "mdd": -10,
+   "px": 45.18,
+   "chg": 0.2,
+   "pxDate": "2026-11-05"
   },
   "OVB": {
    "r1y": 1.4,
    "r3y": 6.4,
-   "r5y": 0
+   "r5y": 0,
+   "mdd": -21.3,
+   "px": 19.6,
+   "chg": -1,
+   "pxDate": "2026-11-05"
   },
   "OVM": {
    "r1y": 2.6,
    "r3y": 5.7,
-   "r5y": 1
+   "r5y": 1,
+   "mdd": -15.6,
+   "px": 20.9,
+   "chg": -0.7,
+   "pxDate": "2026-11-05"
   },
   "OVT": {
    "r1y": 3.3,
    "r3y": 7.2,
-   "r5y": 2.6
+   "r5y": 2.6,
+   "mdd": -13.2,
+   "px": 21.18,
+   "chg": -0.8,
+   "pxDate": "2026-11-05"
   },
   "RDVI": {
    "r1y": 17.7,
    "r3y": 19.3,
-   "r5y": null
+   "r5y": null,
+   "mdd": -18.4,
+   "px": 27.64,
+   "chg": -3.6,
+   "pxDate": "2026-11-05"
   },
   "RNTY": {
    "r1y": 9.2,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -7.9,
+   "px": 47.62,
+   "chg": -1.3,
+   "pxDate": "2026-11-05"
   },
   "SGOV": {
    "r1y": 3.1,
    "r3y": 4.3,
-   "r5y": 3.7
+   "r5y": 3.7,
+   "mdd": -0.3,
+   "px": 100.45,
+   "chg": 0,
+   "pxDate": "2026-11-05"
   },
   "SPHY": {
    "r1y": 1.4,
    "r3y": 7.3,
-   "r5y": 3.6
+   "r5y": 3.6,
+   "mdd": -15.3,
+   "px": 22.53,
+   "chg": -0.3,
+   "pxDate": "2026-11-05"
   },
   "TPRY": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -21.1,
+   "px": 15.44,
+   "chg": -6.6,
+   "pxDate": "2026-11-05"
   },
   "TDVI": {
    "r1y": 11.9,
    "r3y": 24.2,
-   "r5y": null
+   "r5y": null,
+   "mdd": -22.1,
+   "px": 29.27,
+   "chg": -5.7,
+   "pxDate": "2026-11-05"
   },
   "EGGQ": {
    "r1y": -23.2,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -46.6,
+   "px": 34.48,
+   "chg": -14.1,
+   "pxDate": "2026-11-05"
   },
   "VOOY": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -6.3,
+   "px": 23.96,
+   "chg": -4,
+   "pxDate": "2026-11-05"
   },
   "WRTH": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -6.2,
+   "px": 24.61,
+   "chg": -0.3,
+   "pxDate": "2026-11-05"
   },
   "SEPQ": {
    "r1y": 5.7,
    "r3y": 19.2,
-   "r5y": null
+   "r5y": null,
+   "mdd": -23.5,
+   "px": 24.72,
+   "chg": -5.4,
+   "pxDate": "2026-11-05"
   },
   "HAKY": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -16.6,
+   "px": 28.07,
+   "chg": -7.4,
+   "pxDate": "2026-11-05"
   },
   "ITWO": {
    "r1y": 15,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -24.8,
+   "px": 41.82,
+   "chg": -4.5,
+   "pxDate": "2026-11-05"
   },
   "ICAP": {
    "r1y": 1.5,
    "r3y": 12.9,
-   "r5y": null
+   "r5y": null,
+   "mdd": -24.2,
+   "px": 24.36,
+   "chg": -5.4,
+   "pxDate": "2026-11-05"
   },
   "DIVB": {
    "r1y": 42.1,
    "r3y": 27.2,
-   "r5y": 14.2
+   "r5y": 14.2,
+   "mdd": -21.1,
+   "px": 71.2,
+   "chg": -1.6,
+   "pxDate": "2026-11-05"
   },
   "OVQ": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -11.7,
+   "px": 22.79,
+   "chg": -7.2,
+   "pxDate": "2026-11-05"
   },
   "QVAL": {
    "r1y": 40.7,
    "r3y": 21.4,
-   "r5y": 13.2
+   "r5y": 13.2,
+   "mdd": -27.2,
+   "px": 63.35,
+   "chg": -2.7,
+   "pxDate": "2026-11-05"
   },
   "FIZY": {
    "r1y": null,
    "r3y": null,
-   "r5y": null
+   "r5y": null,
+   "mdd": -8.9,
+   "px": 24.28,
+   "chg": -5.7,
+   "pxDate": "2026-11-05"
   },
   "JUCY": {
    "r1y": 5,
    "r3y": 4.2,
-   "r5y": null
+   "r5y": null,
+   "mdd": -1.6,
+   "px": 21.56,
+   "chg": -1.2,
+   "pxDate": "2026-11-05"
   },
   "IDUB": {
    "r1y": 14.7,
    "r3y": 16.6,
-   "r5y": 5
+   "r5y": 5,
+   "mdd": -28.7,
+   "px": 25.82,
+   "chg": -4.1,
+   "pxDate": "2026-11-05"
   },
   "DUBS": {
    "r1y": 12,
    "r3y": 20.5,
-   "r5y": null
+   "r5y": null,
+   "mdd": -18.5,
+   "px": 40.78,
+   "chg": -5.5,
+   "pxDate": "2026-11-05"
   },
   "DRSK": {
    "r1y": -2.6,
    "r3y": 9.4,
-   "r5y": 1.8
+   "r5y": 1.8,
+   "mdd": -19.9,
+   "px": 27.38,
+   "chg": 0.2,
+   "pxDate": "2026-11-05"
   }
  }
 }
