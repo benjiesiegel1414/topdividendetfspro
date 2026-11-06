@@ -77,6 +77,21 @@ for (const s of syms) {
   growth[s] = weekly(pts);
   ok++; await sleep(250);
 }
+// Dividend history for the scorecard: last 2 years of payouts per fund -> data/div/<SYM>.json
+// Source: the TopETFs daily dividend file (Nasdaq.com, Yahoo Finance fallback). Never fails the run.
+try {
+  const dv = await (await fetch("https://raw.githubusercontent.com/benjiesiegel1414/topetfs/main/data/dividends.json?t=" + Date.now())).json();
+  const cut = new Date(Date.now() - 730 * DAY).toISOString().slice(0, 10), dir = path.join(ROOT, "data", "div");
+  fs.mkdirSync(dir, { recursive: true }); let nd = 0;
+  for (const s of syms) {
+    const fd = dv.funds && dv.funds[s]; if (!fd || !fd.rows) continue;
+    const rows = fd.rows.filter(x => x[0] >= cut && x[1] > 0);
+    fs.writeFileSync(path.join(dir, s + ".json"), JSON.stringify({ sym: s, src: fd.src || "", updated: dv.updated || "", rows })); nd++;
+  }
+  if (process.env.GITHUB_ACTIONS) execSync("git add data/div", { cwd: ROOT });
+  console.log(`dividend history: ${nd} funds`);
+} catch (e) { console.log("::warning::dividend history not updated: " + e.message); }
+
 // Don't overwrite good data with a mostly failed run
 if (ok < syms.length * 0.8) { console.log(`::error::Only ${ok}/${syms.length} funds fetched; keeping previous returns.json. Failed: ${failed.join(" ")}`); process.exit(1); }
 fs.writeFileSync(OUT, JSON.stringify({ asOf: new Date().toISOString().slice(0, 10), funds }, null, 1));
