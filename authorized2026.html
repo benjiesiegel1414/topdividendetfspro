@@ -547,6 +547,10 @@
             font-weight: 400;
         }
 
+        /* Rows open the fund scorecard */
+        tr.etf-row { cursor: pointer; }
+        tr.etf-row:hover td.symbol { text-decoration: underline; }
+
         /* ==================== 1-YEAR RETURN CELL ==================== */
         td.r1y { font-weight: 700; cursor: help; }
         td.r1y.r1y-pos { color: #047857; }
@@ -1413,6 +1417,11 @@
                 });
                 watchTd.appendChild(watchBtn);
                 tr.appendChild(watchTd);
+
+                // Click any row to open that fund's scorecard
+                tr.classList.add('etf-row');
+                tr.title = 'Open the ' + symbol + ' scorecard';
+                tr.addEventListener('click', () => { location.href = 'authorized2026-etf.html?t=' + encodeURIComponent(symbol); });
 
                 tbody.appendChild(tr);
                 allRows.push(tr);

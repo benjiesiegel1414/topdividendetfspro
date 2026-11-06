@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>ETF Scorecard | Top Dividend ETFs PRO</title>
+    <link rel="icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0F766E;
+            --primary-dark: #134E4A;
+            --primary-light: #14B8A6;
+            --accent: #06B6D4;
+            --text-dark: #0F172A;
+            --text-light: #64748B;
+            --success: #10B981;
+            --danger: #DC2626;
+            --card: #FFFFFF;
+            --line: rgba(20, 184, 166, 0.18);
+        }
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body {
+            margin: 0; padding: 0; overflow-x: hidden; width: 100%;
+            font-family: 'Lato', Arial, sans-serif;
+            background: linear-gradient(135deg, #F8FAFC 0%, #F0F9FF 50%, #F5F3FF 100%);
+            color: var(--text-dark);
+            -webkit-text-size-adjust: 100%;
+        }
+        header {
+            background: rgba(15, 118, 110, 0.7);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 14px 20px; color: #fff; text-align: center;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            position: sticky; top: 0; z-index: 100;
+        }
+        .logo { font-size: clamp(22px, 5vw, 32px); font-weight: 900; letter-spacing: -1px; color: #fff; text-decoration: none; }
+        .wrap { max-width: 1200px; margin: 0 auto; padding: 24px 20px 60px; }
+
+        .back {
+            display: inline-flex; align-items: center; gap: 6px;
+            color: var(--primary); font-weight: 700; text-decoration: none;
+            margin-bottom: 18px; font-size: 15px;
+        }
+        .back:hover { text-decoration: underline; }
+
+        /* ===== Header card ===== */
+        .head {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 55%, var(--accent) 100%);
+            color: #fff; border-radius: 18px; padding: 26px 28px;
+            display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
+            box-shadow: 0 12px 40px rgba(15, 118, 110, 0.25);
+        }
+        .head .tick { font-size: clamp(38px, 7vw, 56px); font-weight: 900; letter-spacing: -1.5px; line-height: 1; }
+        .head .nm { font-size: 18px; font-weight: 700; margin-top: 6px; opacity: 0.95; }
+        .head .meta { font-size: 14px; margin-top: 8px; opacity: 0.85; }
+        .head-right { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+        .badge {
+            background: rgba(255,255,255,0.16); border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 14px; padding: 10px 16px; text-align: center; min-width: 92px;
+        }
+        .badge .k { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.85; font-weight: 700; }
+        .badge .v { font-size: 26px; font-weight: 900; margin-top: 2px; }
+        .watch {
+            background: #fff; color: var(--primary-dark); border: none; border-radius: 12px;
+            padding: 12px 16px; font-weight: 900; font-size: 15px; cursor: pointer; font-family: inherit;
+        }
+        .watch.on { background: #FEF3C7; color: #92400E; }
+
+        /* ===== Stat tiles ===== */
+        .tiles { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin: 22px 0; }
+        .tile {
+            background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+            padding: 16px 14px; box-shadow: 0 6px 20px rgba(15, 118, 110, 0.06);
+        }
+        .tile .k { font-size: 12px; color: var(--text-light); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+        .tile .v { font-size: 24px; font-weight: 900; margin-top: 6px; color: var(--primary-dark); }
+        .tile .s { font-size: 12px; color: var(--text-light); margin-top: 4px; }
+        .pos { color: #047857 !important; }
+        .neg { color: var(--danger) !important; }
+
+        /* ===== Panels ===== */
+        .grid2 { display: grid; grid-template-columns: 1.55fr 1fr; gap: 18px; }
+        .panel {
+            background: var(--card); border: 1px solid var(--line); border-radius: 16px;
+            padding: 20px 22px; box-shadow: 0 6px 20px rgba(15, 118, 110, 0.06);
+        }
+        .panel h2 { font-size: 17px; margin: 0 0 4px; font-weight: 900; color: var(--primary-dark); }
+        .panel .sub { font-size: 13px; color: var(--text-light); margin-bottom: 14px; }
+
+        .rets { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+        .ret { text-align: center; background: #F8FAFC; border-radius: 12px; padding: 12px 6px; }
+        .ret .k { font-size: 12px; color: var(--text-light); font-weight: 700; }
+        .ret .v { font-size: 20px; font-weight: 900; margin-top: 4px; }
+        .ret .s { font-size: 11px; color: var(--text-light); margin-top: 2px; }
+        .na { color: #94A3B8 !important; font-weight: 700 !important; font-size: 14px !important; }
+
+        .chart { width: 100%; height: auto; display: block; }
+        .price { text-align: right; }
+        .price .px { font-size: clamp(30px, 5vw, 40px); font-weight: 900; line-height: 1; }
+        .price .chg { display: inline-block; margin-top: 6px; font-size: 14px; font-weight: 900; padding: 3px 10px; border-radius: 999px; background: rgba(255,255,255,0.18); }
+        .price .chg.up { color: #A7F3D0; } .price .chg.down { color: #FECACA; }
+        .price .asof { font-size: 12px; opacity: 0.8; margin-top: 5px; }
+        .ranges { display: inline-flex; background: #F1F5F9; border-radius: 10px; padding: 3px; gap: 2px; float: right; }
+        .ranges button { border: none; background: transparent; font-family: inherit; font-weight: 900; font-size: 13px; color: var(--text-light); padding: 6px 12px; border-radius: 8px; cursor: pointer; }
+        .ranges button.on { background: #fff; color: var(--primary-dark); box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+        .ranges button:disabled { opacity: 0.35; cursor: not-allowed; }
+        .g-ret { font-size: 15px; font-weight: 900; margin-left: 8px; }
+        .chart-wrap { position: relative; }
+        .chart-end { font-size: 26px; font-weight: 900; color: var(--primary-dark); }
+
+        .inc-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #EEF2F7; font-size: 15px; }
+        .inc-row:last-child { border-bottom: none; }
+        .inc-row b { font-size: 18px; color: var(--primary-dark); }
+
+        .risk { display: flex; gap: 14px; flex-wrap: wrap; }
+        .risk > div { flex: 1; min-width: 150px; background: #F8FAFC; border-radius: 12px; padding: 14px; }
+        .risk .k { font-size: 12px; color: var(--text-light); font-weight: 700; text-transform: uppercase; }
+        .risk .v { font-size: 22px; font-weight: 900; margin-top: 4px; }
+        .risk .s { font-size: 12px; color: var(--text-light); margin-top: 4px; line-height: 1.4; }
+
+        .spark-row { display: flex; gap: 18px; flex-wrap: wrap; }
+        .spark-row > div { flex: 1; min-width: 220px; }
+        .spark-row .k { font-size: 13px; font-weight: 700; color: var(--text-light); }
+        .spark-row .v { font-size: 18px; font-weight: 900; color: var(--primary-dark); }
+
+        .sim { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+        .sim a { min-width: 0; }
+        .sim a {
+            display: block; text-decoration: none; color: inherit; background: #F8FAFC;
+            border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px;
+        }
+        .sim a:hover { border-color: var(--primary-light); background: #F0FDFA; }
+        .sim .t { font-weight: 900; font-size: 18px; color: var(--primary-dark); }
+        .sim .n { font-size: 12px; color: var(--text-light); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .sim .y { font-size: 13px; font-weight: 700; margin-top: 6px; }
+
+        .stack { display: flex; flex-direction: column; gap: 18px; }
+        .disclaimer { font-size: 12px; color: var(--text-light); text-align: center; margin-top: 28px; line-height: 1.6; }
+        .loading { text-align: center; padding: 80px 20px; color: var(--text-light); font-weight: 700; }
+
+        @media (max-width: 1000px) {
+            .tiles { grid-template-columns: repeat(3, 1fr); }
+            .grid2 { grid-template-columns: 1fr; }
+            .sim { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (max-width: 560px) {
+            .price { text-align: left; width: 100%; }
+            .ranges { float: none; margin-bottom: 10px; }
+            .wrap { padding: 16px 16px 50px; }
+            .head { padding: 20px; }
+            .tiles { grid-template-columns: repeat(2, 1fr); }
+            .rets { grid-template-columns: repeat(3, 1fr); }
+            .tile .v { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <header><a class="logo" href="authorized2026.html">Top Dividend ETFs PRO 📈🏆</a></header>
+
+    <div class="wrap">
+        <a class="back" href="authorized2026.html" id="backLink">← Back to all ETFs</a>
+        <div id="app"><div class="loading">Loading scorecard…</div></div>
+        <p class="disclaimer">
+            <strong>Disclaimer:</strong> For informational and educational purposes only. Not financial, investment, or tax advice.
+            Past performance does not guarantee future results. Returns are total returns with dividends reinvested, based on daily adjusted prices. Share price is the latest market close and updates each trading day.
+        </p>
+    </div>
+
+    <script>
+        const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTxCiod-Cwry7E6k9Un9dgrM_ANymC36_IO_wLyNj-YDo2KI7mp_1ZzyNBnBGZOxT48QPM8TCwtsmA4/pub?gid=0&single=true&output=csv";
+        const WATCHLIST_KEY = 'tdep_watchlist';
+        const ticker = (new URLSearchParams(location.search).get('t') || '').toUpperCase().trim();
+
+        // Use the browser back button when the user came from the terminal (keeps their filters/scroll)
+        document.getElementById('backLink').addEventListener('click', e => {
+            if (document.referrer && document.referrer.indexOf('authorized2026.html') !== -1 && history.length > 1) {
+                e.preventDefault(); history.back();
+            }
+        });
+
+        const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+        const num = s => { const n = parseFloat(String(s).replace(/[%,$\s]/g, '')); return isNaN(n) ? null : n; };
+        const pct = (v, plus) => v == null ? null : (plus && v > 0 ? '+' : '') + v.toFixed(1) + '%';
+        const money = v => '$' + Math.round(v).toLocaleString('en-US');
+
+        function normalizeDate(str) {
+            if (!str || str === '-') return '';
+            const m = str.match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{2,4})$/);
+            if (m) { let [, mo, d, y] = m; if (y.length === 2) y = '20' + y; return `${y}-${mo.padStart(2, '0')}-${d.padStart(2, '0')}`; }
+            return str;
+        }
+
+        function getJSON(url) { return fetch(url + '?t=' + Date.now()).then(r => r.ok ? r.json() : null).catch(() => null); }
+
+        Promise.all([
+            fetch(CSV_URL + '&t=' + Date.now()).then(r => r.text()),
+            getJSON('data/returns.json'),
+            getJSON('data/growth.json'),
+            getJSON('data/history.json')
+        ]).then(([csv, returns, growth, history]) => render(csv, returns || {}, growth || {}, history || {}))
+          .catch(() => { document.getElementById('app').innerHTML = '<div class="loading">⚠️ Unable to load data. Please refresh the page.</div>'; });
+
+        function parseRows(csv) {
+            return csv.trim().split('\n').slice(1).map(l => l.split(',').map(c => c.trim().replace(/^"|"$/g, '')))
+                .filter(c => c.length >= 12 && c[0]).map(c => ({
+                    sym: c[0], name: c[1], provider: c[2], yieldStr: c[3], yield: num(c[3]), tax: c[4], er: c[5], aum: c[6],
+                    tr: num(c[7]), decay: c[8], inception: c[9], freq: c[10], rating: c[11]
+                }));
+        }
+
+        function render(csv, returns, growth, history) {
+            const rows = parseRows(csv);
+            const f = rows.find(r => r.sym.toUpperCase() === ticker);
+            const app = document.getElementById('app');
+            if (!f) { app.innerHTML = `<div class="loading">We couldn't find "${esc(ticker)}" in the PRO database. <a href="authorized2026.html">Back to all ETFs</a></div>`; return; }
+            document.title = `${f.sym} Scorecard | Top Dividend ETFs PRO`;
+
+            const r = (returns.funds || {})[f.sym] || {};
+            const inc = new Date(normalizeDate(f.inception));
+            const years = isNaN(inc) ? null : (Date.now() - inc) / (365.25 * 864e5);
+            const ann = (f.tr != null && years && years > 0 && 1 + f.tr / 100 > 0) ? (Math.pow(1 + f.tr / 100, 1 / years) - 1) * 100 : null;
+            const ageStr = years == null ? '-' : years < 1 ? Math.max(1, Math.round(years * 12)) + ' months' : years.toFixed(1) + ' years';
+            const watched = (() => { try { return (JSON.parse(localStorage.getItem(WATCHLIST_KEY)) || []).includes(f.sym); } catch (e) { return false; } })();
+            const decayYes = /^y/i.test(f.decay);
+            const cls = v => v == null ? '' : v >= 0 ? 'pos' : 'neg';
+            const perMonth = f.yield != null ? f.yield / 100 * 10000 / 12 : null;
+            const payouts = { weekly: 52, monthly: 12, quarterly: 4 }[String(f.freq).toLowerCase()];
+
+            // Return tiles: dash with reason when the fund is too new
+            const retBox = (k, v, sub, needYears) => {
+                const tooNew = v == null && years != null && years < needYears;
+                return `<div class="ret"><div class="k">${k}</div>` +
+                    (v == null ? `<div class="v na">${tooNew ? 'Too new' : '-'}</div><div class="s">${tooNew ? 'under ' + needYears + ' yr' + (needYears > 1 ? 's' : '') : '&nbsp;'}</div>`
+                               : `<div class="v ${cls(v)}">${pct(v, true)}</div><div class="s">${sub}</div>`) + `</div>`;
+            };
+
+            // Similar funds: closest yields among the rest of the database, preferring the same payout frequency
+            const others = rows.filter(o => o.sym !== f.sym && o.yield != null && f.yield != null);
+            others.sort((a, b) => (Math.abs(a.yield - f.yield) + (a.freq === f.freq ? 0 : f.yield * 0.3)) - (Math.abs(b.yield - f.yield) + (b.freq === f.freq ? 0 : f.yield * 0.3)));
+            const sims = others.slice(0, 4);
+
+            const g = growth[f.sym] || [];
+            const h = history[f.sym] || [];
+            const gEnd = g.length ? g[g.length - 1][1] : null;
+            const gFrom = g.length ? monthName(g[0][0]) : '';
+
+            app.innerHTML = `
+            <div class="head">
+                <div>
+                    <div class="tick">$${esc(f.sym)}</div>
+                    <div class="nm">${esc(f.name)}</div>
+                    <div class="meta">${esc(f.provider)} · Pays ${esc(f.freq || '-')} · Since ${esc(f.inception || '-')} (${ageStr})</div>
+                </div>
+                <div class="head-right">
+                    ${r.px != null ? `<div class="price"><div class="px">$${r.px.toFixed(2)}</div>${r.chg != null ? `<div class="chg ${r.chg >= 0 ? 'up' : 'down'}">${r.chg >= 0 ? '▲ +' : '▼ '}${r.chg.toFixed(1)}% today</div>` : ''}<div class="asof">Share price · close ${r.pxDate ? fmtDay(r.pxDate) : ''}</div></div>` : ''}
+                    <div class="badge"><div class="k">PRO Rating</div><div class="v">${esc(f.rating || '-')}</div></div>
+                    <div class="badge"><div class="k">Tax Grade</div><div class="v">${esc(f.tax || '-')}</div></div>
+                    <button class="watch ${watched ? 'on' : ''}" id="watchBtn">${watched ? '★ Watching' : '☆ Watch'}</button>
+                </div>
+            </div>
+
+            <div class="tiles">
+                <div class="tile"><div class="k">Dividend Yield</div><div class="v">${esc(f.yieldStr || '-')}</div><div class="s">${payouts ? payouts + ' payouts / yr' : '&nbsp;'}</div></div>
+                <div class="tile"><div class="k">1Y Total Return</div><div class="v ${cls(r.r1y)}">${r.r1y != null ? pct(r.r1y, true) : '<span class="na">Too new</span>'}</div><div class="s">price + dividends</div></div>
+                <div class="tile"><div class="k">Expense Ratio</div><div class="v">${esc(f.er || '-')}</div><div class="s">${num(f.er) != null ? '$' + (num(f.er) * 100).toFixed(0) + ' / yr per $10K' : '&nbsp;'}</div></div>
+                <div class="tile"><div class="k">AUM</div><div class="v">${esc(fmtAum(f.aum))}</div><div class="s">assets under mgmt</div></div>
+                <div class="tile"><div class="k">Price Decay</div><div class="v ${decayYes ? 'neg' : 'pos'}">${decayYes ? 'YES' : 'NO'}</div><div class="s">${decayYes ? 'share price eroding' : 'no NAV erosion'}</div></div>
+                <div class="tile"><div class="k">Max Drawdown</div><div class="v ${r.mdd != null ? 'neg' : ''}">${r.mdd != null ? r.mdd.toFixed(1) + '%' : '-'}</div><div class="s">${years != null && years < 5 ? 'since inception' : 'last 5 years'}</div></div>
+            </div>
+
+            <div class="grid2">
+                <div class="stack">
+                    <div class="panel">
+                        <h2>Total Return</h2>
+                        <div class="sub">Price change plus dividends reinvested. 3Y, 5Y and annualized figures are per year.</div>
+                        <div class="rets">
+                            ${retBox('1 Year', r.r1y, 'total', 1)}
+                            ${retBox('3 Year', r.r3y, 'per year', 3)}
+                            ${retBox('5 Year', r.r5y, 'per year', 5)}
+                            ${retBox('Max', f.tr, 'since inception', 0)}
+                            ${retBox('Annualized', ann, 'since inception', 0)}
+                        </div>
+                    </div>
+                    <div class="panel">
+                        ${g.length > 1 ? `<div class="ranges" id="ranges">
+                            <button data-y="1" ${years != null && years < 1 ? 'disabled title="Fund is under 1 year old"' : ''}>1Y</button>
+                            <button data-y="3" ${years != null && years < 3 ? 'disabled title="Fund is under 3 years old"' : ''}>3Y</button>
+                            <button data-y="5" ${years != null && years < 5 ? 'disabled title="Fund is under 5 years old"' : ''}>5Y</button>
+                            <button data-y="max">${years != null && years < 5 ? 'Max' : '5Y+'}</button>
+                        </div>` : ''}
+                        <h2>Growth of $10,000</h2>
+                        <div id="growthBody">${g.length ? '' : '<div class="sub">Not enough price history yet</div>'}</div>
+                    </div>
+                </div>
+                <div class="stack">
+                    <div class="panel">
+                        <h2>Income on $10,000</h2>
+                        <div class="sub">At today's ${esc(f.yieldStr || '-')} yield. Payouts change over time.</div>
+                        ${perMonth != null ? `
+                        <div class="inc-row"><span>Per year</span><b>${money(perMonth * 12)}</b></div>
+                        <div class="inc-row"><span>Per month (avg)</span><b>${money(perMonth)}</b></div>
+                        ${payouts ? `<div class="inc-row"><span>Per payout (${esc(String(f.freq).toLowerCase())})</span><b>${money(perMonth * 12 / payouts)}</b></div>` : ''}
+                        <div class="inc-row"><span>Needed for $1,000 / month</span><b>${f.yield > 0 ? money(12000 / (f.yield / 100)) : '-'}</b></div>` : '<div class="sub">No yield data.</div>'}
+                    </div>
+                    <div class="panel">
+                        <h2>Yield &amp; Return Trend</h2>
+                        <div class="sub">${h.length > 1 ? 'PRO snapshots since ' + monthName(h[0].date.slice(0, 7)) : 'Trend builds as PRO records new snapshots'}</div>
+                        ${h.length > 1 ? `<div class="spark-row">
+                            <div><div class="k">Dividend Yield</div><div class="v">${h[0].yield}% → ${h[h.length - 1].yield}%</div>${spark(h.map(p => p.yield), '#0F766E')}</div>
+                            <div><div class="k">Total Return (Max)</div><div class="v">${h[0].totalReturn}% → ${h[h.length - 1].totalReturn}%</div>${spark(h.map(p => p.totalReturn), '#06B6D4')}</div>
+                        </div>` : ''}
+                    </div>
+                </div>
+            </div>
+
+            ${sims.length ? `<div class="panel" style="margin-top:18px">
+                <h2>Similar Funds</h2>
+                <div class="sub">Closest yields in the PRO database${f.freq ? ', favoring ' + esc(String(f.freq).toLowerCase()) + ' payers' : ''}</div>
+                <div class="sim">${sims.map(o => {
+                    const or = (returns.funds || {})[o.sym] || {};
+                    return `<a href="authorized2026-etf.html?t=${encodeURIComponent(o.sym)}"><div class="t">$${esc(o.sym)}</div><div class="n">${esc(o.name)}</div><div class="y">${esc(o.yieldStr)} yield · <span class="${cls(or.r1y)}">${or.r1y != null ? pct(or.r1y, true) + ' 1Y' : 'new fund'}</span></div></a>`;
+                }).join('')}</div>
+            </div>` : ''}`;
+
+            // Growth chart range toggle (re-bases the month-end series to $10,000 at the start of the window)
+            if (g.length > 1) {
+                const body = document.getElementById('growthBody');
+                const btns = [...document.querySelectorAll('#ranges button')];
+                btns.forEach(b => { if (b.textContent === '5Y+') b.style.display = 'none'; });
+                const lastT = Date.parse(g[g.length - 1][0]);
+                const draw = yrs => {
+                    let slice = g;
+                    if (yrs !== 'max') { const cut = lastT - +yrs * 365.25 * 864e5; const i0 = g.findIndex(p => Date.parse(p[0]) >= cut - 3 * 864e5); slice = g.slice(Math.max(0, i0)); }
+                    const base = slice[0][1];
+                    // Headline uses the exact trailing return so it matches the Total Return panel
+                    const exact = yrs === '1' ? r.r1y : yrs === '3' && r.r3y != null ? (Math.pow(1 + r.r3y / 100, 3) - 1) * 100 : yrs === '5' && r.r5y != null ? (Math.pow(1 + r.r5y / 100, 5) - 1) * 100 : null;
+                    const lineEnd = slice[slice.length - 1][1] / base * 10000;
+                    const target = exact != null ? 10000 * (1 + exact / 100) : lineEnd;
+                    const k = target / lineEnd;   // tiny correction so the line ends exactly on the headline value
+                    const series = slice.map((p, i) => [p[0], p[1] / base * 10000 * (1 + (k - 1) * i / Math.max(1, slice.length - 1))]);
+                    const end = Math.round(target), chgPct = (end / 10000 - 1) * 100;
+                    body.innerHTML = `<div class="sub">Invested ${fmtDay(series[0][0])}, dividends reinvested</div>
+                        <div class="chart-end ${end >= 10000 ? 'pos' : 'neg'}">${money(end)}<span class="g-ret ${end >= 10000 ? 'pos' : 'neg'}">${pct(chgPct, true)}</span></div>${growthChart(series)}`;
+                    btns.forEach(b => b.classList.toggle('on', b.dataset.y === String(yrs)));
+                };
+                btns.forEach(b => b.addEventListener('click', () => { if (!b.disabled) draw(b.dataset.y); }));
+                // default: longest full window available
+                draw(years == null || years >= 5 ? '5' : years >= 3 ? '3' : 'max');
+            }
+
+            document.getElementById('watchBtn').addEventListener('click', function () {
+                let list = [];
+                try { list = JSON.parse(localStorage.getItem(WATCHLIST_KEY)) || []; } catch (e) {}
+                const i = list.indexOf(f.sym);
+                if (i === -1) list.push(f.sym); else list.splice(i, 1);
+                try { localStorage.setItem(WATCHLIST_KEY, JSON.stringify(list)); } catch (e) {}
+                const on = i === -1;
+                this.classList.toggle('on', on);
+                this.textContent = on ? '★ Watching' : '☆ Watch';
+            });
+        }
+
+        function fmtAum(a) {
+            const n = num(a); if (n == null) return a || '-';
+            if (/M$/i.test(a) && n >= 1000) return '$' + (n / 1000).toFixed(1) + 'B';
+            return '$' + a;
+        }
+        function fmtDay(d) { const [y, m, dd] = d.split('-'); return ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][+m - 1] + ' ' + (+dd) + ', ' + y; }
+        function monthName(ym) {
+            const [y, m] = ym.split('-'); return ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][+m - 1] + ' ' + y;
+        }
+
+        // Area chart for growth of $10K, with a dashed $10K baseline and year labels
+        function growthChart(g) {
+            const W = 640, H = 220, pl = 52, pr = 10, pt = 12, pb = 26;
+            const vals = g.map(p => p[1]);
+            let lo = Math.min(10000, ...vals), hi = Math.max(10000, ...vals);
+            const pad = (hi - lo) * 0.08 || 500; lo -= pad; hi += pad;
+            const x = i => pl + (W - pl - pr) * (g.length === 1 ? 0 : i / (g.length - 1));
+            const y = v => pt + (H - pt - pb) * (1 - (v - lo) / (hi - lo));
+            const line = g.map((p, i) => (i ? 'L' : 'M') + x(i).toFixed(1) + ' ' + y(p[1]).toFixed(1)).join(' ');
+            const area = line + ` L${x(g.length - 1).toFixed(1)} ${H - pb} L${pl} ${H - pb} Z`;
+            const up = vals[vals.length - 1] >= 10000, col = up ? '#0F766E' : '#DC2626';
+            const ticks = [lo + pad, (lo + hi) / 2, hi - pad].map(v => `<text x="${pl - 8}" y="${y(v) + 4}" text-anchor="end" font-size="11" fill="#64748B">$${(v / 1000).toFixed(v < 20000 ? 1 : 0)}K</text><line x1="${pl}" x2="${W - pr}" y1="${y(v)}" y2="${y(v)}" stroke="#EEF2F7"/>`).join('');
+            let years = '', seen = {};
+            const spanDays = (Date.parse(g[g.length - 1][0]) - Date.parse(g[0][0])) / 864e5;
+            const lab = (i, t) => { const xx = x(i); if (xx < pl + 18 || xx > W - pr - 30) return; years += `<text x="${xx}" y="${H - 6}" text-anchor="middle" font-size="11" fill="#64748B">${t}</text>`; };
+            g.forEach((p, i) => {
+                const ym = p[0].slice(0, 7), mo = +p[0].slice(5, 7);
+                if (seen[ym]) return; seen[ym] = 1;
+                if (i === 0) return;
+                if (spanDays <= 450) { if (mo % 3 === 1) lab(i, monthName(ym)); }
+                else if (mo === 1) lab(i, p[0].slice(0, 4));
+            });
+            return `<svg class="chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="Growth of $10,000 chart">
+                <defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${col}" stop-opacity="0.28"/><stop offset="1" stop-color="${col}" stop-opacity="0.02"/></linearGradient></defs>
+                ${ticks}
+                <line x1="${pl}" x2="${W - pr}" y1="${y(10000)}" y2="${y(10000)}" stroke="#94A3B8" stroke-dasharray="4 4"/>
+                <path d="${area}" fill="url(#ga)"/>
+                <path d="${line}" fill="none" stroke="${col}" stroke-width="2.5" stroke-linejoin="round"/>
+                ${years}
+            </svg>`;
+        }
+
+        function spark(vals, col) {
+            const W = 260, H = 56, lo = Math.min(...vals), hi = Math.max(...vals), span = hi - lo || 1;
+            const pts = vals.map((v, i) => `${(i / (vals.length - 1) * W).toFixed(1)},${(H - 4 - (v - lo) / span * (H - 8)).toFixed(1)}`).join(' ');
+            return `<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:56px;display:block;margin-top:6px"><polyline points="${pts}" fill="none" stroke="${col}" stroke-width="2.2" stroke-linejoin="round"/></svg>`;
+        }
+    </script>
+</body>
+</html>
