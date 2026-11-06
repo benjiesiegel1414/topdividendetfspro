@@ -1,0 +1,31 @@
+name: Trailing Total Returns (1Y/3Y/5Y)
+
+on:
+  schedule:
+    - cron: "45 22 * * 1-5"   # ~5:45pm ET weekdays, after the market close
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  returns:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+      - name: Compute returns
+        run: node scripts/fetch-returns.mjs
+      - name: Commit and push if changed
+        run: |
+          git config user.name "returns-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/returns.json
+          if git diff --cached --quiet; then
+            echo "No changes."
+          else
+            git commit -m "Update trailing returns [skip ci]"
+            git push
+          fi
