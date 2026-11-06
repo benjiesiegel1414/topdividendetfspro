@@ -547,6 +547,12 @@
             font-weight: 400;
         }
 
+        /* ==================== 1-YEAR RETURN CELL ==================== */
+        td.r1y { font-weight: 700; cursor: help; }
+        td.r1y.r1y-pos { color: #047857; }
+        td.r1y.r1y-neg { color: #dc2626; }
+        td.r1y.r1y-na { color: var(--text-light); font-weight: 400; font-size: 0.85em; }
+
         /* Mobile-only sort control (table headers are hidden on mobile) */
         #mobileSortBar {
             display: none;
@@ -660,6 +666,28 @@
             line-height: 1.7;
         }
         .empty-watchlist .big { font-size: 2.2em; display: block; margin-bottom: 10px; }
+
+
+        /* ==================== DESKTOP COMPACT TABLE (1101px+) ==================== */
+        /* Headers wrap onto two lines and cells use tighter padding so all columns
+           fit on a normal laptop/desktop screen without scrolling sideways. */
+        @media (min-width: 1101px) {
+            th {
+                white-space: normal;
+                font-size: 0.8em;
+                line-height: 1.25;
+                padding: 12px 5px;
+                vertical-align: middle;
+            }
+            th .arr { font-size: 0.85em; opacity: 0.75; white-space: nowrap; }
+            td {
+                padding: 11px 5px;
+                font-size: 0.9em;
+            }
+            .symbol { font-size: 1.1em; }
+            td.name { min-width: 150px; max-width: 190px; font-size: 0.86em; line-height: 1.3; }
+            td.watch-cell { width: 44px; }
+        }
 
         /* ==================== TABLET (769px – 1100px) ==================== */
         /* Table stays a table but scrolls horizontally instead of crushing columns */
@@ -1124,10 +1152,11 @@
                 <option value="6-desc">AUM (High → Low)</option>
                 <option value="7-desc">Total Return (High → Low)</option>
                 <option value="8-desc">Annualized Return (High → Low)</option>
-                <option value="10-desc">Inception Date (Newest First)</option>
-                <option value="10-asc">Inception Date (Oldest First)</option>
-                <option value="11-asc">Payout Frequency (Weekly First)</option>
-                <option value="12-asc">Rating (Best First)</option>
+                <option value="9-desc">1Y Total Return (High → Low)</option>
+                <option value="11-desc">Inception Date (Newest First)</option>
+                <option value="11-asc">Inception Date (Oldest First)</option>
+                <option value="12-asc">Payout Frequency (Weekly First)</option>
+                <option value="13-asc">Rating (Best First)</option>
             </select>
         </div>
 
@@ -1136,19 +1165,20 @@
             <table id="etfTable">
                 <thead>
                     <tr>
-                        <th onclick="sortTable(0)">Symbol ↕</th>
-                        <th onclick="sortTable(1)">Name ↕</th>
-                        <th onclick="sortTable(2)">Fund Provider ↕</th>
-                        <th onclick="sortTable(3)">Dividend Yield ↕</th>
-                        <th onclick="sortTable(4)">Tax Grade ↕</th>
-                        <th onclick="sortTable(5)">Expense Ratio ↕</th>
-                        <th onclick="sortTable(6)">AUM ↕</th>
-                        <th onclick="sortTable(7)">Total Return ↕</th>
-                        <th onclick="sortTable(8)">Annualized ↕</th>
-                        <th onclick="sortTable(9)">Price Decay ↕</th>
-                        <th onclick="sortTable(10)">Inception Date ↕</th>
-                        <th onclick="sortTable(11)">Payout Frequency ↕</th>
-                        <th onclick="sortTable(12)">Rating ↕</th>
+                        <th onclick="sortTable(0)">Symbol <span class="arr">↕</span></th>
+                        <th onclick="sortTable(1)">Name <span class="arr">↕</span></th>
+                        <th onclick="sortTable(2)">Provider <span class="arr">↕</span></th>
+                        <th onclick="sortTable(3)">Dividend Yield <span class="arr">↕</span></th>
+                        <th onclick="sortTable(4)">Tax Grade <span class="arr">↕</span></th>
+                        <th onclick="sortTable(5)">Expense Ratio <span class="arr">↕</span></th>
+                        <th onclick="sortTable(6)">AUM <span class="arr">↕</span></th>
+                        <th onclick="sortTable(7)">Total Return (Max) <span class="arr">↕</span></th>
+                        <th onclick="sortTable(8)">Annualized <span class="arr">↕</span></th>
+                        <th onclick="sortTable(9)" title="Total return over the last 12 months: price change plus dividends reinvested">1Y Total Return <span class="arr">↕</span></th>
+                        <th onclick="sortTable(10)">Price Decay <span class="arr">↕</span></th>
+                        <th onclick="sortTable(11)">Inception Date <span class="arr">↕</span></th>
+                        <th onclick="sortTable(12)">Payout Freq. <span class="arr">↕</span></th>
+                        <th onclick="sortTable(13)">Rating <span class="arr">↕</span></th>
                         <th class="no-sort">⭐ Watch</th>
                     </tr>
                 </thead>
@@ -1185,6 +1215,8 @@
         const ANNUALIZED_MIN_YEARS = 1;
 
         let allRows = [];
+        let RETURNS = {};        // { SCHD: { r1y, r3y, r5y } } from data/returns.json
+        let RETURNS_AS_OF = '';
 
         // ==================== YIELD RANGE SLIDER STATE ====================
         const YIELD_STEP = 0.5;
@@ -1247,12 +1279,16 @@
         });
 
         function loadData() {
-            fetch(CSV_URL + '&t=' + Date.now())
-                .then(r => r.text())
-                .then(txt => renderTable(txt))
+            // Trailing 1Y/3Y/5Y total returns, refreshed daily by GitHub Actions (data/returns.json).
+            // If it fails to load, the table still renders and the 1Y column shows "-".
+            const returnsReq = fetch('data/returns.json?t=' + Date.now())
+                .then(r => r.ok ? r.json() : null)
+                .catch(() => null);
+            Promise.all([fetch(CSV_URL + '&t=' + Date.now()).then(r => r.text()), returnsReq])
+                .then(([txt, ret]) => { RETURNS = (ret && ret.funds) || {}; RETURNS_AS_OF = (ret && ret.asOf) || ''; renderTable(txt); })
                 .catch(() => {
                     document.getElementById('etfBody').innerHTML = `
-                        <tr><td colspan="14" style="padding:40px; color:red; text-align:center; font-weight:700;">
+                        <tr><td colspan="15" style="padding:40px; color:red; text-align:center; font-weight:700;">
                             ⚠️ Unable to load ETF data. Please refresh the page.
                         </td></tr>`;
                 });
@@ -1337,6 +1373,25 @@
                             }
                         }
                         tr.appendChild(annTd);
+
+                        // 1Y Return (trailing 12 months, dividends reinvested), right after Annualized
+                        const r1Td = document.createElement('td');
+                        r1Td.setAttribute('data-label', '1Y Total Return');
+                        const rr = RETURNS[cols[0]] || null;
+                        const fmt = v => (v > 0 ? '+' : '') + v.toFixed(1) + '%';
+                        if (!rr || rr.r1y === null || rr.r1y === undefined) {
+                            r1Td.className = 'r1y r1y-na';
+                            r1Td.textContent = rr ? 'Under 1 yr' : '-';
+                            r1Td.title = rr ? 'This fund has not traded for a full year yet.' : '';
+                        } else {
+                            r1Td.className = 'r1y ' + (rr.r1y >= 0 ? 'r1y-pos' : 'r1y-neg');
+                            r1Td.textContent = fmt(rr.r1y);
+                            const parts = ['1Y total return: ' + fmt(rr.r1y)];
+                            parts.push('3Y: ' + (rr.r3y == null ? 'n/a (under 3 yrs)' : fmt(rr.r3y) + ' / yr'));
+                            parts.push('5Y: ' + (rr.r5y == null ? 'n/a (under 5 yrs)' : fmt(rr.r5y) + ' / yr'));
+                            r1Td.title = parts.join('\n') + '\nTotal return (price + dividends reinvested)' + (RETURNS_AS_OF ? ' (as of ' + RETURNS_AS_OF + ')' : '');
+                        }
+                        tr.appendChild(r1Td);
                     }
                 });
 
@@ -1365,7 +1420,7 @@
             }
 
             if (allRows.length === 0) {
-                tbody.innerHTML = '<tr class="no-results-row"><td colspan="14" class="no-results">No ETF data available.</td></tr>';
+                tbody.innerHTML = '<tr class="no-results-row"><td colspan="15" class="no-results">No ETF data available.</td></tr>';
                 document.getElementById('yieldSliderBlock').style.display = 'none';
             } else {
                 initYieldSlider();
@@ -1467,7 +1522,7 @@
                 let valA = a.cells[col].textContent.trim();
                 let valB = b.cells[col].textContent.trim();
 
-                if (col === 10) {
+                if (col === 11) {
                     const dateA = new Date(normalizeDate(valA));
                     const dateB = new Date(normalizeDate(valB));
                     if (!isNaN(dateA.getTime()) && !isNaN(dateB.getTime())) {
@@ -1475,7 +1530,7 @@
                     }
                 }
 
-                if (col === 11) {
+                if (col === 12) {
                     const order = { 'weekly': 1, 'monthly': 2, 'quarterly': 3 };
                     const orderA = order[valA.toLowerCase()] || 99;
                     const orderB = order[valB.toLowerCase()] || 99;
@@ -1484,7 +1539,7 @@
 
                 // Column 8 (Annualized): numeric sort, but push non-computable
                 // rows ("N/A", "-") to the bottom regardless of direction.
-                if (col === 8) {
+                if (col === 8 || col === 9) {
                     const numA = parseFloat(valA);
                     const numB = parseFloat(valB);
                     const aBad = isNaN(numA);
@@ -1543,9 +1598,9 @@
                 const name = tr.cells[1].textContent.toLowerCase();
                 const yieldValue = parseFloat(tr.cells[3].textContent) || 0;
                 const taxGrade = tr.cells[4].textContent.trim().toUpperCase();
-                const priceDecay = tr.cells[9].textContent.trim().toUpperCase();
-                const inceptionStr = tr.cells[10].textContent.trim();
-                const payoutFrequency = tr.cells[11].textContent.trim().toLowerCase();
+                const priceDecay = tr.cells[10].textContent.trim().toUpperCase();
+                const inceptionStr = tr.cells[11].textContent.trim();
+                const payoutFrequency = tr.cells[12].textContent.trim().toLowerCase();
 
                 let visible = true;
 
@@ -1607,9 +1662,9 @@
                     const noRow = document.createElement('tr');
                     noRow.className = 'no-results-row';
                     if (watchlistOnly && watchlist.length === 0) {
-                        noRow.innerHTML = '<td colspan="14" class="empty-watchlist"><span class="big">⭐</span>Your watchlist is empty.<br>Tap the ☆ star on any ETF to add it — your list saves automatically on this device.</td>';
+                        noRow.innerHTML = '<td colspan="15" class="empty-watchlist"><span class="big">⭐</span>Your watchlist is empty.<br>Tap the ☆ star on any ETF to add it — your list saves automatically on this device.</td>';
                     } else {
-                        noRow.innerHTML = '<td colspan="14" class="no-results">No ETFs match your filters. Try widening the yield range or clearing a filter.</td>';
+                        noRow.innerHTML = '<td colspan="15" class="no-results">No ETFs match your filters. Try widening the yield range or clearing a filter.</td>';
                     }
                     tbody.appendChild(noRow);
                 }
