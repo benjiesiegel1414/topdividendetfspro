@@ -1,0 +1,910 @@
+{
+ "asOf": "2026-11-06",
+ "funds": {
+  "YBST": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "YBTY": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "AMYY": {
+   "r1y": 4.8,
+   "r3y": null,
+   "r5y": null
+  },
+  "XBTY": {
+   "r1y": -27,
+   "r3y": null,
+   "r5y": null
+  },
+  "COYY": {
+   "r1y": -56.8,
+   "r3y": null,
+   "r5y": null
+  },
+  "HOYY": {
+   "r1y": -51.8,
+   "r3y": null,
+   "r5y": null
+  },
+  "NVYY": {
+   "r1y": -16.5,
+   "r3y": null,
+   "r5y": null
+  },
+  "TQQY": {
+   "r1y": -10,
+   "r3y": null,
+   "r5y": null
+  },
+  "SMYY": {
+   "r1y": -32.4,
+   "r3y": null,
+   "r5y": null
+  },
+  "YSPY": {
+   "r1y": 6.3,
+   "r3y": null,
+   "r5y": null
+  },
+  "TSYY": {
+   "r1y": -27.6,
+   "r3y": null,
+   "r5y": null
+  },
+  "AHD": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "CONY": {
+   "r1y": -48.7,
+   "r3y": -2.7,
+   "r5y": null
+  },
+  "ULTY": {
+   "r1y": -15.8,
+   "r3y": null,
+   "r5y": null
+  },
+  "MSTY": {
+   "r1y": -42.6,
+   "r3y": null,
+   "r5y": null
+  },
+  "SMCY": {
+   "r1y": -44.6,
+   "r3y": null,
+   "r5y": null
+  },
+  "TSLY": {
+   "r1y": -19.8,
+   "r3y": 7.9,
+   "r5y": null
+  },
+  "YBIT": {
+   "r1y": -22.9,
+   "r3y": null,
+   "r5y": null
+  },
+  "PLTY": {
+   "r1y": -16.3,
+   "r3y": null,
+   "r5y": null
+  },
+  "NVDY": {
+   "r1y": -5.2,
+   "r3y": 43.3,
+   "r5y": null
+  },
+  "AMDY": {
+   "r1y": 39.1,
+   "r3y": 35.2,
+   "r5y": null
+  },
+  "SNOY": {
+   "r1y": 5.2,
+   "r3y": null,
+   "r5y": null
+  },
+  "YMAX": {
+   "r1y": -8.4,
+   "r3y": null,
+   "r5y": null
+  },
+  "PYPY": {
+   "r1y": -12.9,
+   "r3y": 1.7,
+   "r5y": null
+  },
+  "AMZY": {
+   "r1y": 4.1,
+   "r3y": 21.2,
+   "r5y": null
+  },
+  "GOOY": {
+   "r1y": 0.9,
+   "r3y": 16.8,
+   "r5y": null
+  },
+  "BABO": {
+   "r1y": -28.7,
+   "r3y": null,
+   "r5y": null
+  },
+  "OARK": {
+   "r1y": -11.2,
+   "r3y": 13.9,
+   "r5y": null
+  },
+  "HOOY": {
+   "r1y": -40.1,
+   "r3y": null,
+   "r5y": null
+  },
+  "LFGY": {
+   "r1y": -29.1,
+   "r3y": null,
+   "r5y": null
+  },
+  "CHPY": {
+   "r1y": 26,
+   "r3y": null,
+   "r5y": null
+  },
+  "YMAG": {
+   "r1y": 0.8,
+   "r3y": null,
+   "r5y": null
+  },
+  "FBY": {
+   "r1y": -9.9,
+   "r3y": 13.6,
+   "r5y": null
+  },
+  "SOXY": {
+   "r1y": 26.7,
+   "r3y": null,
+   "r5y": null
+  },
+  "IWMY": {
+   "r1y": 2.2,
+   "r3y": 8.5,
+   "r5y": null
+  },
+  "QQQY": {
+   "r1y": 4.6,
+   "r3y": 11.8,
+   "r5y": null
+  },
+  "SPYI": {
+   "r1y": 10,
+   "r3y": 16.1,
+   "r5y": null
+  },
+  "QQQI": {
+   "r1y": 2.7,
+   "r3y": null,
+   "r5y": null
+  },
+  "BTCI": {
+   "r1y": -24.1,
+   "r3y": null,
+   "r5y": null
+  },
+  "CSHI": {
+   "r1y": 4.5,
+   "r3y": 5.1,
+   "r5y": null
+  },
+  "QQQH": {
+   "r1y": 1.7,
+   "r3y": 17,
+   "r5y": 6.1
+  },
+  "IWMI": {
+   "r1y": 14.3,
+   "r3y": null,
+   "r5y": null
+  },
+  "IYRI": {
+   "r1y": 6.6,
+   "r3y": null,
+   "r5y": null
+  },
+  "IAUI": {
+   "r1y": 0.4,
+   "r3y": null,
+   "r5y": null
+  },
+  "BNDI": {
+   "r1y": 1.7,
+   "r3y": 5.6,
+   "r5y": null
+  },
+  "SPYH": {
+   "r1y": 7.6,
+   "r3y": null,
+   "r5y": null
+  },
+  "NIHI": {
+   "r1y": 12.4,
+   "r3y": null,
+   "r5y": null
+  },
+  "MLPI": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "XSPI": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "XQQI": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "XBCI": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "DIVO": {
+   "r1y": 12.1,
+   "r3y": 16.3,
+   "r5y": 10.2
+  },
+  "YYY": {
+   "r1y": -0.3,
+   "r3y": 9.8,
+   "r5y": 1.7
+  },
+  "IDVO": {
+   "r1y": 10.2,
+   "r3y": 19.4,
+   "r5y": null
+  },
+  "QDVO": {
+   "r1y": 2.5,
+   "r3y": null,
+   "r5y": null
+  },
+  "GPIX": {
+   "r1y": 9.3,
+   "r3y": 18,
+   "r5y": null
+  },
+  "SCHD": {
+   "r1y": 38.7,
+   "r3y": 19.1,
+   "r5y": 10.1
+  },
+  "DGRO": {
+   "r1y": 21.3,
+   "r3y": 19.8,
+   "r5y": 10.9
+  },
+  "DGRW": {
+   "r1y": 10.5,
+   "r3y": 16,
+   "r5y": 10.7
+  },
+  "VIG": {
+   "r1y": 15.2,
+   "r3y": 17.7,
+   "r5y": 10
+  },
+  "VYM": {
+   "r1y": 17.6,
+   "r3y": 18.6,
+   "r5y": 11
+  },
+  "SPHD": {
+   "r1y": 18.1,
+   "r3y": 15,
+   "r5y": 8.5
+  },
+  "FDVV": {
+   "r1y": 14.8,
+   "r3y": 20.3,
+   "r5y": 13.1
+  },
+  "BATT": {
+   "r1y": -3.9,
+   "r3y": 8.6,
+   "r5y": -6.7
+  },
+  "COWS": {
+   "r1y": 32.3,
+   "r3y": 21,
+   "r5y": null
+  },
+  "BITY": {
+   "r1y": -31.8,
+   "r3y": null,
+   "r5y": null
+  },
+  "BAGY": {
+   "r1y": -34,
+   "r3y": null,
+   "r5y": null
+  },
+  "HCOW": {
+   "r1y": 21.4,
+   "r3y": 12.2,
+   "r5y": null
+  },
+  "QDTE": {
+   "r1y": 6.2,
+   "r3y": null,
+   "r5y": null
+  },
+  "XDTE": {
+   "r1y": 9.3,
+   "r3y": null,
+   "r5y": null
+  },
+  "YBTC": {
+   "r1y": -26.9,
+   "r3y": null,
+   "r5y": null
+  },
+  "PLTW": {
+   "r1y": -30.7,
+   "r3y": null,
+   "r5y": null
+  },
+  "YETH": {
+   "r1y": -26.2,
+   "r3y": null,
+   "r5y": null
+  },
+  "COIW": {
+   "r1y": -65.5,
+   "r3y": null,
+   "r5y": null
+  },
+  "RDTE": {
+   "r1y": 12.8,
+   "r3y": null,
+   "r5y": null
+  },
+  "WEEK": {
+   "r1y": 3.6,
+   "r3y": null,
+   "r5y": null
+  },
+  "MAGY": {
+   "r1y": -6.3,
+   "r3y": null,
+   "r5y": null
+  },
+  "TSLW": {
+   "r1y": -32.1,
+   "r3y": null,
+   "r5y": null
+  },
+  "GOOW": {
+   "r1y": -3.1,
+   "r3y": null,
+   "r5y": null
+  },
+  "TOPW": {
+   "r1y": -13.4,
+   "r3y": null,
+   "r5y": null
+  },
+  "AMDW": {
+   "r1y": 59.7,
+   "r3y": null,
+   "r5y": null
+  },
+  "ACKY": {
+   "r1y": 3.4,
+   "r3y": null,
+   "r5y": null
+  },
+  "OMAH": {
+   "r1y": 12.3,
+   "r3y": null,
+   "r5y": null
+  },
+  "DRKY": {
+   "r1y": 7.5,
+   "r3y": null,
+   "r5y": null
+  },
+  "QUSA": {
+   "r1y": -3.1,
+   "r3y": null,
+   "r5y": null
+  },
+  "SIOO": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "XYLD": {
+   "r1y": 11.6,
+   "r3y": 12.7,
+   "r5y": 6.6
+  },
+  "HDV": {
+   "r1y": 33.7,
+   "r3y": 20.1,
+   "r5y": 13.1
+  },
+  "DVY": {
+   "r1y": 20.8,
+   "r3y": 18.1,
+   "r5y": 10.1
+  },
+  "SDY": {
+   "r1y": 22.7,
+   "r3y": 15,
+   "r5y": 8.2
+  },
+  "BALI": {
+   "r1y": 11.4,
+   "r3y": 18.1,
+   "r5y": null
+  },
+  "NOBL": {
+   "r1y": 22.2,
+   "r3y": 13.6,
+   "r5y": 7.1
+  },
+  "IDV": {
+   "r1y": 23.4,
+   "r3y": 25.7,
+   "r5y": 13.5
+  },
+  "VYMI": {
+   "r1y": 24.2,
+   "r3y": 22.7,
+   "r5y": 13.2
+  },
+  "SCHP": {
+   "r1y": -0.6,
+   "r3y": 3.9,
+   "r5y": 0
+  },
+  "SCHG": {
+   "r1y": 0.1,
+   "r3y": 21.1,
+   "r5y": 10.3
+  },
+  "RYLD": {
+   "r1y": 11.4,
+   "r3y": 9.6,
+   "r5y": 1.4
+  },
+  "QYLD": {
+   "r1y": 9.4,
+   "r3y": 12.8,
+   "r5y": 6.5
+  },
+  "JEPI": {
+   "r1y": 7,
+   "r3y": 9.6,
+   "r5y": 6.8
+  },
+  "JEPQ": {
+   "r1y": 1.9,
+   "r3y": 15.4,
+   "r5y": null
+  },
+  "MAXI": {
+   "r1y": -33.2,
+   "r3y": 14.4,
+   "r5y": null
+  },
+  "BLOX": {
+   "r1y": -41.6,
+   "r3y": null,
+   "r5y": null
+  },
+  "GIAX": {
+   "r1y": -1.7,
+   "r3y": null,
+   "r5y": null
+  },
+  "SVOL": {
+   "r1y": 2.9,
+   "r3y": 4,
+   "r5y": 4.4
+  },
+  "BITO": {
+   "r1y": -27.2,
+   "r3y": 22.1,
+   "r5y": -0.8
+  },
+  "KQQQ": {
+   "r1y": -1.3,
+   "r3y": null,
+   "r5y": null
+  },
+  "FEPI": {
+   "r1y": -5.1,
+   "r3y": 12.9,
+   "r5y": null
+  },
+  "AIPI": {
+   "r1y": -3.5,
+   "r3y": null,
+   "r5y": null
+  },
+  "CEPI": {
+   "r1y": -7,
+   "r3y": null,
+   "r5y": null
+  },
+  "NVII": {
+   "r1y": -8.8,
+   "r3y": null,
+   "r5y": null
+  },
+  "TSII": {
+   "r1y": -28.5,
+   "r3y": null,
+   "r5y": null
+  },
+  "WMTI": {
+   "r1y": 16.3,
+   "r3y": null,
+   "r5y": null
+  },
+  "ULTI": {
+   "r1y": -55.6,
+   "r3y": null,
+   "r5y": null
+  },
+  "GPIQ": {
+   "r1y": 4.1,
+   "r3y": 18.4,
+   "r5y": null
+  },
+  "TSPY": {
+   "r1y": 8.5,
+   "r3y": null,
+   "r5y": null
+  },
+  "TDAQ": {
+   "r1y": 3.9,
+   "r3y": null,
+   "r5y": null
+  },
+  "SPYT": {
+   "r1y": 4.3,
+   "r3y": null,
+   "r5y": null
+  },
+  "ISPY": {
+   "r1y": 5.4,
+   "r3y": null,
+   "r5y": null
+  },
+  "KGLD": {
+   "r1y": 2.3,
+   "r3y": null,
+   "r5y": null
+  },
+  "TSYX": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "TDAX": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "FTHI": {
+   "r1y": 4.2,
+   "r3y": 12.6,
+   "r5y": 9.1
+  },
+  "BUYW": {
+   "r1y": 8.2,
+   "r3y": 9,
+   "r5y": null
+  },
+  "XLEI": {
+   "r1y": 30.4,
+   "r3y": null,
+   "r5y": null
+  },
+  "XLKI": {
+   "r1y": -0.9,
+   "r3y": null,
+   "r5y": null
+  },
+  "KNG": {
+   "r1y": 19.2,
+   "r3y": 11.9,
+   "r5y": 6.2
+  },
+  "OVL": {
+   "r1y": 11,
+   "r3y": 22.2,
+   "r5y": 10.8
+  },
+  "KHPI": {
+   "r1y": 7.3,
+   "r3y": null,
+   "r5y": null
+  },
+  "VOO": {
+   "r1y": 9.8,
+   "r3y": 20.6,
+   "r5y": 11
+  },
+  "QDPL": {
+   "r1y": 9.1,
+   "r3y": 18.8,
+   "r5y": 10.1
+  },
+  "QSIX": {
+   "r1y": 4.1,
+   "r3y": null,
+   "r5y": null
+  },
+  "TYLG": {
+   "r1y": 11.4,
+   "r3y": 19.2,
+   "r5y": null
+  },
+  "EGGY": {
+   "r1y": -27.3,
+   "r3y": null,
+   "r5y": null
+  },
+  "EGGS": {
+   "r1y": -22.3,
+   "r3y": null,
+   "r5y": null
+  },
+  "ODTE": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "SPCI": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "VAIE": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "ROCY": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "OVS": {
+   "r1y": 20.6,
+   "r3y": 16.8,
+   "r5y": 4.6
+  },
+  "OVF": {
+   "r1y": 12.8,
+   "r3y": 19,
+   "r5y": 7.6
+  },
+  "ISBG": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "ISSB": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "TMGN": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "SEPI": {
+   "r1y": 13.2,
+   "r3y": null,
+   "r5y": null
+  },
+  "SPUC": {
+   "r1y": 6.7,
+   "r3y": 22.7,
+   "r5y": 10.2
+  },
+  "QVOL": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "VFLO": {
+   "r1y": 41.7,
+   "r3y": 27.9,
+   "r5y": null
+  },
+  "FOXY": {
+   "r1y": 6.6,
+   "r3y": null,
+   "r5y": null
+  },
+  "DRMP": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "MEMY": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "IACL": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "PDI": {
+   "r1y": -6.9,
+   "r3y": 8.4,
+   "r5y": 1.9
+  },
+  "PTY": {
+   "r1y": -9.7,
+   "r3y": 3.4,
+   "r5y": 0.3
+  },
+  "AMZP": {
+   "r1y": -1.6,
+   "r3y": 19.5,
+   "r5y": null
+  },
+  "BIGY": {
+   "r1y": 2,
+   "r3y": null,
+   "r5y": null
+  },
+  "FTQI": {
+   "r1y": 10.1,
+   "r3y": 15,
+   "r5y": 9.9
+  },
+  "JPIE": {
+   "r1y": 2.4,
+   "r3y": 6.3,
+   "r5y": 3.1
+  },
+  "OVB": {
+   "r1y": 1.4,
+   "r3y": 6.4,
+   "r5y": 0
+  },
+  "OVM": {
+   "r1y": 2.6,
+   "r3y": 5.7,
+   "r5y": 1
+  },
+  "OVT": {
+   "r1y": 3.3,
+   "r3y": 7.2,
+   "r5y": 2.6
+  },
+  "RDVI": {
+   "r1y": 17.7,
+   "r3y": 19.3,
+   "r5y": null
+  },
+  "RNTY": {
+   "r1y": 9.2,
+   "r3y": null,
+   "r5y": null
+  },
+  "SGOV": {
+   "r1y": 3.1,
+   "r3y": 4.3,
+   "r5y": 3.7
+  },
+  "SPHY": {
+   "r1y": 1.4,
+   "r3y": 7.3,
+   "r5y": 3.6
+  },
+  "TPRY": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "TDVI": {
+   "r1y": 11.9,
+   "r3y": 24.2,
+   "r5y": null
+  },
+  "EGGQ": {
+   "r1y": -23.2,
+   "r3y": null,
+   "r5y": null
+  },
+  "VOOY": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "WRTH": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "SEPQ": {
+   "r1y": 5.7,
+   "r3y": 19.2,
+   "r5y": null
+  },
+  "HAKY": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "ITWO": {
+   "r1y": 15,
+   "r3y": null,
+   "r5y": null
+  },
+  "ICAP": {
+   "r1y": 1.5,
+   "r3y": 12.9,
+   "r5y": null
+  },
+  "DIVB": {
+   "r1y": 42.1,
+   "r3y": 27.2,
+   "r5y": 14.2
+  },
+  "OVQ": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "QVAL": {
+   "r1y": 40.7,
+   "r3y": 21.4,
+   "r5y": 13.2
+  },
+  "FIZY": {
+   "r1y": null,
+   "r3y": null,
+   "r5y": null
+  },
+  "JUCY": {
+   "r1y": 5,
+   "r3y": 4.2,
+   "r5y": null
+  },
+  "IDUB": {
+   "r1y": 14.7,
+   "r3y": 16.6,
+   "r5y": 5
+  },
+  "DUBS": {
+   "r1y": 12,
+   "r3y": 20.5,
+   "r5y": null
+  },
+  "DRSK": {
+   "r1y": -2.6,
+   "r3y": 9.4,
+   "r5y": 1.8
+  }
+ }
+}
