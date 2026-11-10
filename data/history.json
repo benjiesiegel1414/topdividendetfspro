@@ -3786,6 +3786,11 @@
       "date": "2026-11-09",
       "yield": 41,
       "totalReturn": 35
+    },
+    {
+      "date": "2026-11-10",
+      "yield": 20,
+      "totalReturn": 35
     }
   ],
   "PYPY": [
@@ -5437,6 +5442,11 @@
       "date": "2026-11-09",
       "yield": 40,
       "totalReturn": 115
+    },
+    {
+      "date": "2026-11-10",
+      "yield": 41,
+      "totalReturn": 115
     }
   ],
   "YMAG": [
@@ -5653,6 +5663,11 @@
     {
       "date": "2026-11-09",
       "yield": 32,
+      "totalReturn": 67
+    },
+    {
+      "date": "2026-11-10",
+      "yield": 36,
       "totalReturn": 67
     }
   ],
