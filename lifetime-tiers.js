@@ -33,6 +33,12 @@
       }
       if (q(".lt-badge")) q(".lt-badge").textContent = state === "open" ? (t === t1 ? "🔥 Final spots at this price" : "Lifetime · Limited spots") : state === "locked" ? "Next price" : "Sold out";
     });
+    // Extra spots opened on the $97 tier after the first 41 sold out
+    var extra = t2.limit - 41, d2 = document.querySelector("#lt2 .pricing-plan-desc");
+    if (d2) d2.innerHTML = (cur === t2 && extra > 0)
+      ? "<strong>Back by popular demand:</strong> the first 41 spots sold out, so we opened " + extra + " more. Then it goes to " + money(nextAfter) + "."
+      : "Limited spots, then it goes to " + money(nextAfter);
+    if (cur === t2 && extra > 0) document.querySelectorAll(".deal-tag").forEach(function (e) { e.textContent = "More Spots Added"; });
     // Anywhere else on the page
     document.querySelectorAll("[data-lt-price]").forEach(function (e) { e.textContent = cur ? money(cur.price) : ""; });
     document.querySelectorAll("[data-lt-left]").forEach(function (e) { e.textContent = cur ? "Only " + left(cur) + " Lifetime " + (left(cur) === 1 ? "member" : "members") + " left at this price!" : "Lifetime spots are sold out"; });
