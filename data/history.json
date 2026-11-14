@@ -26907,5 +26907,145 @@
       "yield": 4,
       "totalReturn": 44
     }
+  ],
+  "XPAY": [
+    {
+      "date": "2026-11-14",
+      "yield": 21.9,
+      "totalReturn": 33
+    }
+  ],
+  "TPAY": [
+    {
+      "date": "2026-11-14",
+      "yield": 9.8,
+      "totalReturn": 10
+    }
+  ],
+  "HOOW": [
+    {
+      "date": "2026-11-14",
+      "yield": 57.2,
+      "totalReturn": -14
+    }
+  ],
+  "NVDW": [
+    {
+      "date": "2026-11-14",
+      "yield": 29.4,
+      "totalReturn": 8
+    }
+  ],
+  "MSTW": [
+    {
+      "date": "2026-11-14",
+      "yield": 85.4,
+      "totalReturn": -83
+    }
+  ],
+  "GDXW": [
+    {
+      "date": "2026-11-14",
+      "yield": 62.9,
+      "totalReturn": 6
+    }
+  ],
+  "MSFW": [
+    {
+      "date": "2026-11-14",
+      "yield": 36.5,
+      "totalReturn": -2
+    }
+  ],
+  "AAPW": [
+    {
+      "date": "2026-11-14",
+      "yield": 24.4,
+      "totalReturn": 45
+    }
+  ],
+  "METW": [
+    {
+      "date": "2026-11-14",
+      "yield": 38.8,
+      "totalReturn": -15
+    }
+  ],
+  "AVGW": [
+    {
+      "date": "2026-11-14",
+      "yield": 21.8,
+      "totalReturn": 14
+    }
+  ],
+  "AMZW": [
+    {
+      "date": "2026-11-14",
+      "yield": 47.8,
+      "totalReturn": 22
+    }
+  ],
+  "ARMW": [
+    {
+      "date": "2026-11-14",
+      "yield": 31.5,
+      "totalReturn": 4
+    }
+  ],
+  "GLDW": [
+    {
+      "date": "2026-11-14",
+      "yield": 33.1,
+      "totalReturn": -10
+    }
+  ],
+  "BRKW": [
+    {
+      "date": "2026-11-14",
+      "yield": 23.6,
+      "totalReturn": 20
+    }
+  ],
+  "COSW": [
+    {
+      "date": "2026-11-14",
+      "yield": 30,
+      "totalReturn": 17
+    }
+  ],
+  "NFLW": [
+    {
+      "date": "2026-11-14",
+      "yield": 44.5,
+      "totalReturn": -58
+    }
+  ],
+  "UNHW": [
+    {
+      "date": "2026-11-14",
+      "yield": 24.8,
+      "totalReturn": 21
+    }
+  ],
+  "UBEW": [
+    {
+      "date": "2026-11-14",
+      "yield": 47.2,
+      "totalReturn": -34
+    }
+  ],
+  "TSYW": [
+    {
+      "date": "2026-11-14",
+      "yield": 16.8,
+      "totalReturn": -12
+    }
+  ],
+  "BABW": [
+    {
+      "date": "2026-11-14",
+      "yield": 72.4,
+      "totalReturn": -54
+    }
   ]
 }
