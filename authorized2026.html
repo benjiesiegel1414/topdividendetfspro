@@ -800,7 +800,7 @@
                 align-items: stretch;
             }
 
-            #resetFilters, #watchlistToggle {
+            #resetFilters, #watchlistToggle, #wlSaveBtn {
                 width: 100%;
             }
 
@@ -1140,6 +1140,7 @@
         <!-- Centered Action Buttons -->
         <div class="action-bar">
             <button id="watchlistToggle">⭐ My Watchlist (<span id="watchCount">0</span>)</button>
+            <button id="wlSaveBtn" type="button">💾 Save &amp; Download</button>
             <button id="resetFilters">🔄 Reset Filters</button>
         </div>
 
@@ -1743,5 +1744,129 @@
 fetch('https://script.google.com/macros/s/AKfycbwz_GWHvyH6qixZ0wUL2Z5v8HJygnawGCC1czcTSh2FQI6epCOvZoSux_7z_3vwByl9/exec?session_id='+encodeURIComponent(s),{mode:'no-cors',keepalive:true}).catch(function(){});
 p.delete('session_id');var q=p.toString();history.replaceState(null,'',location.pathname+(q?'?'+q:'')+location.hash);}catch(e){}})();
 </script>
+
+    <!-- ==================== WATCHLIST SAVE & DOWNLOAD ==================== -->
+    <style>
+        #wlSaveBtn{padding:14px 28px;background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:700;font-size:16px;min-height:48px;box-shadow:0 4px 12px rgba(245,158,11,.3);transition:all .3s ease;-webkit-tap-highlight-color:transparent}
+        #wlSaveBtn:hover{transform:translateY(-2px)}
+        #wlModal{position:fixed;inset:0;background:rgba(10,30,26,.6);display:none;align-items:center;justify-content:center;z-index:9999;padding:16px}
+        #wlModal.open{display:flex}
+        #wlModal .wl-box{background:#fff;border-radius:14px;max-width:440px;width:100%;padding:26px 24px;box-shadow:0 20px 50px rgba(0,0,0,.3);text-align:center;font-family:inherit}
+        #wlModal h3{color:#0F3D35;font-size:1.3em;margin:0 0 6px}
+        #wlModal p{color:#555;font-size:.95em;margin:0 0 16px;line-height:1.5}
+        #wlModal input{width:100%;box-sizing:border-box;padding:11px 12px;border:2px solid #cfe9df;border-radius:8px;font-size:15px;margin-bottom:14px;font-family:inherit}
+        #wlModal .wl-opts{display:grid;gap:10px}
+        #wlModal .wl-opts button{padding:13px;border-radius:8px;border:none;font-weight:800;font-size:15px;cursor:pointer;color:#fff;background:linear-gradient(135deg,#10B981,#0F766E)}
+        #wlModal .wl-opts button.alt{background:linear-gradient(135deg,#2563EB,#1D4ED8)}
+        #wlModal .wl-opts button.ghost{background:#f1f5f4;color:#0F3D35}
+        #wlModal .wl-close{margin-top:12px;background:none;border:none;color:#888;cursor:pointer;font-size:.9em}
+        #wlModal .wl-msg{min-height:1.2em;font-size:.85em;color:#0F766E;margin-top:10px;font-weight:700}
+    </style>
+    <div id="wlModal" role="dialog" aria-modal="true" aria-labelledby="wlTitle">
+        <div class="wl-box">
+            <h3 id="wlTitle">💾 Save Your Watchlist</h3>
+            <p>Your watchlist is saved in this browser automatically. Download a copy with today's yields, returns and ratings.</p>
+            <input id="wlName" type="text" maxlength="40" placeholder="Name it (optional), e.g. My Income Picks">
+            <div class="wl-opts">
+                <button type="button" id="wlPng">🖼️ Download as Image (PNG)</button>
+                <button type="button" id="wlPdf" class="alt">📄 Download as PDF</button>
+                <button type="button" id="wlCopy" class="ghost">📋 Copy Tickers</button>
+            </div>
+            <div class="wl-msg" id="wlMsg"></div>
+            <button type="button" class="wl-close" id="wlClose">Close</button>
+        </div>
+    </div>
+    <script>
+    (function(){
+        // Columns pulled from the live table: [header, cell index]
+        const COLS=[['Symbol',0],['Name',1],['Yield',3],['Expense',5],['AUM',6],['Total Return',7],['1Y Return',9],['Price Decay',10],['Payout',12],['Rating',13]];
+        const modal=document.getElementById('wlModal'), msg=document.getElementById('wlMsg');
+        function rows(){
+            const out=[];
+            document.querySelectorAll('#etfBody tr').forEach(tr=>{
+                if(!tr.cells||tr.cells.length<14) return;
+                const sym=tr.cells[0].textContent.trim();
+                if(typeof isWatched==='function'&&isWatched(sym)){const r=COLS.map(c=>(tr.cells[c[1]]?tr.cells[c[1]].textContent.trim():'-')||'-');const m=/^([\d.]+)M$/i.exec(r[4]);if(m&&+m[1]>=1000)r[4]=(+m[1]/1000).toFixed(1)+'B';out.push(r);}
+            });
+            return out;
+        }
+        function title(){const n=document.getElementById('wlName').value.trim();return n||'My ETF Watchlist';}
+        function fname(ext){return (title().replace(/[^a-z0-9]+/gi,'-').replace(/^-|-$/g,'')||'watchlist')+'-'+new Date().toISOString().slice(0,10)+'.'+ext;}
+        function fit(ctx,t,w){if(ctx.measureText(t).width<=w)return t;while(t.length>1&&ctx.measureText(t+'\u2026').width>w)t=t.slice(0,-1);return t+'\u2026';}
+        function draw(){
+            const data=rows(); const S=2, W=1500, rowH=46, head=170, colH=44, foot=90;
+            const H=head+colH+Math.max(1,data.length)*rowH+foot;
+            const cv=document.createElement('canvas'); cv.width=W*S; cv.height=H*S;
+            const c=cv.getContext('2d'); c.scale(S,S);
+            const F='Lato, Arial, sans-serif';
+            c.fillStyle='#F6FBF9'; c.fillRect(0,0,W,H);
+            const g=c.createLinearGradient(0,0,W,head); g.addColorStop(0,'#0F3D35'); g.addColorStop(1,'#0F766E');
+            c.fillStyle=g; c.fillRect(0,0,W,head);
+            c.fillStyle='#7DFFB0'; c.font='700 18px '+F; c.fillText('TOPDIVIDENDETFSPRO  \u00B7  WATCHLIST',48,52);
+            c.fillStyle='#fff'; c.font='900 46px '+F; c.fillText(fit(c,title(),W-96),48,108);
+            c.fillStyle='rgba(255,255,255,.8)'; c.font='600 18px '+F;
+            c.fillText(data.length+' ETF'+(data.length===1?'':'s')+'  \u00B7  Saved '+new Date().toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'}),48,145);
+            const widths=[110,380,90,95,100,130,115,120,110,90], x0=48; let y=head;
+            c.fillStyle='#E3F3EE'; c.fillRect(0,y,W,colH);
+            c.fillStyle='#0F3D35'; c.font='800 15px '+F;
+            let x=x0; COLS.forEach((col,i)=>{c.fillText(col[0].toUpperCase(),x,y+28); x+=widths[i];});
+            y+=colH;
+            if(!data.length){c.fillStyle='#666';c.font='600 20px '+F;c.fillText('Your watchlist is empty.',x0,y+30);y+=rowH;}
+            data.forEach((r,ri)=>{
+                if(ri%2){c.fillStyle='#fff';c.fillRect(0,y,W,rowH);}
+                x=x0;
+                r.forEach((v,i)=>{
+                    c.font=(i===0?'900 20px ':'600 17px ')+F;
+                    let col='#334';
+                    if(i===0) col='#0F3D35';
+                    if((i===5||i===6)&&/^[+]?\d/.test(v)) col='#0F8A5F';
+                    if((i===5||i===6)&&/^-\d/.test(v)) col='#C0392B';
+                    if(i===7) col=/YES/i.test(v)?'#C0392B':'#0F8A5F';
+                    if(i===9) col=/^A/.test(v)?'#0F8A5F':/^B/.test(v)?'#2563EB':/^C/.test(v)?'#B7791F':'#C0392B';
+                    c.fillStyle=col; c.fillText(fit(c,i===0?'$'+v:v,widths[i]-14),x,y+30); x+=widths[i];
+                });
+                y+=rowH;
+            });
+            c.strokeStyle='#cfe9df'; c.beginPath(); c.moveTo(0,y+8); c.lineTo(W,y+8); c.stroke();
+            c.fillStyle='#0F3D35'; c.font='900 20px '+F; c.fillText('TopDividendETFsPRO.com',x0,y+46);
+            c.fillStyle='#777'; c.font='500 14px '+F;
+            const d='Yields and returns change daily and are not guaranteed. For informational purposes only, not financial advice.';
+            c.fillText(d,W-48-c.measureText(d).width,y+46);
+            return cv;
+        }
+        function save(blob,name){const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1500);}
+        function loadJsPDF(){
+            if(window.jspdf) return Promise.resolve(window.jspdf);
+            return new Promise((res,rej)=>{const s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';s.onload=()=>res(window.jspdf);s.onerror=rej;document.head.appendChild(s);});
+        }
+        function open(){
+            if(!rows().length){ msg.textContent='Add ETFs with the ☆ star first, then come back to save.'; }
+            else msg.textContent='';
+            modal.classList.add('open');
+        }
+        document.getElementById('wlSaveBtn').addEventListener('click',open);
+        document.getElementById('wlClose').addEventListener('click',()=>modal.classList.remove('open'));
+        modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open');});
+        document.getElementById('wlPng').addEventListener('click',()=>{
+            if(!rows().length){msg.textContent='Your watchlist is empty.';return;}
+            draw().toBlob(b=>{save(b,fname('png'));msg.textContent='✅ Image downloaded';},'image/png');
+        });
+        document.getElementById('wlPdf').addEventListener('click',()=>{
+            if(!rows().length){msg.textContent='Your watchlist is empty.';return;}
+            msg.textContent='Building your PDF\u2026';
+            loadJsPDF().then(({jsPDF})=>{
+                const cv=draw(), w=cv.width/2, h=cv.height/2;
+                const pdf=new jsPDF({orientation:w>h?'landscape':'portrait',unit:'px',format:[w,h],hotfixes:['px_scaling']});
+                pdf.addImage(cv.toDataURL('image/jpeg',0.92),'JPEG',0,0,w,h);
+                pdf.save(fname('pdf')); msg.textContent='✅ PDF downloaded';
+            }).catch(()=>{msg.textContent='Could not build the PDF. Try the image download instead.';});
+        });
+        document.getElementById('wlCopy').addEventListener('click',()=>{
+            const t=rows().map(r=>'$'+r[0]).join(' ');
+            if(!t){msg.textContent='Your watchlist is empty.';return;}
+            (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>msg.textContent='✅ Copied: '+t).catch(()=>msg.textContent=t);
+        });
+    })();
+    </script>
 </body>
 </html>
