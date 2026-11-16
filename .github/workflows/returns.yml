@@ -27,6 +27,9 @@ jobs:
           else
             echo "go=false" >> "$GITHUB_OUTPUT"
           fi
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$H" = "16" ]; then
+            echo "close=true" >> "$GITHUB_OUTPUT"
+          fi
       - if: steps.when.outputs.go == 'true'
         uses: actions/checkout@v7
       - if: steps.when.outputs.go == 'true'
@@ -36,12 +39,15 @@ jobs:
       - name: Compute returns
         if: steps.when.outputs.go == 'true'
         run: node scripts/fetch-returns.mjs
+      - name: Dividend history (after the close)
+        if: steps.when.outputs.close == 'true'
+        run: node scripts/fetch-dividends.mjs || echo "dividend fetch failed, keeping old files"
       - name: Commit and push if changed
         if: steps.when.outputs.go == 'true'
         run: |
           git config user.name "returns-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/returns.json data/growth.json
+          git add data/returns.json data/growth.json data/div
           if git diff --cached --quiet; then
             echo "No changes."
           else
