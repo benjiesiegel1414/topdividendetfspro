@@ -22,12 +22,13 @@ jobs:
         run: |
           H=$(TZ=America/New_York date +%-H)
           echo "Eastern hour: $H"
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$H" = "10" ] || [ "$H" = "13" ] || [ "$H" = "16" ]; then
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || { [ "$H" -ge 10 ] && [ "$H" -le 20 ]; }; then
+            # GitHub often starts scheduled runs 1 to 3 hours late, so accept any hour from 10 AM to 8 PM Eastern
             echo "go=true" >> "$GITHUB_OUTPUT"
           else
             echo "go=false" >> "$GITHUB_OUTPUT"
           fi
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$H" = "16" ]; then
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] || [ "$H" -ge 16 ]; then
             echo "close=true" >> "$GITHUB_OUTPUT"
           fi
       - if: steps.when.outputs.go == 'true'
