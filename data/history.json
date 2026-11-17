@@ -2118,6 +2118,11 @@
       "date": "2026-11-16",
       "yield": 60,
       "totalReturn": -6
+    },
+    {
+      "date": "2026-11-17",
+      "yield": 61,
+      "totalReturn": -6
     }
   ],
   "MSTY": [
@@ -4101,6 +4106,11 @@
       "date": "2026-11-16",
       "yield": 20,
       "totalReturn": 28
+    },
+    {
+      "date": "2026-11-17",
+      "yield": 31.6,
+      "totalReturn": 28
     }
   ],
   "PYPY": [
@@ -5665,6 +5675,11 @@
       "date": "2026-11-16",
       "yield": 40,
       "totalReturn": -22
+    },
+    {
+      "date": "2026-11-17",
+      "yield": 40.8,
+      "totalReturn": -22
     }
   ],
   "CHPY": [
@@ -5876,6 +5891,11 @@
     {
       "date": "2026-11-16",
       "yield": 41,
+      "totalReturn": 112
+    },
+    {
+      "date": "2026-11-17",
+      "yield": 40.5,
       "totalReturn": 112
     }
   ],
@@ -6108,6 +6128,11 @@
     {
       "date": "2026-11-16",
       "yield": 36,
+      "totalReturn": 63
+    },
+    {
+      "date": "2026-11-17",
+      "yield": 33.7,
       "totalReturn": 63
     }
   ],
