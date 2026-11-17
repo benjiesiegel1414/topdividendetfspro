@@ -25,7 +25,8 @@ async function symbols() {
 async function divs(sym) {
   for (let a = 0; a < 3; a++) {
     try {
-      const r = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(sym)}?range=max&interval=1d&events=div`, { headers: { "user-agent": "Mozilla/5.0" } });
+      // period1/period2 (not range=max) so Yahoo returns daily bars, not weekly
+      const r = await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(sym)}?period1=0&period2=9999999999&interval=1d&events=div`, { headers: { "user-agent": "Mozilla/5.0" } });
       if (r.ok) {
         const res = (await r.json()).chart?.result?.[0];
         if (!res) return null;
