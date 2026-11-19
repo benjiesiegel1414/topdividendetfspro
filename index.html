@@ -1997,6 +1997,22 @@
     });
 
 </script>
+<script>
+// Whole pricing card is clickable: a click anywhere on an open plan goes straight to its Stripe checkout
+(function () {
+    document.querySelectorAll('#pricing .pricing-card').forEach(function (card) {
+        card.addEventListener('click', function (e) {
+            if (e.target.closest('a, button')) return;
+            var a = card.querySelector('.pricing-cta a.cta-btn');
+            if (!a || a.getAttribute('aria-disabled') === 'true' || !a.getAttribute('href')) return;
+            a.click();
+        });
+    });
+})();
+</script>
+<style>
+#pricing .pricing-card:not(.lt-soldout):not(.lt-locked) { cursor: pointer; }
+</style>
 <script src="/lifetime-tiers.js" defer></script>
 </body>
 </html>
