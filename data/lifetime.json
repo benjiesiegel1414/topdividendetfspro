@@ -18,6 +18,15 @@
    "active": true,
    "plink": "plink_1UO9eiJqR7lI8PK9TRAnQkq9",
    "link": "https://buy.stripe.com/14AeVe5wp7Gu6LZ7cI1Fe08"
+  },
+  {
+   "id": "bf",
+   "price": "67",
+   "limit": 7,
+   "sold": 0,
+   "active": true,
+   "plink": "plink_1UdeZkJqR7lI8PK9u5BzPUE5",
+   "link": "https://buy.stripe.com/8x27sMgb38Kyc6jeFa1Fe0j"
   }
  ]
 }
