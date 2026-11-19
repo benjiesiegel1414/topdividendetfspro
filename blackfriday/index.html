@@ -51,9 +51,10 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0
 .logo{font-weight:900;font-size:20px;text-decoration:none}.logo span{color:var(--neon)}
 nav .tag{font-size:11.5px;letter-spacing:3px;color:var(--neon2);font-weight:800;border:1px solid var(--line);background:var(--glass);padding:7px 12px;border-radius:30px;backdrop-filter:blur(8px)}
 .hero{text-align:center;padding:40px 0 36px;position:relative;overflow:hidden}
-.trend{position:absolute;left:0;top:150px;width:100%;height:340px;z-index:-1;opacity:.3;pointer-events:none}
+.trend{position:absolute;left:0;top:198px;width:100%;height:340px;z-index:-1;opacity:.3;pointer-events:none}
 .pill{display:inline-block;background:rgba(255,77,106,.12);border:1px solid rgba(255,77,106,.45);color:#ff8fa2;font-weight:800;font-size:12.5px;letter-spacing:1.5px;padding:7px 16px;border-radius:30px;margin-bottom:22px;backdrop-filter:blur(8px)}
 h1{font-size:clamp(34px,6vw,62px);line-height:1.05;font-weight:900;letter-spacing:-1.5px;margin-bottom:18px}
+h1 .g{display:inline-block;padding:0 .08em 0 .02em;margin-right:-.06em}
 h1 .g,.neontext{background:linear-gradient(90deg,var(--neon),var(--neon2));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 40px rgba(46,242,160,.25)}
 .sub{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:680px;margin:0 auto 28px}
 .price-hero{display:flex;width:fit-content;justify-content:center;align-items:baseline;gap:14px;margin:0 auto 26px;padding:14px 26px;border-radius:18px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
@@ -126,6 +127,39 @@ footer p{margin-bottom:10px}
  .sticky{display:block}
  nav .tag{display:none}
 }
+.section-title{text-align:center;font-size:clamp(28px,4vw,40px);font-weight:900;line-height:1.15;margin-bottom:30px;letter-spacing:-.5px}
+.section-sub{text-align:center;color:var(--muted);max-width:640px;margin:-14px auto 34px;font-size:17px}
+.kicker{text-transform:uppercase}
+.video-container{position:relative;max-width:880px;margin:0 auto;aspect-ratio:16/9;border-radius:18px;overflow:hidden;border:1px solid rgba(25,211,255,.3);box-shadow:0 0 0 6px rgba(255,255,255,.03),0 30px 90px rgba(25,211,255,.16)}
+.video-container iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-cta{text-align:center;margin-top:28px}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature-card,.why-item{background:var(--glass);border:1px solid var(--line);border-radius:16px;padding:24px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:inset 0 1px 0 rgba(255,255,255,.07);transition:border-color .2s,box-shadow .2s}
+.feature-card:hover,.why-item:hover{border-color:rgba(25,211,255,.4);box-shadow:0 0 40px rgba(25,211,255,.12)}
+.feature-icon,.why-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(46,242,160,.18),rgba(25,211,255,.14));border:1px solid rgba(46,242,160,.35);color:var(--neon);margin-bottom:14px}
+.feature-icon svg,.why-icon svg{width:22px;height:22px}
+.feature-card h3,.why-item h3{font-size:17.5px;font-weight:900;margin-bottom:6px}
+.feature-card p,.why-item p{color:var(--muted);font-size:15px}
+.data-showcase{margin-top:40px;background:var(--glass);border:1px solid var(--line);border-radius:20px;padding:30px;text-align:center;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.data-showcase>h3{font-size:24px;font-weight:900;margin-bottom:8px}
+.data-showcase>p{color:var(--muted);margin-bottom:24px}
+.data-columns{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;text-align:left}
+.data-column{background:rgba(255,255,255,.035);border:1px solid rgba(148,190,255,.1);border-radius:12px;padding:14px}
+.data-column-title{font-weight:800;color:var(--neon2);font-size:15px;margin-bottom:4px}
+.data-column-desc{color:var(--muted);font-size:13.5px;line-height:1.4}
+.why-choose{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.comp-wrap{max-width:860px;margin:0 auto;overflow-x:auto;border-radius:18px;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.comparison-table{width:100%;border-collapse:collapse;font-size:15.5px}
+.comparison-table th{padding:16px 18px;text-align:left;font-weight:900;border-bottom:1px solid var(--line);background:rgba(255,255,255,.03)}
+.comparison-table th small{display:block;font-weight:600;color:var(--muted);font-size:12px;margin-top:2px}
+.comparison-table th.pro-col{background:linear-gradient(180deg,rgba(46,242,160,.16),rgba(25,211,255,.06));color:var(--neon)}
+.comparison-table td{padding:13px 18px;border-bottom:1px solid rgba(148,190,255,.08)}
+.comparison-table tr:last-child td{border-bottom:0}
+.comparison-table .yes{color:var(--neon);font-weight:900;font-size:18px}
+.comparison-table .no{color:#56657a;font-weight:900}
+.comparison-table .divider-row td{text-align:center;font-weight:800;color:var(--neon2);background:rgba(25,211,255,.06);letter-spacing:.5px}
+@media (max-width:900px){.why-choose{grid-template-columns:repeat(2,1fr)}.data-columns{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.features-grid,.why-choose{grid-template-columns:1fr}.comparison-table{font-size:14px}.comparison-table th,.comparison-table td{padding:11px 10px}}
 </style>
 </head>
 <body>
@@ -156,6 +190,251 @@ footer p{margin-bottom:10px}
   <div class="shot"><img src="/img/pro-screenshot.webp" alt="Top Dividend ETFs PRO screener with yields, total returns and price decay" width="1168" height="756" loading="eager"></div>
 </header>
 </div>
+
+<section class="video-demo-section">
+    <div class="wrap">
+        <div class="kicker">Live Demo</div>
+        <h2 class="section-title">Watch The Tool In Action</h2>
+        <p class="section-sub">This is the actual PRO platform — rankings, filters, tax treatment, total returns, and how to find your next income ETF fast.</p>
+
+        <div class="video-container">
+            <iframe width="560" height="315"
+                    src="https://www.youtube.com/embed/ks-ETDCl5vs?si=zGsuXxLFptpNdgP2"
+                    title="Top Dividend ETFs Pro - Live Tool Demo"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allowfullscreen></iframe>
+        </div>
+
+        <div class="video-cta">
+            <a href="#pricing" class="btn">Yes! I Want Full Access →</a>
+            <span class="secure" style="display:block">🔒 Instant access after checkout</span>
+        </div>
+    </div>
+</section>
+<section class="section" id="features">
+    <div class="wrap">
+        <div class="kicker">Everything You Get</div>
+        <h2 class="section-title">Here's What's Inside PRO</h2>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg></div>
+                <h3>Comprehensive Data</h3>
+                <p>All the critical metrics for top dividend ETFs in one place. No more hunting across multiple websites.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v5h-5"/></svg></div>
+                <h3>Daily Updates</h3>
+                <p>Data refreshed daily so you always have the latest dividend yields, performance metrics, and market data.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
+                <h3>Total Return Analysis</h3>
+                <p>Track total returns with price decay analysis to understand the true performance of each ETF.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 5L5 19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></div>
+                <h3>Tax Treatment Grades</h3>
+                <p>Understand the tax efficiency of each fund to optimize your portfolio.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/><path d="M6 12h.01M18 12h.01"/></svg></div>
+                <h3>Expense Ratios</h3>
+                <p>Compare fee structures across ETFs to maximize your net returns and minimize costs.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 4h18l-7 8.5V19l-4 2v-8.5L3 4z"/></svg></div>
+                <h3>Advanced Filtering</h3>
+                <p>Filter by yield, expense ratio, AUM, and more to find ETFs that match your investment criteria.</p>
+            </div>
+        </div>
+
+        <div class="data-showcase">
+            <h3>The Data You Need</h3>
+            <p>Access all the important information that's typically scattered across multiple sources</p>
+
+            <div class="data-columns">
+                <div class="data-column">
+                    <div class="data-column-title">Dividend Yield</div>
+                    <div class="data-column-desc">Current yield percentage for income planning</div>
+                </div>
+                <div class="data-column">
+                    <div class="data-column-title">Tax Treatment</div>
+                    <div class="data-column-desc">Tax efficiency grades</div>
+                </div>
+                <div class="data-column">
+                    <div class="data-column-title">Expense Ratio</div>
+                    <div class="data-column-desc">Annual costs expressed as percentage</div>
+                </div>
+                <div class="data-column">
+                    <div class="data-column-title">AUM</div>
+                    <div class="data-column-desc">Assets Under Management for fund stability</div>
+                </div>
+                <div class="data-column">
+                    <div class="data-column-title">Total Return</div>
+                    <div class="data-column-desc">Performance including dividends & Price return</div>
+                </div>
+                <div class="data-column">
+                    <div class="data-column-title">Price Decay</div>
+                    <div class="data-column-desc">Based off price return since Inception</div>
+                </div>
+                <div class="data-column">
+                    <div class="data-column-title">Inception Date</div>
+                    <div class="data-column-desc">Fund launch date for historical context</div>
+                </div>
+                <div class="data-column">
+                    <div class="data-column-title">Payout Frequency</div>
+                    <div class="data-column-desc">Weekly, Monthly, quarterly, distributions</div>
+                </div>
+                <div class="data-column">
+                    <div class="data-column-title">Ratings</div>
+                    <div class="data-column-desc">Our proprietary letter rating for each fund</div>
+                </div>
+                <div class="data-column">
+                    <div class="data-column-title">ETF Tickers</div>
+                    <div class="data-column-desc">Fund Ticker Symbols</div>
+                </div>
+                <div class="data-column">
+                    <div class="data-column-title">Grades</div>
+                    <div class="data-column-desc">Letter grades for quick fund comparison</div>
+                </div>
+                <div class="data-column">
+                    <div class="data-column-title">And More!</div>
+                    <div class="data-column-desc">New Premium Features coming soon!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="wrap">
+        <div class="kicker">Why PRO</div>
+        <h2 class="section-title">Why Investors Choose Top Dividend ETFs Pro</h2>
+
+        <div class="why-choose">
+            <div class="why-item">
+                <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+                <h3>Save Hours</h3>
+                <p>No more bouncing between stock market sites, and ETF provider websites. All data in one place.</p>
+            </div>
+            <div class="why-item">
+                <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></div>
+                <h3>Make Better Decisions</h3>
+                <p>Accurate, researched data and analysis help you build a more effective dividend income strategy.</p>
+            </div>
+            <div class="why-item">
+                <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
+                <h3>Stay Informed</h3>
+                <p>Daily updates mean you never miss important changes in yields, performance, or fund details.</p>
+            </div>
+            <div class="why-item">
+                <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+                <h3>Trusted Data</h3>
+                <p>Accurate, researched information you can rely on for real investment decisions.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="section" id="comparison">
+    <div class="wrap">
+        <div class="kicker">Free vs. PRO</div>
+        <h2 class="section-title">The Free Site Ranks Funds.<br>PRO Shows You Everything.</h2>
+
+        <div class="comp-wrap">
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th style="text-align: center;">Free Version<small>TopDividendETFs.com</small></th>
+                    <th style="text-align: center;" class="pro-col">Pro Membership ⭐<small>TopDividendETFsPro.com</small></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="feature-name">ETF Symbol</td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">ETF Name</td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Dividend Yield</td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">AUM (Assets Under Management)</td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Price Decay Analysis</td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Rating</td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                </tr>
+                <tr class="divider-row">
+                    <td colspan="3">🔒 Exclusive To PRO Members ↓</td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Fund Provider</td>
+                    <td style="text-align: center;"><span class="no">—</span></td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Tax Treatment Grade</td>
+                    <td style="text-align: center;"><span class="no">—</span></td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Expense Ratio</td>
+                    <td style="text-align: center;"><span class="no">—</span></td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Total Return</td>
+                    <td style="text-align: center;"><span class="no">—</span></td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Inception Date</td>
+                    <td style="text-align: center;"><span class="no">—</span></td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Payout Frequency</td>
+                    <td style="text-align: center;"><span class="no">—</span></td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Daily Data Updates</td>
+                    <td style="text-align: center;"><span class="no">—</span></td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">Advanced Filtering & Sorting</td>
+                    <td style="text-align: center;"><span class="no">—</span></td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                </tr>
+                <tr>
+                    <td class="feature-name">More Features Coming Soon</td>
+                    <td style="text-align: center;"><span class="no">—</span></td>
+                    <td style="text-align: center;"><span class="yes">✓</span></td>
+                </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</section>
 
 <section id="pricing">
   <div class="wrap">
@@ -212,31 +491,17 @@ footer p{margin-bottom:10px}
 
 <section>
   <div class="wrap">
-    <div class="kicker">WHAT YOU GET</div>
-    <h2>Find the income ETFs that actually work</h2>
-    <p class="lead">A high yield means nothing if the share price keeps sliding. PRO shows you the full picture on every fund, side by side.</p>
-    <div class="grid3">
-      <div class="card"><div class="ic">📊</div><h4>160+ income ETFs</h4><p>Covered calls, weekly payers, dividend growth and more, all in one sortable screener.</p></div>
-      <div class="card"><div class="ic">📉</div><h4>Price decay flags</h4><p>See which high yielders are quietly eating your principal before you buy.</p></div>
-      <div class="card"><div class="ic">📈</div><h4>Total returns</h4><p>Yield tells you what it pays. Total return tells you if it's actually working.</p></div>
-      <div class="card"><div class="ic">🧾</div><h4>Tax treatment grades</h4><p>Know which funds are tax friendly before they hit your taxable account.</p></div>
-      <div class="card"><div class="ic">⚡</div><h4>Updated daily</h4><p>Yields, returns and fund data refresh every day, so you never decide on stale numbers.</p></div>
-      <div class="card"><div class="ic">🔎</div><h4>Advanced filters</h4><p>Filter by yield, total return, price decay, AUM, payout frequency and more in seconds.</p></div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
     <div class="kicker">QUESTIONS</div>
-    <h2>Before you grab a spot</h2>
+    <h2>Frequently Asked Questions</h2>
     <div class="faq" style="margin-top:28px">
-      <details><summary>What does lifetime actually mean?</summary><p>One payment of $67 and you have full PRO access for as long as the platform exists, including every new feature we add. No renewals and no subscription.</p></details>
+      <details><summary>What does lifetime actually mean?</summary><p>One payment of $67 and you have full PRO access for as long as the platform exists, including every new premium feature we ship. No renewals, no subscriptions, nothing else to pay. Ever.</p></details>
       <details><summary>Why only 7 spots?</summary><p>I keep PRO small on purpose so I can take care of members and keep the data top quality. The Stripe checkout for this deal is capped at 7 purchases and shuts off by itself once they're gone.</p></details>
       <details><summary>What happens after the 7 spots are gone?</summary><p>Lifetime goes back to $97, and the next price after that is $297. Monthly stays at $12.95.</p></details>
-      <details><summary>How do I get access after I pay?</summary><p>Instantly. Right after Stripe checkout you're taken straight into PRO.</p></details>
-      <details><summary>Can I cancel the monthly plan?</summary><p>Yes, anytime in two clicks. You keep access through the end of your billing period.</p></details>
-      <details><summary>Is this investment advice?</summary><p>No. PRO is a data and research tool for informational and educational purposes only. It's not financial, investment or tax advice.</p></details>
+      <details><summary>How often is the data updated?</summary><p>Daily. Yields, total returns, price decay, and fund details are refreshed every single day so you're never making decisions on stale data.</p></details>
+      <details><summary>What exactly do I get that the free site doesn't have?</summary><p>PRO unlocks tax treatment grades, expense ratios, total returns, fund providers, inception dates, payout frequency, daily updates, and full advanced filtering and sorting across the entire database. The free site shows the basics. PRO shows everything.</p></details>
+      <details><summary>Can I really cancel anytime?</summary><p>Yes. Monthly members can cancel in two clicks, anytime, no questions asked. You keep access through the end of your billing period.</p></details>
+      <details><summary>How do I access the tool after purchase?</summary><p>Instantly. Right after Stripe checkout you're taken straight into PRO and can start using the full platform within minutes.</p></details>
+      <details><summary>Is this investment advice?</summary><p>No. PRO is a data and research platform for informational and educational purposes only. It does not constitute financial, investment, or tax advice. Always consult a qualified financial advisor before making investment decisions.</p></details>
     </div>
   </div>
 </section>
