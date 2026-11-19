@@ -210,6 +210,86 @@
             border-radius: 4px;
         }
 
+
+        /* ==================== STICKY TOP STACK (urgency banner + header) ==================== */
+        html { scroll-padding-top: 140px; }
+        .top-stack { position: sticky; top: 0; z-index: 150; }
+        .top-stack header { position: relative; top: auto; }
+        .deal-banner { background: linear-gradient(90deg, #052e16 0%, #0B3B2E 45%, #052e16 100%); border-bottom: 3px solid var(--yellow); overflow: hidden; }
+        .deal-banner::before { content: ""; position: absolute; inset: 0; background: linear-gradient(100deg, transparent 30%, rgba(252,211,77,.16) 50%, transparent 70%); transform: translateX(-100%); animation: dealShine 3.6s ease-in-out infinite; pointer-events: none; }
+        @keyframes dealShine { 0% { transform: translateX(-100%); } 60%, 100% { transform: translateX(100%); } }
+        .deal-banner-inner { padding: 9px 20px; gap: 14px; position: relative; }
+        .deal-tag { display: inline-flex; align-items: center; gap: 7px; background: #DC2626; color: #fff; font-size: 11.5px; padding: 6px 12px; box-shadow: 0 0 0 0 rgba(220,38,38,.7); animation: tagPing 1.6s ease-out infinite; }
+        .deal-tag::before { content: "\1F525"; font-size: 13px; }
+        @keyframes tagPing { 0% { box-shadow: 0 0 0 0 rgba(252,211,77,.6); } 100% { box-shadow: 0 0 0 10px rgba(252,211,77,0); } }
+        .deal-text { font-size: 16.5px; font-weight: 800; color: #fff; }
+        .deal-text strong { color: var(--yellow); font-size: 18px; }
+        .deal-text .deal-was { color: rgba(255,255,255,.7); font-weight: 700; font-size: 14px; margin-left: 4px; }
+        .deal-text .deal-was s { color: rgba(255,255,255,.85); }
+        .deal-count { display: inline-flex; align-items: center; gap: 8px; background: var(--yellow); color: #111827; border-radius: 12px; padding: 4px 12px 4px 10px; font-weight: 900; line-height: 1; box-shadow: 0 6px 18px rgba(252,211,77,.35); }
+        .deal-count .deal-num { font-size: 26px; letter-spacing: -1px; animation: numPop 1.6s ease-in-out infinite; display: inline-block; }
+        .deal-count .deal-lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .8px; text-align: left; line-height: 1.15; }
+        @keyframes numPop { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.14); } }
+        .deal-meter { display: inline-flex; flex-direction: column; gap: 4px; font-size: 11px; font-weight: 900; color: var(--yellow); text-transform: uppercase; letter-spacing: .6px; }
+        .deal-meter .deal-bar { width: 130px; height: 8px; border-radius: 6px; background: rgba(255,255,255,.16); overflow: hidden; }
+        .deal-meter .deal-bar i { display: block; height: 100%; border-radius: 6px; background: linear-gradient(90deg, #FCD34D, #F97316); }
+        .deal-link { background: var(--yellow); color: #111827; padding: 8px 14px; border-radius: 10px; font-size: 13.5px; box-shadow: 0 4px 0 #B45309; transition: transform .15s; }
+        .deal-banner:hover .deal-link { transform: translateY(-1px); }
+        html.lt-none .deal-count, html.lt-none .deal-meter, html.lt-none .price-ladder { display: none; }
+        @media (max-width: 900px) { .deal-meter { display: none; } }
+        @media (max-width: 768px) {
+            html { scroll-padding-top: 150px; }
+            .deal-banner-inner { gap: 8px 10px; padding: 8px 12px; }
+            .deal-text { font-size: 13.5px; }
+            .deal-text strong { font-size: 14.5px; }
+            .deal-text .deal-was { display: none; }
+            .deal-count .deal-num { font-size: 20px; }
+            .deal-tag { font-size: 10px; padding: 4px 9px; }
+        }
+        @media (prefers-reduced-motion: reduce) { .deal-banner::before, .deal-tag, .deal-count .deal-num { animation: none; } }
+
+        /* ==================== PRICE LADDER + LIFETIME MATH ==================== */
+        .price-ladder { display: flex; align-items: center; justify-content: center; gap: 0; max-width: 760px; margin: -18px auto 40px; }
+        .rung { text-align: center; padding: 12px 18px; border-radius: 14px; min-width: 150px; position: relative; }
+        .rung .r-p { display: block; font-size: 26px; font-weight: 900; letter-spacing: -.5px; }
+        .rung .r-l { display: block; font-size: 12.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .6px; margin-top: 2px; }
+        .rung.done { color: #94A3B8; }
+        .rung.done .r-p { text-decoration: line-through; }
+        .rung.now { background: linear-gradient(135deg, #047857, #10B981); color: #fff; box-shadow: 0 12px 30px rgba(16,185,129,.35); transform: scale(1.06); }
+        .rung.now .r-tag { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: var(--yellow); color: #111827; font-size: 10.5px; font-weight: 900; text-transform: uppercase; letter-spacing: .8px; padding: 3px 10px; border-radius: 100px; white-space: nowrap; }
+        .rung.next { color: #334155; border: 2px dashed #CBD5E1; }
+        .rung-line { flex: 1; height: 3px; min-width: 30px; background: repeating-linear-gradient(90deg, #CBD5E1 0 8px, transparent 8px 14px); }
+        .lt-math { max-width: 340px; margin: 34px auto 0; display: grid; grid-template-columns: 1fr; }
+        .lt-math > div { background: #fff; border: 1px solid #E2E8F0; border-radius: 14px; padding: 18px; text-align: center; }
+        .lt-math b { display: block; font-size: 28px; font-weight: 900; color: #475569; letter-spacing: -.5px; }
+        .lt-math span { display: block; font-size: 13px; font-weight: 700; color: #64748B; margin-top: 4px; }
+        .lt-math > div.win { background: linear-gradient(135deg, #ECFDF5, #D1FAE5); border: 2px solid #10B981; }
+        .lt-math > div.win b { color: #047857; }
+        .lt-math-note { text-align: center; color: var(--text-light); font-size: 14px; margin: 12px auto 0; }
+        @media (max-width: 700px) {
+            .price-ladder { margin: -14px auto 30px; }
+            .rung { min-width: 0; padding: 10px 10px; }
+            .rung .r-p { font-size: 20px; }
+            .rung .r-l { font-size: 10.5px; }
+            .rung-line { min-width: 10px; }
+            .lt-math { grid-template-columns: 1fr; }
+        }
+
+        /* ==================== HOW IT WORKS + FOUNDER ==================== */
+        .steps3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 46px; counter-reset: s; }
+        .step3 { background: #fff; border-radius: 18px; padding: 28px 26px; border: 1px solid #E2E8F0; position: relative; }
+        .step3::before { counter-increment: s; content: counter(s); position: absolute; top: -18px; left: 26px; width: 38px; height: 38px; border-radius: 12px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: #fff; font-weight: 900; font-size: 18px; display: grid; place-items: center; box-shadow: 0 8px 18px rgba(15,118,110,.3); }
+        .step3 h3 { font-size: 19px; font-weight: 900; margin: 10px 0 8px; color: var(--text-dark); }
+        .step3 p { color: var(--text-light); font-size: 15px; line-height: 1.6; margin: 0; }
+        .founder { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr; gap: 30px; align-items: center; background: linear-gradient(135deg, #0A2E2A, #134E4A); color: #fff; border-radius: 22px; padding: 36px 40px; box-shadow: 0 24px 50px rgba(10,46,42,.28); }
+        .founder-mark { width: 92px; height: 92px; border-radius: 24px; background: rgba(252,211,77,.14); border: 2px solid rgba(252,211,77,.5); display: grid; place-items: center; font-size: 44px; }
+        .founder h3 { font-size: 24px; font-weight: 900; margin: 0 0 10px; letter-spacing: -.4px; }
+        .founder p { color: rgba(255,255,255,.85); font-size: 16px; line-height: 1.65; margin: 0 0 14px; }
+        .founder .f-stats { display: flex; gap: 10px; flex-wrap: wrap; }
+        .founder .f-stats span { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18); border-radius: 100px; padding: 6px 12px; font-size: 13px; font-weight: 800; }
+        .founder .f-stats b { color: var(--yellow); }
+        @media (max-width: 800px) { .steps3 { grid-template-columns: 1fr; gap: 30px; } .founder { grid-template-columns: 1fr; padding: 28px 22px; text-align: left; } .founder-mark { width: 64px; height: 64px; font-size: 30px; } }
+
         /* ==================== HEADER ==================== */
         header {
             background: rgba(15, 118, 110, 0.85);
@@ -1023,16 +1103,16 @@
         .lt-card.lt-locked .pricing-badge, .lt-card.lt-soldout .pricing-badge { background: #64748B; }
         .lt-card .lt-btn[aria-disabled="true"] { background: #94A3B8; box-shadow: none; cursor: not-allowed; pointer-events: none; }
         .lt-card.lt-soldout .price-amount { text-decoration: line-through; }
-        .lt-card.lt-soldout::after { content: "SOLD OUT"; position: absolute; top: 46%; left: 50%; transform: translate(-50%,-50%) rotate(-12deg); border: 4px solid #DC2626; color: #DC2626; font-weight: 900; font-size: 30px; letter-spacing: 3px; padding: 6px 18px; border-radius: 10px; background: rgba(255,255,255,.85); }
+        .lt-card.lt-soldout::after { content: "SOLD OUT"; position: absolute; top: 46%; left: 50%; transform: translate(-50%,-50%) rotate(-12deg); border: 4px solid #DC2626; color: #DC2626; white-space: nowrap; font-weight: 900; font-size: 30px; letter-spacing: 3px; padding: 6px 18px; border-radius: 10px; background: rgba(255,255,255,.85); }
         .lt-card .seats-left { flex-direction: column; gap: 8px; }
         .lt-card .seats-left .seats-bar { width: 100%; }
         /* Open tier: loud spots-left callout */
         .lt-card.lt-open .seats-left {
             margin: 4px 22px 18px; padding: 14px 16px 16px;
-            background: linear-gradient(135deg, #DC2626 0%, #EA580C 100%);
-            border: 2px solid #FCA5A5; border-radius: 14px; color: #fff;
+            background: linear-gradient(135deg, #047857 0%, #10B981 100%);
+            border: 2px solid #6EE7B7; border-radius: 14px; color: #fff;
             font-size: 15px; line-height: 1.25;
-            box-shadow: 0 10px 26px rgba(220, 38, 38, .38);
+            box-shadow: 0 10px 26px rgba(16, 185, 129, .38);
             animation: ltPulse 1.8s ease-in-out infinite;
         }
         .lt-card.lt-open .lt-hot { display: block; font-size: 19px; font-weight: 900; line-height: 1.3; }
@@ -1040,7 +1120,9 @@
         .lt-card.lt-open .lt-sub { display: block; margin-top: 6px; font-size: 13.5px; font-weight: 700; opacity: .95; }
         .lt-card.lt-open .seats-left .seats-bar { height: 10px; background: rgba(255,255,255,.28); border-radius: 6px; }
         .lt-card.lt-open .seats-left .seats-fill { background: #FEF08A; }
-        @keyframes ltPulse { 0%,100% { transform: scale(1); box-shadow: 0 10px 26px rgba(220,38,38,.38); } 50% { transform: scale(1.03); box-shadow: 0 12px 34px rgba(220,38,38,.6); } }
+        @keyframes ltPulse { 0%,100% { transform: scale(1); box-shadow: 0 10px 26px rgba(16,185,129,.38); } 50% { transform: scale(1.03); box-shadow: 0 12px 34px rgba(16,185,129,.6); } }
+        .lt-card.lt-open .pricing-badge { background: linear-gradient(135deg, #047857 0%, #10B981 100%); }
+        .lt-card.lt-open { border-color: #10B981; box-shadow: 0 20px 50px rgba(16,185,129,.22); }
         @media (prefers-reduced-motion: reduce) { .lt-card.lt-open .seats-left { animation: none; } }
         @media (max-width: 600px) { .lt-card.lt-open .lt-hot { font-size: 17px; } .lt-card.lt-open .lt-num { font-size: 36px; } }
 
@@ -1332,11 +1414,14 @@
 <body>
 
 <!-- ==================== LAUNCH PRICING BANNER ==================== -->
+<div class="top-stack">
 <div class="deal-banner" onclick="goPricing()">
     <div class="deal-banner-inner">
         <span class="deal-tag">Limited Spots</span>
-        <span class="deal-text" data-lt-none="Lifetime spots are sold out for now. Monthly access is open.">Lifetime access is <strong><span data-lt-price>$74.95</span> one-time</strong>. <span data-lt-left>Only 37 Lifetime members left at this price!</span> <span data-lt-next>Then the price goes to $297.</span></span>
-        <span class="deal-link">See plans →</span>
+        <span class="deal-text" data-lt-none="Lifetime spots are sold out for now. Monthly access is open.">Lifetime access <strong><span data-lt-price>$97</span> one-time</strong> <span class="deal-was">then it goes to <s data-lt-nextp>$297</s></span></span>
+        <span class="deal-count"><span class="deal-num" data-lt-num>43</span><span class="deal-lbl">spots<br>left</span></span>
+        <span class="deal-meter"><span data-lt-claimed>52% claimed</span><span class="deal-bar"><i data-lt-fill style="width:52%"></i></span></span>
+        <span class="deal-link">Claim yours →</span>
     </div>
 </div>
 
@@ -1353,6 +1438,7 @@
         </nav>
     </div>
 </header>
+</div>
 
 <!-- ==================== HERO ==================== -->
 <section class="hero">
@@ -1551,6 +1637,33 @@
     </div>
 </section>
 
+<!-- ==================== HOW IT WORKS ==================== -->
+<section class="section section-dark">
+    <div class="section-container">
+        <div class="kicker">How It Works</div>
+        <h2 class="section-title">From Checkout To Your Next ETF In 60 Seconds</h2>
+        <div class="steps3">
+            <div class="step3"><h3>Pick your plan</h3><p>Monthly or Lifetime. Checkout is handled by Stripe, so your card details never touch our site.</p></div>
+            <div class="step3"><h3>Get instant access</h3><p>The moment you pay, you land straight in the PRO terminal. No waiting, no setup, nothing to download.</p></div>
+            <div class="step3"><h3>Find your next ETF</h3><p>Sort 100+ dividend ETFs by yield, tax grade, total return and price decay, and spot the winners in minutes.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ==================== FOUNDER ==================== -->
+<section class="section">
+    <div class="section-container">
+        <div class="founder">
+            <div class="founder-mark" aria-hidden="true">📈</div>
+            <div>
+                <h3>Built by a dividend investor, for dividend investors</h3>
+                <p>Hey, I'm Benjie, the investor behind @DevotedDividend on X. I've been dividend investing for over 10 years and reached financial freedom at 31 through dividend income. PRO puts every number that matters for a dividend ETF in one place, refreshed every day.</p>
+                <div class="f-stats"><span><b>85K+</b> followers on X</span><span><b>10+</b> years investing</span><span><b>100+</b> ETFs tracked daily</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- ==================== COMPARISON TABLE ==================== -->
 <section class="section section-dark" id="comparison">
     <div class="section-container">
@@ -1658,6 +1771,14 @@
         <h2 class="section-title">Choose Your Plan & Get Instant Access</h2>
         <p class="section-sub">Every plan unlocks every feature. Lifetime is sold in limited batches, and the price goes up when each batch is gone.</p>
 
+        <div class="price-ladder" aria-label="Lifetime price batches">
+            <div class="rung done"><span class="r-p">$74.95</span><span class="r-l">Sold out</span></div>
+            <div class="rung-line" aria-hidden="true"></div>
+            <div class="rung now"><span class="r-tag">You are here</span><span class="r-p" data-lt-price>$97</span><span class="r-l"><span data-lt-num>43</span> spots left</span></div>
+            <div class="rung-line" aria-hidden="true"></div>
+            <div class="rung next"><span class="r-p" data-lt-nextp>$297</span><span class="r-l">Next pricing tier</span></div>
+        </div>
+
         <div class="pricing-container">
 
             <!-- MONTHLY PLAN -->
@@ -1756,6 +1877,7 @@
 
         </div>
 
+
         <div class="guarantee">
             <div class="g-seal"><span class="big">✓</span>CANCEL<br>ANYTIME</div>
             <div>
@@ -1848,7 +1970,7 @@
     function goPricing() {
         const cards = document.querySelector('.pricing-container');
         if (!cards) return;
-        const header = document.querySelector('header');
+        const header = document.querySelector('.top-stack') || document.querySelector('header');
         const hh = header ? header.offsetHeight : 0;
         const r = cards.getBoundingClientRect();
         const room = window.innerHeight - hh;

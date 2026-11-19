@@ -2,8 +2,8 @@
    Markup hooks: #lt1 / #lt2 cards, [data-lt-price], [data-lt-link], [data-lt-left]. */
 (function () {
   var FALLBACK = {tiers: [
-    {id: "t1", price: "74.95", limit: 7, sold: 0, active: true, link: "https://buy.stripe.com/8x2cN69MF6Cqc6j40w1Fe03"},
-    {id: "t2", price: "97", limit: 41, sold: 1, active: true, link: "https://buy.stripe.com/14AeVe5wp7Gu6LZ7cI1Fe08"}],
+    {id: "t1", price: "74.95", limit: 7, sold: 7, active: false, link: "https://buy.stripe.com/8x2cN69MF6Cqc6j40w1Fe03"},
+    {id: "t2", price: "97", limit: 90, sold: 47, active: true, link: "https://buy.stripe.com/14AeVe5wp7Gu6LZ7cI1Fe08"}],
     next: "297"};   // the lifetime price after the last tier sells out
   function left(t) { return Math.max(0, t.limit - t.sold); }
   function open(t) { return t.active && left(t) > 0; }
@@ -43,6 +43,13 @@
     document.querySelectorAll("[data-lt-price]").forEach(function (e) { e.textContent = cur ? money(cur.price) : ""; });
     document.querySelectorAll("[data-lt-left]").forEach(function (e) { e.textContent = cur ? "Only " + left(cur) + " Lifetime " + (left(cur) === 1 ? "member" : "members") + " left at this price!" : "Lifetime spots are sold out"; });
     document.querySelectorAll("[data-lt-next]").forEach(function (e) { e.textContent = cur ? "Then the price goes to " + money(cur === t1 ? t2.price : nextAfter) + "." : ""; });
+    // Urgency banner + price ladder hooks
+    var claimed = cur ? Math.round(100 * cur.sold / cur.limit) : 100;
+    document.querySelectorAll("[data-lt-num]").forEach(function (e) { e.textContent = cur ? left(cur) : 0; });
+    document.querySelectorAll("[data-lt-fill]").forEach(function (e) { e.style.width = claimed + "%"; });
+    document.querySelectorAll("[data-lt-claimed]").forEach(function (e) { e.textContent = claimed + "% claimed"; });
+    document.querySelectorAll("[data-lt-nextp]").forEach(function (e) { e.textContent = money(cur === t1 ? t2.price : nextAfter); });
+    document.querySelectorAll("[data-lt-payback]").forEach(function (e) { e.textContent = cur ? Math.ceil(parseFloat(cur.price) / 12.95) : ""; });
     document.querySelectorAll("a[data-lt-link]").forEach(function (a) {
       if (cur) a.href = cur.link; else { a.href = "#pricing"; a.removeAttribute("target"); }
     });
