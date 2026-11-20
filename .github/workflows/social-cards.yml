@@ -1,0 +1,37 @@
+name: Social cards
+
+# Renders social-cards/*-card.html to img/*-social-card.png (1200x630 link-preview images).
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'social-cards/**'
+      - '.github/workflows/social-cards.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Render cards
+        run: |
+          npm i --no-save --no-package-lock --no-audit --no-fund playwright@1.49.1
+          npx playwright install --with-deps chromium
+          node social-cards/render.mjs
+          rm -rf node_modules
+      - name: Commit if changed
+        run: |
+          git config user.name "benjiesiegel1414"
+          git config user.email "benjiesbusiness@gmail.com"
+          git add img/*-social-card.png
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "Render social cards"
+          for i in 1 2 3; do git pull --rebase origin main && git push && break; sleep 5; done
