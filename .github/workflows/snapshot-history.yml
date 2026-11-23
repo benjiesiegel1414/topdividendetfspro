@@ -3,6 +3,8 @@ name: Snapshot Yield & Total Return History
 on:
   schedule:
     - cron: "30 11 * * *"   # ~6:30am Central daily — covers your 2x/week update cadence with buffer
+    - cron: "47 15 * * *"   # backup run; only commits if the data changed
+    - cron: "23 21 * * *"   # second backup, after the afternoon ETF refresh
   workflow_dispatch:
 
 permissions:
