@@ -27,6 +27,15 @@
    "active": true,
    "plink": "plink_1UdeZkJqR7lI8PK9u5BzPUE5",
    "link": "https://buy.stripe.com/8x27sMgb38Kyc6jeFa1Fe0j"
+  },
+  {
+   "id": "half",
+   "price": "48.50",
+   "limit": 13,
+   "sold": 3,
+   "active": true,
+   "plink": "plink_1UejJ2JqR7lI8PK9TmGmlm97",
+   "link": "https://buy.stripe.com/cNi6oIaQJbWK3zNcx21Fe0o"
   }
  ]
 }
